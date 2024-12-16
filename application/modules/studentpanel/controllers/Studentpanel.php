@@ -10,6 +10,8 @@ class Studentpanel extends CI_Controller {
         {
             redirect('studentlogin');
         }
+        // error_reporting(E_ALL);
+        // ini_set('display_errors', 1);
 
     }
     function index__() {
@@ -425,7 +427,7 @@ class Studentpanel extends CI_Controller {
           text-align: left;">Total Time</td>
           <td style="border: 1px solid black;
           border-collapse: collapse;padding: 10px;
-          text-align: right;">'.$post['qntimer'].' seconds</td>
+          text-align: right;">'.$this->formatTime($post['qntimer']).' seconds</td>
       
           </tr>
           <tr>
@@ -434,7 +436,7 @@ class Studentpanel extends CI_Controller {
           text-align: left;">Total Submitted Time</td>
           <td style="border: 1px solid black;
           border-collapse: collapse;padding: 10px;
-          text-align: right;">'.$submit['time'].' seconds</td>
+          text-align: right;">'.$this->formatTime($submit['time']).' seconds</td>
   
           </tr>
           <tr>
@@ -531,6 +533,14 @@ class Studentpanel extends CI_Controller {
         echo json_encode(array('status'=>false,'message'=>'No data','data'=>$data));
 
 
+    }
+
+    function formatTime($seconds) {
+        $hours = floor($seconds / 3600);
+        $minutes = floor(($seconds % 3600) / 60);
+        $remainingSeconds = $seconds % 60;
+    
+        return sprintf('%02d:%02d:%02d', $hours, $minutes, $remainingSeconds);
     }
 
    

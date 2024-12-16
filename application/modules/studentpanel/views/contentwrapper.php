@@ -30,6 +30,14 @@ ul.breadcrumb li a:hover {
   color: #01447e;
   text-decoration: underline;
 }
+.iframe-container {
+    .overlay {
+        position: relative !important;
+    }
+    .overlay-bottom-right{
+      position: relative !important;
+    }
+}
 
 </style>
 
@@ -163,6 +171,7 @@ ul.breadcrumb li a:hover {
 var i = 0;
 $('#prev_button').hide();
 $('#next_button').hide();
+
 if(arr.length>1)
 {
 $('#next_button').show();
@@ -175,9 +184,9 @@ function nextItem() {
     $('#next_button').hide();
 
     }
-    
     return arr[i]; 
 }
+
 
 function prevItem() {
    $('#next_button').show();
