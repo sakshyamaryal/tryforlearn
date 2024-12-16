@@ -2,8 +2,6 @@
 
 class Studentpanel_model extends CI_Model {
 
-   
-
     function get_unlock_course()
     {
         $this->db->select('*');

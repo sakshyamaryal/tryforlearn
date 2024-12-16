@@ -112,7 +112,6 @@
 
 <div class="row">
 <div class="col-md-12 col-sm-12" style="margin-top:7px;">
-<!-- <h3 style="text-align:center;"><?=$val->groupname;?> ( <?=$val->perqnmark;?> X <?=count($val->ques);?> = <?=$total.' '.$mark;?>  )</h3> -->
 
 <?php
 $sn=0;
@@ -198,7 +197,11 @@ var timeleft = <?= $timer; ?>;
 // timeleft=parseFloat(timeleft*60);
 
 // NOW FROM DB IN SECOND TIMER IS RECEIVED
-timeleft=parseFloat(timeleft);$('#qntimer').val(timeleft);
+timeleft=parseFloat(timeleft);
+
+$('#qntimer').val(timeleft);
+
+
 if(timeleft>0)
 {
     var downloadTimer = setInterval(function(){
@@ -213,6 +216,37 @@ $('#totaltimer').val(timeleft);
     submit_answer('q');
   }
 }, 1000);
+}
+
+if (timeleft > 0) {
+    var downloadTimer = setInterval(function() {
+        var formattedTime = formatTime(timeleft);
+
+        document.getElementById("timer").innerHTML = formattedTime + " remaining";
+        $('#totaltimer').val(timeleft);
+
+
+        timeleft -= 1;
+
+        if (timeleft <= 0) {
+            clearInterval(downloadTimer);
+            document.getElementById("timer").innerHTML = "Finished";
+            $('#totaltimer').val(0);
+            submit_answer('q');
+        }
+    }, 1000); 
+}
+
+function formatTime(seconds) {
+    var hours = Math.floor(seconds / 3600);
+    var minutes = Math.floor((seconds % 3600) / 60);
+    var remainingSeconds = seconds % 60;
+
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    remainingSeconds = remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds;
+
+    return hours + ':' + minutes + ':' + remainingSeconds;
 }
 
 function get_visibility(val,ansid,qid)
