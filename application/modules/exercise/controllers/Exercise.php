@@ -330,7 +330,16 @@ class Exercise extends CI_Controller
 			exit;
 			
         }
-        $iu=$this->common_model->update('exercise',array('is_active'=>0),array('eid'=>$_POST['exercise']));
+		if(($_POST['condition'] == 'all')){
+			$values = explode(',', $_POST['exercise']);
+			foreach($values as $val){
+				$iu = $this->common_model->update('exercise',array('is_active'=>0),array('eid'=>$val));
+			}
+		}
+		else{
+			$iu=$this->common_model->update('exercise',array('is_active'=>0),array('eid'=>$_POST['exercise']));
+		}
+        
         if ($iu>0) {
 
 			$validator['type'] = 'success';

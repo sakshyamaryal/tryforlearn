@@ -115,6 +115,7 @@
                 <button type="button" id="btnreplicate" class="btn btn-success">Replicate to Next Course</button>
                 <button type="button" id="btnmigrate" class="btn btn-success">Migrate to Topic</button>
                 <button type="button" id="btndataset" class="btn btn-success">Add in Datasets</button>
+                <button type="button" id="btndeleteselected" class="btn btn-warning">Delete Selected</button>
                 </div>
 
                 
