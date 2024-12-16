@@ -1,0 +1,12 @@
+proposal soft copy
+android code (zip)
+api code(zip)
+video
+Readme file ( to include):
+1. title
+2. Introduction
+3. Aims and Objective
+4. Features
+5. Rest client(retrofit)
+6. Youtube Link and Api Link
+7. Conclusion

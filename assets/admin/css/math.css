@@ -1,0 +1,308 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/*
+  https://github.com/fred-wang/mathml.css
+
+  This CSS stylesheet is a simplified version of the "MathML for CSS Profile"
+  (http://www.w3.org/TR/mathml-for-css/) without CSS table rules that had only
+  been implemented in Presto and using new CSS3 selectors and flexboxes.
+
+  We know from Opera's experience that relying exclusively on a fixed set of
+  CSS rules to do math layout is not reasonable. This stylesheet is only
+  intended to provide some fallback to browsers without MathML support in order
+  to make basic mathematical constructions readable, without claim of rendering
+  quality.
+
+  This stylesheet must not be loaded in browsers that have MathML support or
+  it will mess up the native rendering. You can load this mathml.css file
+  conditionally by doing some UA string sniffing:
+  https://developer.mozilla.org/en-US/docs/Web/MathML/Authoring#noMathML
+*/
+   
+@namespace "http://www.w3.org/1998/Math/MathML";
+
+/* math */
+math {
+    display: inline;
+    text-indent: 0;
+    text-align: center;
+    
+}
+math[display="block"] {
+    display: block;
+    text-align: center;
+}
+
+/* fraction */
+mfrac {
+    display: inline-table !important;
+    vertical-align: middle;
+    border-collapse: collapse;
+}
+mfrac > * {
+    display: table-row !important;
+}
+mfrac:not([linethickness="0"]):[linethickness="0pt"] > *:first-child {
+    border-bottom: solid thin;
+}
+
+/* sub/sup scripts */
+msub > *:nth-child(2), msubsup > *:nth-child(2),
+mmultiscripts > *:nth-child(2n+2),
+mmultiscripts > mprescripts ~ *:nth-child(2n+3) {
+    font-size: 0.8em;
+    vertical-align: sub;
+}
+msup > *:nth-child(2), msubsup > *:nth-child(3),
+mmultiscripts > *:nth-child(2n+3),
+mmultiscripts > mprescripts ~ *:nth-child(2n+2) {
+    font-size: 0.8em;
+    vertical-align: super;
+}
+mprescripts:after {
+    content: ";";
+}
+
+mfenced
+    {display:inline-table;
+    border-collapse:separate;
+    border-spacing:0.2ex 0;
+    white-space:nowrap;
+    margin:1px;}
+mfenced > *:first-child
+    {display:table-row;}
+mfenced > * + *
+    {display:none;}
+mfenced > *:before, mfenced > *:after
+    {display:table-cell;
+    content:"\A0";
+    background-repeat:no-repeat;
+    background-size:100% 100%;}
+mfenced > *:before
+    {background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABQCAYAAAAZQFV3AAABtElEQVR42s2ZK0hEURCGr8UiPhYVRJAFoxssFtsafDXRKLogNpNNDDazTSxiMYhoMdtWsAibtKhssCj4ALWIoM4s58Awdb7gD3+45eO8z5z/FgWnfnEfAWoTz4tHCJhCdsQDBGxKXBd3EbBl8a14kIBtiF+pMdsS/4pnCNic+Ed8SMAq4g/xM7HWetIEaFdrROtOEuySgE0kmHqB2FKNBLtP3yGtmtatRWGd4scEexF3RIHrpnV7xGRcG+BsFDZuYO/i9ihw3wCPicn4NMDFKHDJwNS9UeCBgTWJ2W0a4GkUVnbd3YwCaw44TY6fOnyQ3hjYE3FUfRngVRQ45Lp7FgVWHXA3Clyhl8y2A4ZvtyMHnIwCzx1wLAq8cMDRKLDhgMNR4J0DlqPABwcsRYFvDtgdBX47YPHvgHiX8UnBlw2+sPGthx8O+PGFH7D4FVAt4EsKv0bxi16FliIqvFjCyzm84FShJbEfR6Rox58V+MNHhT7NVPjjUYU+b1X4AxyPCFRoiKHCYxYVGgRloVGVCg/TVGjcl4UGklloZJqFhrpZaOychQbjWWh0b7co9nPBqvX74w/Kju1j59IjnwAAAABJRU5ErkJggg==");}
+mfenced > *:after
+    {background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABQCAYAAAAZQFV3AAABl0lEQVR42s3ZPyhFYRjH8ddiEa5cJaVbd2SwWGwM/m1yR3FKNpNNBpvZJossBonFbKMs6k4s6A4Wyp/CIoXfqXd4etbnOzj1Wz+97znv3+eklFJV6UvwM6TMK20k2q9sZxx7upRzZYpEB5RbZYl+p6/KOonOKL/KJokeKD/KHAWWY/RZ+VCGKbTIXS8/VIVCLzN6TIGNDJaZIMBySt5nsElN0VXTyhUC7FBeMviodBLormnlGgHOGvCaANuVd4OOEeiRAfcIcMGAn8TH6TVgmUWilS0D7hPgiQFbBLjhul2LgtMOLKJg1YHIe3wy4A0BXhnwKwFL2qnr9mAU3HHgOD10lqNg4cCtKDjpwMMoOOrAsyg44sCLKFh3YDMK1hx4FwV7HPgQBbsd+EbMZwt+/zsQ7zL+UfBhgw9sfOrhiwO+fOELLL4F4JsUvo3iGz16FMEPS/hxDj9w4kdi9NCOXyvwiw96NcMvj/j1Fr2A4yUCtIiBl1nwQhBaqkKLaXi5Dy1IoiVTtKiLlp3Rwjhaukd/LqC/P/4AwHbtY0GeJ20AAAAASUVORK5CYII=");}
+mfenced[open="["] > *:before
+    {border-style:solid;
+    border-width:1px 0 1px 1px;
+    background-image:none;}
+mfenced[close="]"] > *:after
+    {border-style:solid;
+    border-width:1px 1px 1px 0;
+    background-image:none;}
+mfenced[open="\2016"] > *:before
+    {border-style:double;
+    border-width:0 0 0 3px;
+    background-image:none;}
+mfenced[close="\2016"] > *:after
+    {border-style:double;
+    border-width:0 3px 0 0;
+    background-image:none;}
+mfenced[open="\27e6"] > *:before
+    {border-style:double;
+    border-width:2px 0 2px 3px;
+    background-image:none;}
+mfenced[close="\27e7"] > *:after
+    {border-style:double;
+    border-width:2px 3px 2px 0;
+    background-image:none;}
+mfenced[open="|"] > *:before
+    {border-style:solid;
+    border-width:0 0 0 1px;
+    background-image:none;}
+mfenced[close="|"] > *:after
+    {border-style:solid;
+    border-width:0 1px 0 0;
+    background-image:none;}
+mfenced[open="\230a"] > *:before
+    {border-style:solid;
+    border-width:0 0 1px 1px;
+    background-image:none;}
+mfenced[close="\230b"] > *:after
+    {border-style:solid;
+    border-width:0 1px 1px 0;
+    background-image:none;}
+mfenced[open="\2308"] > *:before
+    {border-style:solid;
+    border-width:1px 0 0 1px;
+    background-image:none;}
+mfenced[close="\2309"] > *:after
+    {border-style:solid;
+    border-width:1px 1px 0 0;
+    background-image:none;}
+mfenced[open="{"] > *:before
+    {content:"\A0\A0";
+    background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABQCAYAAAAZQFV3AAABuklEQVR42rWZuy9EURCHj0c8Qta7pRMh0WgUqBQqG4leNGRL2VZpO6GiIYobHf+DhIiSf8AjFBIkmwiNRNZvsmdjtM53J/naL+fec+7MnLkhpMeoWBZDoi1F1C12REW0pK6qQ1yIY+AJQ5M4ES+inxCWRU2UCFmXeBWfokAIN+PqMkJmG1GNwnlCWIyyL9FJCI+i8IqQNcfNMOE2IZyNMmOJPHvGGCHMouw7NQE04iYKHwlZazwqJjwjhJPu/R0SwkUn3CKEa05YJhOCsUoI95ywSAhPnXCGEF464QQhvHbCEUJ4SwvvnXCQED47YQ8hrNLCdydEUlfNkRwFJ3sjhONOeE4IF5zwgBD61LVBCPfDb3GaSpUNiI8o3CVWV4myu1Bv45J3176QBzGdKlsRT6FeP9r/I7DPqU8MizmxLnpTVoQL8UfOfVNyOTa5HGz808slOeDpC0+weAkIAS5SFngZxQs93orgzRLezuENJ94S4007fq3ALz741Qy/POLXW/wCboGOCCzwIQY+ZsEHQfioygIdpoWQw7gPH0j6RJFRQnyo689kiRLig/HGBmGj+0agPxd8/Pn98QMoXcSZw6bNQwAAAABJRU5ErkJggg==");}
+mfenced[close="}"] > *:after
+    {content:"\A0\A0";
+    background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABQCAYAAAAZQFV3AAABoklEQVR42sWZvUpDQRBGxx+iosS/2GoXJIKNjYVapbAyCPbBRrEMaS1NJ1ppo1gEO30HQZGU+gIxooWgQkC0ESR+iwOZBzjghdMe9t7dnZ39rplZRkyJDZE38OkTNXEgRkjxubgRg5RwQryKC9FDSXdER1QpYVZ8iTcxTEnrPspdSlh0YZuaoCHx7dISNcqGC88o4b4L0+T0EsJ1FyaWCeFsECJrMhWOHxfWqe/45MJ7SnjlwrSE+gnhafiO84RwLwjXCGE1CLcI4WYQIoWiFIRHhHApCC8J4VwQ3hLCmSC8o4VNQpgLwhYhHA3CF1rYJoSZIPygKk4ngDzvQZglhNdBWCCEJ0G4SggrBpewBeseVsfUxBy68FNMEsLU1j24tEaNclE8+o4pUNIB+ztnnkXZwGdMbIsVMS3GfZv+vxB9ZXRS8GWDLmx86+HFAS9feIHFjwD0kMKPUfygx1sRvFnC2zm84cRbYrxpx68V+MUHv5rhl0f8eotfwNGIAA8x8JgFD4LwqAoN0/C4Dw8k0cgUD3XR2BkPxrHoHvu5gP7++AUnfMSZodLInwAAAABJRU5ErkJggg==");}
+mfenced[open="\27e8"] > *:before, mfenced[open="\2329"] > *:before
+    {background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABZCAYAAAA+TwS/AAAB50lEQVR42s2ZPyiFURiHj7+Lrkhks0goEqtFWSilW8oqg5GULExWk5K6g26ZrFI3i24Go8kkkWQwSPkTA673lzOcvu7kfZSnfuvTe77vnO+c834hsORgX+gjZR2WIVI4T8oaLGukcNYyTgoPLfWUbNiyR1ZXtOQpWbvl0dJECfVmDyhZneXWMkcJZywfljZKeGIpUzKt2YplkRLuRmEXIdMze7OcUdWtxurWqalyE4UDhDAfZZfUcMtRuEnIBqNMGSWEhSi7t9R4Za2W1ygsENWtJMOd9MpqLddR9mRp9Aqnk+r2ieEeJ8JZr6zf8hVl75Zmr3Anqa7klbVYXhLhgle4nMg+LZ0emVbCVSI89VY3lcgqcWK7OMoIuz2y3mSqKOfe6rYz1W14ZJq4zxnhiEe4lJHdeKfKRUa45RFOZGTKmEdYysgews+2+St6MlNFKXqq26oy3GmP8K6KsPVfVYg/Q/wt/8k8xFcKvpb/5GuDfw8F/sUW6J4i8F0P35cFenIQ+NlGoKcvgZ8PBXqCFfgZG78FhADfUwR+kwoBvusJ/DYqygG8Lwv8Ro/3HATaFRF430agnSWB974E2p0TeP8Q73AKtAcr8C6xKAawjy3wTrtA/wUI/G8F/j9FzNNC/J+U6KOFuW87Lt0vtp6NAwAAAABJRU5ErkJggg==");}
+mfenced[close="\27e9"] > *:after, mfenced[close="\232A"] > *:after
+    {background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABZCAYAAAA+TwS/AAAByElEQVR42s2ZPSjFURiH/z4XkZvIZpFQJFaLslDqdkvdVQYjqZuFyWq6JXUH3TJZpW4WyWA0mSS6yWCQ8hGDr9+pdzid7vY+g1PP+vSe//89H+97sizLOjN4jNDCCdFHS5dp4aZoI4WzokgKW8UxPe0DMUkKC6JKCjvEs+glpUf2x7GxJO5FCyXsEV9ikYzyTJyTwlXxa2scGQMm3CejvBQf9k2RsWVRblDCMRPWyRS6MWmBEu6Y8IwSTpswME4Im8SjCStUlBUTvoscIZyPpl0ihO3ixYR3opmQHkZR5glhMRKeEsIu8WnCHzFKSGtRlHuEcCUSvolur7BffEfSdSLKi0h4ayvJNUqRMLDgFQ4mwhNi2leRMKTQsFe4nUS56xVOJcJXS3zXqCfSNa+wnAivvSk0kwgDcx5hOFafEmHNO+1qIgwpNOQR5htMu+wR5hoIH/5VhOg3xP8ynof4SkHXMr7b4PshumPjZwp+6qHnMn5zwO826O0Lvx/iN1j0jo1XAXidglZSeK2HV6N4vYxW9HjPAe+KoH0bvLOE975CmmDdObx/iHc40R4s3iXG+9hopx1/C8BfK/D3FPTFB3+Twl/N0He9P0bV3S+iamc2AAAAAElFTkSuQmCC");}
+mfenced[open=""] > *:before, mfenced[close=""] > *:after
+    {content:normal;}
+
+/* under/over scripts */
+munder, mover, munderover,msubsup {
+    display: inline-flex !important;
+    flex-direction: column;
+}
+munder > *:nth-child(2), munderover > *:nth-child(2),msubsup > *:nth-child(2) {
+    font-size: 0.8em;
+    order: +1;
+}
+mover > *:nth-child(2), munderover > *:nth-child(3), msubsup > *:nth-child(3){
+    font-size: 0.8em;
+    order: -1;
+}
+munder {
+    vertical-align: text-top;
+}
+mover {
+    vertical-align: text-bottom;
+}
+munderover, msubsup {
+    vertical-align: middle;
+}
+
+/* roots */
+msqrt, mroot {
+    display: inline-flex !important;
+    margin-left: .5em;
+    vertical-align: middle;
+    border-top: solid thin;
+}
+msqrt:before, mroot:before {
+    margin-left: -.5em;
+    content: "\221A";
+}
+mroot > *:nth-child(2) {
+    margin-right: .25em;
+    margin-left: -.75em;
+    font-size: 0.8em;
+    order: -1;
+}
+
+/* menclose */
+menclose {
+  display: inline-table !important;
+  border-collapse: separate;
+  border-spacing: 0.4ex 0;
+}
+menclose[notation*="top"], menclose[notation*="actuarial"] {
+  border-top: solid thin;
+}
+menclose[notation*="bottom"], menclose[notation*="madruwb"] {
+    border-bottom: solid thin;
+}
+menclose[notation*="right"], menclose[notation*="actuarial"],
+menclose[notation*="madruwb"] {
+    border-right: solid thin;
+}
+menclose[notation*="left"] {
+    border-left: solid thin;
+}
+menclose[notation*="box"], menclose[notation*="roundedbox"],
+menclose[notation*="circle"] {
+    border: solid thin;
+}
+menclose[notation*="roundedbox"] {
+    border-radius: 15%;
+}
+menclose[notation*="circle"] {
+    border-radius: 50%;
+}
+menclose[notation*="horizontalstrike"] {
+    text-decoration: line-through;
+}
+
+/* table */
+mtable {
+    display: inline-table !important;
+    vertical-align: middle;
+}
+mtr {
+    display: table-row !important;
+}
+mtd {
+    display: table-cell !important;
+    padding: 0 0.5ex;
+}
+
+/* token elements */
+mspace {
+    margin: .2em;
+}
+mi {
+    font-style: italic;
+}
+mo {
+    margin-right: .2em;
+    margin-left: .2em;
+}
+ms:before, ms:after {
+    content:"\0022";
+}
+ms[lquote]:before {
+    content: attr(lquote);
+}
+ms[rquote]:after {
+    content: attr(rquote);
+}
+
+/* mathvariants */
+[mathvariant="bold"], [mathvariant="bold-italic"],
+[mathvariant="bold-sans-serif"], [mathvariant="sans-serif-bold-italic"] {
+    font-weight: bold;
+    font-style: normal;
+}
+[mathvariant="monospace"] {
+    font-family: monospace;
+    font-style: normal;
+}
+[mathvariant="sans-serif"],
+[mathvariant="bold-sans-serif"], [mathvariant="sans-serif-italic"],
+[mathvariant="sans-serif-bold-italic"] {
+    font-family: sans-serif;
+    font-style: normal;
+}
+[mathvariant="italic"], [mathvariant="bold-italic"],
+[mathvariant="sans-serif-italic"], [mathvariant="sans-serif-bold-italic"] {
+    font-style: italic;
+}
+[mathvariant="normal"] {
+    font-style: normal;
+}
+
+/* mphantom */
+mphantom {
+    visibility: hidden;
+}
+
+/* merror */
+merror {
+    outline: solid thin red;
+}
+merror:before {
+    content: "Error: ";
+}
+
+/* annotations */
+semantics > *:first-child {
+    display: inline;
+}
+annotation, annotation-xml {
+    font-family: monospace;
+    display: none !important;
+}
+math:active > semantics > *:first-child,
+math:active > semantics > *:first-child {
+    display: none !important;
+}
+math:active annotation:first-of-type {
+    display: inline !important;
+}
+0

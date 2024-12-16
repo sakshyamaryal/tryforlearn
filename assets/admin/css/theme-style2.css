@@ -1,0 +1,137 @@
+
+table tr th{
+font-size:14px;
+}
+
+.form-group {
+    margin-bottom: 8px;
+}
+.display-previous-list{
+	padding: 0 !important;
+}
+
+th input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+ font-weight: normal;
+	font-size:14px;
+}
+th inputth input::-moz-placeholder { /* Firefox 19+ */
+  font-weight: normal;
+	font-size:14px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+ font-weight: normal;
+	font-size:14px;
+}
+th input:-moz-placeholder { /* Firefox 18- */
+  font-weight: normal;
+	font-size:14px;
+}
+.input-group-addon{
+	color:#666;
+}
+td.dataTables_empty{
+	font-size: 14px !important;
+}
+table.dataTable.no-footer {
+     border-bottom: 1px solid #d1d1d1; 
+}
+table tr td{
+	font-size: 14px;
+	padding: 8px;
+}
+a.paginate_button.previous.disabled{
+	    margin-left: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+	    border: 1px solid #ddd;
+	    padding: 6px 12px;
+	    cursor: pointer;
+		margin-right:2.5px;
+}
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+	    cursor: pointer;
+    border: 1px solid #ddd;
+}
+a.paginate_button.next.disabled {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+	border: 1px solid #ddd;
+	    padding: 6px 12px;
+	    cursor: pointer;
+}
+.next,.previous
+{
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+	border: 1px solid #ddd;
+	    padding: 6px 12px;
+	    cursor: pointer;
+}
+span a.paginate_button.current{
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+ 	    cursor: pointer;
+    margin-right: -1;
+    background: #3c8dbc;
+    color: white;
+	display:inline-block;
+}
+span a.paginate_button{
+	  padding: 6px 10px;
+    border: 1px solid #ddd;
+        cursor: pointer;
+    margin-right: 1;
+   
+    
+}
+.wrap-nh-vhdb button{
+	margin-bottom: 5px;
+	width:149px;
+}
+.display-previous-list  table  tr th{
+	/* background:white; 3-28-2018*/
+}
+h3.box-title{
+	float:left;
+}
+.margin-btm-5{
+	margin-bottom: 5px;
+}
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: inherit;
+}
+ table .panel-heading {  
+    border-top: 2px solid #3C8DBC;
+}
+/* migration 2018-2-8*/
+table tr td{
+border:1px solid #ddd !important;
+}
+table th
+{
+    background-color: #2fa4e7;
+    color:white;
+}
+.dataTables_filter {
+    float: left;
+}
+
+.dataTables_length
+{
+    float: right;
+}
+.wrs_tickContainer
+{
+    display: none!important;
+}

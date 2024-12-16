@@ -1,0 +1,2188 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "fckutil",
+        "description": "fckutil",
+        "isExtraImport": true,
+        "detail": "fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "fckutil",
+        "description": "fckutil",
+        "isExtraImport": true,
+        "detail": "fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "fckutil",
+        "description": "fckutil",
+        "isExtraImport": true,
+        "detail": "fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "fckutil",
+        "description": "fckutil",
+        "isExtraImport": true,
+        "detail": "fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "fckutil",
+        "description": "fckutil",
+        "isExtraImport": true,
+        "detail": "fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "fckcommands",
+        "description": "fckcommands",
+        "isExtraImport": true,
+        "detail": "fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "fckcommands",
+        "description": "fckcommands",
+        "isExtraImport": true,
+        "detail": "fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "fckcommands",
+        "description": "fckcommands",
+        "isExtraImport": true,
+        "detail": "fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "fckoutput",
+        "description": "fckoutput",
+        "isExtraImport": true,
+        "detail": "fckoutput",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "fckoutput",
+        "description": "fckoutput",
+        "isExtraImport": true,
+        "detail": "fckoutput",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "fckoutput",
+        "description": "fckoutput",
+        "isExtraImport": true,
+        "detail": "fckoutput",
+        "documentation": {}
+    },
+    {
+        "label": "base connector",
+        "importPath": "fckconnector import FCKeditorConnectorBase #",
+        "description": "fckconnector import FCKeditorConnectorBase #",
+        "isExtraImport": true,
+        "detail": "fckconnector import FCKeditorConnectorBase #",
+        "documentation": {}
+    },
+    {
+        "label": "base connector",
+        "importPath": "fckconnector import FCKeditorConnectorBase #",
+        "description": "fckconnector import FCKeditorConnectorBase #",
+        "isExtraImport": true,
+        "detail": "fckconnector import FCKeditorConnectorBase #",
+        "documentation": {}
+    },
+    {
+        "label": "config",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "config",
+        "description": "config",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "cgi,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cgi.",
+        "description": "cgi.",
+        "detail": "cgi.",
+        "documentation": {}
+    },
+    {
+        "label": "gmtime",
+        "importPath": "time",
+        "description": "time",
+        "isExtraImport": true,
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "strftime",
+        "importPath": "time",
+        "description": "time",
+        "isExtraImport": true,
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "string",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "string",
+        "description": "string",
+        "detail": "string",
+        "documentation": {}
+    },
+    {
+        "label": "string,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "string.",
+        "description": "string.",
+        "detail": "string.",
+        "documentation": {}
+    },
+    {
+        "label": "FCKeditorConnector",
+        "importPath": "connector",
+        "description": "connector",
+        "isExtraImport": true,
+        "detail": "connector",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "connector",
+        "description": "connector",
+        "isExtraImport": true,
+        "detail": "connector",
+        "documentation": {}
+    },
+    {
+        "label": "FCKeditorQuickUpload",
+        "importPath": "upload",
+        "description": "upload",
+        "isExtraImport": true,
+        "detail": "upload",
+        "documentation": {}
+    },
+    {
+        "label": "cgitb",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cgitb",
+        "description": "cgitb",
+        "detail": "cgitb",
+        "documentation": {}
+    },
+    {
+        "label": "StringIO",
+        "importPath": "cStringIO",
+        "description": "cStringIO",
+        "isExtraImport": true,
+        "detail": "cStringIO",
+        "documentation": {}
+    },
+    {
+        "label": "Products.zope",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "Products.zope",
+        "description": "Products.zope",
+        "detail": "Products.zope",
+        "documentation": {}
+    },
+    {
+        "label": "cgi",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cgi",
+        "description": "cgi",
+        "detail": "cgi",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "Enabled",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "peekOfCode": "Enabled = False\n# Path to user files relative to the document root.\nUserFilesPath = '/userfiles/'\n# Fill the following value it you prefer to specify the absolute path for the\n# user files directory. Useful if you are using a virtual directory, symbolic\n# link or alias. Examples: 'C:\\\\MySite\\\\userfiles\\\\' or '/root/mysite/userfiles/'.\n# Attention: The above 'UserFilesPath' must point to the same directory.\n# WARNING: GetRootPath may not work in virtual or mod_python configurations, and\n# may not be thread safe. Use this configuration parameter instead.\nUserFilesAbsolutePath = ''",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "documentation": {}
+    },
+    {
+        "label": "UserFilesPath",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "peekOfCode": "UserFilesPath = '/userfiles/'\n# Fill the following value it you prefer to specify the absolute path for the\n# user files directory. Useful if you are using a virtual directory, symbolic\n# link or alias. Examples: 'C:\\\\MySite\\\\userfiles\\\\' or '/root/mysite/userfiles/'.\n# Attention: The above 'UserFilesPath' must point to the same directory.\n# WARNING: GetRootPath may not work in virtual or mod_python configurations, and\n# may not be thread safe. Use this configuration parameter instead.\nUserFilesAbsolutePath = ''\n# Due to security issues with Apache modules, it is recommended to leave the\n# following setting enabled.",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "documentation": {}
+    },
+    {
+        "label": "UserFilesAbsolutePath",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "peekOfCode": "UserFilesAbsolutePath = ''\n# Due to security issues with Apache modules, it is recommended to leave the\n# following setting enabled.\nForceSingleExtension = True\n# What the user can do with this connector\nConfigAllowedCommands = [ 'QuickUpload', 'FileUpload', 'GetFolders', 'GetFoldersAndFiles', 'CreateFolder' ]\n# Allowed Resource Types\nConfigAllowedTypes = ['File', 'Image', 'Flash', 'Media']\n# After file is uploaded, sometimes it is required to change its permissions\n# so that it was possible to access it at the later time.",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "documentation": {}
+    },
+    {
+        "label": "ForceSingleExtension",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "peekOfCode": "ForceSingleExtension = True\n# What the user can do with this connector\nConfigAllowedCommands = [ 'QuickUpload', 'FileUpload', 'GetFolders', 'GetFoldersAndFiles', 'CreateFolder' ]\n# Allowed Resource Types\nConfigAllowedTypes = ['File', 'Image', 'Flash', 'Media']\n# After file is uploaded, sometimes it is required to change its permissions\n# so that it was possible to access it at the later time.\n# If possible, it is recommended to set more restrictive permissions, like 0755.\n# Set to 0 to disable this feature.\n# Note: not needed on Windows-based servers.",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "documentation": {}
+    },
+    {
+        "label": "ConfigAllowedCommands",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "peekOfCode": "ConfigAllowedCommands = [ 'QuickUpload', 'FileUpload', 'GetFolders', 'GetFoldersAndFiles', 'CreateFolder' ]\n# Allowed Resource Types\nConfigAllowedTypes = ['File', 'Image', 'Flash', 'Media']\n# After file is uploaded, sometimes it is required to change its permissions\n# so that it was possible to access it at the later time.\n# If possible, it is recommended to set more restrictive permissions, like 0755.\n# Set to 0 to disable this feature.\n# Note: not needed on Windows-based servers.\nChmodOnUpload = 0755\n# See comments above.",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "documentation": {}
+    },
+    {
+        "label": "ConfigAllowedTypes",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "peekOfCode": "ConfigAllowedTypes = ['File', 'Image', 'Flash', 'Media']\n# After file is uploaded, sometimes it is required to change its permissions\n# so that it was possible to access it at the later time.\n# If possible, it is recommended to set more restrictive permissions, like 0755.\n# Set to 0 to disable this feature.\n# Note: not needed on Windows-based servers.\nChmodOnUpload = 0755\n# See comments above.\n# Used when creating folders that does not exist.\nChmodOnFolderCreate = 0755",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "documentation": {}
+    },
+    {
+        "label": "ChmodOnUpload",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "peekOfCode": "ChmodOnUpload = 0755\n# See comments above.\n# Used when creating folders that does not exist.\nChmodOnFolderCreate = 0755\n# Do not touch this 3 lines, see \"Configuration settings for each Resource Type\"\nAllowedExtensions = {}; DeniedExtensions = {};\nFileTypesPath = {}; FileTypesAbsolutePath = {};\nQuickUploadPath = {}; QuickUploadAbsolutePath = {};\n#\tConfiguration settings for each Resource Type\n#",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "documentation": {}
+    },
+    {
+        "label": "ChmodOnFolderCreate",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "peekOfCode": "ChmodOnFolderCreate = 0755\n# Do not touch this 3 lines, see \"Configuration settings for each Resource Type\"\nAllowedExtensions = {}; DeniedExtensions = {};\nFileTypesPath = {}; FileTypesAbsolutePath = {};\nQuickUploadPath = {}; QuickUploadAbsolutePath = {};\n#\tConfiguration settings for each Resource Type\n#\n#\t- AllowedExtensions: the possible extensions that can be allowed.\n#\t\tIf it is empty then any file type can be uploaded.\n#\t- DeniedExtensions: The extensions that won't be allowed.",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "documentation": {}
+    },
+    {
+        "label": "AllowedExtensions",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "peekOfCode": "AllowedExtensions = {}; DeniedExtensions = {};\nFileTypesPath = {}; FileTypesAbsolutePath = {};\nQuickUploadPath = {}; QuickUploadAbsolutePath = {};\n#\tConfiguration settings for each Resource Type\n#\n#\t- AllowedExtensions: the possible extensions that can be allowed.\n#\t\tIf it is empty then any file type can be uploaded.\n#\t- DeniedExtensions: The extensions that won't be allowed.\n#\t\tIf it is empty then no restrictions are done here.\n#",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "documentation": {}
+    },
+    {
+        "label": "FileTypesPath",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "peekOfCode": "FileTypesPath = {}; FileTypesAbsolutePath = {};\nQuickUploadPath = {}; QuickUploadAbsolutePath = {};\n#\tConfiguration settings for each Resource Type\n#\n#\t- AllowedExtensions: the possible extensions that can be allowed.\n#\t\tIf it is empty then any file type can be uploaded.\n#\t- DeniedExtensions: The extensions that won't be allowed.\n#\t\tIf it is empty then no restrictions are done here.\n#\n#\tFor a file to be uploaded it has to fulfill both the AllowedExtensions",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "documentation": {}
+    },
+    {
+        "label": "QuickUploadPath",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "peekOfCode": "QuickUploadPath = {}; QuickUploadAbsolutePath = {};\n#\tConfiguration settings for each Resource Type\n#\n#\t- AllowedExtensions: the possible extensions that can be allowed.\n#\t\tIf it is empty then any file type can be uploaded.\n#\t- DeniedExtensions: The extensions that won't be allowed.\n#\t\tIf it is empty then no restrictions are done here.\n#\n#\tFor a file to be uploaded it has to fulfill both the AllowedExtensions\n#\tand DeniedExtensions (that's it: not being denied) conditions.",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.config",
+        "documentation": {}
+    },
+    {
+        "label": "FCKeditorConnector",
+        "kind": 6,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "peekOfCode": "class FCKeditorConnector(\tFCKeditorConnectorBase,\n\t\t\t\t\t\t\tGetFoldersCommandMixin,\n\t\t\t\t\t\t\tGetFoldersAndFilesCommandMixin,\n\t\t\t\t\t\t\tCreateFolderCommandMixin,\n\t\t\t\t\t\t\tUploadFileCommandMixin,\n\t\t\t\t\t\t\tBaseHttpMixin, BaseXmlMixin, BaseHtmlMixin  ):\n\t\"The Standard connector class.\"\n\tdef doResponse(self):\n\t\t\"Main function. Process the request, set headers and return a string as response.\"\n\t\ts = \"\"",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\ts",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "peekOfCode": "\t\ts = \"\"\n\t\t# Check if this connector is disabled\n\t\tif not(Config.Enabled):\n\t\t\treturn self.sendError(1, \"This connector is disabled.  Please check the connector configurations in \\\"editor/filemanager/connectors/py/config.py\\\" and try again.\")\n\t\t# Make sure we have valid inputs\n\t\tfor key in (\"Command\",\"Type\",\"CurrentFolder\"):\n\t\t\tif not self.request.has_key (key):\n\t\t\t\treturn\n\t\t# Get command, resource type and current folder\n\t\tcommand = self.request.get(\"Command\")",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tcommand",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "peekOfCode": "\t\tcommand = self.request.get(\"Command\")\n\t\tresourceType = self.request.get(\"Type\")\n\t\tcurrentFolder = getCurrentFolder(self.request.get(\"CurrentFolder\"))\n\t\t# Check for invalid paths\n\t\tif currentFolder is None:\n\t\t\treturn self.sendError(102, \"\")\n\t\t# Check if it is an allowed command\n\t\tif ( not command in Config.ConfigAllowedCommands ):\n\t\t\treturn self.sendError( 1, 'The %s command isn\\'t allowed' % command )\n\t\tif ( not resourceType in Config.ConfigAllowedTypes  ):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tresourceType",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "peekOfCode": "\t\tresourceType = self.request.get(\"Type\")\n\t\tcurrentFolder = getCurrentFolder(self.request.get(\"CurrentFolder\"))\n\t\t# Check for invalid paths\n\t\tif currentFolder is None:\n\t\t\treturn self.sendError(102, \"\")\n\t\t# Check if it is an allowed command\n\t\tif ( not command in Config.ConfigAllowedCommands ):\n\t\t\treturn self.sendError( 1, 'The %s command isn\\'t allowed' % command )\n\t\tif ( not resourceType in Config.ConfigAllowedTypes  ):\n\t\t\treturn self.sendError( 1, 'Invalid type specified' )",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tcurrentFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "peekOfCode": "\t\tcurrentFolder = getCurrentFolder(self.request.get(\"CurrentFolder\"))\n\t\t# Check for invalid paths\n\t\tif currentFolder is None:\n\t\t\treturn self.sendError(102, \"\")\n\t\t# Check if it is an allowed command\n\t\tif ( not command in Config.ConfigAllowedCommands ):\n\t\t\treturn self.sendError( 1, 'The %s command isn\\'t allowed' % command )\n\t\tif ( not resourceType in Config.ConfigAllowedTypes  ):\n\t\t\treturn self.sendError( 1, 'Invalid type specified' )\n\t\t# Setup paths",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tself.userFilesFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "peekOfCode": "\t\t\tself.userFilesFolder = Config.QuickUploadAbsolutePath[resourceType]\n\t\t\tself.webUserFilesFolder =  Config.QuickUploadPath[resourceType]\n\t\telse:\n\t\t\tself.userFilesFolder = Config.FileTypesAbsolutePath[resourceType]\n\t\t\tself.webUserFilesFolder = Config.FileTypesPath[resourceType]\n\t\tif not self.userFilesFolder: # no absolute path given (dangerous...)\n\t\t\tself.userFilesFolder = mapServerPath(self.environ,\n\t\t\t\t\t\t\t\t\tself.webUserFilesFolder)\n\t\t# Ensure that the directory exists.\n\t\tif not os.path.exists(self.userFilesFolder):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tself.webUserFilesFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "peekOfCode": "\t\t\tself.webUserFilesFolder =  Config.QuickUploadPath[resourceType]\n\t\telse:\n\t\t\tself.userFilesFolder = Config.FileTypesAbsolutePath[resourceType]\n\t\t\tself.webUserFilesFolder = Config.FileTypesPath[resourceType]\n\t\tif not self.userFilesFolder: # no absolute path given (dangerous...)\n\t\t\tself.userFilesFolder = mapServerPath(self.environ,\n\t\t\t\t\t\t\t\t\tself.webUserFilesFolder)\n\t\t# Ensure that the directory exists.\n\t\tif not os.path.exists(self.userFilesFolder):\n\t\t\ttry:",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tself.userFilesFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "peekOfCode": "\t\t\tself.userFilesFolder = Config.FileTypesAbsolutePath[resourceType]\n\t\t\tself.webUserFilesFolder = Config.FileTypesPath[resourceType]\n\t\tif not self.userFilesFolder: # no absolute path given (dangerous...)\n\t\t\tself.userFilesFolder = mapServerPath(self.environ,\n\t\t\t\t\t\t\t\t\tself.webUserFilesFolder)\n\t\t# Ensure that the directory exists.\n\t\tif not os.path.exists(self.userFilesFolder):\n\t\t\ttry:\n\t\t\t\tself.createServerFoldercreateServerFolder( self.userFilesFolder )\n\t\t\texcept:",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tself.webUserFilesFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "peekOfCode": "\t\t\tself.webUserFilesFolder = Config.FileTypesPath[resourceType]\n\t\tif not self.userFilesFolder: # no absolute path given (dangerous...)\n\t\t\tself.userFilesFolder = mapServerPath(self.environ,\n\t\t\t\t\t\t\t\t\tself.webUserFilesFolder)\n\t\t# Ensure that the directory exists.\n\t\tif not os.path.exists(self.userFilesFolder):\n\t\t\ttry:\n\t\t\t\tself.createServerFoldercreateServerFolder( self.userFilesFolder )\n\t\t\texcept:\n\t\t\t\treturn self.sendError(1, \"This connector couldn\\'t access to local user\\'s files directories.  Please check the UserFilesAbsolutePath in \\\"editor/filemanager/connectors/py/config.py\\\" and try again. \")",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tself.userFilesFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "peekOfCode": "\t\t\tself.userFilesFolder = mapServerPath(self.environ,\n\t\t\t\t\t\t\t\t\tself.webUserFilesFolder)\n\t\t# Ensure that the directory exists.\n\t\tif not os.path.exists(self.userFilesFolder):\n\t\t\ttry:\n\t\t\t\tself.createServerFoldercreateServerFolder( self.userFilesFolder )\n\t\t\texcept:\n\t\t\t\treturn self.sendError(1, \"This connector couldn\\'t access to local user\\'s files directories.  Please check the UserFilesAbsolutePath in \\\"editor/filemanager/connectors/py/config.py\\\" and try again. \")\n\t\t# File upload doesn't have to return XML, so intercept here\n\t\tif (command == \"FileUpload\"):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\turl",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "peekOfCode": "\t\turl = combinePaths( self.webUserFilesFolder, currentFolder )\n\t\t# Begin XML\n\t\ts += self.createXmlHeader(command, resourceType, currentFolder, url)\n\t\t# Execute the command\n\t\tselector = {\"GetFolders\": self.getFolders,\n\t\t\t\t\t\"GetFoldersAndFiles\": self.getFoldersAndFiles,\n\t\t\t\t\t\"CreateFolder\": self.createFolder,\n\t\t\t\t\t}\n\t\ts += selector[command](resourceType, currentFolder)\n\t\ts += self.createXmlFooter()",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tselector",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "peekOfCode": "\t\tselector = {\"GetFolders\": self.getFolders,\n\t\t\t\t\t\"GetFoldersAndFiles\": self.getFoldersAndFiles,\n\t\t\t\t\t\"CreateFolder\": self.createFolder,\n\t\t\t\t\t}\n\t\ts += selector[command](resourceType, currentFolder)\n\t\ts += self.createXmlFooter()\n\t\treturn s\n# Running from command line (plain old CGI)\nif __name__ == '__main__':\n\ttry:",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tconn",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "peekOfCode": "\t\tconn = FCKeditorConnector()\n\t\tdata = conn.doResponse()\n\t\tfor header in conn.headers:\n\t\t\tprint '%s: %s' % header\n\t\tprint\n\t\tprint data\n\texcept:\n\t\tprint \"Content-Type: text/plain\"\n\t\tprint\n\t\timport cgi",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tdata",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "peekOfCode": "\t\tdata = conn.doResponse()\n\t\tfor header in conn.headers:\n\t\t\tprint '%s: %s' % header\n\t\tprint\n\t\tprint data\n\texcept:\n\t\tprint \"Content-Type: text/plain\"\n\t\tprint\n\t\timport cgi\n\t\tcgi.print_exception()",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.connector",
+        "documentation": {}
+    },
+    {
+        "label": "GetFoldersCommandMixi",
+        "kind": 6,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "class GetFoldersCommandMixin (object):\n\tdef getFolders(self, resourceType, currentFolder):\n\t\t\"\"\"\n\t\tPurpose: command to recieve a list of folders\n\t\t\"\"\"\n\t\t# Map the virtual path to our local server\n\t\tserverPath = mapServerFolder(self.userFilesFolder,currentFolder)\n\t\ts = \"\"\"<Folders>\"\"\"\t # Open the folders node\n\t\tfor someObject in os.listdir(serverPath):\n\t\t\tsomeObjectPath = mapServerFolder(serverPath, someObject)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "GetFoldersAndFilesCommandMixi",
+        "kind": 6,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "class GetFoldersAndFilesCommandMixin (object):\n\tdef getFoldersAndFiles(self, resourceType, currentFolder):\n\t\t\"\"\"\n\t\tPurpose: command to recieve a list of folders and files\n\t\t\"\"\"\n\t\t# Map the virtual path to our local server\n\t\tserverPath = mapServerFolder(self.userFilesFolder,currentFolder)\n\t\t# Open the folders / files node\n\t\tfolders = \"\"\"<Folders>\"\"\"\n\t\tfiles = \"\"\"<Files>\"\"\"",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "CreateFolderCommandMixi",
+        "kind": 6,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "class CreateFolderCommandMixin (object):\n\tdef createFolder(self, resourceType, currentFolder):\n\t\t\"\"\"\n\t\tPurpose: command to create a new folder\n\t\t\"\"\"\n\t\terrorNo = 0; errorMsg ='';\n\t\tif self.request.has_key(\"NewFolderName\"):\n\t\t\tnewFolder = self.request.get(\"NewFolderName\", None)\n\t\t\tnewFolder = sanitizeFolderName (newFolder)\n\t\t\ttry:",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "UploadFileCommandMixi",
+        "kind": 6,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "class UploadFileCommandMixin (object):\n\tdef uploadFile(self, resourceType, currentFolder):\n\t\t\"\"\"\n\t\tPurpose: command to upload files to server (same as FileUpload)\n\t\t\"\"\"\n\t\terrorNo = 0\n\t\tif self.request.has_key(\"NewFile\"):\n\t\t\t# newFile has all the contents we need\n\t\t\tnewFile = self.request.get(\"NewFile\", \"\")\n\t\t\t# Get the file name",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tserverPath",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\tserverPath = mapServerFolder(self.userFilesFolder,currentFolder)\n\t\ts = \"\"\"<Folders>\"\"\"\t # Open the folders node\n\t\tfor someObject in os.listdir(serverPath):\n\t\t\tsomeObjectPath = mapServerFolder(serverPath, someObject)\n\t\t\tif os.path.isdir(someObjectPath):\n\t\t\t\ts += \"\"\"<Folder name=\"%s\" />\"\"\" % (\n\t\t\t\t\t\tconvertToXmlAttribute(someObject)\n\t\t\t\t\t\t)\n\t\ts += \"\"\"</Folders>\"\"\" # Close the folders node\n\t\treturn s",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\ts",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\ts = \"\"\"<Folders>\"\"\"\t # Open the folders node\n\t\tfor someObject in os.listdir(serverPath):\n\t\t\tsomeObjectPath = mapServerFolder(serverPath, someObject)\n\t\t\tif os.path.isdir(someObjectPath):\n\t\t\t\ts += \"\"\"<Folder name=\"%s\" />\"\"\" % (\n\t\t\t\t\t\tconvertToXmlAttribute(someObject)\n\t\t\t\t\t\t)\n\t\ts += \"\"\"</Folders>\"\"\" # Close the folders node\n\t\treturn s\nclass GetFoldersAndFilesCommandMixin (object):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tsomeObjectPath",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\tsomeObjectPath = mapServerFolder(serverPath, someObject)\n\t\t\tif os.path.isdir(someObjectPath):\n\t\t\t\ts += \"\"\"<Folder name=\"%s\" />\"\"\" % (\n\t\t\t\t\t\tconvertToXmlAttribute(someObject)\n\t\t\t\t\t\t)\n\t\ts += \"\"\"</Folders>\"\"\" # Close the folders node\n\t\treturn s\nclass GetFoldersAndFilesCommandMixin (object):\n\tdef getFoldersAndFiles(self, resourceType, currentFolder):\n\t\t\"\"\"",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tserverPath",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\tserverPath = mapServerFolder(self.userFilesFolder,currentFolder)\n\t\t# Open the folders / files node\n\t\tfolders = \"\"\"<Folders>\"\"\"\n\t\tfiles = \"\"\"<Files>\"\"\"\n\t\tfor someObject in os.listdir(serverPath):\n\t\t\tsomeObjectPath = mapServerFolder(serverPath, someObject)\n\t\t\tif os.path.isdir(someObjectPath):\n\t\t\t\tfolders += \"\"\"<Folder name=\"%s\" />\"\"\" % (\n\t\t\t\t\t\tconvertToXmlAttribute(someObject)\n\t\t\t\t\t\t)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tfolders",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\tfolders = \"\"\"<Folders>\"\"\"\n\t\tfiles = \"\"\"<Files>\"\"\"\n\t\tfor someObject in os.listdir(serverPath):\n\t\t\tsomeObjectPath = mapServerFolder(serverPath, someObject)\n\t\t\tif os.path.isdir(someObjectPath):\n\t\t\t\tfolders += \"\"\"<Folder name=\"%s\" />\"\"\" % (\n\t\t\t\t\t\tconvertToXmlAttribute(someObject)\n\t\t\t\t\t\t)\n\t\t\telif os.path.isfile(someObjectPath):\n\t\t\t\tsize = os.path.getsize(someObjectPath)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tfiles",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\tfiles = \"\"\"<Files>\"\"\"\n\t\tfor someObject in os.listdir(serverPath):\n\t\t\tsomeObjectPath = mapServerFolder(serverPath, someObject)\n\t\t\tif os.path.isdir(someObjectPath):\n\t\t\t\tfolders += \"\"\"<Folder name=\"%s\" />\"\"\" % (\n\t\t\t\t\t\tconvertToXmlAttribute(someObject)\n\t\t\t\t\t\t)\n\t\t\telif os.path.isfile(someObjectPath):\n\t\t\t\tsize = os.path.getsize(someObjectPath)\n\t\t\t\tfiles += \"\"\"<File name=\"%s\" size=\"%s\" />\"\"\" % (",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tsomeObjectPath",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\tsomeObjectPath = mapServerFolder(serverPath, someObject)\n\t\t\tif os.path.isdir(someObjectPath):\n\t\t\t\tfolders += \"\"\"<Folder name=\"%s\" />\"\"\" % (\n\t\t\t\t\t\tconvertToXmlAttribute(someObject)\n\t\t\t\t\t\t)\n\t\t\telif os.path.isfile(someObjectPath):\n\t\t\t\tsize = os.path.getsize(someObjectPath)\n\t\t\t\tfiles += \"\"\"<File name=\"%s\" size=\"%s\" />\"\"\" % (\n\t\t\t\t\t\tconvertToXmlAttribute(someObject),\n\t\t\t\t\t\tos.path.getsize(someObjectPath)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tsize",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\tsize = os.path.getsize(someObjectPath)\n\t\t\t\tfiles += \"\"\"<File name=\"%s\" size=\"%s\" />\"\"\" % (\n\t\t\t\t\t\tconvertToXmlAttribute(someObject),\n\t\t\t\t\t\tos.path.getsize(someObjectPath)\n\t\t\t\t\t\t)\n\t\t# Close the folders / files node\n\t\tfolders += \"\"\"</Folders>\"\"\"\n\t\tfiles += \"\"\"</Files>\"\"\"\n\t\treturn folders + files\nclass CreateFolderCommandMixin (object):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\terrorNo",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\terrorNo = 0; errorMsg ='';\n\t\tif self.request.has_key(\"NewFolderName\"):\n\t\t\tnewFolder = self.request.get(\"NewFolderName\", None)\n\t\t\tnewFolder = sanitizeFolderName (newFolder)\n\t\t\ttry:\n\t\t\t\tnewFolderPath = mapServerFolder(self.userFilesFolder, combinePaths(currentFolder, newFolder))\n\t\t\t\tself.createServerFolder(newFolderPath)\n\t\t\texcept Exception, e:\n\t\t\t\terrorMsg = str(e).decode('iso-8859-1').encode('utf-8') # warning with encodigns!!!\n\t\t\t\tif hasattr(e,'errno'):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tnewFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\tnewFolder = self.request.get(\"NewFolderName\", None)\n\t\t\tnewFolder = sanitizeFolderName (newFolder)\n\t\t\ttry:\n\t\t\t\tnewFolderPath = mapServerFolder(self.userFilesFolder, combinePaths(currentFolder, newFolder))\n\t\t\t\tself.createServerFolder(newFolderPath)\n\t\t\texcept Exception, e:\n\t\t\t\terrorMsg = str(e).decode('iso-8859-1').encode('utf-8') # warning with encodigns!!!\n\t\t\t\tif hasattr(e,'errno'):\n\t\t\t\t\tif e.errno==17: #file already exists\n\t\t\t\t\t\terrorNo=0",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tnewFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\tnewFolder = sanitizeFolderName (newFolder)\n\t\t\ttry:\n\t\t\t\tnewFolderPath = mapServerFolder(self.userFilesFolder, combinePaths(currentFolder, newFolder))\n\t\t\t\tself.createServerFolder(newFolderPath)\n\t\t\texcept Exception, e:\n\t\t\t\terrorMsg = str(e).decode('iso-8859-1').encode('utf-8') # warning with encodigns!!!\n\t\t\t\tif hasattr(e,'errno'):\n\t\t\t\t\tif e.errno==17: #file already exists\n\t\t\t\t\t\terrorNo=0\n\t\t\t\t\telif e.errno==13: # permission denied",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tnewFolderPath",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\tnewFolderPath = mapServerFolder(self.userFilesFolder, combinePaths(currentFolder, newFolder))\n\t\t\t\tself.createServerFolder(newFolderPath)\n\t\t\texcept Exception, e:\n\t\t\t\terrorMsg = str(e).decode('iso-8859-1').encode('utf-8') # warning with encodigns!!!\n\t\t\t\tif hasattr(e,'errno'):\n\t\t\t\t\tif e.errno==17: #file already exists\n\t\t\t\t\t\terrorNo=0\n\t\t\t\t\telif e.errno==13: # permission denied\n\t\t\t\t\t\terrorNo = 103\n\t\t\t\t\telif e.errno==36 or e.errno==2 or e.errno==22: # filename too long / no such file / invalid name",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\terrorMsg",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\terrorMsg = str(e).decode('iso-8859-1').encode('utf-8') # warning with encodigns!!!\n\t\t\t\tif hasattr(e,'errno'):\n\t\t\t\t\tif e.errno==17: #file already exists\n\t\t\t\t\t\terrorNo=0\n\t\t\t\t\telif e.errno==13: # permission denied\n\t\t\t\t\t\terrorNo = 103\n\t\t\t\t\telif e.errno==36 or e.errno==2 or e.errno==22: # filename too long / no such file / invalid name\n\t\t\t\t\t\terrorNo = 102\n\t\t\t\telse:\n\t\t\t\t\terrorNo = 110",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\terrorNo",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\t\t\terrorNo = 103\n\t\t\t\t\telif e.errno==36 or e.errno==2 or e.errno==22: # filename too long / no such file / invalid name\n\t\t\t\t\t\terrorNo = 102\n\t\t\t\telse:\n\t\t\t\t\terrorNo = 110\n\t\telse:\n\t\t\terrorNo = 102\n\t\treturn self.sendErrorNode ( errorNo, errorMsg )\n\tdef createServerFolder(self, folderPath):\n\t\t\"Purpose: physically creates a folder on the server\"",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\terrorNo",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\t\t\terrorNo = 102\n\t\t\t\telse:\n\t\t\t\t\terrorNo = 110\n\t\telse:\n\t\t\terrorNo = 102\n\t\treturn self.sendErrorNode ( errorNo, errorMsg )\n\tdef createServerFolder(self, folderPath):\n\t\t\"Purpose: physically creates a folder on the server\"\n\t\t# No need to check if the parent exists, just create all hierachy\n\t\ttry:",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\terrorNo",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\t\terrorNo = 110\n\t\telse:\n\t\t\terrorNo = 102\n\t\treturn self.sendErrorNode ( errorNo, errorMsg )\n\tdef createServerFolder(self, folderPath):\n\t\t\"Purpose: physically creates a folder on the server\"\n\t\t# No need to check if the parent exists, just create all hierachy\n\t\ttry:\n\t\t\tpermissions = Config.ChmodOnFolderCreate\n\t\t\tif not permissions:",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\terrorNo",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\terrorNo = 102\n\t\treturn self.sendErrorNode ( errorNo, errorMsg )\n\tdef createServerFolder(self, folderPath):\n\t\t\"Purpose: physically creates a folder on the server\"\n\t\t# No need to check if the parent exists, just create all hierachy\n\t\ttry:\n\t\t\tpermissions = Config.ChmodOnFolderCreate\n\t\t\tif not permissions:\n\t\t\t\tos.makedirs(folderPath)\n\t\texcept AttributeError: #ChmodOnFolderCreate undefined",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tpermissions",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\tpermissions = Config.ChmodOnFolderCreate\n\t\t\tif not permissions:\n\t\t\t\tos.makedirs(folderPath)\n\t\texcept AttributeError: #ChmodOnFolderCreate undefined\n\t\t\tpermissions = 0755\n\t\tif permissions:\n\t\t\toldumask = os.umask(0)\n\t\t\tos.makedirs(folderPath,mode=0755)\n\t\t\tos.umask( oldumask )\nclass UploadFileCommandMixin (object):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tpermissions",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\tpermissions = 0755\n\t\tif permissions:\n\t\t\toldumask = os.umask(0)\n\t\t\tos.makedirs(folderPath,mode=0755)\n\t\t\tos.umask( oldumask )\nclass UploadFileCommandMixin (object):\n\tdef uploadFile(self, resourceType, currentFolder):\n\t\t\"\"\"\n\t\tPurpose: command to upload files to server (same as FileUpload)\n\t\t\"\"\"",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\toldumask",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\toldumask = os.umask(0)\n\t\t\tos.makedirs(folderPath,mode=0755)\n\t\t\tos.umask( oldumask )\nclass UploadFileCommandMixin (object):\n\tdef uploadFile(self, resourceType, currentFolder):\n\t\t\"\"\"\n\t\tPurpose: command to upload files to server (same as FileUpload)\n\t\t\"\"\"\n\t\terrorNo = 0\n\t\tif self.request.has_key(\"NewFile\"):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\terrorNo",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\terrorNo = 0\n\t\tif self.request.has_key(\"NewFile\"):\n\t\t\t# newFile has all the contents we need\n\t\t\tnewFile = self.request.get(\"NewFile\", \"\")\n\t\t\t# Get the file name\n\t\t\tnewFileName = newFile.filename\n\t\t\tnewFileName = sanitizeFileName( newFileName )\n\t\t\tnewFileNameOnly = removeExtension(newFileName)\n\t\t\tnewFileExtension = getExtension(newFileName).lower()\n\t\t\tallowedExtensions = Config.AllowedExtensions[resourceType]",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tnewFile",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\tnewFile = self.request.get(\"NewFile\", \"\")\n\t\t\t# Get the file name\n\t\t\tnewFileName = newFile.filename\n\t\t\tnewFileName = sanitizeFileName( newFileName )\n\t\t\tnewFileNameOnly = removeExtension(newFileName)\n\t\t\tnewFileExtension = getExtension(newFileName).lower()\n\t\t\tallowedExtensions = Config.AllowedExtensions[resourceType]\n\t\t\tdeniedExtensions = Config.DeniedExtensions[resourceType]\n\t\t\tif (allowedExtensions):\n\t\t\t\t# Check for allowed",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tnewFileName",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\tnewFileName = newFile.filename\n\t\t\tnewFileName = sanitizeFileName( newFileName )\n\t\t\tnewFileNameOnly = removeExtension(newFileName)\n\t\t\tnewFileExtension = getExtension(newFileName).lower()\n\t\t\tallowedExtensions = Config.AllowedExtensions[resourceType]\n\t\t\tdeniedExtensions = Config.DeniedExtensions[resourceType]\n\t\t\tif (allowedExtensions):\n\t\t\t\t# Check for allowed\n\t\t\t\tisAllowed = False\n\t\t\t\tif (newFileExtension in allowedExtensions):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tnewFileName",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\tnewFileName = sanitizeFileName( newFileName )\n\t\t\tnewFileNameOnly = removeExtension(newFileName)\n\t\t\tnewFileExtension = getExtension(newFileName).lower()\n\t\t\tallowedExtensions = Config.AllowedExtensions[resourceType]\n\t\t\tdeniedExtensions = Config.DeniedExtensions[resourceType]\n\t\t\tif (allowedExtensions):\n\t\t\t\t# Check for allowed\n\t\t\t\tisAllowed = False\n\t\t\t\tif (newFileExtension in allowedExtensions):\n\t\t\t\t\tisAllowed = True",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tnewFileNameOnly",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\tnewFileNameOnly = removeExtension(newFileName)\n\t\t\tnewFileExtension = getExtension(newFileName).lower()\n\t\t\tallowedExtensions = Config.AllowedExtensions[resourceType]\n\t\t\tdeniedExtensions = Config.DeniedExtensions[resourceType]\n\t\t\tif (allowedExtensions):\n\t\t\t\t# Check for allowed\n\t\t\t\tisAllowed = False\n\t\t\t\tif (newFileExtension in allowedExtensions):\n\t\t\t\t\tisAllowed = True\n\t\t\telif (deniedExtensions):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tnewFileExtension",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\tnewFileExtension = getExtension(newFileName).lower()\n\t\t\tallowedExtensions = Config.AllowedExtensions[resourceType]\n\t\t\tdeniedExtensions = Config.DeniedExtensions[resourceType]\n\t\t\tif (allowedExtensions):\n\t\t\t\t# Check for allowed\n\t\t\t\tisAllowed = False\n\t\t\t\tif (newFileExtension in allowedExtensions):\n\t\t\t\t\tisAllowed = True\n\t\t\telif (deniedExtensions):\n\t\t\t\t# Check for denied",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tallowedExtensions",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\tallowedExtensions = Config.AllowedExtensions[resourceType]\n\t\t\tdeniedExtensions = Config.DeniedExtensions[resourceType]\n\t\t\tif (allowedExtensions):\n\t\t\t\t# Check for allowed\n\t\t\t\tisAllowed = False\n\t\t\t\tif (newFileExtension in allowedExtensions):\n\t\t\t\t\tisAllowed = True\n\t\t\telif (deniedExtensions):\n\t\t\t\t# Check for denied\n\t\t\t\tisAllowed = True",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tdeniedExtensions",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\tdeniedExtensions = Config.DeniedExtensions[resourceType]\n\t\t\tif (allowedExtensions):\n\t\t\t\t# Check for allowed\n\t\t\t\tisAllowed = False\n\t\t\t\tif (newFileExtension in allowedExtensions):\n\t\t\t\t\tisAllowed = True\n\t\t\telif (deniedExtensions):\n\t\t\t\t# Check for denied\n\t\t\t\tisAllowed = True\n\t\t\t\tif (newFileExtension in deniedExtensions):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tisAllowed",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\tisAllowed = False\n\t\t\t\tif (newFileExtension in allowedExtensions):\n\t\t\t\t\tisAllowed = True\n\t\t\telif (deniedExtensions):\n\t\t\t\t# Check for denied\n\t\t\t\tisAllowed = True\n\t\t\t\tif (newFileExtension in deniedExtensions):\n\t\t\t\t\tisAllowed = False\n\t\t\telse:\n\t\t\t\t# No extension limitations",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\tisAllowed",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\t\tisAllowed = True\n\t\t\telif (deniedExtensions):\n\t\t\t\t# Check for denied\n\t\t\t\tisAllowed = True\n\t\t\t\tif (newFileExtension in deniedExtensions):\n\t\t\t\t\tisAllowed = False\n\t\t\telse:\n\t\t\t\t# No extension limitations\n\t\t\t\tisAllowed = True\n\t\t\tif (isAllowed):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tisAllowed",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\tisAllowed = True\n\t\t\t\tif (newFileExtension in deniedExtensions):\n\t\t\t\t\tisAllowed = False\n\t\t\telse:\n\t\t\t\t# No extension limitations\n\t\t\t\tisAllowed = True\n\t\t\tif (isAllowed):\n\t\t\t\t# Upload to operating system\n\t\t\t\t# Map the virtual path to the local server path\n\t\t\t\tcurrentFolderPath = mapServerFolder(self.userFilesFolder, currentFolder)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\tisAllowed",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\t\tisAllowed = False\n\t\t\telse:\n\t\t\t\t# No extension limitations\n\t\t\t\tisAllowed = True\n\t\t\tif (isAllowed):\n\t\t\t\t# Upload to operating system\n\t\t\t\t# Map the virtual path to the local server path\n\t\t\t\tcurrentFolderPath = mapServerFolder(self.userFilesFolder, currentFolder)\n\t\t\t\ti = 0\n\t\t\t\twhile (True):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tisAllowed",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\tisAllowed = True\n\t\t\tif (isAllowed):\n\t\t\t\t# Upload to operating system\n\t\t\t\t# Map the virtual path to the local server path\n\t\t\t\tcurrentFolderPath = mapServerFolder(self.userFilesFolder, currentFolder)\n\t\t\t\ti = 0\n\t\t\t\twhile (True):\n\t\t\t\t\tnewFilePath = os.path.join (currentFolderPath,newFileName)\n\t\t\t\t\tif os.path.exists(newFilePath):\n\t\t\t\t\t\ti += 1",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tcurrentFolderPath",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\tcurrentFolderPath = mapServerFolder(self.userFilesFolder, currentFolder)\n\t\t\t\ti = 0\n\t\t\t\twhile (True):\n\t\t\t\t\tnewFilePath = os.path.join (currentFolderPath,newFileName)\n\t\t\t\t\tif os.path.exists(newFilePath):\n\t\t\t\t\t\ti += 1\n\t\t\t\t\t\tnewFileName = \"%s(%04d).%s\" % (\n\t\t\t\t\t\t\t\tnewFileNameOnly, i, newFileExtension\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\terrorNo= 201 # file renamed",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\ti",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\ti = 0\n\t\t\t\twhile (True):\n\t\t\t\t\tnewFilePath = os.path.join (currentFolderPath,newFileName)\n\t\t\t\t\tif os.path.exists(newFilePath):\n\t\t\t\t\t\ti += 1\n\t\t\t\t\t\tnewFileName = \"%s(%04d).%s\" % (\n\t\t\t\t\t\t\t\tnewFileNameOnly, i, newFileExtension\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\terrorNo= 201 # file renamed\n\t\t\t\t\telse:",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\tnewFilePath",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\t\tnewFilePath = os.path.join (currentFolderPath,newFileName)\n\t\t\t\t\tif os.path.exists(newFilePath):\n\t\t\t\t\t\ti += 1\n\t\t\t\t\t\tnewFileName = \"%s(%04d).%s\" % (\n\t\t\t\t\t\t\t\tnewFileNameOnly, i, newFileExtension\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\terrorNo= 201 # file renamed\n\t\t\t\t\telse:\n\t\t\t\t\t\t# Read file contents and write to the desired path (similar to php's move_uploaded_file)\n\t\t\t\t\t\tfout = file(newFilePath, 'wb')",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\tnewFileName",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\t\t\tnewFileName = \"%s(%04d).%s\" % (\n\t\t\t\t\t\t\t\tnewFileNameOnly, i, newFileExtension\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\terrorNo= 201 # file renamed\n\t\t\t\t\telse:\n\t\t\t\t\t\t# Read file contents and write to the desired path (similar to php's move_uploaded_file)\n\t\t\t\t\t\tfout = file(newFilePath, 'wb')\n\t\t\t\t\t\twhile (True):\n\t\t\t\t\t\t\tchunk = newFile.file.read(100000)\n\t\t\t\t\t\t\tif not chunk: break",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\tfout",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\t\t\tfout = file(newFilePath, 'wb')\n\t\t\t\t\t\twhile (True):\n\t\t\t\t\t\t\tchunk = newFile.file.read(100000)\n\t\t\t\t\t\t\tif not chunk: break\n\t\t\t\t\t\t\tfout.write (chunk)\n\t\t\t\t\t\tfout.close()\n\t\t\t\t\t\tif os.path.exists ( newFilePath ):\n\t\t\t\t\t\t\tdoChmod = False\n\t\t\t\t\t\t\ttry:\n\t\t\t\t\t\t\t\tdoChmod = Config.ChmodOnUpload",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\t\tchunk",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\t\t\t\tchunk = newFile.file.read(100000)\n\t\t\t\t\t\t\tif not chunk: break\n\t\t\t\t\t\t\tfout.write (chunk)\n\t\t\t\t\t\tfout.close()\n\t\t\t\t\t\tif os.path.exists ( newFilePath ):\n\t\t\t\t\t\t\tdoChmod = False\n\t\t\t\t\t\t\ttry:\n\t\t\t\t\t\t\t\tdoChmod = Config.ChmodOnUpload\n\t\t\t\t\t\t\t\tpermissions = Config.ChmodOnUpload\n\t\t\t\t\t\t\texcept AttributeError: #ChmodOnUpload undefined",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\t\tdoChmod",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\t\t\t\tdoChmod = False\n\t\t\t\t\t\t\ttry:\n\t\t\t\t\t\t\t\tdoChmod = Config.ChmodOnUpload\n\t\t\t\t\t\t\t\tpermissions = Config.ChmodOnUpload\n\t\t\t\t\t\t\texcept AttributeError: #ChmodOnUpload undefined\n\t\t\t\t\t\t\t\tdoChmod = True\n\t\t\t\t\t\t\t\tpermissions = 0755\n\t\t\t\t\t\t\tif ( doChmod ):\n\t\t\t\t\t\t\t\toldumask = os.umask(0)\n\t\t\t\t\t\t\t\tos.chmod( newFilePath, permissions )",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\t\t\tdoChmod",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\t\t\t\t\tdoChmod = Config.ChmodOnUpload\n\t\t\t\t\t\t\t\tpermissions = Config.ChmodOnUpload\n\t\t\t\t\t\t\texcept AttributeError: #ChmodOnUpload undefined\n\t\t\t\t\t\t\t\tdoChmod = True\n\t\t\t\t\t\t\t\tpermissions = 0755\n\t\t\t\t\t\t\tif ( doChmod ):\n\t\t\t\t\t\t\t\toldumask = os.umask(0)\n\t\t\t\t\t\t\t\tos.chmod( newFilePath, permissions )\n\t\t\t\t\t\t\t\tos.umask( oldumask )\n\t\t\t\t\t\tnewFileUrl = self.webUserFilesFolder + currentFolder + newFileName",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\t\t\tpermissions",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\t\t\t\t\tpermissions = Config.ChmodOnUpload\n\t\t\t\t\t\t\texcept AttributeError: #ChmodOnUpload undefined\n\t\t\t\t\t\t\t\tdoChmod = True\n\t\t\t\t\t\t\t\tpermissions = 0755\n\t\t\t\t\t\t\tif ( doChmod ):\n\t\t\t\t\t\t\t\toldumask = os.umask(0)\n\t\t\t\t\t\t\t\tos.chmod( newFilePath, permissions )\n\t\t\t\t\t\t\t\tos.umask( oldumask )\n\t\t\t\t\t\tnewFileUrl = self.webUserFilesFolder + currentFolder + newFileName\n\t\t\t\t\t\treturn self.sendUploadResults( errorNo , newFileUrl, newFileName )",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\t\t\tdoChmod",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\t\t\t\t\tdoChmod = True\n\t\t\t\t\t\t\t\tpermissions = 0755\n\t\t\t\t\t\t\tif ( doChmod ):\n\t\t\t\t\t\t\t\toldumask = os.umask(0)\n\t\t\t\t\t\t\t\tos.chmod( newFilePath, permissions )\n\t\t\t\t\t\t\t\tos.umask( oldumask )\n\t\t\t\t\t\tnewFileUrl = self.webUserFilesFolder + currentFolder + newFileName\n\t\t\t\t\t\treturn self.sendUploadResults( errorNo , newFileUrl, newFileName )\n\t\t\telse:\n\t\t\t\treturn self.sendUploadResults( errorNo = 203, customMsg = \"Extension not allowed\" )",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\t\t\tpermissions",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\t\t\t\t\tpermissions = 0755\n\t\t\t\t\t\t\tif ( doChmod ):\n\t\t\t\t\t\t\t\toldumask = os.umask(0)\n\t\t\t\t\t\t\t\tos.chmod( newFilePath, permissions )\n\t\t\t\t\t\t\t\tos.umask( oldumask )\n\t\t\t\t\t\tnewFileUrl = self.webUserFilesFolder + currentFolder + newFileName\n\t\t\t\t\t\treturn self.sendUploadResults( errorNo , newFileUrl, newFileName )\n\t\t\telse:\n\t\t\t\treturn self.sendUploadResults( errorNo = 203, customMsg = \"Extension not allowed\" )\n\t\telse:",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\t\t\toldumask",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\t\t\t\t\toldumask = os.umask(0)\n\t\t\t\t\t\t\t\tos.chmod( newFilePath, permissions )\n\t\t\t\t\t\t\t\tos.umask( oldumask )\n\t\t\t\t\t\tnewFileUrl = self.webUserFilesFolder + currentFolder + newFileName\n\t\t\t\t\t\treturn self.sendUploadResults( errorNo , newFileUrl, newFileName )\n\t\t\telse:\n\t\t\t\treturn self.sendUploadResults( errorNo = 203, customMsg = \"Extension not allowed\" )\n\t\telse:\n\t\t\treturn self.sendUploadResults( errorNo = 202, customMsg = \"No File\" )",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\tnewFileUrl",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "peekOfCode": "\t\t\t\t\t\tnewFileUrl = self.webUserFilesFolder + currentFolder + newFileName\n\t\t\t\t\t\treturn self.sendUploadResults( errorNo , newFileUrl, newFileName )\n\t\t\telse:\n\t\t\t\treturn self.sendUploadResults( errorNo = 203, customMsg = \"Extension not allowed\" )\n\t\telse:\n\t\t\treturn self.sendUploadResults( errorNo = 202, customMsg = \"No File\" )",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckcommands",
+        "documentation": {}
+    },
+    {
+        "label": "FCKeditorConnectorBase",
+        "kind": 6,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "peekOfCode": "class FCKeditorConnectorBase( object ):\n\t\"The base connector class. Subclass it to extend functionality (see Zope example)\"\n\tdef __init__(self, environ=None):\n\t\t\"Constructor: Here you should parse request fields, initialize variables, etc.\"\n\t\tself.request = FCKeditorRequest(environ) # Parse request\n\t\tself.headers = []\t\t\t\t\t\t# Clean Headers\n\t\tif environ:\n\t\t\tself.environ = environ\n\t\telse:\n\t\t\tself.environ = os.environ",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "documentation": {}
+    },
+    {
+        "label": "FCKeditorRequest",
+        "kind": 6,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "peekOfCode": "class FCKeditorRequest(object):\n\t\"A wrapper around the request object\"\n\tdef __init__(self, environ):\n\t\tif environ: # WSGI\n\t\t\tself.request = cgi.FieldStorage(fp=environ['wsgi.input'],\n\t\t\t\t\t\t\tenviron=environ,\n\t\t\t\t\t\t\tkeep_blank_values=1)\n\t\t\tself.environ = environ\n\t\telse: # plain old cgi\n\t\t\tself.environ = os.environ",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tself.request",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "peekOfCode": "\t\tself.request = FCKeditorRequest(environ) # Parse request\n\t\tself.headers = []\t\t\t\t\t\t# Clean Headers\n\t\tif environ:\n\t\t\tself.environ = environ\n\t\telse:\n\t\t\tself.environ = os.environ\n\t# local functions\n\tdef setHeader(self, key, value):\n\t\tself.headers.append ((key, value))\n\t\treturn",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tself.headers",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "peekOfCode": "\t\tself.headers = []\t\t\t\t\t\t# Clean Headers\n\t\tif environ:\n\t\t\tself.environ = environ\n\t\telse:\n\t\t\tself.environ = os.environ\n\t# local functions\n\tdef setHeader(self, key, value):\n\t\tself.headers.append ((key, value))\n\t\treturn\nclass FCKeditorRequest(object):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tself.environ",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "peekOfCode": "\t\t\tself.environ = environ\n\t\telse:\n\t\t\tself.environ = os.environ\n\t# local functions\n\tdef setHeader(self, key, value):\n\t\tself.headers.append ((key, value))\n\t\treturn\nclass FCKeditorRequest(object):\n\t\"A wrapper around the request object\"\n\tdef __init__(self, environ):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tself.environ",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "peekOfCode": "\t\t\tself.environ = os.environ\n\t# local functions\n\tdef setHeader(self, key, value):\n\t\tself.headers.append ((key, value))\n\t\treturn\nclass FCKeditorRequest(object):\n\t\"A wrapper around the request object\"\n\tdef __init__(self, environ):\n\t\tif environ: # WSGI\n\t\t\tself.request = cgi.FieldStorage(fp=environ['wsgi.input'],",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tself.request",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "peekOfCode": "\t\t\tself.request = cgi.FieldStorage(fp=environ['wsgi.input'],\n\t\t\t\t\t\t\tenviron=environ,\n\t\t\t\t\t\t\tkeep_blank_values=1)\n\t\t\tself.environ = environ\n\t\telse: # plain old cgi\n\t\t\tself.environ = os.environ\n\t\t\tself.request = cgi.FieldStorage()\n\t\tif 'REQUEST_METHOD' in self.environ and 'QUERY_STRING' in self.environ:\n\t\t\tif self.environ['REQUEST_METHOD'].upper()=='POST':\n\t\t\t\t# we are in a POST, but GET query_string exists",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tself.environ",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "peekOfCode": "\t\t\tself.environ = environ\n\t\telse: # plain old cgi\n\t\t\tself.environ = os.environ\n\t\t\tself.request = cgi.FieldStorage()\n\t\tif 'REQUEST_METHOD' in self.environ and 'QUERY_STRING' in self.environ:\n\t\t\tif self.environ['REQUEST_METHOD'].upper()=='POST':\n\t\t\t\t# we are in a POST, but GET query_string exists\n\t\t\t\t# cgi parses by default POST data, so parse GET QUERY_STRING too\n\t\t\t\tself.get_request = cgi.FieldStorage(fp=None,\n\t\t\t\t\t\t\tenviron={",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tself.environ",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "peekOfCode": "\t\t\tself.environ = os.environ\n\t\t\tself.request = cgi.FieldStorage()\n\t\tif 'REQUEST_METHOD' in self.environ and 'QUERY_STRING' in self.environ:\n\t\t\tif self.environ['REQUEST_METHOD'].upper()=='POST':\n\t\t\t\t# we are in a POST, but GET query_string exists\n\t\t\t\t# cgi parses by default POST data, so parse GET QUERY_STRING too\n\t\t\t\tself.get_request = cgi.FieldStorage(fp=None,\n\t\t\t\t\t\t\tenviron={\n\t\t\t\t\t\t\t'REQUEST_METHOD':'GET',\n\t\t\t\t\t\t\t'QUERY_STRING':self.environ['QUERY_STRING'],",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tself.request",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "peekOfCode": "\t\t\tself.request = cgi.FieldStorage()\n\t\tif 'REQUEST_METHOD' in self.environ and 'QUERY_STRING' in self.environ:\n\t\t\tif self.environ['REQUEST_METHOD'].upper()=='POST':\n\t\t\t\t# we are in a POST, but GET query_string exists\n\t\t\t\t# cgi parses by default POST data, so parse GET QUERY_STRING too\n\t\t\t\tself.get_request = cgi.FieldStorage(fp=None,\n\t\t\t\t\t\t\tenviron={\n\t\t\t\t\t\t\t'REQUEST_METHOD':'GET',\n\t\t\t\t\t\t\t'QUERY_STRING':self.environ['QUERY_STRING'],\n\t\t\t\t\t\t\t},",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tself.get_request",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "peekOfCode": "\t\t\t\tself.get_request = cgi.FieldStorage(fp=None,\n\t\t\t\t\t\t\tenviron={\n\t\t\t\t\t\t\t'REQUEST_METHOD':'GET',\n\t\t\t\t\t\t\t'QUERY_STRING':self.environ['QUERY_STRING'],\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t)\n\t\telse:\n\t\t\tself.get_request={}\n\tdef has_key(self, key):\n\t\treturn self.request.has_key(key) or self.get_request.has_key(key)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tfield",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "peekOfCode": "\t\t\tfield = self.request[key]\n\t\telif key in self.get_request.keys():\n\t\t\tfield = self.get_request[key]\n\t\telse:\n\t\t\treturn default\n\t\tif hasattr(field,\"filename\") and field.filename: #file upload, do not convert return value\n\t\t\treturn field\n\t\telse:\n\t\t\treturn field.value",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tfield",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "peekOfCode": "\t\t\tfield = self.get_request[key]\n\t\telse:\n\t\t\treturn default\n\t\tif hasattr(field,\"filename\") and field.filename: #file upload, do not convert return value\n\t\t\treturn field\n\t\telse:\n\t\t\treturn field.value",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckconnector",
+        "documentation": {}
+    },
+    {
+        "label": "BaseHttpMixin",
+        "kind": 6,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "peekOfCode": "class BaseHttpMixin(object):\n\tdef setHttpHeaders(self, content_type='text/xml'):\n\t\t\"Purpose: to prepare the headers for the xml to return\"\n\t\t# Prevent the browser from caching the result.\n\t\t# Date in the past\n\t\tself.setHeader('Expires','Mon, 26 Jul 1997 05:00:00 GMT')\n\t\t# always modified\n\t\tself.setHeader('Last-Modified',strftime(\"%a, %d %b %Y %H:%M:%S GMT\", gmtime()))\n\t\t# HTTP/1.1\n\t\tself.setHeader('Cache-Control','no-store, no-cache, must-revalidate')",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "documentation": {}
+    },
+    {
+        "label": "BaseXmlMixin",
+        "kind": 6,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "peekOfCode": "class BaseXmlMixin(object):\n\tdef createXmlHeader(self, command, resourceType, currentFolder, url):\n\t\t\"Purpose: returns the xml header\"\n\t\tself.setHttpHeaders()\n\t\t# Create the XML document header\n\t\ts =  \"\"\"<?xml version=\"1.0\" encoding=\"utf-8\" ?>\"\"\"\n\t\t# Create the main connector node\n\t\ts += \"\"\"<Connector command=\"%s\" resourceType=\"%s\">\"\"\" % (\n\t\t\t\tcommand,\n\t\t\t\tresourceType",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "documentation": {}
+    },
+    {
+        "label": "BaseHtmlMixin",
+        "kind": 6,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "peekOfCode": "class BaseHtmlMixin(object):\n\tdef sendUploadResults( self, errorNo = 0, fileUrl = '', fileName = '', customMsg = '' ):\n\t\tself.setHttpHeaders(\"text/html\")\n\t\t\"This is the function that sends the results of the uploading process\"\n\t\treturn \"\"\"<script type=\"text/javascript\">\n\t\t\t(function()\n\t\t\t{\n\t\t\t\tvar d = document.domain ;\n\t\t\t\twhile ( true )\n\t\t\t\t{",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "documentation": {}
+    },
+    {
+        "label": "escape",
+        "kind": 2,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "peekOfCode": "def escape(text, replace=string.replace):\n\t\"\"\"\n\tConverts the special characters '<', '>', and '&'.\n\tRFC 1866 specifies that these characters be represented\n\tin HTML as &lt; &gt; and &amp; respectively. In Python\n\t1.5 we use the new string.replace() function for speed.\n\t\"\"\"\n\ttext = replace(text, '&', '&amp;') # must be done 1st\n\ttext = replace(text, '<', '&lt;')\n\ttext = replace(text, '>', '&gt;')",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "documentation": {}
+    },
+    {
+        "label": "convertToXmlAttribute",
+        "kind": 2,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "peekOfCode": "def convertToXmlAttribute(value):\n\tif (value is None):\n\t\tvalue = \"\"\n\treturn escape(value)\nclass BaseHttpMixin(object):\n\tdef setHttpHeaders(self, content_type='text/xml'):\n\t\t\"Purpose: to prepare the headers for the xml to return\"\n\t\t# Prevent the browser from caching the result.\n\t\t# Date in the past\n\t\tself.setHeader('Expires','Mon, 26 Jul 1997 05:00:00 GMT')",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "documentation": {}
+    },
+    {
+        "label": "\ttext",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "peekOfCode": "\ttext = replace(text, '&', '&amp;') # must be done 1st\n\ttext = replace(text, '<', '&lt;')\n\ttext = replace(text, '>', '&gt;')\n\ttext = replace(text, '\"', '&quot;')\n\treturn text\ndef convertToXmlAttribute(value):\n\tif (value is None):\n\t\tvalue = \"\"\n\treturn escape(value)\nclass BaseHttpMixin(object):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "documentation": {}
+    },
+    {
+        "label": "\ttext",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "peekOfCode": "\ttext = replace(text, '<', '&lt;')\n\ttext = replace(text, '>', '&gt;')\n\ttext = replace(text, '\"', '&quot;')\n\treturn text\ndef convertToXmlAttribute(value):\n\tif (value is None):\n\t\tvalue = \"\"\n\treturn escape(value)\nclass BaseHttpMixin(object):\n\tdef setHttpHeaders(self, content_type='text/xml'):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "documentation": {}
+    },
+    {
+        "label": "\ttext",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "peekOfCode": "\ttext = replace(text, '>', '&gt;')\n\ttext = replace(text, '\"', '&quot;')\n\treturn text\ndef convertToXmlAttribute(value):\n\tif (value is None):\n\t\tvalue = \"\"\n\treturn escape(value)\nclass BaseHttpMixin(object):\n\tdef setHttpHeaders(self, content_type='text/xml'):\n\t\t\"Purpose: to prepare the headers for the xml to return\"",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "documentation": {}
+    },
+    {
+        "label": "\ttext",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "peekOfCode": "\ttext = replace(text, '\"', '&quot;')\n\treturn text\ndef convertToXmlAttribute(value):\n\tif (value is None):\n\t\tvalue = \"\"\n\treturn escape(value)\nclass BaseHttpMixin(object):\n\tdef setHttpHeaders(self, content_type='text/xml'):\n\t\t\"Purpose: to prepare the headers for the xml to return\"\n\t\t# Prevent the browser from caching the result.",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tvalue",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "peekOfCode": "\t\tvalue = \"\"\n\treturn escape(value)\nclass BaseHttpMixin(object):\n\tdef setHttpHeaders(self, content_type='text/xml'):\n\t\t\"Purpose: to prepare the headers for the xml to return\"\n\t\t# Prevent the browser from caching the result.\n\t\t# Date in the past\n\t\tself.setHeader('Expires','Mon, 26 Jul 1997 05:00:00 GMT')\n\t\t# always modified\n\t\tself.setHeader('Last-Modified',strftime(\"%a, %d %b %Y %H:%M:%S GMT\", gmtime()))",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "documentation": {}
+    },
+    {
+        "label": "\t\ts",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "peekOfCode": "\t\ts =  \"\"\"<?xml version=\"1.0\" encoding=\"utf-8\" ?>\"\"\"\n\t\t# Create the main connector node\n\t\ts += \"\"\"<Connector command=\"%s\" resourceType=\"%s\">\"\"\" % (\n\t\t\t\tcommand,\n\t\t\t\tresourceType\n\t\t\t\t)\n\t\t# Add the current folder node\n\t\ts += \"\"\"<CurrentFolder path=\"%s\" url=\"%s\" />\"\"\" % (\n\t\t\t\tconvertToXmlAttribute(currentFolder),\n\t\t\t\tconvertToXmlAttribute(url),",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\td",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "peekOfCode": "\t\t\t\t\td = d.replace( /.*?(?:\\.|$)/, '' ) ;\n\t\t\t\t\tif ( d.length == 0 )\n\t\t\t\t\t\tbreak ;\t\t// It was not able to detect the domain.\n\t\t\t\t\ttry\n\t\t\t\t\t{\n\t\t\t\t\t\tdocument.domain = d ;\n\t\t\t\t\t}\n\t\t\t\t\tcatch (e)\n\t\t\t\t\t{\n\t\t\t\t\t\tbreak ;",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\tdocument.domain",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "peekOfCode": "\t\t\t\t\t\tdocument.domain = d ;\n\t\t\t\t\t}\n\t\t\t\t\tcatch (e)\n\t\t\t\t\t{\n\t\t\t\t\t\tbreak ;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t})() ;\n\t\t\twindow.parent.OnUploadCompleted(%(errorNumber)s,\"%(fileUrl)s\",\"%(fileName)s\",\"%(customMsg)s\");\n\t\t\t</script>\"\"\" % {",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckoutput",
+        "documentation": {}
+    },
+    {
+        "label": "removeExtension",
+        "kind": 2,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "def removeExtension(fileName):\n\tindex = fileName.rindex(\".\")\n\tnewFileName = fileName[0:index]\n\treturn newFileName\ndef getExtension(fileName):\n\tindex = fileName.rindex(\".\") + 1\n\tfileExtension = fileName[index:]\n\treturn fileExtension\ndef removeFromStart(string, char):\n\treturn string.lstrip(char)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "getExtension",
+        "kind": 2,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "def getExtension(fileName):\n\tindex = fileName.rindex(\".\") + 1\n\tfileExtension = fileName[index:]\n\treturn fileExtension\ndef removeFromStart(string, char):\n\treturn string.lstrip(char)\ndef removeFromEnd(string, char):\n\treturn string.rstrip(char)\n# Path functions\ndef combinePaths( basePath, folder ):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "removeFromStart",
+        "kind": 2,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "def removeFromStart(string, char):\n\treturn string.lstrip(char)\ndef removeFromEnd(string, char):\n\treturn string.rstrip(char)\n# Path functions\ndef combinePaths( basePath, folder ):\n\treturn removeFromEnd( basePath, '/' ) + '/' + removeFromStart( folder, '/' )\ndef getFileName(filename):\n\t\" Purpose: helper function to extrapolate the filename \"\n\tfor splitChar in [\"/\", \"\\\\\"]:",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "removeFromEnd",
+        "kind": 2,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "def removeFromEnd(string, char):\n\treturn string.rstrip(char)\n# Path functions\ndef combinePaths( basePath, folder ):\n\treturn removeFromEnd( basePath, '/' ) + '/' + removeFromStart( folder, '/' )\ndef getFileName(filename):\n\t\" Purpose: helper function to extrapolate the filename \"\n\tfor splitChar in [\"/\", \"\\\\\"]:\n\t\tarray = filename.split(splitChar)\n\t\tif (len(array) > 1):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "combinePaths",
+        "kind": 2,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "def combinePaths( basePath, folder ):\n\treturn removeFromEnd( basePath, '/' ) + '/' + removeFromStart( folder, '/' )\ndef getFileName(filename):\n\t\" Purpose: helper function to extrapolate the filename \"\n\tfor splitChar in [\"/\", \"\\\\\"]:\n\t\tarray = filename.split(splitChar)\n\t\tif (len(array) > 1):\n\t\t\tfilename = array[-1]\n\treturn filename\ndef sanitizeFolderName( newFolderName ):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "getFileName",
+        "kind": 2,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "def getFileName(filename):\n\t\" Purpose: helper function to extrapolate the filename \"\n\tfor splitChar in [\"/\", \"\\\\\"]:\n\t\tarray = filename.split(splitChar)\n\t\tif (len(array) > 1):\n\t\t\tfilename = array[-1]\n\treturn filename\ndef sanitizeFolderName( newFolderName ):\n\t\"Do a cleanup of the folder name to avoid possible problems\"\n\t# Remove . \\ / | : ? * \" < > and control characters",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "sanitizeFolderName",
+        "kind": 2,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "def sanitizeFolderName( newFolderName ):\n\t\"Do a cleanup of the folder name to avoid possible problems\"\n\t# Remove . \\ / | : ? * \" < > and control characters\n\treturn re.sub( '(?u)\\\\.|\\\\\\\\|\\\\/|\\\\||\\\\:|\\\\?|\\\\*|\"|<|>|[^\\u0000-\\u001f\\u007f-\\u009f]', '_', newFolderName )\ndef sanitizeFileName( newFileName ):\n\t\"Do a cleanup of the file name to avoid possible problems\"\n\t# Replace dots in the name with underscores (only one dot can be there... security issue).\n\tif ( Config.ForceSingleExtension ): # remove dots\n\t\tnewFileName = re.sub ( '/\\\\.(?![^.]*$)/', '_', newFileName ) ;\n\tnewFileName = newFileName.replace('\\\\','/')\t\t# convert windows to unix path",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "sanitizeFileName",
+        "kind": 2,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "def sanitizeFileName( newFileName ):\n\t\"Do a cleanup of the file name to avoid possible problems\"\n\t# Replace dots in the name with underscores (only one dot can be there... security issue).\n\tif ( Config.ForceSingleExtension ): # remove dots\n\t\tnewFileName = re.sub ( '/\\\\.(?![^.]*$)/', '_', newFileName ) ;\n\tnewFileName = newFileName.replace('\\\\','/')\t\t# convert windows to unix path\n\tnewFileName = os.path.basename (newFileName)\t# strip directories\n\t# Remove \\ / | : ? *\n\treturn re.sub ( '(?u)/\\\\\\\\|\\\\/|\\\\||\\\\:|\\\\?|\\\\*|\"|<|>|[^\\u0000-\\u001f\\u007f-\\u009f]/', '_', newFileName )\ndef getCurrentFolder(currentFolder):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "getCurrentFolder",
+        "kind": 2,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "def getCurrentFolder(currentFolder):\n\tif not currentFolder:\n\t\tcurrentFolder = '/'\n\t# Check the current folder syntax (must begin and end with a slash).\n\tif (currentFolder[-1] <> \"/\"):\n\t\tcurrentFolder += \"/\"\n\tif (currentFolder[0] <> \"/\"):\n\t\tcurrentFolder = \"/\" + currentFolder\n\t# Ensure the folder path has no double-slashes\n\twhile '//' in currentFolder:",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "mapServerPath",
+        "kind": 2,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "def mapServerPath( environ, url):\n\t\" Emulate the asp Server.mapPath function. Given an url path return the physical directory that it corresponds to \"\n\t# This isn't correct but for the moment there's no other solution\n\t# If this script is under a virtual directory or symlink it will detect the problem and stop\n\treturn combinePaths( getRootPath(environ), url )\ndef mapServerFolder(resourceTypePath, folderPath):\n\treturn combinePaths ( resourceTypePath  , folderPath )\ndef getRootPath(environ):\n\t\"Purpose: returns the root path on the server\"\n\t# WARNING: this may not be thread safe, and doesn't work w/ VirtualServer/mod_python",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "mapServerFolder",
+        "kind": 2,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "def mapServerFolder(resourceTypePath, folderPath):\n\treturn combinePaths ( resourceTypePath  , folderPath )\ndef getRootPath(environ):\n\t\"Purpose: returns the root path on the server\"\n\t# WARNING: this may not be thread safe, and doesn't work w/ VirtualServer/mod_python\n\t# Use Config.UserFilesAbsolutePath instead\n\tif environ.has_key('DOCUMENT_ROOT'):\n\t\treturn environ['DOCUMENT_ROOT']\n\telse:\n\t\trealPath = os.path.realpath( './' )",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "getRootPath",
+        "kind": 2,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "def getRootPath(environ):\n\t\"Purpose: returns the root path on the server\"\n\t# WARNING: this may not be thread safe, and doesn't work w/ VirtualServer/mod_python\n\t# Use Config.UserFilesAbsolutePath instead\n\tif environ.has_key('DOCUMENT_ROOT'):\n\t\treturn environ['DOCUMENT_ROOT']\n\telse:\n\t\trealPath = os.path.realpath( './' )\n\t\tselfPath = environ['SCRIPT_FILENAME']\n\t\tselfPath = selfPath [ :  selfPath.rfind( '/'  ) ]",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\tindex",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\tindex = fileName.rindex(\".\")\n\tnewFileName = fileName[0:index]\n\treturn newFileName\ndef getExtension(fileName):\n\tindex = fileName.rindex(\".\") + 1\n\tfileExtension = fileName[index:]\n\treturn fileExtension\ndef removeFromStart(string, char):\n\treturn string.lstrip(char)\ndef removeFromEnd(string, char):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\tnewFileName",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\tnewFileName = fileName[0:index]\n\treturn newFileName\ndef getExtension(fileName):\n\tindex = fileName.rindex(\".\") + 1\n\tfileExtension = fileName[index:]\n\treturn fileExtension\ndef removeFromStart(string, char):\n\treturn string.lstrip(char)\ndef removeFromEnd(string, char):\n\treturn string.rstrip(char)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\tindex",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\tindex = fileName.rindex(\".\") + 1\n\tfileExtension = fileName[index:]\n\treturn fileExtension\ndef removeFromStart(string, char):\n\treturn string.lstrip(char)\ndef removeFromEnd(string, char):\n\treturn string.rstrip(char)\n# Path functions\ndef combinePaths( basePath, folder ):\n\treturn removeFromEnd( basePath, '/' ) + '/' + removeFromStart( folder, '/' )",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\tfileExtension",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\tfileExtension = fileName[index:]\n\treturn fileExtension\ndef removeFromStart(string, char):\n\treturn string.lstrip(char)\ndef removeFromEnd(string, char):\n\treturn string.rstrip(char)\n# Path functions\ndef combinePaths( basePath, folder ):\n\treturn removeFromEnd( basePath, '/' ) + '/' + removeFromStart( folder, '/' )\ndef getFileName(filename):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tarray",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\t\tarray = filename.split(splitChar)\n\t\tif (len(array) > 1):\n\t\t\tfilename = array[-1]\n\treturn filename\ndef sanitizeFolderName( newFolderName ):\n\t\"Do a cleanup of the folder name to avoid possible problems\"\n\t# Remove . \\ / | : ? * \" < > and control characters\n\treturn re.sub( '(?u)\\\\.|\\\\\\\\|\\\\/|\\\\||\\\\:|\\\\?|\\\\*|\"|<|>|[^\\u0000-\\u001f\\u007f-\\u009f]', '_', newFolderName )\ndef sanitizeFileName( newFileName ):\n\t\"Do a cleanup of the file name to avoid possible problems\"",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tfilename",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\t\t\tfilename = array[-1]\n\treturn filename\ndef sanitizeFolderName( newFolderName ):\n\t\"Do a cleanup of the folder name to avoid possible problems\"\n\t# Remove . \\ / | : ? * \" < > and control characters\n\treturn re.sub( '(?u)\\\\.|\\\\\\\\|\\\\/|\\\\||\\\\:|\\\\?|\\\\*|\"|<|>|[^\\u0000-\\u001f\\u007f-\\u009f]', '_', newFolderName )\ndef sanitizeFileName( newFileName ):\n\t\"Do a cleanup of the file name to avoid possible problems\"\n\t# Replace dots in the name with underscores (only one dot can be there... security issue).\n\tif ( Config.ForceSingleExtension ): # remove dots",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tnewFileName",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\t\tnewFileName = re.sub ( '/\\\\.(?![^.]*$)/', '_', newFileName ) ;\n\tnewFileName = newFileName.replace('\\\\','/')\t\t# convert windows to unix path\n\tnewFileName = os.path.basename (newFileName)\t# strip directories\n\t# Remove \\ / | : ? *\n\treturn re.sub ( '(?u)/\\\\\\\\|\\\\/|\\\\||\\\\:|\\\\?|\\\\*|\"|<|>|[^\\u0000-\\u001f\\u007f-\\u009f]/', '_', newFileName )\ndef getCurrentFolder(currentFolder):\n\tif not currentFolder:\n\t\tcurrentFolder = '/'\n\t# Check the current folder syntax (must begin and end with a slash).\n\tif (currentFolder[-1] <> \"/\"):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\tnewFileName",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\tnewFileName = newFileName.replace('\\\\','/')\t\t# convert windows to unix path\n\tnewFileName = os.path.basename (newFileName)\t# strip directories\n\t# Remove \\ / | : ? *\n\treturn re.sub ( '(?u)/\\\\\\\\|\\\\/|\\\\||\\\\:|\\\\?|\\\\*|\"|<|>|[^\\u0000-\\u001f\\u007f-\\u009f]/', '_', newFileName )\ndef getCurrentFolder(currentFolder):\n\tif not currentFolder:\n\t\tcurrentFolder = '/'\n\t# Check the current folder syntax (must begin and end with a slash).\n\tif (currentFolder[-1] <> \"/\"):\n\t\tcurrentFolder += \"/\"",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\tnewFileName",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\tnewFileName = os.path.basename (newFileName)\t# strip directories\n\t# Remove \\ / | : ? *\n\treturn re.sub ( '(?u)/\\\\\\\\|\\\\/|\\\\||\\\\:|\\\\?|\\\\*|\"|<|>|[^\\u0000-\\u001f\\u007f-\\u009f]/', '_', newFileName )\ndef getCurrentFolder(currentFolder):\n\tif not currentFolder:\n\t\tcurrentFolder = '/'\n\t# Check the current folder syntax (must begin and end with a slash).\n\tif (currentFolder[-1] <> \"/\"):\n\t\tcurrentFolder += \"/\"\n\tif (currentFolder[0] <> \"/\"):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tcurrentFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\t\tcurrentFolder = '/'\n\t# Check the current folder syntax (must begin and end with a slash).\n\tif (currentFolder[-1] <> \"/\"):\n\t\tcurrentFolder += \"/\"\n\tif (currentFolder[0] <> \"/\"):\n\t\tcurrentFolder = \"/\" + currentFolder\n\t# Ensure the folder path has no double-slashes\n\twhile '//' in currentFolder:\n\t\tcurrentFolder = currentFolder.replace('//','/')\n\t# Check for invalid folder paths (..)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tcurrentFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\t\tcurrentFolder = \"/\" + currentFolder\n\t# Ensure the folder path has no double-slashes\n\twhile '//' in currentFolder:\n\t\tcurrentFolder = currentFolder.replace('//','/')\n\t# Check for invalid folder paths (..)\n\tif '..' in currentFolder or '\\\\' in currentFolder:\n\t\treturn None\n\treturn currentFolder\ndef mapServerPath( environ, url):\n\t\" Emulate the asp Server.mapPath function. Given an url path return the physical directory that it corresponds to \"",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tcurrentFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\t\tcurrentFolder = currentFolder.replace('//','/')\n\t# Check for invalid folder paths (..)\n\tif '..' in currentFolder or '\\\\' in currentFolder:\n\t\treturn None\n\treturn currentFolder\ndef mapServerPath( environ, url):\n\t\" Emulate the asp Server.mapPath function. Given an url path return the physical directory that it corresponds to \"\n\t# This isn't correct but for the moment there's no other solution\n\t# If this script is under a virtual directory or symlink it will detect the problem and stop\n\treturn combinePaths( getRootPath(environ), url )",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\t\trealPath",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\t\trealPath = os.path.realpath( './' )\n\t\tselfPath = environ['SCRIPT_FILENAME']\n\t\tselfPath = selfPath [ :  selfPath.rfind( '/'  ) ]\n\t\tselfPath = selfPath.replace( '/', os.path.sep)\n\t\tposition = realPath.find(selfPath)\n\t\t# This can check only that this script isn't run from a virtual dir\n\t\t# But it avoids the problems that arise if it isn't checked\n\t\traise realPath\n\t\tif ( position < 0 or position <> len(realPath) - len(selfPath) or realPath[ : position ]==''):\n\t\t\traise Exception('Sorry, can\\'t map \"UserFilesPath\" to a physical path. You must set the \"UserFilesAbsolutePath\" value in \"editor/filemanager/connectors/py/config.py\".')",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tselfPath",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\t\tselfPath = environ['SCRIPT_FILENAME']\n\t\tselfPath = selfPath [ :  selfPath.rfind( '/'  ) ]\n\t\tselfPath = selfPath.replace( '/', os.path.sep)\n\t\tposition = realPath.find(selfPath)\n\t\t# This can check only that this script isn't run from a virtual dir\n\t\t# But it avoids the problems that arise if it isn't checked\n\t\traise realPath\n\t\tif ( position < 0 or position <> len(realPath) - len(selfPath) or realPath[ : position ]==''):\n\t\t\traise Exception('Sorry, can\\'t map \"UserFilesPath\" to a physical path. You must set the \"UserFilesAbsolutePath\" value in \"editor/filemanager/connectors/py/config.py\".')\n\t\treturn realPath[ : position ]",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tselfPath",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\t\tselfPath = selfPath [ :  selfPath.rfind( '/'  ) ]\n\t\tselfPath = selfPath.replace( '/', os.path.sep)\n\t\tposition = realPath.find(selfPath)\n\t\t# This can check only that this script isn't run from a virtual dir\n\t\t# But it avoids the problems that arise if it isn't checked\n\t\traise realPath\n\t\tif ( position < 0 or position <> len(realPath) - len(selfPath) or realPath[ : position ]==''):\n\t\t\traise Exception('Sorry, can\\'t map \"UserFilesPath\" to a physical path. You must set the \"UserFilesAbsolutePath\" value in \"editor/filemanager/connectors/py/config.py\".')\n\t\treturn realPath[ : position ]",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tselfPath",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\t\tselfPath = selfPath.replace( '/', os.path.sep)\n\t\tposition = realPath.find(selfPath)\n\t\t# This can check only that this script isn't run from a virtual dir\n\t\t# But it avoids the problems that arise if it isn't checked\n\t\traise realPath\n\t\tif ( position < 0 or position <> len(realPath) - len(selfPath) or realPath[ : position ]==''):\n\t\t\traise Exception('Sorry, can\\'t map \"UserFilesPath\" to a physical path. You must set the \"UserFilesAbsolutePath\" value in \"editor/filemanager/connectors/py/config.py\".')\n\t\treturn realPath[ : position ]",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tposition",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "peekOfCode": "\t\tposition = realPath.find(selfPath)\n\t\t# This can check only that this script isn't run from a virtual dir\n\t\t# But it avoids the problems that arise if it isn't checked\n\t\traise realPath\n\t\tif ( position < 0 or position <> len(realPath) - len(selfPath) or realPath[ : position ]==''):\n\t\t\traise Exception('Sorry, can\\'t map \"UserFilesPath\" to a physical path. You must set the \"UserFilesAbsolutePath\" value in \"editor/filemanager/connectors/py/config.py\".')\n\t\treturn realPath[ : position ]",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.fckutil",
+        "documentation": {}
+    },
+    {
+        "label": "FCKeditorQuickUpload",
+        "kind": 6,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "peekOfCode": "class FCKeditorQuickUpload(\tFCKeditorConnectorBase,\n\t\t\t\t\t\t\tUploadFileCommandMixin,\n\t\t\t\t\t\t\tBaseHttpMixin, BaseHtmlMixin):\n\tdef doResponse(self):\n\t\t\"Main function. Process the request, set headers and return a string as response.\"\n\t\t# Check if this connector is disabled\n\t\tif not(Config.Enabled):\n\t\t\treturn self.sendUploadResults(1, \"This file uploader is disabled. Please check the \\\"editor/filemanager/connectors/py/config.py\\\"\")\n\t\tcommand = 'QuickUpload'\n\t\t# The file type (from the QueryString, by default 'File').",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tcommand",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "peekOfCode": "\t\tcommand = 'QuickUpload'\n\t\t# The file type (from the QueryString, by default 'File').\n\t\tresourceType  = self.request.get('Type','File')\n\t\tcurrentFolder = getCurrentFolder(self.request.get(\"CurrentFolder\",\"\"))\n\t\t# Check for invalid paths\n\t\tif currentFolder is None:\n\t\t\treturn self.sendUploadResults(102, '', '', \"\")\n\t\t# Check if it is an allowed command\n\t\tif ( not command in Config.ConfigAllowedCommands ):\n\t\t\treturn self.sendUploadResults( 1, '', '', 'The %s command isn\\'t allowed' % command )",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tcurrentFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "peekOfCode": "\t\tcurrentFolder = getCurrentFolder(self.request.get(\"CurrentFolder\",\"\"))\n\t\t# Check for invalid paths\n\t\tif currentFolder is None:\n\t\t\treturn self.sendUploadResults(102, '', '', \"\")\n\t\t# Check if it is an allowed command\n\t\tif ( not command in Config.ConfigAllowedCommands ):\n\t\t\treturn self.sendUploadResults( 1, '', '', 'The %s command isn\\'t allowed' % command )\n\t\tif ( not resourceType in Config.ConfigAllowedTypes  ):\n\t\t\treturn self.sendUploadResults( 1, '', '', 'Invalid type specified' )\n\t\t# Setup paths",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tself.userFilesFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "peekOfCode": "\t\tself.userFilesFolder = Config.QuickUploadAbsolutePath[resourceType]\n\t\tself.webUserFilesFolder =  Config.QuickUploadPath[resourceType]\n\t\tif not self.userFilesFolder: # no absolute path given (dangerous...)\n\t\t\tself.userFilesFolder = mapServerPath(self.environ,\n\t\t\t\t\t\t\t\t\tself.webUserFilesFolder)\n\t\t# Ensure that the directory exists.\n\t\tif not os.path.exists(self.userFilesFolder):\n\t\t\ttry:\n\t\t\t\tself.createServerFoldercreateServerFolder( self.userFilesFolder )\n\t\t\texcept:",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tself.webUserFilesFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "peekOfCode": "\t\tself.webUserFilesFolder =  Config.QuickUploadPath[resourceType]\n\t\tif not self.userFilesFolder: # no absolute path given (dangerous...)\n\t\t\tself.userFilesFolder = mapServerPath(self.environ,\n\t\t\t\t\t\t\t\t\tself.webUserFilesFolder)\n\t\t# Ensure that the directory exists.\n\t\tif not os.path.exists(self.userFilesFolder):\n\t\t\ttry:\n\t\t\t\tself.createServerFoldercreateServerFolder( self.userFilesFolder )\n\t\t\texcept:\n\t\t\t\treturn self.sendError(1, \"This connector couldn\\'t access to local user\\'s files directories.  Please check the UserFilesAbsolutePath in \\\"editor/filemanager/connectors/py/config.py\\\" and try again. \")",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tself.userFilesFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "peekOfCode": "\t\t\tself.userFilesFolder = mapServerPath(self.environ,\n\t\t\t\t\t\t\t\t\tself.webUserFilesFolder)\n\t\t# Ensure that the directory exists.\n\t\tif not os.path.exists(self.userFilesFolder):\n\t\t\ttry:\n\t\t\t\tself.createServerFoldercreateServerFolder( self.userFilesFolder )\n\t\t\texcept:\n\t\t\t\treturn self.sendError(1, \"This connector couldn\\'t access to local user\\'s files directories.  Please check the UserFilesAbsolutePath in \\\"editor/filemanager/connectors/py/config.py\\\" and try again. \")\n\t\t# File upload doesn't have to return XML, so intercept here\n\t\treturn self.uploadFile(resourceType, currentFolder)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tconn",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "peekOfCode": "\t\tconn = FCKeditorQuickUpload()\n\t\tdata = conn.doResponse()\n\t\tfor header in conn.headers:\n\t\t\tif not header is None:\n\t\t\t\tprint '%s: %s' % header\n\t\tprint\n\t\tprint data\n\texcept:\n\t\tprint \"Content-Type: text/plain\"\n\t\tprint",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tdata",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "peekOfCode": "\t\tdata = conn.doResponse()\n\t\tfor header in conn.headers:\n\t\t\tif not header is None:\n\t\t\t\tprint '%s: %s' % header\n\t\tprint\n\t\tprint data\n\texcept:\n\t\tprint \"Content-Type: text/plain\"\n\t\tprint\n\t\timport cgi",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.upload",
+        "documentation": {}
+    },
+    {
+        "label": "App",
+        "kind": 2,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "peekOfCode": "def App(environ, start_response):\n\t\"WSGI entry point. Run the connector\"\n\tif environ['SCRIPT_NAME'].endswith(\"connector.py\"):\n\t\tconn = FCKeditorConnector(environ)\n\telif environ['SCRIPT_NAME'].endswith(\"upload.py\"):\n\t\tconn = FCKeditorQuickUpload(environ)\n\telse:\n\t\tstart_response (\"200 Ok\", [('Content-Type','text/html')])\n\t\tyield \"Unknown page requested: \"\n\t\tyield environ['SCRIPT_NAME']",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tconn",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "peekOfCode": "\t\tconn = FCKeditorConnector(environ)\n\telif environ['SCRIPT_NAME'].endswith(\"upload.py\"):\n\t\tconn = FCKeditorQuickUpload(environ)\n\telse:\n\t\tstart_response (\"200 Ok\", [('Content-Type','text/html')])\n\t\tyield \"Unknown page requested: \"\n\t\tyield environ['SCRIPT_NAME']\n\t\treturn\n\ttry:\n\t\t# run the connector",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tconn",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "peekOfCode": "\t\tconn = FCKeditorQuickUpload(environ)\n\telse:\n\t\tstart_response (\"200 Ok\", [('Content-Type','text/html')])\n\t\tyield \"Unknown page requested: \"\n\t\tyield environ['SCRIPT_NAME']\n\t\treturn\n\ttry:\n\t\t# run the connector\n\t\tdata = conn.doResponse()\n\t\t# Start WSGI response:",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tdata",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "peekOfCode": "\t\tdata = conn.doResponse()\n\t\t# Start WSGI response:\n\t\tstart_response (\"200 Ok\", conn.headers)\n\t\t# Send response text\n\t\tyield data\n\texcept:\n\t\tstart_response(\"500 Internal Server Error\",[(\"Content-type\",\"text/html\")])\n\t\tfile = StringIO()\n\t\tcgitb.Hook(file = file).handle()\n\t\tyield file.getvalue()",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tfile",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "peekOfCode": "\t\tfile = StringIO()\n\t\tcgitb.Hook(file = file).handle()\n\t\tyield file.getvalue()",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tcgitb.Hook(file",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "peekOfCode": "\t\tcgitb.Hook(file = file).handle()\n\t\tyield file.getvalue()",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "FCKeditorConnectorZope",
+        "kind": 6,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "class FCKeditorConnectorZope(FCKeditorConnector):\n\t\"\"\"\n\tZope versiof FCKeditorConnector\n\t\"\"\"\n\t# Allow access (Zope)\n\t__allow_access_to_unprotected_subobjects__ = 1\n\tdef __init__(self, context=None):\n\t\t\"\"\"\n\t\tConstructor\n\t\t\"\"\"",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "FCKeditorRequest",
+        "kind": 6,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "class FCKeditorRequest(object):\n\t\"A wrapper around the request object\"\n\tdef __init__(self, context=None):\n\t\tr = context.REQUEST\n\t\tself.request = r\n\tdef has_key(self, key):\n\t\treturn self.request.has_key(key)\n\tdef get(self, key, default=None):\n\t\treturn self.request.get(key, default)\n\"\"\"",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t__allow_access_to_unprotected_subobjects__",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t__allow_access_to_unprotected_subobjects__ = 1\n\tdef __init__(self, context=None):\n\t\t\"\"\"\n\t\tConstructor\n\t\t\"\"\"\n\t\tFCKeditorConnector.__init__(self, environ=None) # call superclass constructor\n\t\t# Instance Attributes\n\t\tself.context = context\n\t\tself.request = FCKeditorRequest(context)\n\tdef getZopeRootContext(self):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tself.context",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tself.context = context\n\t\tself.request = FCKeditorRequest(context)\n\tdef getZopeRootContext(self):\n\t\tif self.zopeRootContext is None:\n\t\t\tself.zopeRootContext = self.context.getPhysicalRoot()\n\t\treturn self.zopeRootContext\n\tdef getZopeUploadContext(self):\n\t\tif self.zopeUploadContext is None:\n\t\t\tfolderNames = self.userFilesFolder.split(\"/\")\n\t\t\tc = self.getZopeRootContext()",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tself.request",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tself.request = FCKeditorRequest(context)\n\tdef getZopeRootContext(self):\n\t\tif self.zopeRootContext is None:\n\t\t\tself.zopeRootContext = self.context.getPhysicalRoot()\n\t\treturn self.zopeRootContext\n\tdef getZopeUploadContext(self):\n\t\tif self.zopeUploadContext is None:\n\t\t\tfolderNames = self.userFilesFolder.split(\"/\")\n\t\t\tc = self.getZopeRootContext()\n\t\t\tfor folderName in folderNames:",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tself.zopeRootContext",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\t\tself.zopeRootContext = self.context.getPhysicalRoot()\n\t\treturn self.zopeRootContext\n\tdef getZopeUploadContext(self):\n\t\tif self.zopeUploadContext is None:\n\t\t\tfolderNames = self.userFilesFolder.split(\"/\")\n\t\t\tc = self.getZopeRootContext()\n\t\t\tfor folderName in folderNames:\n\t\t\t\tif (folderName <> \"\"):\n\t\t\t\t\tc = c[folderName]\n\t\t\tself.zopeUploadContext = c",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tfolderNames",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\t\tfolderNames = self.userFilesFolder.split(\"/\")\n\t\t\tc = self.getZopeRootContext()\n\t\t\tfor folderName in folderNames:\n\t\t\t\tif (folderName <> \"\"):\n\t\t\t\t\tc = c[folderName]\n\t\t\tself.zopeUploadContext = c\n\t\treturn self.zopeUploadContext\n\tdef setHeader(self, key, value):\n\t\tself.context.REQUEST.RESPONSE.setHeader(key, value)\n\tdef getFolders(self, resourceType, currentFolder):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tc",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\t\tc = self.getZopeRootContext()\n\t\t\tfor folderName in folderNames:\n\t\t\t\tif (folderName <> \"\"):\n\t\t\t\t\tc = c[folderName]\n\t\t\tself.zopeUploadContext = c\n\t\treturn self.zopeUploadContext\n\tdef setHeader(self, key, value):\n\t\tself.context.REQUEST.RESPONSE.setHeader(key, value)\n\tdef getFolders(self, resourceType, currentFolder):\n\t\t# Open the folders node",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\tc",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\t\t\t\tc = c[folderName]\n\t\t\tself.zopeUploadContext = c\n\t\treturn self.zopeUploadContext\n\tdef setHeader(self, key, value):\n\t\tself.context.REQUEST.RESPONSE.setHeader(key, value)\n\tdef getFolders(self, resourceType, currentFolder):\n\t\t# Open the folders node\n\t\ts = \"\"\n\t\ts += \"\"\"<Folders>\"\"\"\n\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tself.zopeUploadContext",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\t\tself.zopeUploadContext = c\n\t\treturn self.zopeUploadContext\n\tdef setHeader(self, key, value):\n\t\tself.context.REQUEST.RESPONSE.setHeader(key, value)\n\tdef getFolders(self, resourceType, currentFolder):\n\t\t# Open the folders node\n\t\ts = \"\"\n\t\ts += \"\"\"<Folders>\"\"\"\n\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)\n\t\tfor (name, o) in zopeFolder.objectItems([\"Folder\"]):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\ts",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\ts = \"\"\n\t\ts += \"\"\"<Folders>\"\"\"\n\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)\n\t\tfor (name, o) in zopeFolder.objectItems([\"Folder\"]):\n\t\t\ts += \"\"\"<Folder name=\"%s\" />\"\"\" % (\n\t\t\t\t\tconvertToXmlAttribute(name)\n\t\t\t\t\t)\n\t\t# Close the folders node\n\t\ts += \"\"\"</Folders>\"\"\"\n\t\treturn s",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tzopeFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)\n\t\tfor (name, o) in zopeFolder.objectItems([\"Folder\"]):\n\t\t\ts += \"\"\"<Folder name=\"%s\" />\"\"\" % (\n\t\t\t\t\tconvertToXmlAttribute(name)\n\t\t\t\t\t)\n\t\t# Close the folders node\n\t\ts += \"\"\"</Folders>\"\"\"\n\t\treturn s\n\tdef getZopeFoldersAndFiles(self, resourceType, currentFolder):\n\t\tfolders = self.getZopeFolders(resourceType, currentFolder)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tfolders",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tfolders = self.getZopeFolders(resourceType, currentFolder)\n\t\tfiles = self.getZopeFiles(resourceType, currentFolder)\n\t\ts = folders + files\n\t\treturn s\n\tdef getZopeFiles(self, resourceType, currentFolder):\n\t\t# Open the files node\n\t\ts = \"\"\n\t\ts += \"\"\"<Files>\"\"\"\n\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)\n\t\tfor (name, o) in zopeFolder.objectItems([\"File\",\"Image\"]):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tfiles",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tfiles = self.getZopeFiles(resourceType, currentFolder)\n\t\ts = folders + files\n\t\treturn s\n\tdef getZopeFiles(self, resourceType, currentFolder):\n\t\t# Open the files node\n\t\ts = \"\"\n\t\ts += \"\"\"<Files>\"\"\"\n\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)\n\t\tfor (name, o) in zopeFolder.objectItems([\"File\",\"Image\"]):\n\t\t\ts += \"\"\"<File name=\"%s\" size=\"%s\" />\"\"\" % (",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\ts",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\ts = folders + files\n\t\treturn s\n\tdef getZopeFiles(self, resourceType, currentFolder):\n\t\t# Open the files node\n\t\ts = \"\"\n\t\ts += \"\"\"<Files>\"\"\"\n\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)\n\t\tfor (name, o) in zopeFolder.objectItems([\"File\",\"Image\"]):\n\t\t\ts += \"\"\"<File name=\"%s\" size=\"%s\" />\"\"\" % (\n\t\t\t\t\tconvertToXmlAttribute(name),",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\ts",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\ts = \"\"\n\t\ts += \"\"\"<Files>\"\"\"\n\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)\n\t\tfor (name, o) in zopeFolder.objectItems([\"File\",\"Image\"]):\n\t\t\ts += \"\"\"<File name=\"%s\" size=\"%s\" />\"\"\" % (\n\t\t\t\t\tconvertToXmlAttribute(name),\n\t\t\t\t\t((o.get_size() / 1024) + 1)\n\t\t\t\t\t)\n\t\t# Close the files node\n\t\ts += \"\"\"</Files>\"\"\"",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tzopeFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)\n\t\tfor (name, o) in zopeFolder.objectItems([\"File\",\"Image\"]):\n\t\t\ts += \"\"\"<File name=\"%s\" size=\"%s\" />\"\"\" % (\n\t\t\t\t\tconvertToXmlAttribute(name),\n\t\t\t\t\t((o.get_size() / 1024) + 1)\n\t\t\t\t\t)\n\t\t# Close the files node\n\t\ts += \"\"\"</Files>\"\"\"\n\t\treturn s\n\tdef findZopeFolder(self, resourceType, folderName):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tzopeFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tzopeFolder = self.getZopeUploadContext()\n\t\tfolderName = self.removeFromStart(folderName, \"/\")\n\t\tfolderName = self.removeFromEnd(folderName, \"/\")\n\t\tif (resourceType <> \"\"):\n\t\t\ttry:\n\t\t\t\tzopeFolder = zopeFolder[resourceType]\n\t\t\texcept:\n\t\t\t\tzopeFolder.manage_addProduct[\"OFSP\"].manage_addFolder(id=resourceType, title=resourceType)\n\t\t\t\tzopeFolder = zopeFolder[resourceType]\n\t\tif (folderName <> \"\"):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tfolderName",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tfolderName = self.removeFromStart(folderName, \"/\")\n\t\tfolderName = self.removeFromEnd(folderName, \"/\")\n\t\tif (resourceType <> \"\"):\n\t\t\ttry:\n\t\t\t\tzopeFolder = zopeFolder[resourceType]\n\t\t\texcept:\n\t\t\t\tzopeFolder.manage_addProduct[\"OFSP\"].manage_addFolder(id=resourceType, title=resourceType)\n\t\t\t\tzopeFolder = zopeFolder[resourceType]\n\t\tif (folderName <> \"\"):\n\t\t\tfolderNames = folderName.split(\"/\")",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tfolderName",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tfolderName = self.removeFromEnd(folderName, \"/\")\n\t\tif (resourceType <> \"\"):\n\t\t\ttry:\n\t\t\t\tzopeFolder = zopeFolder[resourceType]\n\t\t\texcept:\n\t\t\t\tzopeFolder.manage_addProduct[\"OFSP\"].manage_addFolder(id=resourceType, title=resourceType)\n\t\t\t\tzopeFolder = zopeFolder[resourceType]\n\t\tif (folderName <> \"\"):\n\t\t\tfolderNames = folderName.split(\"/\")\n\t\t\tfor folderName in folderNames:",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tzopeFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\t\t\tzopeFolder = zopeFolder[resourceType]\n\t\t\texcept:\n\t\t\t\tzopeFolder.manage_addProduct[\"OFSP\"].manage_addFolder(id=resourceType, title=resourceType)\n\t\t\t\tzopeFolder = zopeFolder[resourceType]\n\t\tif (folderName <> \"\"):\n\t\t\tfolderNames = folderName.split(\"/\")\n\t\t\tfor folderName in folderNames:\n\t\t\t\tzopeFolder = zopeFolder[folderName]\n\t\treturn zopeFolder\n\tdef createFolder(self, resourceType, currentFolder):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tzopeFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\t\t\tzopeFolder = zopeFolder[resourceType]\n\t\tif (folderName <> \"\"):\n\t\t\tfolderNames = folderName.split(\"/\")\n\t\t\tfor folderName in folderNames:\n\t\t\t\tzopeFolder = zopeFolder[folderName]\n\t\treturn zopeFolder\n\tdef createFolder(self, resourceType, currentFolder):\n\t\t# Find out where we are\n\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)\n\t\terrorNo = 0",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tfolderNames",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\t\tfolderNames = folderName.split(\"/\")\n\t\t\tfor folderName in folderNames:\n\t\t\t\tzopeFolder = zopeFolder[folderName]\n\t\treturn zopeFolder\n\tdef createFolder(self, resourceType, currentFolder):\n\t\t# Find out where we are\n\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)\n\t\terrorNo = 0\n\t\terrorMsg = \"\"\n\t\tif self.request.has_key(\"NewFolderName\"):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tzopeFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\t\t\tzopeFolder = zopeFolder[folderName]\n\t\treturn zopeFolder\n\tdef createFolder(self, resourceType, currentFolder):\n\t\t# Find out where we are\n\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)\n\t\terrorNo = 0\n\t\terrorMsg = \"\"\n\t\tif self.request.has_key(\"NewFolderName\"):\n\t\t\tnewFolder = self.request.get(\"NewFolderName\", None)\n\t\t\tzopeFolder.manage_addProduct[\"OFSP\"].manage_addFolder(id=newFolder, title=newFolder)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tzopeFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)\n\t\terrorNo = 0\n\t\terrorMsg = \"\"\n\t\tif self.request.has_key(\"NewFolderName\"):\n\t\t\tnewFolder = self.request.get(\"NewFolderName\", None)\n\t\t\tzopeFolder.manage_addProduct[\"OFSP\"].manage_addFolder(id=newFolder, title=newFolder)\n\t\telse:\n\t\t\terrorNo = 102\n\t\treturn self.sendErrorNode ( errorNo, errorMsg )\n\tdef uploadFile(self, resourceType, currentFolder, count=None):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\terrorNo",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\terrorNo = 0\n\t\terrorMsg = \"\"\n\t\tif self.request.has_key(\"NewFolderName\"):\n\t\t\tnewFolder = self.request.get(\"NewFolderName\", None)\n\t\t\tzopeFolder.manage_addProduct[\"OFSP\"].manage_addFolder(id=newFolder, title=newFolder)\n\t\telse:\n\t\t\terrorNo = 102\n\t\treturn self.sendErrorNode ( errorNo, errorMsg )\n\tdef uploadFile(self, resourceType, currentFolder, count=None):\n\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\terrorMsg",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\terrorMsg = \"\"\n\t\tif self.request.has_key(\"NewFolderName\"):\n\t\t\tnewFolder = self.request.get(\"NewFolderName\", None)\n\t\t\tzopeFolder.manage_addProduct[\"OFSP\"].manage_addFolder(id=newFolder, title=newFolder)\n\t\telse:\n\t\t\terrorNo = 102\n\t\treturn self.sendErrorNode ( errorNo, errorMsg )\n\tdef uploadFile(self, resourceType, currentFolder, count=None):\n\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)\n\t\tfile = self.request.get(\"NewFile\", None)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tnewFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\t\tnewFolder = self.request.get(\"NewFolderName\", None)\n\t\t\tzopeFolder.manage_addProduct[\"OFSP\"].manage_addFolder(id=newFolder, title=newFolder)\n\t\telse:\n\t\t\terrorNo = 102\n\t\treturn self.sendErrorNode ( errorNo, errorMsg )\n\tdef uploadFile(self, resourceType, currentFolder, count=None):\n\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)\n\t\tfile = self.request.get(\"NewFile\", None)\n\t\tfileName = self.getFileName(file.filename)\n\t\tfileNameOnly = self.removeExtension(fileName)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\terrorNo",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\t\terrorNo = 102\n\t\treturn self.sendErrorNode ( errorNo, errorMsg )\n\tdef uploadFile(self, resourceType, currentFolder, count=None):\n\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)\n\t\tfile = self.request.get(\"NewFile\", None)\n\t\tfileName = self.getFileName(file.filename)\n\t\tfileNameOnly = self.removeExtension(fileName)\n\t\tfileExtension = self.getExtension(fileName).lower()\n\t\tif (count):\n\t\t\tnid = \"%s.%s.%s\" % (fileNameOnly, count, fileExtension)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tzopeFolder",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tzopeFolder = self.findZopeFolder(resourceType, currentFolder)\n\t\tfile = self.request.get(\"NewFile\", None)\n\t\tfileName = self.getFileName(file.filename)\n\t\tfileNameOnly = self.removeExtension(fileName)\n\t\tfileExtension = self.getExtension(fileName).lower()\n\t\tif (count):\n\t\t\tnid = \"%s.%s.%s\" % (fileNameOnly, count, fileExtension)\n\t\telse:\n\t\t\tnid = fileName\n\t\ttitle = nid",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tfile",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tfile = self.request.get(\"NewFile\", None)\n\t\tfileName = self.getFileName(file.filename)\n\t\tfileNameOnly = self.removeExtension(fileName)\n\t\tfileExtension = self.getExtension(fileName).lower()\n\t\tif (count):\n\t\t\tnid = \"%s.%s.%s\" % (fileNameOnly, count, fileExtension)\n\t\telse:\n\t\t\tnid = fileName\n\t\ttitle = nid\n\t\ttry:",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tfileName",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tfileName = self.getFileName(file.filename)\n\t\tfileNameOnly = self.removeExtension(fileName)\n\t\tfileExtension = self.getExtension(fileName).lower()\n\t\tif (count):\n\t\t\tnid = \"%s.%s.%s\" % (fileNameOnly, count, fileExtension)\n\t\telse:\n\t\t\tnid = fileName\n\t\ttitle = nid\n\t\ttry:\n\t\t\tzopeFolder.manage_addProduct['OFSP'].manage_addFile(",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tfileNameOnly",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tfileNameOnly = self.removeExtension(fileName)\n\t\tfileExtension = self.getExtension(fileName).lower()\n\t\tif (count):\n\t\t\tnid = \"%s.%s.%s\" % (fileNameOnly, count, fileExtension)\n\t\telse:\n\t\t\tnid = fileName\n\t\ttitle = nid\n\t\ttry:\n\t\t\tzopeFolder.manage_addProduct['OFSP'].manage_addFile(\n\t\t\t\t\tid=nid,",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tfileExtension",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tfileExtension = self.getExtension(fileName).lower()\n\t\tif (count):\n\t\t\tnid = \"%s.%s.%s\" % (fileNameOnly, count, fileExtension)\n\t\telse:\n\t\t\tnid = fileName\n\t\ttitle = nid\n\t\ttry:\n\t\t\tzopeFolder.manage_addProduct['OFSP'].manage_addFile(\n\t\t\t\t\tid=nid,\n\t\t\t\t\ttitle=title,",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tnid",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\t\tnid = \"%s.%s.%s\" % (fileNameOnly, count, fileExtension)\n\t\telse:\n\t\t\tnid = fileName\n\t\ttitle = nid\n\t\ttry:\n\t\t\tzopeFolder.manage_addProduct['OFSP'].manage_addFile(\n\t\t\t\t\tid=nid,\n\t\t\t\t\ttitle=title,\n\t\t\t\t\tfile=file.read()\n\t\t\t\t\t)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tnid",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\t\tnid = fileName\n\t\ttitle = nid\n\t\ttry:\n\t\t\tzopeFolder.manage_addProduct['OFSP'].manage_addFile(\n\t\t\t\t\tid=nid,\n\t\t\t\t\ttitle=title,\n\t\t\t\t\tfile=file.read()\n\t\t\t\t\t)\n\t\texcept:\n\t\t\tif (count):",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\ttitle",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\ttitle = nid\n\t\ttry:\n\t\t\tzopeFolder.manage_addProduct['OFSP'].manage_addFile(\n\t\t\t\t\tid=nid,\n\t\t\t\t\ttitle=title,\n\t\t\t\t\tfile=file.read()\n\t\t\t\t\t)\n\t\texcept:\n\t\t\tif (count):\n\t\t\t\tcount += 1",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tcount",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\t\t\tcount = 1\n\t\t\treturn self.zopeFileUpload(resourceType, currentFolder, count)\n\t\treturn self.sendUploadResults( 0 )\nclass FCKeditorRequest(object):\n\t\"A wrapper around the request object\"\n\tdef __init__(self, context=None):\n\t\tr = context.REQUEST\n\t\tself.request = r\n\tdef has_key(self, key):\n\t\treturn self.request.has_key(key)",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tr",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tr = context.REQUEST\n\t\tself.request = r\n\tdef has_key(self, key):\n\t\treturn self.request.has_key(key)\n\tdef get(self, key, default=None):\n\t\treturn self.request.get(key, default)\n\"\"\"\nRunning from zope, you will need to modify this connector.\nIf you have uploaded the FCKeditor into Zope (like me), you need to\nmove this connector out of Zope, and replace the \"connector\" with an",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tself.request",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "description": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "peekOfCode": "\t\tself.request = r\n\tdef has_key(self, key):\n\t\treturn self.request.has_key(key)\n\tdef get(self, key, default=None):\n\t\treturn self.request.get(key, default)\n\"\"\"\nRunning from zope, you will need to modify this connector.\nIf you have uploaded the FCKeditor into Zope (like me), you need to\nmove this connector out of Zope, and replace the \"connector\" with an\nalias as below.  The key to it is to pass the Zope context in, as",
+        "detail": "assets.admin.fckeditor.editor.filemanager.connectors.py.zope",
+        "documentation": {}
+    },
+    {
+        "label": "FCKeditor",
+        "kind": 6,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "class FCKeditor(object):\n\tdef __init__(self, instanceName):\n\t\tself.InstanceName = instanceName\n\t\tself.BasePath = '/fckeditor/'\n\t\tself.Width = '100%'\n\t\tself.Height = '200'\n\t\tself.ToolbarSet = 'Default'\n\t\tself.Value = '';\n\t\tself.Config = {}\n\tdef Create(self):",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "escape",
+        "kind": 2,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "def escape(text, replace=string.replace):\n    \"\"\"Converts the special characters '<', '>', and '&'.\n    RFC 1866 specifies that these characters be represented\n    in HTML as &lt; &gt; and &amp; respectively. In Python\n    1.5 we use the new string.replace() function for speed.\n    \"\"\"\n    text = replace(text, '&', '&amp;') # must be done 1st\n    text = replace(text, '<', '&lt;')\n    text = replace(text, '>', '&gt;')\n    text = replace(text, '\"', '&quot;')",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tself.InstanceName",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\tself.InstanceName = instanceName\n\t\tself.BasePath = '/fckeditor/'\n\t\tself.Width = '100%'\n\t\tself.Height = '200'\n\t\tself.ToolbarSet = 'Default'\n\t\tself.Value = '';\n\t\tself.Config = {}\n\tdef Create(self):\n\t\treturn self.CreateHtml()\n\tdef CreateHtml(self):",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tself.BasePath",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\tself.BasePath = '/fckeditor/'\n\t\tself.Width = '100%'\n\t\tself.Height = '200'\n\t\tself.ToolbarSet = 'Default'\n\t\tself.Value = '';\n\t\tself.Config = {}\n\tdef Create(self):\n\t\treturn self.CreateHtml()\n\tdef CreateHtml(self):\n\t\tHtmlValue = escape(self.Value)",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tself.Width",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\tself.Width = '100%'\n\t\tself.Height = '200'\n\t\tself.ToolbarSet = 'Default'\n\t\tself.Value = '';\n\t\tself.Config = {}\n\tdef Create(self):\n\t\treturn self.CreateHtml()\n\tdef CreateHtml(self):\n\t\tHtmlValue = escape(self.Value)\n\t\tHtml = \"\"",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tself.Height",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\tself.Height = '200'\n\t\tself.ToolbarSet = 'Default'\n\t\tself.Value = '';\n\t\tself.Config = {}\n\tdef Create(self):\n\t\treturn self.CreateHtml()\n\tdef CreateHtml(self):\n\t\tHtmlValue = escape(self.Value)\n\t\tHtml = \"\"\n\t\tif (self.IsCompatible()):",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tself.ToolbarSet",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\tself.ToolbarSet = 'Default'\n\t\tself.Value = '';\n\t\tself.Config = {}\n\tdef Create(self):\n\t\treturn self.CreateHtml()\n\tdef CreateHtml(self):\n\t\tHtmlValue = escape(self.Value)\n\t\tHtml = \"\"\n\t\tif (self.IsCompatible()):\n\t\t\tFile = \"fckeditor.html\"",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tself.Value",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\tself.Value = '';\n\t\tself.Config = {}\n\tdef Create(self):\n\t\treturn self.CreateHtml()\n\tdef CreateHtml(self):\n\t\tHtmlValue = escape(self.Value)\n\t\tHtml = \"\"\n\t\tif (self.IsCompatible()):\n\t\t\tFile = \"fckeditor.html\"\n\t\t\tLink = \"%seditor/%s?InstanceName=%s\" % (",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tself.Config",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\tself.Config = {}\n\tdef Create(self):\n\t\treturn self.CreateHtml()\n\tdef CreateHtml(self):\n\t\tHtmlValue = escape(self.Value)\n\t\tHtml = \"\"\n\t\tif (self.IsCompatible()):\n\t\t\tFile = \"fckeditor.html\"\n\t\t\tLink = \"%seditor/%s?InstanceName=%s\" % (\n\t\t\t\t\tself.BasePath,",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tHtmlValue",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\tHtmlValue = escape(self.Value)\n\t\tHtml = \"\"\n\t\tif (self.IsCompatible()):\n\t\t\tFile = \"fckeditor.html\"\n\t\t\tLink = \"%seditor/%s?InstanceName=%s\" % (\n\t\t\t\t\tself.BasePath,\n\t\t\t\t\tFile,\n\t\t\t\t\tself.InstanceName\n\t\t\t\t\t)\n\t\t\tif (self.ToolbarSet is not None):",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tHtml",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\tHtml = \"\"\n\t\tif (self.IsCompatible()):\n\t\t\tFile = \"fckeditor.html\"\n\t\t\tLink = \"%seditor/%s?InstanceName=%s\" % (\n\t\t\t\t\tself.BasePath,\n\t\t\t\t\tFile,\n\t\t\t\t\tself.InstanceName\n\t\t\t\t\t)\n\t\t\tif (self.ToolbarSet is not None):\n\t\t\t\tLink += \"&amp;ToolBar=%s\" % self.ToolbarSet",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tFile",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\tFile = \"fckeditor.html\"\n\t\t\tLink = \"%seditor/%s?InstanceName=%s\" % (\n\t\t\t\t\tself.BasePath,\n\t\t\t\t\tFile,\n\t\t\t\t\tself.InstanceName\n\t\t\t\t\t)\n\t\t\tif (self.ToolbarSet is not None):\n\t\t\t\tLink += \"&amp;ToolBar=%s\" % self.ToolbarSet\n\t\t\t# Render the linked hidden field\n\t\t\tHtml += \"<input type=\\\"hidden\\\" id=\\\"%s\\\" name=\\\"%s\\\" value=\\\"%s\\\" style=\\\"display:none\\\" />\" % (",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tLink",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\tLink = \"%seditor/%s?InstanceName=%s\" % (\n\t\t\t\t\tself.BasePath,\n\t\t\t\t\tFile,\n\t\t\t\t\tself.InstanceName\n\t\t\t\t\t)\n\t\t\tif (self.ToolbarSet is not None):\n\t\t\t\tLink += \"&amp;ToolBar=%s\" % self.ToolbarSet\n\t\t\t# Render the linked hidden field\n\t\t\tHtml += \"<input type=\\\"hidden\\\" id=\\\"%s\\\" name=\\\"%s\\\" value=\\\"%s\\\" style=\\\"display:none\\\" />\" % (\n\t\t\t\t\tself.InstanceName,",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tWidthCSS",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\t\tWidthCSS = \"%spx\" % self.Width\n\t\t\telse:\n\t\t\t\tWidthCSS = self.Width\n\t\t\tif (self.Height.find(\"%%\") < 0):\n\t\t\t\tHeightCSS = \"%spx\" % self.Height\n\t\t\telse:\n\t\t\t\tHeightCSS = self.Height\n\t\t\tHtml += \"<textarea name=\\\"%s\\\" rows=\\\"4\\\" cols=\\\"40\\\" style=\\\"width: %s; height: %s;\\\" wrap=\\\"virtual\\\">%s</textarea>\" % (\n\t\t\t\t\tself.InstanceName,\n\t\t\t\t\tWidthCSS,",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tWidthCSS",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\t\tWidthCSS = self.Width\n\t\t\tif (self.Height.find(\"%%\") < 0):\n\t\t\t\tHeightCSS = \"%spx\" % self.Height\n\t\t\telse:\n\t\t\t\tHeightCSS = self.Height\n\t\t\tHtml += \"<textarea name=\\\"%s\\\" rows=\\\"4\\\" cols=\\\"40\\\" style=\\\"width: %s; height: %s;\\\" wrap=\\\"virtual\\\">%s</textarea>\" % (\n\t\t\t\t\tself.InstanceName,\n\t\t\t\t\tWidthCSS,\n\t\t\t\t\tHeightCSS,\n\t\t\t\t\tHtmlValue",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tHeightCSS",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\t\tHeightCSS = \"%spx\" % self.Height\n\t\t\telse:\n\t\t\t\tHeightCSS = self.Height\n\t\t\tHtml += \"<textarea name=\\\"%s\\\" rows=\\\"4\\\" cols=\\\"40\\\" style=\\\"width: %s; height: %s;\\\" wrap=\\\"virtual\\\">%s</textarea>\" % (\n\t\t\t\t\tself.InstanceName,\n\t\t\t\t\tWidthCSS,\n\t\t\t\t\tHeightCSS,\n\t\t\t\t\tHtmlValue\n\t\t\t\t\t)\n\t\treturn Html",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tHeightCSS",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\t\tHeightCSS = self.Height\n\t\t\tHtml += \"<textarea name=\\\"%s\\\" rows=\\\"4\\\" cols=\\\"40\\\" style=\\\"width: %s; height: %s;\\\" wrap=\\\"virtual\\\">%s</textarea>\" % (\n\t\t\t\t\tself.InstanceName,\n\t\t\t\t\tWidthCSS,\n\t\t\t\t\tHeightCSS,\n\t\t\t\t\tHtmlValue\n\t\t\t\t\t)\n\t\treturn Html\n\tdef IsCompatible(self):\n\t\tif (os.environ.has_key(\"HTTP_USER_AGENT\")):",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tsAgent",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\tsAgent = os.environ.get(\"HTTP_USER_AGENT\", \"\")\n\t\telse:\n\t\t\tsAgent = \"\"\n\t\tif (sAgent.find(\"MSIE\") >= 0) and (sAgent.find(\"mac\") < 0) and (sAgent.find(\"Opera\") < 0):\n\t\t\ti = sAgent.find(\"MSIE\")\n\t\t\tiVersion = float(sAgent[i+5:i+5+3])\n\t\t\tif (iVersion >= 5.5):\n\t\t\t\treturn True\n\t\t\treturn False\n\t\telif (sAgent.find(\"Gecko/\") >= 0):",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tsAgent",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\tsAgent = \"\"\n\t\tif (sAgent.find(\"MSIE\") >= 0) and (sAgent.find(\"mac\") < 0) and (sAgent.find(\"Opera\") < 0):\n\t\t\ti = sAgent.find(\"MSIE\")\n\t\t\tiVersion = float(sAgent[i+5:i+5+3])\n\t\t\tif (iVersion >= 5.5):\n\t\t\t\treturn True\n\t\t\treturn False\n\t\telif (sAgent.find(\"Gecko/\") >= 0):\n\t\t\ti = sAgent.find(\"Gecko/\")\n\t\t\tiVersion = int(sAgent[i+6:i+6+8])",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\ti",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\ti = sAgent.find(\"MSIE\")\n\t\t\tiVersion = float(sAgent[i+5:i+5+3])\n\t\t\tif (iVersion >= 5.5):\n\t\t\t\treturn True\n\t\t\treturn False\n\t\telif (sAgent.find(\"Gecko/\") >= 0):\n\t\t\ti = sAgent.find(\"Gecko/\")\n\t\t\tiVersion = int(sAgent[i+6:i+6+8])\n\t\t\tif (iVersion >= 20030210):\n\t\t\t\treturn True",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tiVersion",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\tiVersion = float(sAgent[i+5:i+5+3])\n\t\t\tif (iVersion >= 5.5):\n\t\t\t\treturn True\n\t\t\treturn False\n\t\telif (sAgent.find(\"Gecko/\") >= 0):\n\t\t\ti = sAgent.find(\"Gecko/\")\n\t\t\tiVersion = int(sAgent[i+6:i+6+8])\n\t\t\tif (iVersion >= 20030210):\n\t\t\t\treturn True\n\t\t\treturn False",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\ti",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\ti = sAgent.find(\"Gecko/\")\n\t\t\tiVersion = int(sAgent[i+6:i+6+8])\n\t\t\tif (iVersion >= 20030210):\n\t\t\t\treturn True\n\t\t\treturn False\n\t\telif (sAgent.find(\"Opera/\") >= 0):\n\t\t\ti = sAgent.find(\"Opera/\")\n\t\t\tiVersion = float(sAgent[i+6:i+6+4])\n\t\t\tif (iVersion >= 9.5):\n\t\t\t\treturn True",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tiVersion",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\tiVersion = int(sAgent[i+6:i+6+8])\n\t\t\tif (iVersion >= 20030210):\n\t\t\t\treturn True\n\t\t\treturn False\n\t\telif (sAgent.find(\"Opera/\") >= 0):\n\t\t\ti = sAgent.find(\"Opera/\")\n\t\t\tiVersion = float(sAgent[i+6:i+6+4])\n\t\t\tif (iVersion >= 9.5):\n\t\t\t\treturn True\n\t\t\treturn False",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\ti",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\ti = sAgent.find(\"Opera/\")\n\t\t\tiVersion = float(sAgent[i+6:i+6+4])\n\t\t\tif (iVersion >= 9.5):\n\t\t\t\treturn True\n\t\t\treturn False\n\t\telif (sAgent.find(\"AppleWebKit/\") >= 0):\n\t\t\tp = re.compile('AppleWebKit\\/(\\d+)', re.IGNORECASE)\n\t\t\tm = p.search(sAgent)\n\t\t\tif (m.group(1) >= 522):\n\t\t\t\treturn True",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tiVersion",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\tiVersion = float(sAgent[i+6:i+6+4])\n\t\t\tif (iVersion >= 9.5):\n\t\t\t\treturn True\n\t\t\treturn False\n\t\telif (sAgent.find(\"AppleWebKit/\") >= 0):\n\t\t\tp = re.compile('AppleWebKit\\/(\\d+)', re.IGNORECASE)\n\t\t\tm = p.search(sAgent)\n\t\t\tif (m.group(1) >= 522):\n\t\t\t\treturn True\n\t\t\treturn False",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tp",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\tp = re.compile('AppleWebKit\\/(\\d+)', re.IGNORECASE)\n\t\t\tm = p.search(sAgent)\n\t\t\tif (m.group(1) >= 522):\n\t\t\t\treturn True\n\t\t\treturn False\n\t\telse:\n\t\t\treturn False\n\tdef GetConfigFieldString(self):\n\t\tsParams = \"\"\n\t\tbFirst = True",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tm",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\tm = p.search(sAgent)\n\t\t\tif (m.group(1) >= 522):\n\t\t\t\treturn True\n\t\t\treturn False\n\t\telse:\n\t\t\treturn False\n\tdef GetConfigFieldString(self):\n\t\tsParams = \"\"\n\t\tbFirst = True\n\t\tfor sKey in self.Config.keys():",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tsParams",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\tsParams = \"\"\n\t\tbFirst = True\n\t\tfor sKey in self.Config.keys():\n\t\t\tsValue = self.Config[sKey]\n\t\t\tif (not bFirst):\n\t\t\t\tsParams += \"&amp;\"\n\t\t\telse:\n\t\t\t\tbFirst = False\n\t\t\tif (sValue):\n\t\t\t\tk = escape(sKey)",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tbFirst",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\tbFirst = True\n\t\tfor sKey in self.Config.keys():\n\t\t\tsValue = self.Config[sKey]\n\t\t\tif (not bFirst):\n\t\t\t\tsParams += \"&amp;\"\n\t\t\telse:\n\t\t\t\tbFirst = False\n\t\t\tif (sValue):\n\t\t\t\tk = escape(sKey)\n\t\t\t\tv = escape(sValue)",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tsValue",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\tsValue = self.Config[sKey]\n\t\t\tif (not bFirst):\n\t\t\t\tsParams += \"&amp;\"\n\t\t\telse:\n\t\t\t\tbFirst = False\n\t\t\tif (sValue):\n\t\t\t\tk = escape(sKey)\n\t\t\t\tv = escape(sValue)\n\t\t\t\tif (sValue == \"true\"):\n\t\t\t\t\tsParams += \"%s=true\" % k",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tbFirst",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\t\tbFirst = False\n\t\t\tif (sValue):\n\t\t\t\tk = escape(sKey)\n\t\t\t\tv = escape(sValue)\n\t\t\t\tif (sValue == \"true\"):\n\t\t\t\t\tsParams += \"%s=true\" % k\n\t\t\t\telif (sValue == \"false\"):\n\t\t\t\t\tsParams += \"%s=false\" % k\n\t\t\t\telse:\n\t\t\t\t\tsParams += \"%s=%s\" % (k, v)",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tk",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\t\tk = escape(sKey)\n\t\t\t\tv = escape(sValue)\n\t\t\t\tif (sValue == \"true\"):\n\t\t\t\t\tsParams += \"%s=true\" % k\n\t\t\t\telif (sValue == \"false\"):\n\t\t\t\t\tsParams += \"%s=false\" % k\n\t\t\t\telse:\n\t\t\t\t\tsParams += \"%s=%s\" % (k, v)\n\t\treturn sParams",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tv",
+        "kind": 5,
+        "importPath": "assets.admin.fckeditor.fckeditor",
+        "description": "assets.admin.fckeditor.fckeditor",
+        "peekOfCode": "\t\t\t\tv = escape(sValue)\n\t\t\t\tif (sValue == \"true\"):\n\t\t\t\t\tsParams += \"%s=true\" % k\n\t\t\t\telif (sValue == \"false\"):\n\t\t\t\t\tsParams += \"%s=false\" % k\n\t\t\t\telse:\n\t\t\t\t\tsParams += \"%s=%s\" % (k, v)\n\t\treturn sParams",
+        "detail": "assets.admin.fckeditor.fckeditor",
+        "documentation": {}
+    }
+]

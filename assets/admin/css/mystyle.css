@@ -1,0 +1,12 @@
+.my-th
+{
+    background-color: #54b4eb;
+}
+
+.box-content #tbl{
+	width:100%;
+}
+
+.box-header span{
+	margin-left:3rem !important;
+}
