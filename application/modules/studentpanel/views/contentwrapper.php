@@ -32,10 +32,14 @@ ul.breadcrumb li a:hover {
 }
 .iframe-container {
     .overlay {
-        position: relative !important;
+      display: none;
     }
     .overlay-bottom-right{
-      position: relative !important;
+      /* position: relative !important;
+      margin-top: 20px;
+      background: none !important; */
+      display: none;
+
     }
 }
 
@@ -80,6 +84,7 @@ ul.breadcrumb li a:hover {
         <span class="tabcontentdetail"><?= @$content->detail;?></span><br/>
         <button type="button" class="btn btn-primary" id="prev_button">Previous</button>
         <button type="button" class="btn btn-primary" id="next_button">Next</button>
+        <span id="page_number" class="pull-right">Page 1 of 1</span>
       </div>
     <div id="tabfile" class="tab-pane fade ">
 
@@ -169,8 +174,31 @@ ul.breadcrumb li a:hover {
   
   var arr = [<?=@$listid;?>];
 var i = 0;
+var itemsPerPage = 1;
+var currentPage = 0;
 $('#prev_button').hide();
 $('#next_button').hide();
+
+
+function updatePagination(currentpage, next= false , previous = false) {
+    var totalPages = Math.ceil(arr.length / itemsPerPage);
+    if (!next && !previous) {
+      currentPage =currentPage + 1;
+    }else if (next) {
+      if (totalPages > 1) {
+        currentPage =currentPage + 1;      
+      }
+    }else if (previous) {
+      if (totalPages > 1) {
+        currentPage =currentPage - 1;      
+      }
+    }
+    
+    
+    $('#page_number').text('Page ' + (currentPage) + ' of ' + totalPages);
+}
+
+updatePagination(currentPage);
 
 if(arr.length>1)
 {
@@ -184,6 +212,7 @@ function nextItem() {
     $('#next_button').hide();
 
     }
+    updatePagination(i, true, false);
     return arr[i]; 
 }
 
@@ -195,6 +224,7 @@ function prevItem() {
 
     }
     i = i - 1; // decrease by one
+    updatePagination(i, false, true);
     return arr[i]; // give us back the item of where we are now
 }
 $('#next_button').click(function(e){
