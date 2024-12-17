@@ -9,6 +9,16 @@
 <script type="text/javascript"
   src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
 
+<style>
+  .table th,
+  .table td {
+    white-space: normal !important;
+    /* Allow text to wrap */
+    word-wrap: break-word !important;
+    /* Break long words */
+  }
+</style>
+
 <table class="table table-bordered table-hover table-striped pad-fixed-tbl mar-10-top dataTable no-footer"
   id="dataTable" data-filename="chapterlist" data-cols="[0,1]" style="width:90%">
   <thead id="tbl_data_thead">
@@ -71,16 +81,22 @@
     });
   }
 
+  $(document).off('click', '#selectAllCheckbox');
   $(document).on('click', '#selectAllCheckbox', function () {
+    const dataTable = $('#dataTable').DataTable();
     // Check if the checkbox is checked
     if ($(this).is(':checked')) {
+      dataTable.page.len(-1).draw();
       // Check all checkboxes with the class 'replicate'
       $('.replicate').prop('checked', true);
     } else {
+      const defaultPageLength = 10;
+      dataTable.page.len(defaultPageLength).draw();
       // Uncheck all checkboxes with the class 'replicate'
       $('.replicate').prop('checked', false);
     }
   });
+
 
   $(document).off('click', '#btndeleteselected');
   $(document).on('click', '#btndeleteselected', function () {
@@ -90,6 +106,11 @@
         checkedValues += $(this).val() + ','; // Add the value of the checked checkbox to the string
       }
     });
+
+    // Remove the trailing comma if there are any checked values
+    if (checkedValues.endsWith(',')) {
+      checkedValues = checkedValues.slice(0, -1);
+    }
 
     if (checkedValues === '') {
       toastr.warning('Please select at least one item to delete.', { timeOut: 5000 });

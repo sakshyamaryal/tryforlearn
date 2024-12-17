@@ -433,7 +433,7 @@ class Exercise extends CI_Controller
 			}
 			
 			$exercise=$this->model->getexercise($where);
-			//var_dump($this->db->last_query());exit;
+			// echo($this->db->last_query());exit;
 
 			// if($this->session->userdata('adminusertype')=='9')
 			// $exercise=$this->model->getexercise($where);

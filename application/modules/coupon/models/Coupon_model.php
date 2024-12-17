@@ -1,9 +1,10 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH'))
+	exit('No direct script access allowed');
 
 class Coupon_model extends CI_Model
 {
-	
-	public function get_coupon ()
+
+	public function get_coupon()
 	{
 		$where = " 1 = 1 ";
 		$order = '';
@@ -27,12 +28,13 @@ class Coupon_model extends CI_Model
 		}
 
 
-		if (isset($_REQUEST['filter'])) $where = $this->parseFilters($_REQUEST['filter']);
+		if (isset($_REQUEST['filter']))
+			$where = $this->parseFilters($_REQUEST['filter']);
 		$query = $this->db->query("select s.subject_name,c.name,vc.* from vouchercode vc left join subject s on vc.subjectid=s.subject_id join class c on c.classid=vc.classid  where isactive=1 and  $where order by $field $order limit $skip, $take");
 		return $query->result();
 	}
 
-	function parseFilters ($filters, $count = 0)
+	function parseFilters($filters, $count = 0)
 	{
 		$where = "";
 		$intcount = 0;
@@ -135,7 +137,7 @@ class Coupon_model extends CI_Model
 	public function count_all_coupon()
 	{
 		$this->db->select(" * ");
-		$this->db->where('isactive',1);
+		$this->db->where('isactive', 1);
 		$this->db->from('vouchercode');
 		$query = $this->db->get();
 		return $query->num_rows();
@@ -143,30 +145,44 @@ class Coupon_model extends CI_Model
 
 
 
-	public function save ($id)
+	public function save($id)
 	{
-		$data = array(
-			'levelid'=> $this->input->post('levelid'),
-			'classid' => $this->input->post('classid'),
-			'subjectid' => @$this->input->post('subjectid'),
-			
-			'vouchercode' => $this->input->post('vouchercode'),
-			'discountamount' => $this->input->post('discountamount'),
-			'packagetype' => $this->input->post('package'),
-			'maxlimit' => $this->input->post('limit'),
-			'discounttype' => $this->input->post('discounttype'),
-			'validtill' => $this->input->post('validity'),
-			
-			'isactive' => '1'
-		);
+		$subjects = $this->input->post('subjectid[]');
+		$packages = $this->input->post('package[]');
+		$insertPack = false;
 		if ($id == null) {
-			if ($this->db->insert('vouchercode', $data)) {
-				return true;
-			} else {
-				return false;
+			foreach ($subjects as $sub) {
+				foreach ($packages as $pack) {
+					$data = array(
+						'levelid' => $this->input->post('levelid'),
+						'classid' => $this->input->post('classid'),
+						'subjectid' => $sub,
+						'vouchercode' => $this->input->post('vouchercode'),
+						'discountamount' => $this->input->post('discountamount'),
+						'packagetype' => $pack,
+						'maxlimit' => $this->input->post('limit'),
+						'discounttype' => $this->input->post('discounttype'),
+						'validtill' => $this->input->post('validity'),
+						'isactive' => '1'
+					);
+					$insertPack = $this->db->insert('vouchercode', $data);
+				}
 			}
+			return $insertPack;
 
 		} else {
+			$data = array(
+				'levelid' => $this->input->post('levelid'),
+				'classid' => $this->input->post('classid'),
+				'subjectid' => $subjects[0],
+				'vouchercode' => $this->input->post('vouchercode'),
+				'discountamount' => $this->input->post('discountamount'),
+				'packagetype' => $packages[0],
+				'maxlimit' => $this->input->post('limit'),
+				'discounttype' => $this->input->post('discounttype'),
+				'validtill' => $this->input->post('validity'),
+				'isactive' => '1'
+			);
 			$this->db->where('vouchercodeid', $id);
 			if ($this->db->update('vouchercode', $data)) {
 				return true;
@@ -180,13 +196,14 @@ class Coupon_model extends CI_Model
 	}
 
 	public
-	function delete_coupon ()
-	{
-		
+		function delete_coupon(
+	) {
+
 		$data = array(
 			'isactive' => '0'
 		);
-		$this->db->where('vouchercodeid', $this->input->post('id'));
+		
+		$this->db->where_in('vouchercodeid', $this->input->post('id'));
 		if ($this->db->update('vouchercode', $data)) {
 			return true;
 		} else {

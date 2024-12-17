@@ -126,7 +126,7 @@ class Exercise_model extends CI_Model
              'levelid'=>$post['levelid'],
              'classid'=>(isset($post['classid']) && $post['classid']>0)?$post['classid']:0,
              'subjectid'=>(isset($post['subjectid']) && $post['subjectid']>0)?$post['subjectid']:0,
-             'chapterid'=>(isset($post['chapterid']) && $post['chapterid']>0)?$post['chapterid']:-1,
+             'chapterid'=>(isset($post['chapterid']) && $post['chapterid']>0)?$post['chapterid']:0,
              'topicid'=>(isset($post['topicid']) && $post['topicid']>0)?$post['topicid']:0,
              'groupid'=>$post['groupid'],
              'examtypeid'=>(isset($post['examtype']) && $post['examtype']>0)?$post['examtype']:0,

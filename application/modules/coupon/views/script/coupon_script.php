@@ -1,6 +1,14 @@
 <script>
 	isDirty = 0;
 	$(document).ready(function () {
+		$('#package').select2({
+			placeholder: "Select packages",
+			allowClear: true
+		});
+		$('#subjectid').select2({
+			placeholder: "Select Subjects",
+			allowClear: true
+		});
 		dataSource = new kendo.data.DataSource({
 			transport: {
 				read: "<?php echo base_url(); ?>coupon/get_coupon",
@@ -38,16 +46,16 @@
 					levelid: "levelid",
 					classid: "classid",
 					subjectid: "subjectid",
-					vouchercode: {type: "string"},
-					class: {type: "string"},
-					subject_name: {type: "string"},
-					discountamount: {type: "string"},
-					packagetype: {type: "string"},
-					discounttype: {type: "string"},
-					maxlimit: {type: "string"},
-					validtill: {type: "string"},
-					
-					isactive: {type: "string"},
+					vouchercode: { type: "string" },
+					class: { type: "string" },
+					subject_name: { type: "string" },
+					discountamount: { type: "string" },
+					packagetype: { type: "string" },
+					discounttype: { type: "string" },
+					maxlimit: { type: "string" },
+					validtill: { type: "string" },
+
+					isactive: { type: "string" },
 
 				},
 				total: function (data) {
@@ -87,21 +95,22 @@
 				pageSizes: true,
 				buttonCount: 10
 			},
-			height:1350,
-			selectable: true,
+			height: 1350,
+			selectable: 'multiple',
 			toolbar: kendo.template($("#template").html()),
-			columns: [{
-				title: "S.N",
-				template: "#= ++record #",
-				width: "50px",
-				filterable: false
-			},
+			columns: [
+				{
+					title: "<input type='checkbox' id='selectAllRows' /> S.N",
+					template: "<input type='checkbox' class='rowCheckbox' /> #= ++record #",
+					width: "50px",
+					filterable: false
+				},
 				{
 					field: "name",
 					title: "Class",
 					width: "100px"
 				},
-				
+
 				{
 					field: "subject_name",
 					title: "Subject",
@@ -112,7 +121,7 @@
 					title: "Package Type",
 					width: "100px"
 				},
-				
+
 				{
 					field: "vouchercode",
 					title: "coupon",
@@ -128,8 +137,8 @@
 					title: "Amount",
 					width: "100px"
 				},
-				
-			
+
+
 
 				// {
 				// 	field: "is_active",
@@ -153,7 +162,7 @@
 			}
 		});
 
-		var status_data = [{name: "inactive", value: "0"}, {name: "Active", value: "active"}];
+		var status_data = [{ name: "inactive", value: "0" }, { name: "Active", value: "active" }];
 
 		function statusFilter(element) {
 			element.kendoDropDownList({
@@ -206,7 +215,7 @@
 
 		});
 
-	
+
 
 		function clearForm() {
 			$('form')
@@ -248,17 +257,17 @@
 
 
 		function validateField() {
-			
+
 			$("#addUs").validate({
 				rules: {
 					"name": {
 						required: true,
-						minlength:3
+						minlength: 3
 					},
 					"description": {
 						required: true,
 					}
-					
+
 
 				},
 				messages: {
@@ -269,8 +278,8 @@
 					"description": {
 						required: "Please enter Description",
 					}
-					
-					
+
+
 				},
 			});
 
@@ -299,13 +308,13 @@
 
 						if (response.success == true) {
 							$('#addUniversity').modal('hide');
-							toastr.success(response.messages, {timeOut: 5000})
+							toastr.success(response.messages, { timeOut: 5000 })
 							clearForm();
 							$("#grid").data("kendoGrid").dataSource.filter({});
 							$("#grid").data("kendoGrid").dataSource.read();
 
 						} else {
-							toastr.warning(response.messages, {timeOut: 5000})
+							toastr.warning(response.messages, { timeOut: 5000 })
 						}
 
 					}
@@ -326,14 +335,14 @@
 			var dataItem = grid.dataItem(grid.select());
 			console.log(dataItem);
 			if (dataItem == null) {
-				toastr.warning('Please select one row to edit', {timeOut: 5000})
+				toastr.warning('Please select one row to edit', { timeOut: 5000 })
 				return false;
 			}
 			$('#addUniversity').modal('show');
 			$('.modal-title').html('Edit coupon');
 			$('#vouchercodeid').val(dataItem.vouchercodeid);
 			$('#levelid').val(dataItem.levelid);
-			getclass(dataItem.levelid,dataItem.classid);
+			getclass(dataItem.levelid, dataItem.classid);
 
 
 			$('#discountamount').val(dataItem.discountamount);
@@ -342,21 +351,29 @@
 			$('#limit').val(dataItem.maxlimit);
 			$('#discounttype').val(dataItem.discounttype);
 			$('#validity').val(dataItem.validtill);
-			getsubject(dataItem.classid,dataItem.subjectid);
-			
-			
+			getsubject(dataItem.classid, dataItem.subjectid);
+
+
 			$("#addUs").attr('action', '<?php echo base_url(); ?>coupon/update');
 		})
 
-		
+
 
 
 
 		$("#delete").on("click", function name(e) {
 			var grid = $('#grid').data('kendoGrid');
-			var dataItem = grid.dataItem(grid.select());
-			if (dataItem == null) {
-				toastr.warning('Please select one row to delete', {timeOut: 5000})
+
+			var selectedRows = grid.select();
+
+			var selectedData = [];
+			selectedRows.each(function () {
+				var dataItem = grid.dataItem(this); 
+				selectedData.push(dataItem.vouchercodeid); 
+			});
+			
+			if (selectedData.length < 1) {
+				toastr.warning('Please select one row to delete', { timeOut: 5000 })
 				return false;
 			}
 
@@ -366,17 +383,17 @@
 					$.ajax({
 						url: '<?= base_url(); ?>coupon/delete',
 						type: 'POST',
-						data: {id: dataItem.vouchercodeid},
+						data: { id: selectedData },
 						success: function (response) {
 							var response = jQuery.parseJSON(response);
 
 							console.log(response.success);
 							if (response.success == true) {
-								toastr.success(response.messages, {timeOut: 5000})
+								toastr.success(response.messages, { timeOut: 5000 })
 								$("#grid").data("kendoGrid").dataSource.filter({});
 								$("#grid").data("kendoGrid").dataSource.read();
 							} else {
-								toastr.error(response.messages, {timeOut: 5000})
+								toastr.error(response.messages, { timeOut: 5000 })
 							}
 						}
 
@@ -390,94 +407,121 @@
 
 	});
 
-	
-$(document).on('change','#levelid',function(e){
-    let coursetype=$('#levelid').val();
-    if(coursetype=='-1')
-    {
-       
-    }
-    else if(coursetype=='4' || coursetype=='5')
-    {
-        
 
-    }
-    else
-    {
-       
-        getclass(coursetype);
+	$(document).on('change', '#levelid', function (e) {
+		let coursetype = $('#levelid').val();
+		if (coursetype == '-1') {
 
-    }
-})
+		}
+		else if (coursetype == '4' || coursetype == '5') {
 
-function getclass(coursetype,classselected=false)
-{
-	$.ajax({
-                     url: '<?= base_url(); ?>exercise/getclassdropdown',
-                     type: 'POST',
-                     data: {coursetype},
-                     beforeSend: function () {
-                                    $('#loader').show();
-                                },
-                     success: function (res) {
-                        $('#loader').hide();
-                        let response=jQuery.parseJSON(res);
-							if (response.type == 'success') {
-                                $('#classid').empty();
-                                $('#classid').html(response.html);
 
-								if(classselected !==false)
-								{
-									$('#classid').val(classselected);
-								}
-                               
+		}
+		else {
 
-                               
-							} else {
-								//toastr.error(response.message, {timeOut: 5000})
-                             
-							}
-                     }
+			getclass(coursetype);
 
-                 });
-}
+		}
+	})
+
+	function getclass(coursetype, classselected = false) {
+		$.ajax({
+			url: '<?= base_url(); ?>exercise/getclassdropdown',
+			type: 'POST',
+			data: { coursetype },
+			beforeSend: function () {
+				$('#loader').show();
+			},
+			success: function (res) {
+				$('#loader').hide();
+				let response = jQuery.parseJSON(res);
+				if (response.type == 'success') {
+					$('#classid').empty();
+					$('#classid').html(response.html);
+
+					if (classselected !== false) {
+						$('#classid').val(classselected);
+					}
 
 
 
-$(document).on('change','#classid',function(e){
-    let classid=$(this).val();
-    getsubject(classid);
-    
-})
+				} else {
+					//toastr.error(response.message, {timeOut: 5000})
 
-function getsubject(classid,subjectselected=false)
-{
-	$.ajax({
-						url: '<?= base_url(); ?>chapter/getsubject/',
-						type: 'POST',
-                        data: {classid:classid},
-                        beforeSend: function () {
-                                    $('#loader').show();
-                                },
-						success: function (res) {
-                            $('#loader').hide();
-						let response=jQuery.parseJSON(res);
-							if (response.type == 'success') {
-                                $('#subjectid').empty();
-                                $('#subjectid').html(response.html);
-								if(subjectselected !==false)
-								{
-									$('#subjectid').val(subjectselected);
-								}
-                                 
-								
-							} else {
-                                $('#subjectid').empty();
-								//toastr.error(response.message, {timeOut: 5000})
-							}
-						}
+				}
+			}
 
-					});
+		});
+	}
 
-}
+
+
+	$(document).on('change', '#classid', function (e) {
+		let classid = $(this).val();
+		getsubject(classid);
+
+	})
+
+	function getsubject(classid, subjectselected = false) {
+		$.ajax({
+			url: '<?= base_url(); ?>chapter/getsubject/',
+			type: 'POST',
+			data: { classid: classid },
+			beforeSend: function () {
+				$('#loader').show();
+			},
+			success: function (res) {
+				$('#loader').hide();
+				let response = jQuery.parseJSON(res);
+				if (response.type == 'success') {
+					$('#subjectid').empty();
+					$('#subjectid').html(response.html);
+					if (subjectselected !== false) {
+						$('#subjectid').val(subjectselected);
+					}
+
+
+				} else {
+					$('#subjectid').empty();
+					//toastr.error(response.message, {timeOut: 5000})
+				}
+			}
+
+		});
+
+	}
+	// Add functionality for 'Select All' checkbox
+	// Add functionality for 'Select All' checkbox
+	$(document).on("change", "#selectAllRows", function () {
+		const isChecked = $(this).is(":checked");
+		const grid = $("#grid").data("kendoGrid");
+		const rows = grid.tbody.find("tr");
+
+		// Check/uncheck all row checkboxes
+		$(".rowCheckbox").prop("checked", isChecked);
+
+		if (isChecked) {
+			// Select all rows
+			grid.select(rows);
+		} else {
+			// Deselect all rows
+			grid.clearSelection();
+		}
+	});
+
+	// Update individual row selection when a row checkbox is clicked
+	$(document).on("change", ".rowCheckbox", function () {
+		const grid = $("#grid").data("kendoGrid");
+		const row = $(this).closest("tr");
+
+		if ($(this).is(":checked")) {
+			grid.select(row); // Select the row
+		} else {
+			grid.clearSelection(row); // Deselect the row
+		}
+
+		// Update 'Select All' checkbox state
+		const allChecked = $(".rowCheckbox:checked").length === $(".rowCheckbox").length;
+		$("#selectAllRows").prop("checked", allChecked);
+	});
 </script>

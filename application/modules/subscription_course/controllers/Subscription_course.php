@@ -181,7 +181,7 @@ class Subscription_course extends CI_Controller {
 
                     // $discountamt=$vouchercode[0]->discountamount;
 
-                    $vouchercode=$this->subsmodel->validatevouchercode();
+                    $vouchercode=$this->model->validatevouchercode();
                     if(isset($vouchercode['data']))
                     {
                         $voucherdata=$vouchercode['data'];
@@ -208,8 +208,23 @@ class Subscription_course extends CI_Controller {
                   
 
                 }
-                //voucher code condtn end
+                if(isset($_POST['applyPromo']) && $_POST['applyPromo']=='Y'){
+                  $promoStatus = false;
 
+                  if($discountamt > 0){
+                    $promoStatus = true;
+                  }
+
+                  echo json_encode(array(
+                    'type' => 'applyPromo',
+                    'status' => $promoStatus,
+                    'oldPrice' => $payamt,
+                    'newPrice' => $payamt-$discountamt
+                  ));
+                  exit();
+                }
+                //voucher code condtn end
+                
         $txn='TFLPC'.time();
         $check_txn=$this->common_model->getRows('transactions',array('productcode'=>$txn),'*','tid');
         if(count($check_txn)>0)
