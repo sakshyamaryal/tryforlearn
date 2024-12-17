@@ -111,7 +111,12 @@ class Studentpanel extends CI_Controller {
         $data['course']=$this->model->getfreecourse();
         $data['type']='free';
         $html=$this->load->view('subject',$data,true);
-        echo json_encode(array('status'=>true,'message'=>'Success','data'=>$data['course'],'html'=>$html));
+        if($data['course']) {
+            echo json_encode(array('status'=>true,'message'=>'Success','data'=>$data['course'],'html'=>$html));            
+        }else{
+            echo json_encode(array('status'=>false,'message'=>'Success','data'=>$data['course'],'html'=>$html));            
+        }
+        
         exit;
     }
     function getchapter()

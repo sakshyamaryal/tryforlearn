@@ -202,23 +202,24 @@ timeleft=parseFloat(timeleft);
 $('#qntimer').val(timeleft);
 
 
-if(timeleft>0)
-{
-    var downloadTimer = setInterval(function(){
-  document.getElementById("timer").innerHTML = timeleft + " seconds remaining";
-$('#totaltimer').val(timeleft);
-  timeleft -= 1;
-  if(timeleft <= 0){
-    clearInterval(downloadTimer);
-    document.getElementById("timer").innerHTML = "Finished";
-    $('#totaltimer').val(0);
+// if(timeleft>0)
+// {
+//     var downloadTimer = setInterval(function(){
+//   document.getElementById("timer").innerHTML = timeleft + " seconds remaining";
+// $('#totaltimer').val(timeleft);
+//   timeleft -= 1;
+//   if(timeleft <= 0){
+//     clearInterval(downloadTimer);
+//     document.getElementById("timer").innerHTML = "Finished";
+//     $('#totaltimer').val(0);
 
-    submit_answer('q');
-  }
-}, 1000);
-}
+//     submit_answer('q');
+//   }
+// }, 1000);
+// }
 
 if (timeleft > 0) {
+
     var downloadTimer = setInterval(function() {
         var formattedTime = formatTime(timeleft);
 
