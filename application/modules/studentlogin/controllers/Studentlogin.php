@@ -62,7 +62,8 @@ class Studentlogin extends CI_Controller {
             {
                
                 redirect(base_url().'studentpanel');
-            }else if($valid==1)
+            }
+            else if($valid==1)
             {
                 $this->session->set_flashdata('error','Your account Is Already Logged In from Another Device');
                 $this->index();

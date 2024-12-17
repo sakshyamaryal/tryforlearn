@@ -111,7 +111,12 @@ class Studentpanel extends CI_Controller {
         $data['course']=$this->model->getfreecourse();
         $data['type']='free';
         $html=$this->load->view('subject',$data,true);
-        echo json_encode(array('status'=>true,'message'=>'Success','data'=>$data['course'],'html'=>$html));
+        if($data['course']) {
+            echo json_encode(array('status'=>true,'message'=>'Success','data'=>$data['course'],'html'=>$html));            
+        }else{
+            echo json_encode(array('status'=>false,'message'=>'Success','data'=>$data['course'],'html'=>$html));            
+        }
+        
         exit;
     }
     function getchapter()
@@ -194,9 +199,10 @@ class Studentpanel extends CI_Controller {
 
         }
         $list=$this->model->getcontent($type);
-        
+
         foreach($list as $k => $v) { $data[] = "$v->contentid"; }
         $listid= implode(',', $data);
+        $data['content_list'] = $list;
         $data['post']=$_POST;
         $data['mode']=$dtype;
       $content=$this->common_model->getRows('content',array('contentid'=>$list[0]->contentid),'*','contentid');
@@ -379,7 +385,7 @@ class Studentpanel extends CI_Controller {
               <tr>
                 <td style="border: 1px solid black;
                 border-collapse: collapse;padding: 10px;
-                text-align: left;">Total No.of Ques</td>
+                text-align: left;">Total No.of Questions</td>
                 <td style="border: 1px solid black;
                 border-collapse: collapse;padding: 10px;
                 text-align: right;">'.$submit['totalques'].'</td>
@@ -388,7 +394,7 @@ class Studentpanel extends CI_Controller {
               <tr>
               <td style="border: 1px solid black;
               border-collapse: collapse;padding: 10px;
-              text-align: left;">Total No.of Attempted Ques</td>
+              text-align: left;">Total No.of Attempted Questions</td>
               <td style="border: 1px solid black;
               border-collapse: collapse;padding: 10px;
               text-align: right;">'.$submit['attemptedques'].'</td>
@@ -397,7 +403,7 @@ class Studentpanel extends CI_Controller {
             <tr>
             <td style="border: 1px solid black;
             border-collapse: collapse;padding: 10px;
-            text-align: left;">Total No.of UnAttempted Ques</td>
+            text-align: left;">Total No.of Unattempted Questions</td>
             <td style="border: 1px solid black;
             border-collapse: collapse;padding: 10px;
             text-align: right;">'.$submit['unattemptedques'].'</td>
@@ -448,26 +454,31 @@ class Studentpanel extends CI_Controller {
           text-align: right;">'.$submit['correct'].'</td>
   
           </tr>
-          <tr>
-          <td style="border: 1px solid black;
-          border-collapse: collapse;padding: 10px;
-          text-align: left;">Total Penalty Score</td>
-          <td style="border: 1px solid black;
-          border-collapse: collapse;padding: 10px;
-          text-align: right;">'.$submit['wrong'].'</td>
-  
-          </tr>
-          <tr>
-          <td style="border: 1px solid black;
-          border-collapse: collapse;padding: 10px;
-          text-align: left;">Grand Total Score</td>
-          <td style="border: 1px solid black;
-          border-collapse: collapse;padding: 10px;
-          text-align: right;">'.$submit['total'].'</td>
-  
-          </tr>
-              
-            </table>';
+          ';
+
+            if ($submit['wrong'] > 0) {
+                
+                $scoretbl .= '<tr>
+                <td style="border: 1px solid black;
+                border-collapse: collapse;padding: 10px;
+                text-align: left;">Total Penalty Score</td>
+                <td style="border: 1px solid black;
+                border-collapse: collapse;padding: 10px;
+                text-align: right;">'.$submit['wrong'].'</td>
+
+                </tr>
+                <tr>
+                <td style="border: 1px solid black;
+                border-collapse: collapse;padding: 10px;
+                text-align: left;">Grand Total Score</td>
+                <td style="border: 1px solid black;
+                border-collapse: collapse;padding: 10px;
+                text-align: right;">'.$submit['total'].'</td>
+
+                </tr>';
+            }
+
+            $scoretbl .= '</table>';
                 echo json_encode(array('status'=>true,'message'=>$msg,'reportable'=>$scoretbl,'ispractise'=>(@$post['isself']=='1')?'Y':'N'));
                 exit; 
             }

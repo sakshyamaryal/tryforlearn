@@ -86,6 +86,7 @@
 }else
 {
  ?>
+ 
 <form method="post" id="answerform">
 <input type="hidden"  name="type" value="quiz"/>
 
@@ -97,6 +98,15 @@
  <input type="hidden" id="totaltimer" name="totaltimer" />
  <input type="hidden" id="qntimer" name="qntimer" />
 <strong id="timer" style="color:red;"></strong>
+
+<?php
+echo '<div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 2px;">';
+    for ($i = 0; $i < count($exer); $i++) {
+        echo '<div class="btn btn-danger btn-quiz-answered-'.($i+1).'" onclick="javascript:void(0);">' . ($i + 1) . '</div>';
+    }
+echo '</div>';
+?>
+
 
 <?php //foreach($exer as $key =>$val){
     // $total=$val->perqnmark*count($val->ques);
@@ -116,6 +126,7 @@
 <?php
 $sn=0;
 $timer=0;
+
 foreach($exer as $list){
      $sn++;
      if($list->examtypeid==0 || $list->examtypeid==8)
@@ -202,23 +213,24 @@ timeleft=parseFloat(timeleft);
 $('#qntimer').val(timeleft);
 
 
-if(timeleft>0)
-{
-    var downloadTimer = setInterval(function(){
-  document.getElementById("timer").innerHTML = timeleft + " seconds remaining";
-$('#totaltimer').val(timeleft);
-  timeleft -= 1;
-  if(timeleft <= 0){
-    clearInterval(downloadTimer);
-    document.getElementById("timer").innerHTML = "Finished";
-    $('#totaltimer').val(0);
+// if(timeleft>0)
+// {
+//     var downloadTimer = setInterval(function(){
+//   document.getElementById("timer").innerHTML = timeleft + " seconds remaining";
+// $('#totaltimer').val(timeleft);
+//   timeleft -= 1;
+//   if(timeleft <= 0){
+//     clearInterval(downloadTimer);
+//     document.getElementById("timer").innerHTML = "Finished";
+//     $('#totaltimer').val(0);
 
-    submit_answer('q');
-  }
-}, 1000);
-}
+//     submit_answer('q');
+//   }
+// }, 1000);
+// }
 
 if (timeleft > 0) {
+
     var downloadTimer = setInterval(function() {
         var formattedTime = formatTime(timeleft);
 
@@ -263,6 +275,9 @@ function get_visibility(val,ansid,qid)
     $('#q_answer'+val+ansid+qid).prop('checked',true);
     $('#q_answerlabel'+val+ansid+qid).addClass('selected');
     $('#tick'+val+ansid+qid).attr('style','visibility: true;  margin-left: 2rem;');
+   
+    $('.btn-quiz-answered-' + val).attr('style', 'visibility: visible; background-color: lightseagreen;');
+
 }
 
 </script>
