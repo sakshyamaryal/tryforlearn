@@ -164,10 +164,10 @@ ul.breadcrumb li a:hover {
           <div class="row quizintro" >
           <div class="col-md-2 col-sm-2">
               <select id="optquiztype" class="form-control quizopt">
+              <option value="4">4 Questions</option>
               <option value="5">5 Questions</option>
+              <option value="8">8 Questions</option>
               <option value="10">10 Questions</option>
-              <option value="20">20 Questions</option>
-              <option value="30">30 Questions</option>
               </select>
               </div>
               <div class="col-md-4 col-sm-4" style="    margin-top: 5px;">
