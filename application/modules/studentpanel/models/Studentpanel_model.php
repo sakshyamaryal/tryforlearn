@@ -179,7 +179,7 @@ class Studentpanel_model extends CI_Model {
       {
         $where ="   classid='".$_POST['class']."' and subjectid='".$_POST['subject']."' and ";
       }
-        $sql="select contentid from content where type='default' and  chapterid=? and topicid=? and is_active=1 order by orderby";
+        $sql="select contentid,title from content where type='default' and  chapterid=? and topicid=? and is_active=1 order by orderby";
         $res=$this->db->query($sql,array($_POST['chapter'],$_POST['topic']))->result();
        return $res;
     }

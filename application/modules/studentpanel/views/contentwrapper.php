@@ -32,14 +32,15 @@ ul.breadcrumb li a:hover {
 }
 .iframe-container {
     .overlay {
-      display: none;
+      /* display: none; */
+      opacity: 0;
     }
     .overlay-bottom-right{
       /* position: relative !important;
       margin-top: 20px;
       background: none !important; */
-      display: none;
-
+      /* display: none; */
+      opacity: 0;
     }
 }
 
@@ -64,7 +65,6 @@ ul.breadcrumb li a:hover {
   <li><a href="javascript:void(0)" data-val="<?= @$post['topic']; ?>" data-topicname="<?=@$post['topicname']?>" class="getmenu<?= @$post['topic']; ?>" onclick="getmenu(<?= @$post['topic']; ?>)"><?=@$post['topicname']?></a>
   </li>
 </ul>
-</div>
 
 <div class="col-md-12 col-sm-12">
 
@@ -80,7 +80,24 @@ ul.breadcrumb li a:hover {
 
   <div class="tab-content">
     <div id="tabcontent" class="tab-pane fade in active">
+    <ul style="list-style: none; padding: 0; margin: 0;">
+        <?php $index = 0; foreach ($content_list as $contents): ?>
+            <li class="course-title"  
+                data-contentid="<?= htmlspecialchars($contents->contentid) ?>" 
+                data-pagenumber="<?= htmlspecialchars($index + 1) ?>" 
+                data-contentno="<?= htmlspecialchars($index + 1) ?>">
+                <a href="#">
+                    <?= htmlspecialchars($contents->title) ?>
+                </a>
+            </li>
+            <?php $index++; ?>
+        <?php endforeach; ?>
+    </ul>
+
+
       <h3 class="tabcontenttitle"><?= @$content->title;?></h3>
+      
+
         <span class="tabcontentdetail"><?= @$content->detail;?></span><br/>
         <button type="button" class="btn btn-primary" id="prev_button">Previous</button>
         <button type="button" class="btn btn-primary" id="next_button">Next</button>
@@ -224,11 +241,34 @@ function prevItem() {
 
     }
     i = i - 1; // decrease by one
+
     updatePagination(i, false, true);
     return arr[i]; // give us back the item of where we are now
 }
 $('#next_button').click(function(e){
   var cid=nextItem();
+  getcontent(cid);
+});
+
+$('.course-title').click(function(e){
+  var cid = $(this).attr('data-contentid');
+  var pagenumber = $(this).attr('data-pagenumber');
+  pagenumber = parseInt(pagenumber);
+  i = pagenumber - 1;
+  currentPage = pagenumber;
+  if (pagenumber == 1) {
+    $('#prev_button').hide();
+    $('#next_button').show();
+  }else if (pagenumber == arr.length) {
+    $('#next_button').hide();
+    $('#prev_button').show();
+  }else{
+    $('#next_button').show();
+    $('#prev_button').show();
+  }
+
+  $('#page_number').text('Page ' + (currentPage) + ' of ' + arr.length);
+
   getcontent(cid);
 });
 

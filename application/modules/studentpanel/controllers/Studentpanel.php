@@ -199,9 +199,10 @@ class Studentpanel extends CI_Controller {
 
         }
         $list=$this->model->getcontent($type);
-        
+
         foreach($list as $k => $v) { $data[] = "$v->contentid"; }
         $listid= implode(',', $data);
+        $data['content_list'] = $list;
         $data['post']=$_POST;
         $data['mode']=$dtype;
       $content=$this->common_model->getRows('content',array('contentid'=>$list[0]->contentid),'*','contentid');
