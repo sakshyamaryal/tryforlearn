@@ -59,6 +59,7 @@
 
 
   $('#btnsave').click(function (e) {
+    $('#applyPromoVal').val('N');
     purchasecourse();
 
   });
@@ -88,7 +89,6 @@
           $('#oldPrice').text(response.oldPrice);
           $('#newPriceDiv').css('display', 'block');
           $('#newPrice').text(response.newPrice);
-          $('#applyPromoVal').val('N');
         }
         else {
           //alert(response.message);

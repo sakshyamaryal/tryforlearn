@@ -260,17 +260,57 @@ class Users extends CI_Controller
 		$ids = explode(',', $_POST['userId']);
 
 		foreach($ids as $id){
-			$insert_enroll=array(
-				'userid'=>$id,
-				'levelid'=>$_POST['class'],
-				'classid'=>$_POST['classid'],
-				'subjectid'=>$_POST['subjectid'],
-				'start_date'=>date('Y-m-d'),
-				'end_date'=>$enddate,
-				'current_status'=>1,
-				'is_active'=>1
-			);
-			$enrollid=$this->common_model->insert('student_enroll',$insert_enroll);
+
+			$whereData = array('userid' => $id, 'levelid' => $_POST['class'], 'classid' => $_POST['classid'], 'subjectid' => $_POST['subjectid']);
+
+			$oldData = $this->common_model->getRows('student_enroll', $whereData, '*', 'start_date desc');
+
+			if(count($oldData) > 0){
+				if($_POST['package']==$newdata->onemonth)
+				{
+					$feepackage='One Month';
+					$enddate=date('Y-m-d', strtotime("+1 months", strtotime($oldData[0]->end_date)));
+				}
+				else if($_POST['package']==$newdata->threemonth)
+				{
+					$feepackage='Three Month';
+					$enddate =date('Y-m-d', strtotime("+3 months", strtotime($oldData[0]->end_date)));
+				}
+				else if($_POST['package']==$newdata->sixmonth)
+				{
+					$feepackage='Six Month';
+					$enddate =date('Y-m-d', strtotime("+6 months", strtotime($oldData[0]->end_date)));
+				}
+				else if($_POST['package']==$newdata->oneyear)
+				{
+					$feepackage='One Year';
+					$enddate =date('Y-m-d', strtotime("+1 year", strtotime($oldData[0]->end_date)));
+				}
+
+				$updateData = array(
+					'end_date' => $enddate,
+					'current_status'=>1,
+					'is_active'=>1
+				);
+
+				$enrollid = $oldData[0]->id;
+
+				$this->common_model->update('student_enroll', $updateData, $whereData);
+
+			}
+			else{
+				$insert_enroll=array(
+					'userid'=>$id,
+					'levelid'=>$_POST['class'],
+					'classid'=>$_POST['classid'],
+					'subjectid'=>$_POST['subjectid'],
+					'start_date'=>date('Y-m-d'),
+					'end_date'=>$enddate,
+					'current_status'=>1,
+					'is_active'=>1
+				);
+				$enrollid=$this->common_model->insert('student_enroll',$insert_enroll);
+			}
 			$sfee=array(
 				'student_id'=>$id,
 				'student_enroll_id'=>$enrollid,
