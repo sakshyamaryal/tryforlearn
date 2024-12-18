@@ -181,7 +181,10 @@ class Subscription_course extends CI_Controller {
 
                     // $discountamt=$vouchercode[0]->discountamount;
 
-                    $vouchercode=$this->subsmodel->validatevouchercode();
+                    // $vouchercode=$this->subsmodel->validatevouchercode();
+                    // upper modal not registered in constructer
+                    $vouchercode=$this->model->validatevouchercode();
+                    
                     if(isset($vouchercode['data']))
                     {
                         $voucherdata=$vouchercode['data'];

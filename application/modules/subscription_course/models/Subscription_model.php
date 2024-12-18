@@ -37,6 +37,105 @@ class Subscription_model extends CI_Model {
     $maxlimit=0;
     $sql="select * from transactions where studentid=? and vouchercode=? and status='S'";
     $res=$this->db->query($sql,array($this->input->get_request_header('Userid', True),$_POST['vouchercode']));
+
+    if(($res->num_rows()) > 0)
+    {
+      return 'Voucher Already Used Before';
+    }
+    else 
+    {
+          // get vouchercode detail with validating validity date
+          $sql = "SELECT * FROM vouchercode WHERE vouchercode=? AND levelid=? AND classid=? AND packagetype=? AND validtill >=? ";
+          $res = $this->db->query($sql, array($_POST['vouchercode'], $_POST['class'], $_POST['classid'], $_POST['package'], date('Y-m-d')));
+          // echo $this->db->last_query();exit;
+
+          if(($res->num_rows()) < 1)
+          {
+            return 'Voucher code didnt matched';
+             
+
+          }
+          else if(($res->num_rows())=='1')
+          {
+            $voucherdata=$res->row();
+
+            if($voucherdata->subjectid==$_POST['subjectid'])
+            {
+              //subjectid matched
+              $maxlimit=$res->row()->maxlimit;
+
+            }
+            else if($voucherdata->subjectid=='0')
+            {
+              //all subjectid case, no need to comapre subject
+              $maxlimit=$res->row()->maxlimit;
+
+            }
+            else
+            {
+              return 'Voucher Code didnt matched';
+            }
+          }
+          else
+          {
+
+            $sql=$sql." and subjectid=?";
+            $res=$this->db->query($sql,array($_POST['vouchercode'],$_POST['levelid'],$_POST['classid'],date('Y-m-d'),date('Y-m-d'),$_POST['subjectid']));
+
+            if(($res->num_rows()) < 1)
+            {
+              return 'Voucher code didnt matched';
+            }
+            else
+            {
+              $voucherdata=$res->row();
+
+              // matched
+              $maxlimit=$res->row()->maxlimit;
+
+            }
+
+          }
+
+
+          if($maxlimit > 0)
+          {
+
+             // check if quota of limit qty exceeded or not
+          $sql="select count(*) as total from transactions where vouchercode=? and status='S'";
+          $res=$this->db->query($sql,array($_POST['vouchercode']))->row();
+          $total=$res->total;
+
+           if($total < $maxlimit)
+           {
+
+            return array('data'=>$voucherdata);
+
+
+           }
+           else
+           {
+            return 'Voucher Code limit exceeded.';
+           }
+          }
+         
+
+    }
+
+   }
+
+
+
+   function validatevouchercode_copy_17_dec_2024()
+   {
+    // first check if this user has used this voucher before or not
+    // get vouchercode detail with validating validity date
+   // check if quota of limit qty exceeded or not
+
+    $maxlimit=0;
+    $sql="select * from transactions where studentid=? and vouchercode=? and status='S'";
+    $res=$this->db->query($sql,array($this->input->get_request_header('Userid', True),$_POST['vouchercode']));
+
     if(count($res->num_rows()) > 0)
     {
       return 'Voucher Already Used Before';
