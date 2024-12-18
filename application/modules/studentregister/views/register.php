@@ -71,7 +71,27 @@
                            </div>
                         </div>
                       
-                       </div> 
+                       </div>
+                       <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <input type="checkbox" id="is_differently_abled" name="is_differently_abled" value="Y" />
+                                 <label for="is_differently_abled">Are you differently abled?</label>
+                                 <span id="differently_abled_message" style="color:red; display:none;">You must submit your document for differently-abled verification in the Edit Profile section.</span>
+                              </div>
+                              <!-- Warning message that shows when the checkbox is checked -->
+                              
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                    <label for="gender">Gender</label><br>
+                                    <input type="radio" name="gender" value="M" id="gender_m" <?php echo set_value('gender') == 'M' ? 'checked' : ''; ?>>
+                                    <label for="gender_m">Male</label>
+                                    <input type="radio" name="gender" value="F" id="gender_f" <?php echo set_value('gender') == 'F' ? 'checked' : ''; ?>>
+                                    <label for="gender_f">Female</label>
+                              </div>
+                           </div>
+                     </div> 
 
                        <?php if($type=='normal'): ?>
                        <div class="row">
@@ -88,8 +108,7 @@
                           </div>
                          </div>
                        </div>      
-                       <?php endif;?>               
-                           
+                       <?php endif;?>
                           
                            <div class="form-group">
                               <p class="text-center">By signing up you accept our <a href="#">Terms Of Use</a></p>
@@ -112,3 +131,13 @@
          
 
 </div>
+<script>
+    document.getElementById('is_differently_abled').addEventListener('change', function() {
+        var message = document.getElementById('differently_abled_message');
+        if (this.checked) {
+            message.style.display = 'inline';
+        } else {
+            message.style.display = 'none';
+        }
+    });
+</script>

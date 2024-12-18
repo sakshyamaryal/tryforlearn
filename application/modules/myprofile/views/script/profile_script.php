@@ -44,6 +44,7 @@ function editmyprofile()
 function updatemyprofile()
 { 
     var file_data = $('#file').prop('files')[0];
+    var user_verification_file = $('#verification_file_url').prop('files')[0];
     var form_data = new FormData();
     form_data.append('file', file_data);
     form_data.append('fname', $('#fname').val());
@@ -56,6 +57,8 @@ function updatemyprofile()
     form_data.append('citizenship', $('#citizenship').val());
     form_data.append('extra_information', $('#extra_information').val());
     form_data.append('language', $('#language').val());
+    form_data.append('user_verification_file', user_verification_file);
+
     var url=base_url+"myprofile/updatemyprofile";
     $.when(requestmethod(form_data, url)).then(function(res){
                  $('#addmodal').modal('hide');

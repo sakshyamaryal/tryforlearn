@@ -47,9 +47,9 @@
             <a href="<?= base_url(); ?>studentpanel" class="list-group-item">
                 <i class="fa fa-book-open"></i> Switch to My Course
             </a>
-            <!-- <a href="<? //= base_url(); ?>studentpanel/allcourses" class="list-group-item">
+            <a href="<?= base_url(); ?>studentpanel/allcourses" class="list-group-item">
                 <i class="fa fa-book-open"></i> Other Courses
-            </a> -->
+            </a>
             <a href="<?= base_url(); ?>subscription_course" class="list-group-item">
                 <i class="fa fa-book-open"></i> Subscription List
             </a>

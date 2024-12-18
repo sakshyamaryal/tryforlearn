@@ -466,7 +466,7 @@ class Studentpanel extends CI_Controller {
                 $scoretbl .= '<tr>
                 <td style="border: 1px solid black;
                 border-collapse: collapse;padding: 10px;
-                text-align: left;">Total Penalty Score</td>
+                text-align: left;">Total Penalty Score ( '.$submit['penalty_percentage'] . '% ) </td>
                 <td style="border: 1px solid black;
                 border-collapse: collapse;padding: 10px;
                 text-align: right;">'.$submit['wrong'].'</td>
