@@ -246,10 +246,31 @@
 								</div>
 							</div>
 						
-
-						
-						
 						</div>
+						<div class="row">
+							<div class="col-md-3">
+									<div class="form-group">
+										<label>Student Differently Abeled</label>
+										<div>
+											<p id="is_differently_abled"></p>
+											
+										</div>
+
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label>Document</label>
+										<div>
+											<a id="document" href="">View Documents</a>
+											
+										</div>
+
+									</div>
+								</div>
+								
+
+							</div>
 
 
 					</div>

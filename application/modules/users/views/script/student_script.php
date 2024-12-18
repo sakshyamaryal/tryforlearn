@@ -152,6 +152,16 @@
 					// 	ui: approveFilter
 					// }
 				},
+				{
+					field: "is_differently_abled",
+					title: "Differently Abled",
+					width: "100px",
+				},
+				{
+					field: "is_disability_approved",
+					title: "Is Differently Abled Approved",
+					width: "100px",
+				},
 
 				// {
 				// 	field: "is_active",
@@ -344,6 +354,14 @@
 				toastr.warning('Please select one row to View Detail', { timeOut: 5000 })
 				return false;
 			}
+			const document_file_path = '<?= base_url(); ?>upload/student/' + dataItem.user_verification_file;
+			if (dataItem.user_verification_file) {
+				$('#document').text('preview');
+			}else {
+				$('#document').text(
+					'No Document available'
+				);
+			}
 			$('#viewname').html(dataItem.fullname);
 			$('#viewaddress').html(dataItem.address);
 			$('#viewphone').html(dataItem.phone);
@@ -355,6 +373,8 @@
 			$('#viewinstitution').html(dataItem.guardian_detail);
 			$('#viewinstitutionnumber').html(dataItem.guardian_number);
 			$('#viewimage').attr('src', '<?= base_url(); ?>upload/student/' + dataItem.image);
+			$('#is_differently_abled').html(dataItem.is_differently_abled);
+			$('#document').attr('href', document_file_path).attr('target', '_blank');
 			$('#detailmodal').modal('show');
 
 		});
