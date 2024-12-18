@@ -100,7 +100,12 @@ class Studentpanel extends CI_Controller {
     function getsubject()
     {
         $data['course']=$this->model->getsubscription();
+
+        if (!$this->input->post('classid')) {
+            $data['free_course']=$this->model->getfreecourse();
+        }
         $data['type']='paid';
+
         $html=$this->load->view('subject',$data,true);
         echo json_encode(array('status'=>true,'message'=>'Success','data'=>$data['course'],'html'=>$html));
         exit;
