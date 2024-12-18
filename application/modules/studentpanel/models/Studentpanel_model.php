@@ -226,6 +226,10 @@ class Studentpanel_model extends CI_Model {
       $sql="select * from exercise where classid=? and subjectid=? and chapterid=? and is_subj_obj='Y' and is_active=1 and is_common='Y' ".$order." limit ".$post['no'];
       $res=$this->db->query($sql,array(((int)@$post['class']>0)?$post['class']:0,((int)@$post['subject']>0)?$post['subject']:0,$post['chapter']))->result();
       
+      if (empty($res)) {
+        return array();
+      }
+
       $res_group[$key]->ques=$res;
       if(isset($_POST['isapi']))
       {
@@ -355,7 +359,7 @@ class Studentpanel_model extends CI_Model {
       $sql="select * from exercise where classid=? and subjectid=? and is_subj_obj='N' and is_active=1 and is_common='Y' $where ".$order." limit ".$post['no'];
       $res=$this->db->query($sql,array(((int)@$post['class']>0)?$post['class']:0,((int)@$post['subject']>0)?$post['subject']:0))->result();
      
-      // // var_dump($this->db->last_query());
+      // var_dump($this->db->last_query());
       foreach($res as $li =>$row)
        {
          $ans="select optionid,optionname,optionname_nep from exercise_option where eid=? and is_active=1 order by rand()";
@@ -632,5 +636,34 @@ class Studentpanel_model extends CI_Model {
       return false;
     }
   }
+
+  public function getCourseRelatedVideos()
+  {
+      $contentids = $this->input->post('contentids'); // Expecting an array
+  
+      if (!is_array($contentids)) {
+          return array(); // Return empty array if input is not valid
+      }
+  
+      // Clean the array to ensure it only contains integers
+      $contentids = array_map('intval', $contentids);
+  
+      // If the array is empty after cleaning, return an empty result
+      if (empty($contentids)) {
+          return array();
+      }
+  
+      // Use query bindings to safely pass the array
+      $placeholders = implode(',', array_fill(0, count($contentids), '?'));
+      $sql = "SELECT * FROM `contentfile` WHERE contentid IN ($placeholders) AND `filetype` = 'video'";
+      $query = $this->db->query($sql, $contentids);
+  
+      if ($query->num_rows() > 0) {
+          return $query->result();
+      } else {
+          return array();
+      }
+  }
+  
     
 }

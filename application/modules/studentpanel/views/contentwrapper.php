@@ -408,28 +408,31 @@ $('#navtabfile').click(function(e){
 });
 
 $('#navtabvideo').click(function(e){
-  
-  
-  var contentid=$(this).attr('data-val');
-  if(localStorage.currenttabvideo)
-  {
-     if(contentid!=localStorage.getItem('currenttabvideo'))
-     {
-       getcontentfile(contentid,'v');
-     }
-     else
-     {
-       var text=$('.tabvideodetail').html();
-          if(text.length<1)
-          {
-            getcontentfile(contentid,'v');
-          }
-     }
 
-  }else
-  {
-    getcontentfile(contentid,'v');
-  }
+  getCourseRelatedVideos(arr);
+  //  commented because needed all videos to related course topics un comment this to get id wise only
+
+  // var contentid=$(this).attr('data-val');
+  // console.log(contentid);
+  // if(localStorage.currenttabvideo)
+  // {
+  //    if(contentid!=localStorage.getItem('currenttabvideo'))
+  //    {
+  //      getcontentfile(contentid,'v');
+  //    }
+  //    else
+  //    {
+  //      var text=$('.tabvideodetail').html();
+  //         if(text.length<1)
+  //         {
+  //           getcontentfile(contentid,'v');
+  //         }
+  //    }
+
+  // }else
+  // {
+  //   getcontentfile(contentid,'v');
+  // }
 
 });
 

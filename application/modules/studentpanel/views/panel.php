@@ -1,7 +1,7 @@
 
 <div class="col-md-9 rightcontainer"  id="contentx" style="margin-top:10px;">
 
-<h3 style="margin-left: 17px;">My Courses</h3>
+<!-- <h3 style="margin-left: 17px;">My Courses</h3> -->
 <div class="row" id="studentwrapper">
 
 
