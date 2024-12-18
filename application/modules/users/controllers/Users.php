@@ -266,25 +266,27 @@ class Users extends CI_Controller
 			$oldData = $this->common_model->getRows('student_enroll', $whereData, '*', 'start_date desc');
 
 			if(count($oldData) > 0){
-				if($_POST['package']==$newdata->onemonth)
-				{
-					$feepackage='One Month';
-					$enddate=date('Y-m-d', strtotime("+1 months", strtotime($oldData[0]->end_date)));
-				}
-				else if($_POST['package']==$newdata->threemonth)
-				{
-					$feepackage='Three Month';
-					$enddate =date('Y-m-d', strtotime("+3 months", strtotime($oldData[0]->end_date)));
-				}
-				else if($_POST['package']==$newdata->sixmonth)
-				{
-					$feepackage='Six Month';
-					$enddate =date('Y-m-d', strtotime("+6 months", strtotime($oldData[0]->end_date)));
-				}
-				else if($_POST['package']==$newdata->oneyear)
-				{
-					$feepackage='One Year';
-					$enddate =date('Y-m-d', strtotime("+1 year", strtotime($oldData[0]->end_date)));
+				if(strtotime($oldData[0]->end_date) > strtotime(date('Y-m-d'))){
+					if($_POST['package']==$newdata->onemonth)
+					{
+						$feepackage='One Month';
+						$enddate=date('Y-m-d', strtotime("+1 months", strtotime($oldData[0]->end_date)));
+					}
+					else if($_POST['package']==$newdata->threemonth)
+					{
+						$feepackage='Three Month';
+						$enddate =date('Y-m-d', strtotime("+3 months", strtotime($oldData[0]->end_date)));
+					}
+					else if($_POST['package']==$newdata->sixmonth)
+					{
+						$feepackage='Six Month';
+						$enddate =date('Y-m-d', strtotime("+6 months", strtotime($oldData[0]->end_date)));
+					}
+					else if($_POST['package']==$newdata->oneyear)
+					{
+						$feepackage='One Year';
+						$enddate =date('Y-m-d', strtotime("+1 year", strtotime($oldData[0]->end_date)));
+					}
 				}
 
 				$updateData = array(
