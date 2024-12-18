@@ -8,14 +8,14 @@
 					url: "<?php echo base_url(); ?>services/update",
 					complete: function (e) {
 
-						toastr.success('Services has been updated', {timeOut: 5000})
+						toastr.success('Services has been updated', { timeOut: 5000 })
 						$("#grid").data("kendoGrid").dataSource.read();
 					}
 				},
 				create: {
 					url: "<?php echo base_url(); ?>services/add",
 					complete: function (e) {
-						toastr.success('Services has been added', {timeOut: 5000})
+						toastr.success('Services has been added', { timeOut: 5000 })
 						$("#grid").data("kendoGrid").dataSource.read();
 					}
 				},
@@ -25,11 +25,11 @@
 				destroy: {
 					url: "<?php echo base_url(); ?>services/delete",
 					complete: function (e) {
-						toastr.success('Services has been deleted', {timeOut: 5000})
+						toastr.success('Services has been deleted', { timeOut: 5000 })
 						$("#grid").data("kendoGrid").dataSource.read();
 					}
 				},
-	
+
 				parameterMap: function (data, operation) {
 					if (data.filter === null) {
 						return data;
@@ -60,12 +60,12 @@
 				data: "resource",
 				model: {
 					id: "service_id",
-					fields:{
-					service_id:{type: "number"},
-					service_name: {type: "string", validation: { required: true}},
-					desc: {type: "string",  validation: { required: true}},
-					fonticon: {type: "string",  validation: { required: true}},
-					is_active: {type: "string",  validation: { required: true}},
+					fields: {
+						service_id: { type: "number" },
+						service_name: { type: "string", validation: { required: true } },
+						desc: { type: "string", validation: { required: true } },
+						fonticon: { type: "string", validation: { required: true } },
+						is_active: { type: "string", validation: { required: true } },
 					}
 
 				},
@@ -107,16 +107,19 @@
 				buttonCount: 10
 			},
 			// height: 450,
-			selectable: true,
+			selectable: 'multiple',
 			toolbar: ["create"],
 			editable: "inline",
 			// toolbar: kendo.template($("#template").html()),
-			columns: [{
-				title: "S.N",
-				template: "#= ++record #",
-				width: "50px",
-				filterable: false
-			},
+			columns: [
+				{
+					title: "<input type='checkbox' id='selectAllRows' /> S.N",
+					template: function (dataItem) {
+						return `<input type='checkbox' class='rowCheckbox' data-id='${dataItem.service_id}' /> ${++record}`;
+					},
+					width: "50px",
+					filterable: false
+				},
 				{
 					field: "service_name",
 					title: "Name",
@@ -145,7 +148,7 @@
 				{ command: ["edit", "destroy"], title: "&nbsp;", width: "250px" },
 
 			],
-			
+
 			dataBinding: function () {
 				record = (this.dataSource.page() - 1) * this.dataSource.pageSize();
 			}
@@ -153,20 +156,20 @@
 
 
 
-		var status_data = [{name: "inactive", value: "0"}, {name: "Active", value: "1"}];
+		var status_data = [{ name: "inactive", value: "0" }, { name: "Active", value: "1" }];
 
 
 		function statusDropDownEditor(container, options) {
-                    $('<input required name="' + options.field + '"/>')
-                        .appendTo(container)
-                        .kendoDropDownList({
-                            autoBind: true,
-                            dataTextField: "name",
-                            dataValueField: "value",
-							dataSource: status_data,
-                           
-                        });
-                }
+			$('<input required name="' + options.field + '"/>')
+				.appendTo(container)
+				.kendoDropDownList({
+					autoBind: true,
+					dataTextField: "name",
+					dataValueField: "value",
+					dataSource: status_data,
+
+				});
+		}
 
 
 		function statusFilter(element) {
@@ -261,7 +264,7 @@
 			var grid = $('#grid').data('kendoGrid');
 			var dataItem = grid.dataItem(grid.select());
 			if (dataItem == null) {
-				toastr.warning('Please select one row to edit', {timeOut: 5000})
+				toastr.warning('Please select one row to edit', { timeOut: 5000 })
 				return false;
 			}
 			window.location = "<?php echo base_url(); ?>/pages/edit/" + dataItem.page_id;
@@ -272,9 +275,16 @@
 
 		$("#delete").on("click", function name(e) {
 			var grid = $('#grid').data('kendoGrid');
-			var dataItem = grid.dataItem(grid.select());
-			if (dataItem == null) {
-				toastr.warning('Please select one row to delete', {timeOut: 5000})
+			var selectedRows = grid.select();
+
+			var selectedData = [];
+			selectedRows.each(function () {
+				var dataItem = grid.dataItem(this);
+				selectedData.push(dataItem.service_id);
+			});
+
+			if (selectedData.length < 1) {
+				toastr.warning('Please select one row to delete', { timeOut: 5000 })
 				return false;
 			}
 
@@ -282,19 +292,19 @@
 
 				if (result) {
 					$.ajax({
-						url: '<?= base_url(); ?>users/delete',
+						url: '<?= base_url(); ?>services/delete',
 						type: 'POST',
-						data: {id: dataItem.user_id},
+						data: { id: selectedData },
 						success: function (response) {
 							var response = jQuery.parseJSON(response);
 
 							console.log(response.success);
 							if (response.success == true) {
-								toastr.success(response.messages, {timeOut: 5000})
+								toastr.success(response.messages, { timeOut: 5000 })
 								$("#grid").data("kendoGrid").dataSource.filter({});
 								$("#grid").data("kendoGrid").dataSource.read();
 							} else {
-								toastr.error(response.messages, {timeOut: 5000})
+								toastr.error(response.messages, { timeOut: 5000 })
 							}
 						}
 
@@ -304,6 +314,51 @@
 
 
 		})
+
+		// Add functionality for 'Select All' checkbox
+		$(document).on("change", "#selectAllRows", function () {
+			const isChecked = $(this).is(":checked");
+			const grid = $("#grid").data("kendoGrid");
+
+			if (isChecked) {
+				// Show all data by setting the page size to the total number of rows
+				const dataSource = grid.dataSource;
+				const totalRows = dataSource.total();
+				dataSource.pageSize(totalRows);
+
+				// Use a timeout to ensure the grid refreshes before selection
+				setTimeout(() => {
+					const rows = grid.tbody.find("tr");
+					$(".rowCheckbox").prop("checked", true);
+					grid.select(rows);
+				}, 100);
+			} else {
+				grid.dataSource.pageSize(20);
+				$(".rowCheckbox").prop("checked", false);
+				grid.clearSelection();
+			}
+		});
+
+		// Update individual row selection when a row checkbox is clicked
+		$(document).on("change", ".rowCheckbox", function () {
+			const grid = $("#grid").data("kendoGrid");
+			const dataId = $(this).attr("data-id"); // Get the data-id of the checkbox
+			const input = grid.table.find(`input[data-id='${dataId}']`);
+			const row = input.closest("tr");// Locate the corresponding row
+
+			if ($(this).is(":checked")) {
+				grid.select(row); // Select the row
+			} else {
+				const selectedRows = grid.select().toArray();
+				const remainingRows = selectedRows.filter((selectedRow) => selectedRow !== row[0]);
+				grid.clearSelection();
+				remainingRows.forEach((remainingRow) => grid.select($(remainingRow)));
+			}
+
+			// Update 'Select All' checkbox state
+			const allChecked = $(".rowCheckbox:checked").length === $(".rowCheckbox").length;
+			$("#selectAllRows").prop("checked", allChecked);
+		});
 
 
 	});

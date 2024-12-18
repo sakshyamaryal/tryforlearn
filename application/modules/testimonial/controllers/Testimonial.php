@@ -98,7 +98,10 @@ class Testimonial extends CI_Controller
 			'is_active' => 0,
 
 		);
-		if ($this->model->updatetestimonial($data_arr, $_GET['models'][0]['testomonial_id'])) {
+
+		$ids = $this->input->post('id') ? $this->input->post('id') : $_GET['models'][0]['testomonial_id'];
+
+		if ($this->model->updatetestimonial($data_arr, $ids)) {
 
 			$validator['success'] = true;
 			$validator['messages'] = "testimonial has been deleted";

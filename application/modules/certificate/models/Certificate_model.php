@@ -61,7 +61,7 @@ class Certificate_model extends CI_Model {
     }
     public  function delete_student()
     {
-        $this->db->where('SC_ID',$this->input->post('id'));
+        $this->db->where_in('SC_ID',$this->input->post('id'));
         $this->db->delete('s_certificate');
         return true;
        

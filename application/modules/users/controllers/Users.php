@@ -215,7 +215,7 @@ class Users extends CI_Controller
 	function subscribe()
 	{
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('userId', 'User', 'required|greater_than[0]');
+		$this->form_validation->set_rules('userId[]', 'User Id', 'required');
 		$this->form_validation->set_rules('class', 'Level', 'required|greater_than[0]');
 		$this->form_validation->set_rules('classid', 'Class', 'required|greater_than[0]');
 		$this->form_validation->set_rules('subjectid', 'Subject', 'required|greater_than[0]');
@@ -255,35 +255,41 @@ class Users extends CI_Controller
 
 		}
 
-		$insert_enroll=array(
-			'userid'=>$_POST['userId'],
-			'levelid'=>$_POST['class'],
-			'classid'=>$_POST['classid'],
-			'subjectid'=>$_POST['subjectid'],
-			 'start_date'=>date('Y-m-d'),
-			 'end_date'=>$enddate,
-			 'current_status'=>1,
-			 'is_active'=>1
-		);
 		$this->db->trans_begin();
-		$enrollid=$this->common_model->insert('student_enroll',$insert_enroll);
-		$sfee=array(
-			'student_id'=>$_POST['userId'],
-			'student_enroll_id'=>$enrollid,
-			'levelid'=>$_POST['class'],
-			'classid'=>$_POST['classid'],
-			'subjectid'=>$_POST['subjectid'],
-			'feepackage'=>$feepackage,
-			'paid_amount'=>$_POST['package'],
-			 'paid_date'=>date('Y-m-d'),
-			 'is_paid'=>1,
-			 'issued_by'=>$this->session->adminuserid,
-			 'issued_date'=>date('Y-m-d'),
-			 'transactionid'=>0,
-			 'remarks'=>@$_POST['remarks'],
-			 'frompage'=>'STUDENTLIST-ADMIN'
-		);
-		$this->common_model->insert('student_fee',$sfee);
+
+		$ids = explode(',', $_POST['userId']);
+
+		foreach($ids as $id){
+			$insert_enroll=array(
+				'userid'=>$id,
+				'levelid'=>$_POST['class'],
+				'classid'=>$_POST['classid'],
+				'subjectid'=>$_POST['subjectid'],
+				'start_date'=>date('Y-m-d'),
+				'end_date'=>$enddate,
+				'current_status'=>1,
+				'is_active'=>1
+			);
+			$enrollid=$this->common_model->insert('student_enroll',$insert_enroll);
+			$sfee=array(
+				'student_id'=>$id,
+				'student_enroll_id'=>$enrollid,
+				'levelid'=>$_POST['class'],
+				'classid'=>$_POST['classid'],
+				'subjectid'=>$_POST['subjectid'],
+				'feepackage'=>$feepackage,
+				'paid_amount'=>$_POST['package'],
+				'paid_date'=>date('Y-m-d'),
+				'is_paid'=>1,
+				'issued_by'=>$this->session->adminuserid,
+				'issued_date'=>date('Y-m-d'),
+				'transactionid'=>0,
+				'remarks'=>@$_POST['remarks'],
+				'frompage'=>'STUDENTLIST-ADMIN'
+			);
+			$this->common_model->insert('student_fee',$sfee);
+		}
+		
 		if ($this->db->trans_status() === FALSE)
 		{
 				$this->db->trans_rollback();

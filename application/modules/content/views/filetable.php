@@ -6,6 +6,7 @@
 <th class="my-th" style="text-align:center;">Title</th>
 <th class="my-th" style="text-align:center;">File</th>
 <th class="my-th" style="text-align:center;">Order By</th>
+<th class="my-th" style="text-align:center;">Only App</th>
 <th class="my-th donotprint" style="text-align:center;">Action</th>
 
 
@@ -59,6 +60,12 @@ else if($list->filetype='file')
 <div class=" fileqn fileqn<?=$list->fileid;?>"><?= $list->orderby;?></div>
 <div class="inlineeditqn inlineeditqn<?=$list->fileid;?>">
 <input type="number" id="fileorderby<?=$list->fileid;?>" name="fileorderby" value="<?=$list->orderby;?>" />
+</div>
+</td>
+<td>
+<div class=" fileqn fileqn<?=$list->fileid;?>"><?= $list->only_for_app == 'Y' ? 'Yes' : 'No';?></div>
+<div class="inlineeditqn inlineeditqn<?=$list->fileid;?>">
+<input type="checkbox" id="onlyForAppUp<?=$list->fileid;?>" name="onlyForAppUp" <?= $list->only_for_app == 'Y' ? 'checked' : ''; ?> />
 </div>
 </td>
 

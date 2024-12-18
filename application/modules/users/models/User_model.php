@@ -262,7 +262,8 @@ class User_model extends CI_Model
 // 		} else {
 // 			return false;
 // 		}
-$this->db->where('user_id', $this->input->post('id'));
+	
+		$this->db->where_in('user_id', $this->input->post('id'));
 		if ($this->db->delete('users')) {
 			return true;
 		} else {
@@ -273,7 +274,7 @@ $this->db->where('user_id', $this->input->post('id'));
 
 	public function updateUser ($data, $userId)
 	{
-		$this->db->where('user_id', $userId);
+		$this->db->where_in('user_id', $userId);
 		if ($this->db->update('users', $data)) {
 			return true;
 		} else {

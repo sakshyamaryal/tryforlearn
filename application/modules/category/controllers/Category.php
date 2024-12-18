@@ -97,8 +97,10 @@ class CateGory extends CI_Controller
 			'is_active' => 0,
 
 		);
+
+		$ids = $this->input->post('id') ? $this->input->post('id') : $_GET['models'][0]['category_id'];
 		
-		if ($this->model->updatecategory($data_arr,$_GET['models'][0]['category_id'])) {
+		if ($this->model->updatecategory($data_arr,$ids)) {
 
 			$validator['success'] = true;
 			$validator['messages'] = "category has been updated";

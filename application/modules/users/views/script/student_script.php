@@ -10,7 +10,7 @@
 				update: {
 					url: '<?php echo base_url(); ?>users/update_student',
 					complete: function (e) {
-						toastr.success('User status has been updated', {timeOut: 5000})
+						toastr.success('User status has been updated', { timeOut: 5000 })
 						$("#grid").data("kendoGrid").dataSource.filter({});
 						$("#grid").data("kendoGrid").dataSource.read();
 					}
@@ -47,15 +47,15 @@
 					id: "user_id",
 					// id: {type: "number"},
 					fields: {
-						fullname: {type: "string", editable: false},
-						address: {type: "string", editable: false},
-						username: {type: "string", editable: false},
-						email: {type: "string", editable: false},
-						phone: {type: "string", editable: false},
-						user_type_name: {type: "string", editable:false},
+						fullname: { type: "string", editable: false },
+						address: { type: "string", editable: false },
+						username: { type: "string", editable: false },
+						email: { type: "string", editable: false },
+						phone: { type: "string", editable: false },
+						user_type_name: { type: "string", editable: false },
 						// created_date: {type: "date"},
-						is_active: {type: "string"},
-						is_approved: {type: "string"},
+						is_active: { type: "string" },
+						is_approved: { type: "string" },
 					}
 
 
@@ -93,21 +93,24 @@
 			sortable: true,
 			dataSource: dataSource,
 			pageable: {
-				pageSizes: [20,30,50,100,"all"],
+				pageSizes: [20, 30, 50, 100, "all"],
 				refresh: true,
-				numeric:false,
+				numeric: false,
 				// pageSizes: true,
 				buttonCount: 10
 			},
 			// height: 550,
-			selectable: true,
+			selectable: 'multiple',
 			toolbar: kendo.template($("#template").html()),
-			columns: [{
-				title: "S.N",
-				template: "#= ++record #",
-				width: "50px",
-				filterable: false
-			},
+			columns: [
+				{
+					title: "<input type='checkbox' id='selectAllRows' /> S.N",
+					template: function (dataItem) {
+						return `<input type='checkbox' class='rowCheckbox' data-id='${dataItem.user_id}' /> ${++record}`;
+					},
+					width: "50px",
+					filterable: false
+				},
 				{
 					field: "fullname",
 					title: "Name",
@@ -161,10 +164,10 @@
 				// 	}
 				// }
 
-				],
+			],
 
 
-				editable: false,
+			editable: false,
 
 			dataBinding: function () {
 				record = (this.dataSource.page() - 1) * this.dataSource.pageSize();
@@ -179,7 +182,7 @@
 				return $(target).text();
 			}
 		});
-		var status_data = [{name: "Inactive", value: "0"}, {name: "Active", value: "1"}];
+		var status_data = [{ name: "Inactive", value: "0" }, { name: "Active", value: "1" }];
 
 		function statusFilter(element) {
 			element.kendoDropDownList({
@@ -189,7 +192,7 @@
 				optionLabel: "--Select Status--"
 			});
 		}
-		var approve_data = [{name: "Not approve", value: "0"}, {name: "approved", value: "1"}];
+		var approve_data = [{ name: "Not approve", value: "0" }, { name: "approved", value: "1" }];
 
 		function approveFilter(element) {
 			element.kendoDropDownList({
@@ -235,20 +238,27 @@
 		});
 		$("#subscribe").on("click", function (e) {
 			var grid = $('#grid').data('kendoGrid');
-			var dataItem = grid.dataItem(grid.select());
-			if (dataItem == null) {
-				toastr.warning('Please select one row to subscribe', {timeOut: 5000})
+			var selectedRows = grid.select();
+
+			var selectedData = [];
+			selectedRows.each(function () {
+				var dataItem = grid.dataItem(this);
+				selectedData.push(dataItem.user_id);
+			});
+
+			if (selectedData.length < 1) {
+				toastr.warning('Please select one row to delete', { timeOut: 5000 })
 				return false;
 			}
-			$('#userId').val(dataItem.user_id);
+			$('#userId').val(selectedData);
 			$('#addUser').modal('show');
 		});
 		$("#class").on("change", function (e) {
-			
+
 			$.ajax({
 				url: '<?= base_url(); ?>users/getclass',
 				type: 'POST',
-				data: {levelid: $(this).val()},
+				data: { levelid: $(this).val() },
 				success: function (response) {
 					var response = jQuery.parseJSON(response);
 					if (response.success == true) {
@@ -258,78 +268,80 @@
 						$('#classid').empty();
 						$('#classid').html(response.html);
 
-						toastr.error(response.messages, {timeOut: 5000})
+						toastr.error(response.messages, { timeOut: 5000 })
 					}
 				}
 
 			});
-              
+
 		});
 		$("#classid").on("change", function (e) {
-			
+
 			$.ajax({
 				url: '<?= base_url(); ?>chapter/getsubject',
 				type: 'POST',
-				data: {classid: $(this).val()},
+				data: { classid: $(this).val() },
 				success: function (response) {
 					var response = jQuery.parseJSON(response);
-						$('#subjectid').empty();
-						$('#subjectid').html(response.html);
+					$('#subjectid').empty();
+					$('#subjectid').html(response.html);
 				}
 
 			});
-              
+
 		});
 		$("#subjectid").on("change", function (e) {
-			
+
 			$.ajax({
 				url: '<?= base_url(); ?>users/getpackagerate',
 				type: 'POST',
-				data: {subjectid: $(this).val()},
+				data: { subjectid: $(this).val() },
 				success: function (response) {
 					var response = jQuery.parseJSON(response);
-						$('#package').empty();
-						$('#package').html(response.html);
+					$('#package').empty();
+					$('#package').html(response.html);
 				}
 
 			});
-              
+
 		});
 		$("#approve").on("click", function (e) {
 			var grid = $('#grid').data('kendoGrid');
-			var dataItem = grid.dataItem(grid.select());
-			if (dataItem == null) {
-				toastr.warning('Please select one row to approve', {timeOut: 5000})
-				return false;
-			}
+			var selectedRows = grid.select();
 
-			if(dataItem.is_approved==1){
-				toastr.warning('Student has been already approved', {timeOut: 5000})
+			var selectedData = [];
+			selectedRows.each(function () {
+				var dataItem = grid.dataItem(this);
+				selectedData.push(dataItem.user_id);
+			});
+
+			if (selectedData.length < 1) {
+				toastr.warning('Please select one row to approve', { timeOut: 5000 })
 				return false;
 			}
 
 			$.ajax({
 				url: '<?= base_url(); ?>users/approve_student',
 				type: 'POST',
-				data: {id: dataItem.user_id},
+				data: { id: selectedData },
 				success: function (response) {
 					var response = jQuery.parseJSON(response);
 					if (response.success == true) {
-						toastr.success(response.messages, {timeOut: 5000})
+						toastr.success(response.messages, { timeOut: 5000 })
 						$("#grid").data("kendoGrid").dataSource.filter({});
 						$("#grid").data("kendoGrid").dataSource.read();
 					} else {
-						toastr.error(response.messages, {timeOut: 5000})
+						toastr.error(response.messages, { timeOut: 5000 })
 					}
 				}
 
 			});
 		});
-		$('#viewdetail').on("click", function(e){
+		$('#viewdetail').on("click", function (e) {
 			var grid = $('#grid').data('kendoGrid');
 			var dataItem = grid.dataItem(grid.select());
 			if (dataItem == null) {
-				toastr.warning('Please select one row to View Detail', {timeOut: 5000})
+				toastr.warning('Please select one row to View Detail', { timeOut: 5000 })
 				return false;
 			}
 			$('#viewname').html(dataItem.fullname);
@@ -342,71 +354,136 @@
 			$('#viewguardiannumber').html(dataItem.parents_number);
 			$('#viewinstitution').html(dataItem.guardian_detail);
 			$('#viewinstitutionnumber').html(dataItem.guardian_number);
-			$('#viewimage').attr('src','<?=base_url();?>upload/student/'+dataItem.image);
+			$('#viewimage').attr('src', '<?= base_url(); ?>upload/student/' + dataItem.image);
 			$('#detailmodal').modal('show');
 
 		});
 		$("#delete").on("click", function (e) {
 			var grid = $('#grid').data('kendoGrid');
-			var dataItem = grid.dataItem(grid.select());
-			if (dataItem == null) {
-				toastr.warning('Please select one row to approve', {timeOut: 5000})
+			var selectedRows = grid.select();
+
+			var selectedData = [];
+			selectedRows.each(function () {
+				var dataItem = grid.dataItem(this);
+				selectedData.push(dataItem.user_id);
+			});
+
+			if (selectedData.length < 1) {
+				toastr.warning('Please select one row to delete', { timeOut: 5000 })
 				return false;
 			}
 
-		
 			$.ajax({
 				url: '<?= base_url(); ?>users/deletestudent',
 				type: 'POST',
-				data: {id: dataItem.user_id},
+				data: { id: selectedData },
 				success: function (response) {
 					var response = jQuery.parseJSON(response);
 					if (response.success == true) {
-						toastr.success(response.messages, {timeOut: 5000})
+						toastr.success(response.messages, { timeOut: 5000 })
 						$("#grid").data("kendoGrid").dataSource.filter({});
 						$("#grid").data("kendoGrid").dataSource.read();
 					} else {
-						toastr.error(response.messages, {timeOut: 5000})
+						toastr.error(response.messages, { timeOut: 5000 })
 					}
 				}
 
 			});
 		});
-		
+
 		$("#addUs").unbind('submit').bind('submit', function (e) {
 			e.preventDefault();
-		
 
-				var form = $(this);
-				var url = form.attr('action');
-				var type = form.attr('method');
-				var formData = new FormData($(this)[0]);
-				$.ajax({
-					url: url,
-					type: type,
-					data: formData,
-					dataType: 'json',
-					cache: false,
-					contentType: false,
-					processData: false,
-					async: false,
-					success: function (response) {
 
-						if (response.type == 'success') {
-							$('#addUser').modal('hide');
-							toastr.success(response.message, {timeOut: 5000})
-							clearForm();
-							
+			var form = $(this);
+			var url = form.attr('action');
+			var type = form.attr('method');
+			var formData = new FormData($(this)[0]);
+			$.ajax({
+				url: url,
+				type: type,
+				data: formData,
+				dataType: 'json',
+				cache: false,
+				contentType: false,
+				processData: false,
+				async: false,
+				success: function (response) {
 
-						} else {
-							toastr.warning(response.message, {timeOut: 5000})
-						}
+					if (response.type == 'success') {
+						$('#addUser').modal('hide');
+						toastr.success(response.message, { timeOut: 5000 })
+						clearForm();
 
+
+					} else {
+						toastr.warning(response.message, { timeOut: 5000 })
 					}
-				});
+
+				}
+			});
 
 
-			
+
+		});
+
+		// Add functionality for 'Select All' checkbox
+		$(document).on("change", "#selectAllRows", function () {
+			// const isChecked = $(this).is(":checked");
+			// const grid = $("#grid").data("kendoGrid");
+
+			// if (isChecked) {
+			// 	// Show all data by setting the page size to the total number of rows
+			// 	const dataSource = grid.dataSource;
+			// 	const totalRows = dataSource.total();
+			// 	dataSource.pageSize(totalRows);
+
+			// 	// Use a timeout to ensure the grid refreshes before selection
+			// 	setTimeout(() => {
+			// 		const rows = grid.tbody.find("tr");
+			// 		$(".rowCheckbox").prop("checked", true);
+			// 		grid.select(rows);
+			// 	}, 100);
+			// } else {
+			// 	grid.dataSource.pageSize(20);
+			// 	$(".rowCheckbox").prop("checked", false);
+			// 	grid.clearSelection();
+			// }
+			const isChecked = $(this).is(":checked");
+			const grid = $("#grid").data("kendoGrid");
+			const rows = grid.tbody.find("tr");
+
+			// Check/uncheck all row checkboxes
+			$(".rowCheckbox").prop("checked", isChecked);
+
+			if (isChecked) {
+				// Select all rows
+				grid.select(rows);
+			} else {
+				// Deselect all rows
+				grid.clearSelection();
+			}
+		});
+
+		// Update individual row selection when a row checkbox is clicked
+		$(document).on("change", ".rowCheckbox", function () {
+			const grid = $("#grid").data("kendoGrid");
+			const dataId = $(this).attr("data-id"); // Get the data-id of the checkbox
+			const input = grid.table.find(`input[data-id='${dataId}']`);
+			const row = input.closest("tr");// Locate the corresponding row
+
+			if ($(this).is(":checked")) {
+				grid.select(row); // Select the row
+			} else {
+				const selectedRows = grid.select().toArray();
+				const remainingRows = selectedRows.filter((selectedRow) => selectedRow !== row[0]);
+				grid.clearSelection();
+				remainingRows.forEach((remainingRow) => grid.select($(remainingRow)));
+			}
+
+			// Update 'Select All' checkbox state
+			const allChecked = $(".rowCheckbox:checked").length === $(".rowCheckbox").length;
+			$("#selectAllRows").prop("checked", allChecked);
 		});
 
 	});

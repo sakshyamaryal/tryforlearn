@@ -163,8 +163,9 @@ class Pages extends CI_Controller
 
 		);
 		
+		$ids = $this->input->post('id');
 
-		if ($this->model->updatePage($data_arr,$_POST['id'])) {
+		if ($this->model->updatePage($data_arr,$ids)) {
 
 			$validator['success'] = true;
 			$validator['messages'] = "Page has been deleted";

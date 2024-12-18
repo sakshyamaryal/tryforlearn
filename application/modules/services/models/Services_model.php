@@ -150,7 +150,7 @@ class Services_model extends CI_Model
 	
 	public function updateService ($data, $serviceId)
 	{
-		$this->db->where('service_id', $serviceId);
+		$this->db->where_in('service_id', $serviceId);
 		if ($this->db->update('service', $data)) {
 			return true;
 		} else {

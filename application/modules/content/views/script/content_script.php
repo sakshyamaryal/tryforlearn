@@ -412,6 +412,7 @@ function submitfile()
    let title= $('#filetitle').val();
    let orderby= $('#fileorderby').val();
    var link='';
+   var onlyForApp = $('#onlyForApp').is(':checked') ? 'Y': 'N';
 
      var file ='';
     if(radioValue=='video')
@@ -445,6 +446,7 @@ function submitfile()
         formData.append('orderby', orderby);
         formData.append('filetype', radioValue);
         formData.append('link', link);
+        formData.append('onlyForApp', onlyForApp);
         $.ajax({
                      url: '<?= base_url(); ?>content/addfile',
                      type: 'POST',
@@ -561,10 +563,11 @@ function updatefile(id)
 {
     let title=$('#filetitle'+id).val();
     let orderby=$('#fileorderby'+id).val();
+    let onlyForApp=$('#onlyForAppUp'+id).is(':checked') ? 'Y' : 'N';
     $.ajax({
                      url: '<?= base_url(); ?>content/updatefile',
                      type: 'POST',
-                     data: {id,title,orderby},
+                     data: {id,title,orderby,onlyForApp},
                      beforeSend: function () {
                         $('#loader').show();
                                 },

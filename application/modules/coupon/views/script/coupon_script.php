@@ -101,7 +101,9 @@
 			columns: [
 				{
 					title: "<input type='checkbox' id='selectAllRows' /> S.N",
-					template: "<input type='checkbox' class='rowCheckbox' /> #= ++record #",
+					template: function (dataItem) {
+						return `<input type='checkbox' class='rowCheckbox' data-id='${dataItem.id}' /> ${++record}`;
+					},
 					width: "50px",
 					filterable: false
 				},
@@ -368,10 +370,10 @@
 
 			var selectedData = [];
 			selectedRows.each(function () {
-				var dataItem = grid.dataItem(this); 
-				selectedData.push(dataItem.vouchercodeid); 
+				var dataItem = grid.dataItem(this);
+				selectedData.push(dataItem.vouchercodeid);
 			});
-			
+
 			if (selectedData.length < 1) {
 				toastr.warning('Please select one row to delete', { timeOut: 5000 })
 				return false;
@@ -490,21 +492,27 @@
 		});
 
 	}
-	// Add functionality for 'Select All' checkbox
+
 	// Add functionality for 'Select All' checkbox
 	$(document).on("change", "#selectAllRows", function () {
 		const isChecked = $(this).is(":checked");
 		const grid = $("#grid").data("kendoGrid");
-		const rows = grid.tbody.find("tr");
-
-		// Check/uncheck all row checkboxes
-		$(".rowCheckbox").prop("checked", isChecked);
 
 		if (isChecked) {
-			// Select all rows
-			grid.select(rows);
+			// Show all data by setting the page size to the total number of rows
+			const dataSource = grid.dataSource;
+			const totalRows = dataSource.total();
+			dataSource.pageSize(totalRows);
+
+			// Use a timeout to ensure the grid refreshes before selection
+			setTimeout(() => {
+				const rows = grid.tbody.find("tr");
+				$(".rowCheckbox").prop("checked", true);
+				grid.select(rows);
+			}, 100);
 		} else {
-			// Deselect all rows
+			grid.dataSource.pageSize(20);
+			$(".rowCheckbox").prop("checked", false);
 			grid.clearSelection();
 		}
 	});
@@ -512,16 +520,22 @@
 	// Update individual row selection when a row checkbox is clicked
 	$(document).on("change", ".rowCheckbox", function () {
 		const grid = $("#grid").data("kendoGrid");
-		const row = $(this).closest("tr");
+		const dataId = $(this).attr("data-id"); // Get the data-id of the checkbox
+		const input = grid.table.find(`input[data-id='${dataId}']`);
+		const row = input.closest("tr");// Locate the corresponding row
 
 		if ($(this).is(":checked")) {
 			grid.select(row); // Select the row
 		} else {
-			grid.clearSelection(row); // Deselect the row
+			const selectedRows = grid.select().toArray();
+			const remainingRows = selectedRows.filter((selectedRow) => selectedRow !== row[0]);
+			grid.clearSelection();
+			remainingRows.forEach((remainingRow) => grid.select($(remainingRow)));
 		}
 
 		// Update 'Select All' checkbox state
 		const allChecked = $(".rowCheckbox:checked").length === $(".rowCheckbox").length;
 		$("#selectAllRows").prop("checked", allChecked);
 	});
+
 </script>

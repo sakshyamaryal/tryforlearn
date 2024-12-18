@@ -172,7 +172,7 @@ class Pages_model extends CI_Model
 
 	public function updatePage ($data, $pageId)
 	{
-		$this->db->where('page_id', $pageId);
+		$this->db->where_in('page_id', $pageId);
 		if ($this->db->update('page', $data)) {
 			return true;
 		} else {

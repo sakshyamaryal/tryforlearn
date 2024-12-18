@@ -98,7 +98,9 @@ class Banner extends CI_Controller
 
 		);
 
-		if ($this->model->updateBanner($data_arr, $_GET['models'][0]['banner_id'])) {
+		$ids = $this->input->post('id') ? $this->input->post('id') : $_GET['models'][0]['banner_id'];
+
+		if ($this->model->updateBanner($data_arr, $ids)) {
 
 			$validator['success'] = true;
 			$validator['messages'] = "banner has been deleted";

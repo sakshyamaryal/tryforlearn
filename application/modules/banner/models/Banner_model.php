@@ -172,7 +172,7 @@ class Banner_model extends CI_Model
 
 	public function updateBanner ($data, $bannerId)
 	{
-		$this->db->where('banner_id', $bannerId);
+		$this->db->where_in('banner_id', $bannerId);
 		if ($this->db->update('banner', $data)) {
 			return true;
 		} else {

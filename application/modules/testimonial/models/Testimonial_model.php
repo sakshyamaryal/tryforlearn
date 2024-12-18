@@ -173,7 +173,7 @@ class Testimonial_model extends CI_Model
 	public function updatetestimonial ($data, $testimonialId)
 	{
 
-		$this->db->where('testomonial_id', $testimonialId);
+		$this->db->where_in('testomonial_id', $testimonialId);
 		if ($this->db->update('testomonial', $data)) {
 			return true;
 		} else {

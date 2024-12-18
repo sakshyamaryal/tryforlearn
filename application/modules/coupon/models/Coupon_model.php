@@ -149,7 +149,7 @@ class Coupon_model extends CI_Model
 	{
 		$subjects = $this->input->post('subjectid[]');
 		$packages = $this->input->post('package[]');
-		$insertPack = false;
+		$this->db->trans_begin();
 		if ($id == null) {
 			foreach ($subjects as $sub) {
 				foreach ($packages as $pack) {
@@ -165,10 +165,16 @@ class Coupon_model extends CI_Model
 						'validtill' => $this->input->post('validity'),
 						'isactive' => '1'
 					);
-					$insertPack = $this->db->insert('vouchercode', $data);
+					$this->db->insert('vouchercode', $data);
 				}
 			}
-			return $insertPack;
+			if ($this->db->trans_status() === FALSE) {
+				$this->db->trans_rollback();
+				throw new Exception("Error Occurred");
+			} else {
+				$this->db->trans_commit();
+				return true;
+			}  
 
 		} else {
 			$data = array(

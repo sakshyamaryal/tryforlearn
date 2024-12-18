@@ -150,7 +150,7 @@ class Category_model extends CI_Model
 	
 	public function updatecategory ($data, $categoryId)
 	{
-		$this->db->where('category_id', $categoryId);
+		$this->db->where_in('category_id', $categoryId);
 		if ($this->db->update('category', $data)) {
 			return true;
 		} else {

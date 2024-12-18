@@ -97,8 +97,10 @@ class Services extends CI_Controller
 			'is_active' => 0,
 
 		);
+
+		$ids = $this->input->post('id') ? $this->input->post('id') : $_GET['models'][0]['service_id'];
 		
-		if ($this->model->updateService($data_arr,$_GET['models'][0]['service_id'])) {
+		if ($this->model->updateService($data_arr,$ids)) {
 
 			$validator['success'] = true;
 			$validator['messages'] = "Service has been updated";

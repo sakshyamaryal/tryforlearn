@@ -256,6 +256,12 @@
                      <input type="text" name="link" id="link" value="" class="form-control"/> 
 
 					 </div>
+           <div class="col-md-6" style="display: flex; margin-top: 20px;">
+           <br>
+					 <label>Only For App</label>
+              <input type="checkbox" name="onlyForApp" id="onlyForApp" class="form-control" style="width: 15%"/> 
+
+					 </div>
 					 </div>
 					 <hr>
 					 <div class="row">

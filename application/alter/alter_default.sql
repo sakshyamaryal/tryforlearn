@@ -1,0 +1,1 @@
+ALTER TABLE contentfile ADD only_for_app CHARACTER(1) DEFAULT 'N'

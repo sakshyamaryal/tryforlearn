@@ -132,18 +132,21 @@
 				buttonCount: 10
 			},
 			// height: 450,
-			selectable: true,
+			selectable: 'multiple',
 			editable:
 				'inline',
 			// toolbar: kendo.template($("#template").html()),
 			save: function(e){  e.model.set("propertyLogo",$("#uploadedFile").val()); },
 			toolbar: ["create"],
-			columns: [{
-				title: "S.N",
-				template: "#= ++record #",
-				width: "50px",
-				filterable: false
-			},
+			columns: [
+				{
+					title: "<input type='checkbox' id='selectAllRows' /> S.N",
+					template: function (dataItem) {
+						return `<input type='checkbox' class='rowCheckbox' data-id='${dataItem.testomonial_id}' /> ${++record}`;
+					},
+					width: "50px",
+					filterable: false
+				},
 				{
 					field: "fullname",
 					title: "Full Name",
@@ -235,7 +238,90 @@
 			}
 		});
 
+		$("#delete").on("click", function name(e) {
+			var grid = $('#grid').data('kendoGrid');
+			var selectedRows = grid.select();
 
+			var selectedData = [];
+			selectedRows.each(function () {
+				var dataItem = grid.dataItem(this);
+				selectedData.push(dataItem.testomonial_id);
+			});
+
+			if (selectedData.length < 1) {
+				toastr.warning('Please select one row to delete', { timeOut: 5000 })
+				return false;
+			}
+
+			bootbox.confirm("Are you sure want to delete?", function (result) {
+
+				if (result) {
+					$.ajax({
+						url: '<?= base_url(); ?>testimonial/delete',
+						type: 'POST',
+						data: { id: selectedData },
+						success: function (response) {
+							var response = jQuery.parseJSON(response);
+
+							console.log(response.success);
+							if (response.success == true) {
+								toastr.success(response.messages, { timeOut: 5000 })
+								$("#grid").data("kendoGrid").dataSource.filter({});
+								$("#grid").data("kendoGrid").dataSource.read();
+							} else {
+								toastr.error(response.messages, { timeOut: 5000 })
+							}
+						}
+
+					});
+				}
+			})
+		})
+
+		// Add functionality for 'Select All' checkbox
+		$(document).on("change", "#selectAllRows", function () {
+			const isChecked = $(this).is(":checked");
+			const grid = $("#grid").data("kendoGrid");
+
+			if (isChecked) {
+				// Show all data by setting the page size to the total number of rows
+				const dataSource = grid.dataSource;
+				const totalRows = dataSource.total();
+				dataSource.pageSize(totalRows);
+
+				// Use a timeout to ensure the grid refreshes before selection
+				setTimeout(() => {
+					const rows = grid.tbody.find("tr");
+					$(".rowCheckbox").prop("checked", true);
+					grid.select(rows);
+				}, 100);
+			} else {
+				grid.dataSource.pageSize(20);
+				$(".rowCheckbox").prop("checked", false);
+				grid.clearSelection();
+			}
+		});
+
+		// Update individual row selection when a row checkbox is clicked
+		$(document).on("change", ".rowCheckbox", function () {
+			const grid = $("#grid").data("kendoGrid");
+			const dataId = $(this).attr("data-id"); // Get the data-id of the checkbox
+			const input = grid.table.find(`input[data-id='${dataId}']`);
+			const row = input.closest("tr");// Locate the corresponding row
+
+			if ($(this).is(":checked")) {
+				grid.select(row); // Select the row
+			} else {
+				const selectedRows = grid.select().toArray();
+				const remainingRows = selectedRows.filter((selectedRow) => selectedRow !== row[0]);
+				grid.clearSelection();
+				remainingRows.forEach((remainingRow) => grid.select($(remainingRow)));
+			}
+
+			// Update 'Select All' checkbox state
+			const allChecked = $(".rowCheckbox:checked").length === $(".rowCheckbox").length;
+			$("#selectAllRows").prop("checked", allChecked);
+		});
 
 
 	});

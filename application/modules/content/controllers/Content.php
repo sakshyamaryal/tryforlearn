@@ -247,6 +247,7 @@ class Content extends CI_Controller
 	{
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('contentid', 'Content', 'required');
+		$this->form_validation->set_rules('onlyForApp', 'Only For App', 'required');
 		$this->form_validation->set_rules('title', 'Title', 'required');
 		$this->form_validation->set_rules('filetype', 'Filetype', 'required');
 		if($this->input->post('filetype')=='video')
@@ -279,6 +280,7 @@ class Content extends CI_Controller
 			'orderby'=>(@$post['orderby']!='')?$post['orderby']:0,
 			'file'=>$post['link'],
 			'filetype'=>$post['filetype'],
+			'only_for_app' => $post['onlyForApp'],
 			'is_active'=>1,
 			'created_at'=>date('Y-m-d H:i:s'),
 			'created_by'=>$this->session->userdata('adminuserid')
@@ -308,6 +310,7 @@ class Content extends CI_Controller
 		}
 		$insertdata['ext']=$ext;
 		}
+		
 		$iu=$this->common_model->insert('contentfile',$insertdata);
 		if ($iu>0) {
 
@@ -380,6 +383,7 @@ class Content extends CI_Controller
 		$this->form_validation->set_rules('id', 'ID', 'required');
 		$this->form_validation->set_rules('title', 'Title', 'required');
 		$this->form_validation->set_rules('orderby', 'Orderby', 'required');
+		$this->form_validation->set_rules('onlyForApp', 'Only For App', 'required');
 		
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -389,7 +393,7 @@ class Content extends CI_Controller
 			exit;
 			
         }
-        $iu=$this->common_model->update('contentfile',array('title'=>$_POST['title'],'orderby'=>$_POST['orderby']),array('fileid'=>$_POST['id']));
+        $iu=$this->common_model->update('contentfile',array('title'=>$_POST['title'],'orderby'=>$_POST['orderby'],'only_for_app'=>$_POST['onlyForApp']),array('fileid'=>$_POST['id']));
         if ($iu>0) {
 
 			$validator['type'] = 'success';
