@@ -51,8 +51,9 @@ class Studentregister extends CI_Controller {
         $this->form_validation->set_rules('username', 'Username', 'required|min_length[6]|is_unique[users.username]');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
         $this->form_validation->set_rules('repassword', ' Re Password', 'required|min_length[6]|matches[password]');
+        $this->form_validation->set_rules('gender', 'Gender ', 'required');
       
-
+      // var_dump($this->input->post());exit;
         if ($this->form_validation->run() == FALSE)
         {
             $error=validation_errors();

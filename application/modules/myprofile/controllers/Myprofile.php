@@ -95,6 +95,21 @@ class Myprofile extends CI_Controller
 
 		}
         
+        $verification_file_path = '';
+        if (!empty($_FILES['user_verification_file']['name'])) {
+            $file_config['upload_path'] = './upload/student/';
+            $file_config['allowed_types'] = 'gif|png|jpg|jpeg|PNG|JPG|JPEG|pdf|doc|docx';
+            $file_config['max_size'] = 0; // No size limit
+            $file_config['file_name'] = time() . '_verification';
+        
+            $this->load->library('upload', $file_config);
+        
+            if ($this->upload->do_upload('user_verification_file')) {
+                $verification_data = $this->upload->data();
+                $verification_file_path = $verification_data['file_name'];
+            }
+        }
+        
         $data=array(
 			
 			'fullname'=>@$post['fname'],
@@ -115,6 +130,10 @@ class Myprofile extends CI_Controller
             'guardian_number'=>@$post['citizenship'],
             'extra'=>@$post['extra_information'],
         );
+
+        if ($verification_file_path != '') {
+            $udata['user_verification_file'] = $verification_file_path;
+        }
       
         $this->db->trans_begin();
        $this->common_model->update('users',$data,array('user_id'=>$this->session->userdata('userid')));

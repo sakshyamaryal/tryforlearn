@@ -565,6 +565,7 @@ class Studentpanel_model extends CI_Model {
         'totalright'=>$totalcorrect,
         'totalwrong'=>$totalwrong,
         'correct'=>$right,
+        'penalty_percentage' => $penalty,
         'wrong'=>number_format($wrong,2),
         'total'=>number_format($right-$wrong,2),
         'time'=>$donetime);
@@ -655,7 +656,7 @@ class Studentpanel_model extends CI_Model {
   
       // Use query bindings to safely pass the array
       $placeholders = implode(',', array_fill(0, count($contentids), '?'));
-      $sql = "SELECT * FROM `contentfile` WHERE contentid IN ($placeholders) AND `filetype` = 'video'";
+      $sql = "SELECT * FROM `contentfile` WHERE contentid IN ($placeholders) AND `filetype` = 'video' AND `only_for_app` = 'N' ";
       $query = $this->db->query($sql, $contentids);
   
       if ($query->num_rows() > 0) {
