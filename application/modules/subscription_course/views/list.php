@@ -109,7 +109,7 @@
 
             <div class="col-md-3" id="">
             <input type="text" class="form-control" id="applyPromoVal" name="applyPromo" style="display: none;" value="N" />
-              <button type="button" id="applyPromo" class="btn btn-success">Apply Promo</button>
+              <button type="button" id="applyPromo" class="btn btn-success">Apply Code</button>
             </div>
 
             <div class="col-md-3" id="newPriceDiv" style="display: none; font-weight: bold; font-size: 16px; color: green;">
