@@ -563,10 +563,7 @@ class Studentpanel extends CI_Controller {
     {
         $post = $this->input->post();
 
-        if (!isset($post['contentids']) || !is_array($post['contentids'])) {
-            echo json_encode(array('status' => false, 'message' => '<p style="color:red;">Invalid content IDs.</p>'));
-            exit;
-        }
+
 
         $data['list'] = $this->model->getCourseRelatedVideos($post['contentids']);
         $data['type']='video';

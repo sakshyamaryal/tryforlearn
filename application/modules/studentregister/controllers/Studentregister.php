@@ -83,7 +83,7 @@ class Studentregister extends CI_Controller {
             
             $this->email->set_mailtype("html");
              $subject="Email Verification";
-           $message=" Click this Link to Verify Your Email. <br><br/><a href='".base_url()."studentregister/verify?email=".$this->input->post('email')."'>Verify Email </a> <br><br/>. If you haven't performed this process. Please Ignore the mail.";
+           $message=" Click this Link to Verify Your Email. <br><br/><a href='".base_url()."studentregister/verify?email=".$this->input->post('email')."'>Verify Email </a> <br><br/> If you haven't performed this process. Please Ignore the mail.";
           $edata['link']=$message;
           $edata['post']=$_POST;
           $message=$this->load->view('verifyuserregistrationemail',$edata,true);
