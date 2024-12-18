@@ -403,4 +403,24 @@ class Users extends CI_Controller
 		echo json_encode($validator);
 	}
 
+	function verifyDisable(){
+
+		$validator = array('success' => false, 'messages' => array());
+		$data_arr = array(
+			'is_differently_abled' => 'Y',
+			'is_disability_approved' => 'Y',
+		);
+
+		// $this->model->updateUser($data_arr,$_POST['id'])
+		if ($this->model->verifyDisable($data_arr, $this->input->post('id'))) {
+
+			$validator['success'] = true;
+			$validator['messages'] = "User has been verified";
+		} else {
+			$validator['success'] = false;
+			$validator['messages'] = "Error while upding the information into the database";
+		}
+		echo json_encode($validator);
+	}
+
 }

@@ -300,6 +300,9 @@
 			Delete</a>
 			<a id="save" class="btn btn-primary btn-sm k-grid-cancel-changes" data-toggle="tooltip" title="Cancel Changes"><span class="fa fa-ban "></span>
 			Cancel Changes</a>
+			<a id="verify" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Verify Disable">
+			<span class="fa fa-check-circle"></span>
+			Verify Disable</a>
 	</script>
 
 

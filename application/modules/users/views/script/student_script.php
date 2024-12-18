@@ -506,9 +506,41 @@
 			$("#selectAllRows").prop("checked", allChecked);
 		});
 
+		$(document).off("click", "#verify");
+		$(document).on("click", "#verify", function (e) {
+			var grid = $('#grid').data('kendoGrid');
+			var selectedRows = grid.select();
+
+			var selectedData = [];
+			selectedRows.each(function () {
+				var dataItem = grid.dataItem(this);
+				selectedData.push(dataItem.user_id);
+			});
+
+			if (selectedData.length < 1) {
+				toastr.warning('Please select one row to delete', { timeOut: 5000 })
+				return false;
+			}
+
+			$.ajax({
+				url: '<?= base_url(); ?>users/verifyDisable',
+				type: 'POST',
+				data: { id: selectedData },
+				success: function (response) {
+					var response = jQuery.parseJSON(response);
+					if (response.success == true) {
+						toastr.success(response.messages, { timeOut: 5000 })
+						$("#grid").data("kendoGrid").dataSource.filter({});
+						$("#grid").data("kendoGrid").dataSource.read();
+					} else {
+						toastr.error(response.messages, { timeOut: 5000 })
+					}
+				}
+
+			});
+		});
+
 	});
-
-
 
 
 </script>

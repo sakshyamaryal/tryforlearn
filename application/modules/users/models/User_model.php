@@ -295,4 +295,14 @@ class User_model extends CI_Model
 		$res=$this->db->query($sql)->result();
 		return $res;
 	}
+
+	public function verifyDisable ($data, $userId)
+	{
+		$this->db->where_in('user_id', $userId);
+		if ($this->db->update('users', $data)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
