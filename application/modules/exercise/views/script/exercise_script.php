@@ -92,7 +92,6 @@ $( "#cogsform" ).submit(function( event ) {
                                 $('#tbl').html(response.html);
                                
                                 
-								
 							} else {
                                 $('#tbl').empty();
 								toastr.error(response.message, {timeOut: 5000})

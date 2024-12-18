@@ -652,4 +652,23 @@ function requestmethod(postdata, url) {
 		enctype: 'multipart/form-data'
 	});
 }
+
+function getCourseRelatedVideos(contentids){
+    var url=base_url+"studentpanel/getCourseRelatedVideos";
+    var data = {contentids};
+    $.when(requestmethod(data, url)).then(function(res){
+        $('.tabvideotitle').empty();
+        if(res.status==true)
+        {
+            $('.tabvideodetail').empty();
+            $('.tabvideodetail').html(res.html);
+        }
+        else
+        {
+            $('.tabvideodetail').empty();
+            $('.tabvideodetail').html(res.message);
+
+        }
+    });
+}
 </script>

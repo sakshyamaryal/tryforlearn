@@ -554,5 +554,28 @@ class Studentpanel extends CI_Controller {
         return sprintf('%02d:%02d:%02d', $hours, $minutes, $remainingSeconds);
     }
 
-   
+    public function getCourseRelatedVideos()
+    {
+        $post = $this->input->post();
+
+        if (!isset($post['contentids']) || !is_array($post['contentids'])) {
+            echo json_encode(array('status' => false, 'message' => '<p style="color:red;">Invalid content IDs.</p>'));
+            exit;
+        }
+
+        $data['list'] = $this->model->getCourseRelatedVideos($post['contentids']);
+        $data['type']='video';
+
+
+        if (empty($data['list'])) {
+            echo json_encode(array('status' => false, 'message' => '<p style="color:red;">No any reference files.</p>'));
+            exit;
+        }
+
+        $html = $this->load->view('content', $data, true);
+
+        echo json_encode(array('status' => true, 'message' => 'Success', 'html' => $html));
+        exit;
+    }
+
 }

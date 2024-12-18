@@ -632,5 +632,34 @@ class Studentpanel_model extends CI_Model {
       return false;
     }
   }
+
+  public function getCourseRelatedVideos()
+  {
+      $contentids = $this->input->post('contentids'); // Expecting an array
+  
+      if (!is_array($contentids)) {
+          return array(); // Return empty array if input is not valid
+      }
+  
+      // Clean the array to ensure it only contains integers
+      $contentids = array_map('intval', $contentids);
+  
+      // If the array is empty after cleaning, return an empty result
+      if (empty($contentids)) {
+          return array();
+      }
+  
+      // Use query bindings to safely pass the array
+      $placeholders = implode(',', array_fill(0, count($contentids), '?'));
+      $sql = "SELECT * FROM `contentfile` WHERE contentid IN ($placeholders) AND `filetype` = 'video'";
+      $query = $this->db->query($sql, $contentids);
+  
+      if ($query->num_rows() > 0) {
+          return $query->result();
+      } else {
+          return array();
+      }
+  }
+  
     
 }

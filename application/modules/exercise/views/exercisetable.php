@@ -8,28 +8,52 @@
 <script type="text/javascript" src="<?= base_url(); ?>dataTables/js/jquery.dataTables.columnFilter.js"></script>
 <script type="text/javascript"
   src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
-
-<style>
+  <style>
+  /* Existing styles */
   .table th,
   .table td {
     white-space: normal !important;
-    /* Allow text to wrap */
     word-wrap: break-word !important;
-    /* Break long words */
+  }
+
+  #dataTable {
+    width: 100%;
+    /* table-layout: fixed; */
+  }
+
+  /* New styles to make question column wider */
+  #dataTable .exercise-question-list {
+    width: 50% !important; /* Increased from 50% */
+  }
+
+  /* Adjust other columns to redistribute width */
+  #dataTable th:not(.exercise-question-list) {
+    width: auto;
+  }
+
+  /* Ensure text wrapping and overflow handling */
+  #dataTable .exercise-question-list,
+  #dataTable td:nth-child(2) {
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
   }
 </style>
 
 <table class="table table-bordered table-hover table-striped pad-fixed-tbl mar-10-top dataTable no-footer"
-  id="dataTable" data-filename="chapterlist" data-cols="[0,1]" style="width:90%">
+  id="dataTable" data-filename="chapterlist" data-cols="[0,1]" style="width:100%">
   <thead id="tbl_data_thead">
     <tr>
+    <tr>
       <th style="text-align:center;"><input type="checkbox" id="selectAllCheckbox" /><span>S.N.</span></th>
-      <th style="text-align:center;">Question</th>
+      <th style="text-align:center;" class="exercise-question-list">Question</th>
       <th style="text-align:center;">Explanation</th>
       <th style="text-align:center;">IS Subj/Obj</th>
       <th style="text-align:center;">Is For All Date</th>
       <th style="text-align:center;">Is Timer</th>
-      <th style="text-align:center;">Action</th>
+      <th style="text-align:center; ">Action</th>
+    </tr>
     </tr>
   </thead>
   <tbody>
@@ -79,6 +103,7 @@
       ]
 
     });
+
   }
 
   $(document).off('click', '#selectAllCheckbox');
