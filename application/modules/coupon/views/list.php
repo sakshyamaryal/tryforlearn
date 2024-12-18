@@ -154,6 +154,29 @@
 								</div>
 
 							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label>For Gender</label>
+									<div>
+										<select class="form-control" id="forGender" name="forGender">
+											<option value="N">Please Select</option>
+											<option value="M">Male</option>
+											<option value="F">Female</option>
+										</select>
+									</div>
+								</div>
+
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label>For Disabled</label>
+									<select class="form-control" id="forDisabled" name="forDisabled">
+										<option value="N">No</option>
+										<option value="Y">Yes</option>
+									</select>
+								</div>
+
+							</div>
 
 						</div>
 

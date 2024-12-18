@@ -81,7 +81,7 @@ class Subscription_model extends CI_Model
         $sql = $sql . " and subjectid=?";
         $res = $this->db->query($sql, array($_POST['vouchercode'], $_POST['levelid'], $_POST['classid'], date('Y-m-d'), date('Y-m-d'), $_POST['subjectid']));
 
-        if (count($res->num_rows()) < 1) {
+        if (($res->num_rows()) < 1) {
           return 'Voucher code didnt matched';
         } else {
           $voucherdata = $res->row();
@@ -89,6 +89,31 @@ class Subscription_model extends CI_Model
           // matched
           $maxlimit = $res->row()->maxlimit;
 
+        }
+
+      }
+
+      $loggedInUser = $this->session->userdata('userid');
+      if($res->row()->for_gender != 'N'){
+        $this->db->select('user_id');
+        $this->db->from('users');
+        $this->db->where(array('user_id' => $loggedInUser, 'gender' => $res->row()->for_gender));
+        $genderUser = $this->db->get()->num_rows();
+
+        if($genderUser < 1){
+          return 'Not eligible gender';
+        }
+
+      }
+
+      if($res->row()->for_disabled == 'Y'){
+        $this->db->select('user_id');
+        $this->db->from('users');
+        $this->db->where(array('user_id' => $loggedInUser, 'is_disability_approved' => 'Y'));
+        $disabledUser = $this->db->get()->num_rows();
+
+        if($disabledUser < 1){
+          return 'Not eligible';
         }
 
       }

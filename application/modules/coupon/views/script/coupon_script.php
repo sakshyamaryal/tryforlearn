@@ -353,6 +353,8 @@
 			$('#limit').val(dataItem.maxlimit);
 			$('#discounttype').val(dataItem.discounttype);
 			$('#validity').val(dataItem.validtill);
+			$('#forGender').val(dataItem.for_gender);
+			$('#forDisabled').val(dataItem.for_disabled);
 			getsubject(dataItem.classid, dataItem.subjectid);
 
 

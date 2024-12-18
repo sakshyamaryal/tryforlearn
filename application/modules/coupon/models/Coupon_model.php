@@ -163,7 +163,9 @@ class Coupon_model extends CI_Model
 						'maxlimit' => $this->input->post('limit'),
 						'discounttype' => $this->input->post('discounttype'),
 						'validtill' => $this->input->post('validity'),
-						'isactive' => '1'
+						'isactive' => '1',
+						'for_gender' => $this->input->post('forGender'),
+						'for_disabled' => $this->input->post('forDisabled'),
 					);
 					$this->db->insert('vouchercode', $data);
 				}
@@ -187,10 +189,14 @@ class Coupon_model extends CI_Model
 				'maxlimit' => $this->input->post('limit'),
 				'discounttype' => $this->input->post('discounttype'),
 				'validtill' => $this->input->post('validity'),
-				'isactive' => '1'
+				'isactive' => '1',
+				'for_gender' => $this->input->post('forGender'),
+				'for_disabled' => $this->input->post('forDisabled'),
 			);
 			$this->db->where('vouchercodeid', $id);
-			if ($this->db->update('vouchercode', $data)) {
+			$update = $this->db->update('vouchercode', $data);
+			if ($update) {
+				$this->db->trans_commit();
 				return true;
 			} else {
 				return false;

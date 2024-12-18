@@ -202,7 +202,11 @@ class Subscription_course extends CI_Controller {
                     else
                     {
 
-                        throw new Exception($vouchercode, 1);
+                      echo json_encode(array(
+                        'message' => $vouchercode
+                      ));
+                      exit();
+                        // throw new Exception($vouchercode, 1);
 
                     }
                   
