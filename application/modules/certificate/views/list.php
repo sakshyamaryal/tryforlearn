@@ -22,6 +22,11 @@
                 <i class="fa fa-plus"></i> Add  
                 </a>
                 </span>
+                <span style="margin-left:800px;">
+                <a href="javascript:void(0)" id="delete" >
+                <i class="fa fa-times"></i> Delete  
+                </a>
+                </span>
                 </h2>
 
             </div>

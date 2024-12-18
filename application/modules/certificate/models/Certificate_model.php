@@ -67,6 +67,15 @@ class Certificate_model extends CI_Model {
        
 
     }
+
+    public  function delete_certificate()
+    {
+        $this->db->where_in('certificateid',$this->input->post('id'));
+        $this->db->update('certificate', array('is_active' => 0));
+        return 1;
+       
+
+    }
     
     public function get_course()
     {

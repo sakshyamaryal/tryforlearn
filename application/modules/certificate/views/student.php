@@ -18,6 +18,9 @@
             <a class="" href="#" data-toggle="modal" data-target="#bmodal" style="color:green;">
               <i class="fa fa-plus"></i> Add Student
             </a>&nbsp;&nbsp;
+            <a class="" href="#" id="delete" style="color:red;">
+              <i class="fa fa-times"></i> Delete
+            </a>
             <!-- <a class="" href="<?=base_url();?>import/trainee" style="color:green;">
               <i class="fa fa-plus"></i> Upload Excel Data
             </a> -->
@@ -28,6 +31,7 @@
         <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
           <thead>
             <tr>
+              <th class="mt-th"><input type="checkbox" id="selectAllCheckbox" /></th>
               <th class="my-th">S.N.</th>
               <th class="my-th">Student Name</th>
               <!-- <th class="my-th">Organization</th> -->
@@ -44,7 +48,7 @@
             <tbody>
                 <?php $sn=0; foreach($students as $list): $sn++; ?>
                 <tr>
-                
+                <td><input type="checkbox" class="rowCheckBox" ></td>
                 <td><?= $list['SC_ID'] ; ?></td>
                 <td><?= $list['Name'] ; ?></td>
                 <!-- <td><?= $list['Organization'] ; ?></td> -->

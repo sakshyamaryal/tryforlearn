@@ -73,7 +73,7 @@ class Package_model extends CI_Model {
     
                 'is_active'=>'0'
             );
-            $this->db->where('package_id',$this->input->post('id'));
+            $this->db->where_in('package_id',$this->input->post('id'));
             if($this->db->update('package',$data))
 
             {

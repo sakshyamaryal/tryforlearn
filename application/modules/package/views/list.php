@@ -22,11 +22,16 @@
     <i class="fa fa-plus"></i> Add Package
     
 </a>
+<a class="" id="delete"  style="color:red; margin-left: 10px;">
+    <i class="fa fa-times"></i> Delete
+    
+</a>
 <br>
 <br/>
 <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
 <thead>
 <tr>
+<th class="mt-th"><input type="checkbox" id="selectAllCheckbox" /></th>
 <th class="my-th">S.N.</th>
 <th class="my-th">Package Name</th>
 <th class="my-th">Action</th>
@@ -36,6 +41,7 @@
 <tbody id="tbody">
 <?php $sn=0; foreach($package as $data) : $sn++?>
 <tr>
+<td><input type="checkbox" class="rowCheckBox" data-id="<?= $data['package_id'] ; ?>" ></td>
 <td><?= $sn; ?></td>
 <td><?= $data['package_name']; ?></td>
 <td class="center">

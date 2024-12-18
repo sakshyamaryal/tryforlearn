@@ -215,10 +215,24 @@ function getedit(chid)
 }
 function delcertificate(chid)
 {
+    let checkedValues = [];
+    $('.rowCheckBox').each(function () {
+      if ($(this).is(':checked')) {
+        checkedValues.push($(this).attr('data-id'));
+      }
+    });
+
+    if(!chid){
+        data = checkedValues;
+    }
+    else{
+        data = chid;
+    }
+
     $.ajax({
                      url: '<?= base_url(); ?>certificate/delete',
                      type: 'POST',
-                     data: {certificate:chid},
+                     data: {id:data},
                      beforeSend: function () {
                                     $('#loader').show();
                                 },
@@ -226,7 +240,7 @@ function delcertificate(chid)
                         $('#loader').hide();
                         let response=jQuery.parseJSON(res);
 							if (response.type == 'success') {
-                                $('#ch'+chid).remove();
+                                location.reload();
                                 toastr.success(response.message, {timeOut: 5000})
 
                                
@@ -240,6 +254,16 @@ function delcertificate(chid)
 
 }
 
+$(document).off('click', '#selectAllCheckbox').on('click', '#selectAllCheckbox', function () {
+    const isChecked = $(this).is(":checked");
 
+    $(".rowCheckBox").each(function () {
+        $(this).prop("checked", isChecked);
+    });
+});
+
+$(document).off('click', '#delete').on('click', '#delete', function () {
+    delcertificate(false);
+});
 
 </script>

@@ -144,7 +144,7 @@ class Certificate extends CI_Controller
     public function delete()
     {
         $this->load->library('form_validation');
-		$this->form_validation->set_rules('certificate', 'certificate', 'required');
+		$this->form_validation->set_rules('id[]', 'certificate', 'required');
 		
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -154,7 +154,7 @@ class Certificate extends CI_Controller
 			exit;
 			
         }
-        $iu=$this->common_model->update('certificate',array('is_active'=>0),array('certificateid'=>$_POST['certificate']));
+        $iu=$this->model->delete_certificate();
         if ($iu>0) {
 
 			$validator['type'] = 'success';
@@ -183,7 +183,7 @@ class Certificate extends CI_Controller
 		foreach($content as $key =>$val)
 		{
 			$sn++;
-			$array[$key]['sn']=$sn;
+			$array[$key]['sn']='<input type="checkbox" class="rowCheckBox" data-id="'. $val->certificateid .'" />' . $sn;
 			$array[$key]['title']=$val->title ;
 			$array[$key]['certficate']=$val->name ;
 			$array[$key]['content']=$val->content ;
