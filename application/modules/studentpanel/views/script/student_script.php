@@ -475,9 +475,13 @@ function beginexercise(no,type)
     let data={no,type,
         chapter:localStorage.getItem('currentchapter'),
         subject:localStorage.getItem('currentsubject'),
-        class:localStorage.getItem('currentclass')
-       
+        class:localStorage.getItem('currentclass'),
     };
+
+    if (type=='quiz') {
+        data.topicid = localStorage.getItem('currenttopic');
+    }
+
     $.when(requestmethod(data, url)).then(function(res){
        
         if(type=='exercise')
