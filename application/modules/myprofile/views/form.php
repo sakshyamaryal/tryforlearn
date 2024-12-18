@@ -72,7 +72,31 @@
                     </div>
                     
                     </div>
+                    <div class="row">
+                    
+                        <div class="col-md-12 col-sm-12">
 
+                            <label>Document or certificate(PDF / Word / Image) <span style="color:red">Specially for Differently Abled</span></label>
+
+                            <?php
+                            if (!empty(@$st->user_verification_file)) {
+                                $file_url = @$st->user_verification_file;
+                            } else {
+                                $file_url = '';
+                            }
+                            ?>
+
+                            <?php if (!empty($file_url)): ?>
+                                <a href="<?= base_url(); ?>upload/student/<?= $file_url; ?>" target="_blank">
+                                    view previous file
+                                </a>
+                            <?php endif; ?>
+
+                            <input type="file" name="file_url" id="verification_file_url">
+                        </div>
+                    
+                    </div>
+                    
 				
 
 

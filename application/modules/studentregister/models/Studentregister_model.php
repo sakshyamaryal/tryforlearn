@@ -31,10 +31,14 @@ class Studentregister_model extends CI_Model {
            'refferalcode'=>$randm,
            'is_approved'=>0,
            'is_login'=>0,
-           'device'=>'web'
-
-
+           'device'=>'web',
+           'gender' => $this->input->post('gender'), 
        );
+
+       if (!empty($this->input->post('is_differently_abled'))) {
+            $data['is_differently_abled'] = $this->input->post('is_differently_abled');
+       }
+
        if(isset($_POST['otp']))
        {
            $data['user_type']='3';

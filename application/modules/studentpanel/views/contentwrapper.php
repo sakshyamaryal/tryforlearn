@@ -41,7 +41,8 @@ ul.breadcrumb li a:hover {
       background: none !important; */
       /* display: none; */
       opacity: 0;
-    }
+    }   
+    
 }
 
 </style>
