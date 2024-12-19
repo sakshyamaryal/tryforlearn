@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" style="width: -webkit-fill-available !important;">
     <?php if ($free_course) { ?>
         <div class="col-12">
             <h4>Free Courses</h4>
