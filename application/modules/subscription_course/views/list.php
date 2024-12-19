@@ -42,7 +42,7 @@
 
 <div class="modal" tabindex="-1" role="dialog" id="coursemodal">
   <div class="modal-dialog" role="document" style="max-width: 1080px!important;">
-    <div class="modal-content" style="height:230px;    width: 850px;">
+    <div class="modal-content" style=" width: 850px;">
       <div class="modal-header">
         <h5 class="modal-title">Course Enrolled On:</h5>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -108,8 +108,12 @@
             </div>
 
             <div class="col-md-3" id="">
-            <input type="text" class="form-control" id="applyPromoVal" name="applyPromo" style="display: none;" value="N" />
-              <button type="button" id="applyPromo" class="btn btn-success">Apply Code</button>
+            <label>Amount / Eligibility</label>
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="applyPromoVal" name="applyPromo" style="display: none;" value="N" />
+                <button type="button" id="applyPromo" class="btn btn-success">Apply Promo</button>
+              </div>
             </div>
 
             <div class="col-md-3" id="newPriceDiv" style="display: none; font-weight: bold; font-size: 16px; color: green;">
