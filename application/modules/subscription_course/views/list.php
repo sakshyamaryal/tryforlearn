@@ -108,7 +108,7 @@
             </div>
 
             <div class="col-md-3" id="">
-            <label>Amount / Eligibility</label>
+            <label>Click to apply code</label>
 
             <div class="form-group">
               <input type="text" class="form-control" id="applyPromoVal" name="applyPromo" style="display: none;" value="N" />

@@ -23,8 +23,8 @@ date_default_timezone_set('Asia/Kathmandu');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/public_html/';
-// $config['base_url'] = 'http://localhost/tryforlearn/';
+// $config['base_url'] = 'http://localhost/public_html/';
+$config['base_url'] = 'http://localhost/tryforlearn/';
 // $config['base_url'] = 'http://www.tryforlearn.com/';
 // $config['base_url'] = 'https://www.tryforlearn.com/';
 
