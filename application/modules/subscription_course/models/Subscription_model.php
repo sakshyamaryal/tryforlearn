@@ -95,33 +95,33 @@ class Subscription_model extends CI_Model
 
       $loggedInUser = $this->session->userdata('userid');
       if($res->row()->for_gender != 'N'){
-        $this->db->select('user_id');
+        $this->db->select('user_id, gender');
         $this->db->from('users');
-        $this->db->where(array('user_id' => $loggedInUser, 'gender' => $res->row()->for_gender));
+        $this->db->where(array('user_id' => $loggedInUser));
         $genderData = $this->db->get();
-        $genderUser = $genderData->num_rows();
+        // $genderUser = $genderData->num_rows();
 
         if(!$genderData->row()->gender){
           return 'Please update your gender in profile.';
         }
-        else if($genderUser < 1){
+        else if($genderData->row()->gender != $res->row()->for_gender){
           return 'Not eligible gender';
         }
 
       }
 
       if($res->row()->for_disabled == 'Y'){
-        $this->db->select('user_id');
+        $this->db->select('user_id, is_differently_abled, is_disability_approved');
         $this->db->from('users');
-        $this->db->where(array('user_id' => $loggedInUser, 'is_differently_abled' => 'Y', 'is_disability_approved' => 'Y'));
+        $this->db->where(array('user_id' => $loggedInUser, 'is_differently_abled' => 'Y'));
         $disabledData = $this->db->get();
         $disabledUser = $disabledData->num_rows();
 
-        if($disabledData->row()->is_differently_abled == 'Y' && $disabledData->row()->is_disability_approved == 'N'){
-          return 'Disability verification pending. Not eligible until verified.';
-        }
-        else if($disabledUser < 1){
+        if($disabledUser < 1){
           return 'Not eligible';
+        }
+        else if($disabledData->row()->is_differently_abled == 'Y' && $disabledData->row()->is_disability_approved == 'N'){
+          return 'Disability verification pending. Not eligible until verified.';
         }
 
       }
