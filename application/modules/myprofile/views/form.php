@@ -73,6 +73,43 @@
                     
                     </div>
                     <div class="row">
+                        <div class="col-md-4 col-sm-4">
+                            <label>Gender <span style="color:red;">(You can't change your gender once selected)</span></label>
+                            
+                            <?php if(empty(@$st->is_differently_abled)) { ?>
+                            <select class="form-control" name="gender" id="gender">
+                                <option value="">Select</option>
+                                <option value="M" <?php if(@$st->gender == 'M') echo 'selected'; ?>>Male</option>
+                                <option value="F" <?php if(@$st->gender == 'F') echo 'selected'; ?>>Female</option>
+                            </select>
+                            <?php }
+                            else{ ?>
+                                <input class="form-control" value="<?=@$st->gender?>" disabled>
+                            <?php } ?>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            
+                            <label>Is Differently Abled</label>
+                            <?php if(@$st->is_differently_abled == 'N') { ?>
+                                <select class="form-control" name="is_differently_abled" id="is_differently_abled" >
+                                    <option value="Y" <?php if(@$st->is_differently_abled == 'Y') echo 'selected'; ?>>Yes</option>
+                                    <option value="N" <?php if(@$st->is_differently_abled == 'N') echo 'selected'; ?>>No</option>
+                                </select>
+                            <?php }
+                            else{ ?>
+                                <input class="form-control" value="Y" disabled>
+                            <?php } ?>
+                            
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <label>Is Disability Approved</label>
+                            <select class="form-control" name="is_disability_approved" id="is_disability_approved" disabled>
+                                <option value="Y" <?php if(@$st->is_disability_approved == 'Y') echo 'selected'; ?>>Yes</option>
+                                <option value="N" <?php if(@$st->is_disability_approved == 'N') echo 'selected'; ?>>No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
                     
                         <div class="col-md-12 col-sm-12">
 
