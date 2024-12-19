@@ -24,6 +24,10 @@
 					<!--						<i class="fa fa-plus"></i> Add Page-->
 					<!---->
 					<!--					</a>-->
+					<div style="padding: 10px 0;">
+						<a id="delete" class="btn btn-warning btn-md k-grid-delete" data-toggle="tooltip" title="Delete"><span class="fa fa-times"></span>
+						Delete</a>
+					</div>
 					<div id="grid"></div>
 					<input type="hidden" id='uploadedFile' data-bind="value: files"/>
 					

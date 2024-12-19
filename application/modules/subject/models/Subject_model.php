@@ -195,7 +195,7 @@ class Subject_model extends CI_Model
 		$data = array(
 			'is_active' => '0'
 		);
-		$this->db->where('subject_id', $this->input->post('id'));
+		$this->db->where_in('subject_id', $this->input->post('id'));
 		if ($this->db->update('subject', $data)) {
 			return true;
 		} else {

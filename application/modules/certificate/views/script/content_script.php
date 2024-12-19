@@ -232,7 +232,7 @@ function delcertificate(chid)
     $.ajax({
                      url: '<?= base_url(); ?>certificate/delete',
                      type: 'POST',
-                     data: {id:data},
+                     data: {id:data || 0},
                      beforeSend: function () {
                                     $('#loader').show();
                                 },
@@ -263,7 +263,9 @@ $(document).off('click', '#selectAllCheckbox').on('click', '#selectAllCheckbox',
 });
 
 $(document).off('click', '#delete').on('click', '#delete', function () {
-    delcertificate(false);
+    if (confirm("Are you sure you want to delete this item?")) {
+        delcertificate(false);
+    }
 });
 
 </script>

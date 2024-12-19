@@ -333,7 +333,7 @@
 			$.ajax({
 				url: '<?= base_url(); ?>users/approve_student',
 				type: 'POST',
-				data: { id: selectedData },
+				data: { id: selectedData || 0 },
 				success: function (response) {
 					var response = jQuery.parseJSON(response);
 					if (response.success == true) {
@@ -396,7 +396,7 @@
 			$.ajax({
 				url: '<?= base_url(); ?>users/deletestudent',
 				type: 'POST',
-				data: { id: selectedData },
+				data: { id: selectedData || 0 },
 				success: function (response) {
 					var response = jQuery.parseJSON(response);
 					if (response.success == true) {
@@ -525,7 +525,7 @@
 			$.ajax({
 				url: '<?= base_url(); ?>users/verifyDisable',
 				type: 'POST',
-				data: { id: selectedData },
+				data: { id: selectedData || 0 },
 				success: function (response) {
 					var response = jQuery.parseJSON(response);
 					if (response.success == true) {

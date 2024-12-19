@@ -78,9 +78,10 @@
                 </div>
                
                 
-                <div class="col-md-2" style="margin-top:20px;">
+                <div class="col-md-3" style="margin-top:20px;">
                 <button type="submit" id="btnsubmit" class="btn btn-primary">View</button>
                 <button type="button" id="btnshowform" class="btn btn-success">Add</button>
+                <button type="button" id="btndelete" class="btn btn-danger">Delete</button>
                 </div>
 
                 

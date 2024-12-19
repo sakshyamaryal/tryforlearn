@@ -259,7 +259,7 @@
 					$.ajax({
 						url: '<?= base_url(); ?>testimonial/delete',
 						type: 'POST',
-						data: { id: selectedData },
+						data: { id: selectedData || 0 },
 						success: function (response) {
 							var response = jQuery.parseJSON(response);
 

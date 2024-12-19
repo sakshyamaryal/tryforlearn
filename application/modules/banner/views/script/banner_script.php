@@ -236,7 +236,7 @@
 					$.ajax({
 						url: '<?= base_url(); ?>banner/delete',
 						type: 'POST',
-						data: { id: selectedData },
+						data: { id: selectedData || 0 },
 						success: function (response) {
 							var response = jQuery.parseJSON(response);
 

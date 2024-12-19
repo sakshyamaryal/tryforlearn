@@ -104,8 +104,10 @@ class Clas extends CI_Controller
 			'is_active' => 0,
 
 		);
+
+		$ids = $this->input->post('id') ? $this->input->post('id') : $_GET['models'][0]['classid'];
 		
-		if ($this->model->updateclass($data_arr,$_GET['models'][0]['classid'])) {
+		if ($this->model->updateclass($data_arr,$ids)) {
 
 			$validator['success'] = true;
 			$validator['messages'] = "class has been updated";

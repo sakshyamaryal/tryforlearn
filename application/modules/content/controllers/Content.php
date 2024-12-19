@@ -8,6 +8,7 @@ class Content extends CI_Controller
 		parent::__construct();
 		$this->load->model('comman/common_model','common_model');
 		$this->load->model('clas/class_model','classmodel');
+		$this->load->model('content_model','model');
 
 		if($this->session->adminuserid == "")
         {
@@ -219,7 +220,7 @@ class Content extends CI_Controller
     public function delete()
     {
         $this->load->library('form_validation');
-		$this->form_validation->set_rules('content', 'Content', 'required');
+		$this->form_validation->set_rules('content[]', 'Content', 'required');
 		
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -229,7 +230,8 @@ class Content extends CI_Controller
 			exit;
 			
         }
-        $iu=$this->common_model->update('content',array('is_active'=>0),array('contentid'=>$_POST['content']));
+        // $iu=$this->common_model->update('content',array('is_active'=>0),array('contentid'=>$_POST['content']));
+		$iu = $this->model->updateContent($this->input->post('content'));
         if ($iu>0) {
 
 			$validator['type'] = 'success';
@@ -438,7 +440,7 @@ class Content extends CI_Controller
 		foreach($content as $key =>$val)
 		{
 			$sn++;
-			$array[$key]['sn']=$sn;
+			$array[$key]['sn']='<input type="checkbox" class="rowCheckBox" data-id="'. $val->contentid .'" />'.$sn;
 			$array[$key]['content']=$val->title ;
 			$array[$key]['order']=$val->orderby ;
 			$array[$key]['chid']=$val->contentid ;

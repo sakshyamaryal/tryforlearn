@@ -11,7 +11,7 @@
 <table class="table table-bordered table-hover table-striped pad-fixed-tbl mar-10-top dataTable no-footer" id="dataTable" data-filename="chapterlist" data-cols="[0,1]" style="width:90%">
                 <thead id="tbl_data_thead">
                     <tr>
-                    <th  style="text-align:center;">S.N.</th>
+                    <th  style="text-align:center;"><input type="checkbox" id="selectAllCheckbox" />S.N.</th>
                     <th  style="text-align:center;">Topic</th>
                     <th  style="text-align:center;">Action</th>
                     </tr>
@@ -44,6 +44,9 @@
     "fnCreatedRow": function (nRow, aData, iDataIndex) {
                 $(nRow).attr('id', 'ch'+aData.chid);
             },
+    "columnDefs": [
+      { orderable: false, targets: 0 }
+    ],
     "columns": [
           { "data": "sn" },
       { "data": "topic" },

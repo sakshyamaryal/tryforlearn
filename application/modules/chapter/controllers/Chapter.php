@@ -183,7 +183,7 @@ class Chapter extends CI_Controller
     public function delete()
     {
         $this->load->library('form_validation');
-		$this->form_validation->set_rules('chapter', 'Chapter', 'required');
+		$this->form_validation->set_rules('chapter[]', 'Chapter', 'required');
 		
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -193,7 +193,8 @@ class Chapter extends CI_Controller
 			exit;
 			
         }
-        $iu=$this->common_model->update('chapter',array('is_active'=>0),array('chapterid'=>$_POST['chapter']));
+        // $iu=$this->common_model->update('chapter',array('is_active'=>0),array('chapterid'=>$_POST['chapter']));
+		$iu = $this->model->updateChapter($this->input->post('chapter'));
         if ($iu>0) {
 
 			$validator['type'] = 'success';
@@ -239,7 +240,7 @@ class Chapter extends CI_Controller
 		foreach($chapter as $key =>$val)
 		{
 			$sn++;
-			$array[$key]['sn']=$sn;
+			$array[$key]['sn']='<input type="checkbox" class="rowCheckBox" data-id="'. $val->chapterid .'" />'.$sn;
 			$array[$key]['chapter']=$val->chaptername ;
 			$array[$key]['chid']=$val->chapterid ;
 			$array[$key]['action']='';

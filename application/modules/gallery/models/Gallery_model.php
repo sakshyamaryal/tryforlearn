@@ -157,7 +157,7 @@ class Gallery_model extends CI_Model
 
 	public function updateGallery ($data, $galleryId)
 	{
-		$this->db->where('gallery_id', $galleryId);
+		$this->db->where_in('gallery_id', $galleryId);
 		if ($this->db->update('gallery', $data)) {
 			return true;
 		} else {

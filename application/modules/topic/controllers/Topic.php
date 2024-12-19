@@ -206,7 +206,7 @@ class Topic extends CI_Controller
     public function delete()
     {
         $this->load->library('form_validation');
-		$this->form_validation->set_rules('topic', 'Topic', 'required');
+		$this->form_validation->set_rules('topic[]', 'Topic', 'required');
 		
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -216,7 +216,8 @@ class Topic extends CI_Controller
 			exit;
 			
         }
-        $iu=$this->common_model->update('topic',array('is_active'=>0),array('topicid'=>$_POST['topic']));
+        // $iu=$this->common_model->update('topic',array('is_active'=>0),array('topicid'=>$_POST['topic']));
+		$iu = $this->model->updateTopic($this->input->post('topic'));
         if ($iu>0) {
 
 			$validator['type'] = 'success';
@@ -265,7 +266,7 @@ class Topic extends CI_Controller
 		foreach($topic as $key =>$val)
 		{
 			$sn++;
-			$array[$key]['sn']=$sn;
+			$array[$key]['sn']='<input type="checkbox" class="rowCheckBox" data-id="'. $val->topicid .'" />'.$sn;
 			$array[$key]['topic']=$val->topicname ;
 			$array[$key]['chid']=$val->topicid ;
 			

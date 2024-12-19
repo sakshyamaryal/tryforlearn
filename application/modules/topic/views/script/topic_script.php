@@ -199,10 +199,23 @@ function delchapter(chid)
 }
 function delthis(chid)
 {
+    let checkedValues = [];
+    $('.rowCheckBox').each(function () {
+      if ($(this).is(':checked')) {
+        checkedValues.push($(this).attr('data-id'));
+      }
+    });
+
+    if(!chid){
+        data = checkedValues;
+    }
+    else{
+        data = chid;
+    }
     $.ajax({
                      url: '<?= base_url(); ?>topic/delete',
                      type: 'POST',
-                     data: {topic:chid},
+                     data: {topic:data || 0},
                      beforeSend: function () {
                                     $('#loader').show();
                                 },
@@ -222,4 +235,18 @@ function delthis(chid)
 
                  });
 }
+
+$(document).off('click', '#selectAllCheckbox').on('click', '#selectAllCheckbox', function () {
+    const isChecked = $(this).is(":checked");
+
+    $(".rowCheckBox").each(function () {
+        $(this).prop("checked", isChecked);
+    });
+});
+
+$(document).off('click', '#btndelete').on('click', '#btndelete', function () {
+    if (confirm("Are you sure you want to delete this item?")) {
+        delthis(false);
+    }
+});
 </script>

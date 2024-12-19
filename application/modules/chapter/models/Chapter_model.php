@@ -41,4 +41,17 @@ class Chapter_model extends CI_Model
     return array();
 
   }
+
+  public function updateChapter ($id)
+	{
+    $data = array(
+      'is_active' => 0
+    );
+		$this->db->where_in('chapterid', $id);
+		if ($this->db->update('chapter', $data)) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 }

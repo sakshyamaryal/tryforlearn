@@ -161,7 +161,7 @@ class Class_model extends CI_Model
 	
 	public function updateclass ($data, $classId)
 	{
-		$this->db->where('classid', $classId);
+		$this->db->where_in('classid', $classId);
 		if ($this->db->update('class', $data)) {
 			return true;
 		} else {

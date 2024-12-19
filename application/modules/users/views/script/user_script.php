@@ -393,7 +393,7 @@
 					$.ajax({
 						url: '<?= base_url(); ?>users/delete',
 						type: 'POST',
-						data: { id: selectedData },
+						data: { id: selectedData || 0 },
 						success: function (response) {
 							var response = jQuery.parseJSON(response);
 							if (response.success == true) {

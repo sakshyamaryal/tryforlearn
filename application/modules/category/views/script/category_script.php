@@ -296,7 +296,7 @@
 					$.ajax({
 						url: '<?= base_url(); ?>category/delete',
 						type: 'POST',
-						data: { id: selectedData },
+						data: { id: selectedData || 0 },
 						success: function (response) {
 							response = JSON.parse(response);
 							console.log(response.success);

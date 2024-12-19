@@ -23,4 +23,17 @@ class Topic_model extends CI_Model
     $res=$this->db->query($sql,array($classid,$subjectid))->result();
     return $res;
   }
+
+  public function updateTopic ($id)
+	{
+    $data = array(
+      'is_active' => 0
+    );
+		$this->db->where_in('topicid', $id);
+		if ($this->db->update('topic', $data)) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 }

@@ -94,7 +94,9 @@ class Gallery extends CI_Controller
 
 		);
 
-		if ($this->model->updateGallery($data_arr, $_GET['models'][0]['gallery_id'])) {
+		$ids = $this->input->post('id') ? $this->input->post('id') : $_GET['models'][0]['gallery_id'];
+
+		if ($this->model->updateGallery($data_arr, $ids)) {
 
 			$validator['success'] = true;
 			$validator['messages'] = "gallery has been deleted";
