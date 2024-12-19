@@ -46,6 +46,16 @@ function updatemyprofile()
     var file_data = $('#file').prop('files')[0];
     var user_verification_file = $('#verification_file_url').prop('files')[0];
     var form_data = new FormData();
+
+    var gender = $('#gender').val();
+    var is_differently_abled = $('#is_differently_abled').val();
+    
+    if (!gender) {
+        gender = '';
+    }
+    if (!is_differently_abled) {
+        is_differently_abled = '';
+    }
     form_data.append('file', file_data);
     form_data.append('fname', $('#fname').val());
     form_data.append('cnum', $('#cnum').val());
@@ -58,7 +68,9 @@ function updatemyprofile()
     form_data.append('extra_information', $('#extra_information').val());
     form_data.append('language', $('#language').val());
     form_data.append('user_verification_file', user_verification_file);
-
+    form_data.append('gender',gender );
+    form_data.append('is_differently_abled', is_differently_abled);
+    
     var url=base_url+"myprofile/updatemyprofile";
     $.when(requestmethod(form_data, url)).then(function(res){
                  $('#addmodal').modal('hide');
