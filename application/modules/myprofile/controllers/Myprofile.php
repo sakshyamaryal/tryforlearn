@@ -121,6 +121,13 @@ class Myprofile extends CI_Controller
 			
 
         );
+        if ($this->input->post('gender') != '') {
+            $data['gender'] = $this->input->post('gender');
+        }
+        if ($this->input->post('is_differently_abled')  != '') {
+            $data['is_differently_abled'] = $this->input->post('is_differently_abled');
+        }
+
         if($filename!='')
         $data['image']=$filename;
         $udata=array(
