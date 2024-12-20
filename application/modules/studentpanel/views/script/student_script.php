@@ -450,8 +450,35 @@ function previewselected(val,type,count)
 
         src=cf.data('file');
         
-        $('#mypreviewbody').html('<iframe width="750" height="450" src="'+src+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
-        
+        // $('#mypreviewbody').html('<iframe width="750" height="450" src="'+src+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
+        $('#mypreviewbody').html(`
+            <div style="position:relative; width:750px; height:450px;">
+                <iframe 
+                    width="750" 
+                    height="450" 
+                    src="${src}?rel=0&modestbranding=1&showinfo=0&fs=0&disablekb=1&iv_load_policy=3&controls=1" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen>
+                </iframe>
+                <!-- Bottom-right overlay -->
+                <div class="overlay-bottom-right" style="position:absolute; bottom:0; right:0; background:rgba(0, 0, 0, 0.5); opacity:0;  color:#fff; padding:10px; font-size:14px;">
+                    Bottom a 
+                </div>
+
+                <!-- Left overlay -->
+                <div class="overlay-left" style="position:absolute; bottom:0; left:0; height:30%; width:250px;opacity:0; background:rgba(0, 0, 0, 0.5); color:#fff; padding:10px; font-size:14px; text-align:center;">
+                    Left Overlay
+                </div>
+
+                <!-- Top overlay -->
+                <div class="overlay-top" style="position:absolute; top:0; left:0; width:100%; height:80px; opacity:0;background:rgba(0, 0, 0, 0.5); color:#fff; padding:10px; font-size:14px; text-align:center;">
+                    Top Overlay
+                </div>
+            </div>
+        `);
+
+
     }
     else if(type=='3')
     {
@@ -657,21 +684,61 @@ function requestmethod(postdata, url) {
 	});
 }
 
-function getCourseRelatedVideos(contentids){
-    var url=base_url+"studentpanel/getCourseRelatedVideos";
-    var data = {contentids};
+function getCourseRelatedAllFiles(contentids,type){
+    var url=base_url+"studentpanel/getCourseRelatedFiles";
+
+    var data={contentids,type};
+ 
     $.when(requestmethod(data, url)).then(function(res){
-        $('.tabvideotitle').empty();
-        if(res.status==true)
+   
+        
+        if(type=='f')
         {
+            $('.tabfiletitle').empty();
+            $('.tabfiletitle').html('Files related to '+localStorage.getItem('currenttopicname'));
+            if(res.status==true)
+            {
+            $('.tabfiledetail').empty();
+            $('.tabfiledetail').html(res.html);
+            }
+            else
+            {
+                $('.tabfiledetail').empty();
+            $('.tabfiledetail').html(res.message);
+
+            }
+        }
+        else if(type=='v')
+        {
+            $('.tabvideotitle').empty();
+            $('.tabvideotitle').html('Videos related to '+localStorage.getItem('currenttopicname'));
+            if(res.status==true)
+            {
             $('.tabvideodetail').empty();
             $('.tabvideodetail').html(res.html);
-        }
-        else
-        {
-            $('.tabvideodetail').empty();
-            $('.tabvideodetail').html(res.message);
+            }
+            else
+            {
+                $('.tabvideodetail').empty();
+                 $('.tabvideodetail').html(res.message);
 
+            }
+        }
+        else if(type=='i')
+        {
+            $('.tabimagetitle').empty();
+            $('.tabimagetitle').html('Images related to '+localStorage.getItem('currenttopicname'));
+            if(res.status==true)
+            {
+            $('.tabimagedetail').empty();
+            $('.tabimagedetail').html(res.html);
+            }
+            else
+            {
+                $('.tabimagedetail').empty();
+                 $('.tabimagedetail').html(res.message);
+
+            }
         }
     });
 }
