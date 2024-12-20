@@ -89,6 +89,8 @@
           $('#oldPrice').text(response.oldPrice);
           $('#newPriceDiv').css('display', 'block');
           $('#newPrice').text(response.newPrice);
+          $('#discountAmtDiv').css('display', 'block');
+          $('#discountAmt').text(response.discountAmt);
         }
         else {
           //alert(response.message);

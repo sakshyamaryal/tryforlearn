@@ -313,6 +313,7 @@ class Users extends CI_Controller
 				);
 				$enrollid=$this->common_model->insert('student_enroll',$insert_enroll);
 			}
+			$serviceAmt = 125;
 			$sfee=array(
 				'student_id'=>$id,
 				'student_enroll_id'=>$enrollid,
@@ -320,7 +321,7 @@ class Users extends CI_Controller
 				'classid'=>$_POST['classid'],
 				'subjectid'=>$_POST['subjectid'],
 				'feepackage'=>$feepackage,
-				'paid_amount'=>$_POST['package'],
+				'paid_amount'=>$_POST['package'] + $serviceAmt,
 				'paid_date'=>date('Y-m-d'),
 				'is_paid'=>1,
 				'issued_by'=>$this->session->adminuserid,

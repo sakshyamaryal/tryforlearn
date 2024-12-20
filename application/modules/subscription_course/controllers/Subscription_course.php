@@ -168,6 +168,7 @@ class Subscription_course extends CI_Controller {
         }
 
         $discountamt=0;
+        $serviceamt = 125;
                 // voucher code condtn
                 if(isset($_POST['vouchercode']) && $_POST['vouchercode']!='')
                 {
@@ -223,7 +224,8 @@ class Subscription_course extends CI_Controller {
                     'type' => 'applyPromo',
                     'status' => $promoStatus,
                     'oldPrice' => $payamt,
-                    'newPrice' => $payamt-$discountamt
+                    'newPrice' => $payamt-$discountamt + $serviceamt,
+                    'discountAmt' => $discountamt
                   ));
                   exit();
                 }
@@ -236,7 +238,7 @@ class Subscription_course extends CI_Controller {
           $txn=$txn.$this->session->userdata('userid');
         }
 
-        $payamt=$payamt-$discountamt;
+        $payamt=$payamt-$discountamt+$serviceamt;
 
         $insert=array(
           'productcode'=>$txn,

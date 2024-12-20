@@ -112,21 +112,28 @@
 
             <div class="form-group">
               <input type="text" class="form-control" id="applyPromoVal" name="applyPromo" style="display: none;" value="N" />
-                <button type="button" id="applyPromo" class="btn btn-success">Apply Promo</button>
+                <button type="button" id="applyPromo" class="btn btn-success">Apply Code</button>
               </div>
             </div>
 
-            <div class="col-md-3" id="newPriceDiv" style="display: none; font-weight: bold; font-size: 16px; color: green;">
+          </div>
+          <div class="row" style="display: flex; flex-direction: column;">
+
+          <div class="col-md-4" id="serviceChDiv" style="font-weight: bold; font-size: 16px; margin-bottom: 5px;">
+              <span>Service Charge: Rs. 125</span>
+            </div>
+
+          <div class="col-md-3" id="oldPriceDiv" style="display: none; font-weight: bold; font-size: 16px; color: red;">
+              <span>Price: Rs. <span id="oldPrice"></span></span>
+            </div>
+
+            <div class="col-md-3" id="discountAmtDiv" style="display: none; font-weight: bold; font-size: 16px; margin-top: 5px;">
+              <span>Discount: Rs. <span id="discountAmt"></span></span>
+            </div>
+
+          <div class="col-md-3" id="newPriceDiv" style="display: none; font-weight: bold; font-size: 16px; color: green; margin-top: 5px; margin-bottom: 5px;">
               <span>New Price: Rs. <span id="newPrice"></span></span>
             </div>
-
-            <div class="col-md-3" id="oldPriceDiv" style="display: none; font-weight: bold; font-size: 16px; color: red;">
-              <span>Old Price: Rs. <span id="oldPrice"></span></span>
-            </div>
-
-
-          </div>
-          <div class="row">
 
             <div class="col-md-4 text-center ">
               <button id="btnsave" type="button" class=" btn btn-block mybtn btn-primary tx-tfm">Submit</button>
