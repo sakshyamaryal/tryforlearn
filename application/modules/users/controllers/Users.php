@@ -263,7 +263,7 @@ class Users extends CI_Controller
 
 			$whereData = array('userid' => $id, 'levelid' => $_POST['class'], 'classid' => $_POST['classid'], 'subjectid' => $_POST['subjectid']);
 
-			$oldData = $this->common_model->getRows('student_enroll', $whereData, '*', 'start_date desc');
+			$oldData = $this->common_model->getRows('student_enroll', $whereData, '*', 'end_date desc');
 
 			if(count($oldData) > 0){
 				if(strtotime($oldData[0]->end_date) > strtotime(date('Y-m-d'))){

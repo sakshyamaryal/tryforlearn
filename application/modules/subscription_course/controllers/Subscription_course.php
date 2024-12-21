@@ -382,7 +382,28 @@ class Subscription_course extends CI_Controller {
     $feepackage='Two Days';
 			$enddate =date('Y-m-d', strtotime("+2 days", strtotime($startdate)));
    }
-		$insert_enroll=array(
+
+   if(count($check_previous)>0){
+    
+    $updateData = array(
+      'end_date' => $enddate,
+      'current_status'=>1,
+      'is_active'=>1
+    );
+
+    $whereData = array(
+      'userid' => $this->session->userdata('userid'),
+      'levelid'=> $_POST['levelid'],
+			'classid'=>$_POST['classid'],
+			'subjectid'=>$_POST['subjectid'],
+    );
+
+    $enrollid = $check_previous[0]->id;
+
+    $this->common_model->update('student_enroll', $updateData, $whereData);
+   }
+   else {
+    $insert_enroll=array(
 			'userid'=>$this->session->userdata('userid'),
 			'levelid'=>$_POST['levelid'],
 			'classid'=>$_POST['classid'],
@@ -394,6 +415,8 @@ class Subscription_course extends CI_Controller {
 		);
 		
 		$enrollid=$this->common_model->insert('student_enroll',$insert_enroll);
+   }
+		
 		$sfee=array(
 			'student_id'=>$this->session->userdata('userid'),
 			'student_enroll_id'=>$enrollid,
