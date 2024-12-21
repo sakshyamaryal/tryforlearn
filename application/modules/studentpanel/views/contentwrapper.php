@@ -384,33 +384,35 @@ $("ul").click(function(){
   checkRefresh();
 });
 $('#navtabfile').click(function(e){
-  
-  var contentid=$(this).attr('data-val');
-  if(localStorage.currenttabfile)
-  {
-     if(contentid!=localStorage.getItem('currenttabfile'))
-     {
-       getcontentfile(contentid,'f');
-     }
-     else
-     {
-       var text=$('.tabfiledetail').html();
-          if(text.length<1)
-          {
-            getcontentfile(contentid,'f');
-          }
-     }
 
-  }else
-  {
-    getcontentfile(contentid,'f');
-  }
+  getCourseRelatedAllFiles(arr, 'f');
+  
+  // var contentid=$(this).attr('data-val');
+  // if(localStorage.currenttabfile)
+  // {
+  //    if(contentid!=localStorage.getItem('currenttabfile'))
+  //    {
+  //      getcontentfile(contentid,'f');
+  //    }
+  //    else
+  //    {
+  //      var text=$('.tabfiledetail').html();
+  //         if(text.length<1)
+  //         {
+  //           getcontentfile(contentid,'f');
+  //         }
+  //    }
+
+  // }else
+  // {
+  //   getcontentfile(contentid,'f');
+  // }
 
 });
 
 $('#navtabvideo').click(function(e){
 
-  getCourseRelatedVideos(arr);
+  getCourseRelatedAllFiles(arr, 'v');
   //  commented because needed all videos to related course topics un comment this to get id wise only
 
   // var contentid=$(this).attr('data-val');
@@ -438,28 +440,29 @@ $('#navtabvideo').click(function(e){
 });
 
 $('#navtabimage').click(function(e){
-  
-  
-  var contentid=$(this).attr('data-val');
-  if(localStorage.currenttabimage)
-  {
-     if(contentid!=localStorage.getItem('currenttabimage'))
-     {
-       getcontentfile(contentid,'i');
-     }
-     else
-     {
-       var text=$('.tabimagedetail').html();
-          if(text.length<1)
-          {
-            getcontentfile(contentid,'i');
-          }
-     }
 
-  }else
-  {
-    getcontentfile(contentid,'i');
-  }
+  getCourseRelatedAllFiles(arr, 'i');
+  
+  // var contentid=$(this).attr('data-val');
+  // if(localStorage.currenttabimage)
+  // {
+  //    if(contentid!=localStorage.getItem('currenttabimage'))
+  //    {
+  //      getcontentfile(contentid,'i');
+  //    }
+  //    else
+  //    {
+  //      var text=$('.tabimagedetail').html();
+  //         if(text.length<1)
+  //         {
+  //           getcontentfile(contentid,'i');
+  //         }
+  //    }
+
+  // }else
+  // {
+  //   getcontentfile(contentid,'i');
+  // }
 
 });
 $('.startgame').click(function(e){

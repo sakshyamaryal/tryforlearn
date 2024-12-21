@@ -559,15 +559,29 @@ class Studentpanel extends CI_Controller {
         return sprintf('%02d:%02d:%02d', $hours, $minutes, $remainingSeconds);
     }
 
-    public function getCourseRelatedVideos()
+    public function getCourseRelatedFiles()
     {
         $post = $this->input->post();
 
+        if($post['type']=='f')
+        {
+            $data['type']='file';
+  
+        }
+        else if($post['type']=='v')
+        {
+            $data['type']='video';
+  
+        }
+        else if($post['type']=='i')
+        {
+            $data['type']='image';
+        }else{
+            echo json_encode(array('status' => false, 'message' => '<p style="color:red;">File type mismatched.</p>'));
+            exit;
+        }
 
-
-        $data['list'] = $this->model->getCourseRelatedVideos($post['contentids']);
-        $data['type']='video';
-
+        $data['list'] = $this->model->getCourseRelatedAllFiles($post, $data['type']);
 
         if (empty($data['list'])) {
             echo json_encode(array('status' => false, 'message' => '<p style="color:red;">No any reference files.</p>'));
