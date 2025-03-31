@@ -12078,14 +12078,14 @@ h5,
 }
 
 .owl-carousel .owl-item {
-    opacity: .4
+    opacity: 1;
     height:200px !important; 
     overflow-y: hidden;
 }
 
 .owl-carousel .owl-item.active {
-    opacity: 1
-    width:100% !important;
+    opacity: 1;
+    /* width:100% !important; */
 }
 
 .owl-carousel .owl-nav {
@@ -12333,7 +12333,7 @@ h5,
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 60px;
+    bottom: 30px;
     width: 100%;
     text-align: center
 }
@@ -13518,12 +13518,13 @@ textarea.form-control {
 }
 
 .testimony-wrap .text {
-    width: calc(100% - 120px);
-    position: relative
+    /* width: calc(100% - 120px); */
+    position: relative;
+    min-height: 100px;
 }
 
 .testimony-wrap .quote {
-    position: absolute;
+    /* position: absolute; */
     top: -40px;
     left: 0;
     opacity: .1
@@ -14202,7 +14203,8 @@ textarea.form-control {
      height:300px !important;
  }
  .owl-carousel.home-slider{
-     height:300px;
+     /* height:300px; */
+     height: 60vh !important;
  }
  .slider-item .container .row .col-md-8{
      height:300px;
@@ -14227,3 +14229,6 @@ textarea.form-control {
 		color: black;
 		font-size: 24px;
 	}
+    .home-overlay{
+        background-color: #0D290D;
+    }

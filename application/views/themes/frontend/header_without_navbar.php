@@ -20,16 +20,6 @@
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/ionicons.min.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/flaticon.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/icomoon.css">
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
-    />
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/style.css">
     <link rel="stylesheet" href="<?=base_url();?>assets/frontend/css/bootstrap_4.min.css">
 
@@ -71,7 +61,7 @@
   logged_out_greeting="Hello! Welcome to Try For Learn Pvt. Ltd. How can we help you?">
       </div>
       
-    <div class="py-2 bg-primary">
+    <!-- <div class="py-2 bg-primary">
         <div class="container">
             <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
                 <div class="col-lg-12 d-block">
@@ -89,12 +79,12 @@
                             <div class="icon bg-tertiary mr-2 d-flex justify-content-center align-items-center"><span class="fa fa-phone"></span></div>
                             <span class="text"> <a href="tel:<?=$basic->phone; ?>" style="color:#fff;"><?=$basic->phone; ?></a></span>
                         </div>
-                         <!-- <?php if($this->session->userdata('userid')!=""): ?>
+                        <?php if($this->session->userdata('userid')!=""): ?>
                           <a href="<?= base_url()?>studentpanel" class="nav-link" style="color:white;"> Dashboard</a>
                         
                     
 
-                            <?php endif; ?> -->
+                            <?php endif; ?> 
                              
                      <div class="col-md-4 pr-4 d-flex topper align-items-center" style="color:#fff;">
                          
@@ -124,7 +114,7 @@
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light py-3" id="ftco-navbar" style="margin-bottom: 0;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
         <div class="container d-flex align-items-center">
             <a class="navbar-brand" href="<?= base_url(); ?>">Try For Learn</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -212,4 +202,4 @@
 
             </div>
         </div>
-    </nav>
+    </nav> -->

@@ -144,6 +144,8 @@
 
         <!-- Google Analytics -->
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
     <script src="<?= base_url(); ?>assets/frontend/js/jquery-migrate-3.0.1.min.js" type="7bc5c9033436b1e8f8c4bf09-text/javascript"></script>
     <script src="<?= base_url(); ?>assets/frontend/js/popper.min.js" type="7bc5c9033436b1e8f8c4bf09-text/javascript"></script>
