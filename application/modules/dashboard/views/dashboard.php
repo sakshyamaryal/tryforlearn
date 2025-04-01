@@ -143,7 +143,7 @@
     <a data-toggle="tooltip" title="<?= $unpaid_fees->total; ?> Unpaid Revenue" class="well top-block" href="#">
     <i class="fa fa-rupee-sign red"></i>
     <div>Unpaid Fees</div>
-    <div><?= $unpaid_fees->total; ?></div>
+    <div><?= !empty($unpaid_fees->total) ? $unpaid_fees->total : 0; ?></div>
     <span class="notification red"><?= $c_unpaid_fees->total; ?></span>
     </a>
     </div>

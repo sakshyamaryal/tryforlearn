@@ -27,7 +27,6 @@ class Dashboard extends CI_Controller {
             'inactive_students'=>$this->model->getRows('users',array('user_type'=>3,'is_active'=>0),'count(user_id) as total'),
             'approve_students'=>$this->model->getRows('users',array('user_type'=>3,'is_approved'=>1),'count(user_id) as total'),
             'unapprove_students'=>$this->model->getRows('users',array('user_type'=>3,'is_approved'=>0),'count(user_id) as total'),
-
             'total_programs'=>$this->model->getRows('level',array('is_active'=>1),'count(level_id) as total'),
             'total_category'=>$this->model->getRows('category',array('is_active'=>1),'count(category_id) as total'),
             'total_services'=>$this->model->getRows('service',array('is_active'=>1),'count(service_id) as total'),
@@ -45,6 +44,8 @@ class Dashboard extends CI_Controller {
 
 
         );
+
+        
         $view=array(
             'header'=>'themes/admin/header',
             'sidebar'=>'themes/admin/sidebar',
