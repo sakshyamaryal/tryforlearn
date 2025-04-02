@@ -14232,3 +14232,6 @@ textarea.form-control {
     .home-overlay{
         background-color: #0D290D;
     }
+.aspect-ratio-4_3{
+    aspect-ratio: 4/3;
+}

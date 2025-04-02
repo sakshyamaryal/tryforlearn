@@ -182,7 +182,6 @@
                             border-radius: 6px 0 6px 6px;
                         }
                     </style>
-                 
             
                     <?php foreach($modules as $mod):?>
    <?php if(count($mod['submenu'])>0){ ?>

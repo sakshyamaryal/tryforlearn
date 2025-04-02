@@ -62,3 +62,6 @@ $route['trial'] = 'studentregister/index/trial';
 $route['userlogin'] = 'studentlogin/index/';
 $route['404_override'] = 'Custom404';
 $route['translate_uri_dashes'] = true;
+$route['admin/blogs'] = 'blogs/admin'; // Admin panel for blogs
+$route['blogs/(:num)'] = 'blogs/detail/$1';
+$route['blogs'] = 'blogs/index'; // List of blogs

@@ -1,5 +1,5 @@
 
-<footer class="ftco-footer ftco-bg-dark ftco-section">
+<footer class="ftco-footer ftco-bg-dark ftco-section position-fixed w-100" style="bottom: 0;z-index: 9999;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-lg-3">
