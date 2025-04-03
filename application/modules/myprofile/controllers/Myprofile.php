@@ -113,8 +113,8 @@ class Myprofile extends CI_Controller
         $data=array(
 			
 			'fullname'=>@$post['fname'],
-			//'email'=>@$post['email'],
-			//'phone'=>@$post['cnum'],
+			'email'=>@$post['email'],
+			'phone'=>@$post['cnum'],
             'address'=>@$post['address'],
             'preffered_language'=>@$post['language']
 			

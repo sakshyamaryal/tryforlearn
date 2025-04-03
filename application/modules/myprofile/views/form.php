@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-md-4 col-sm-4">
                     <label>Email Address</label>
-                    <input type="email" name="email" id="email" value="<?=@$st->email;?>" class="form-control" disabled/>
+                    <input type="email" name="email" id="email" value="<?=@$st->email;?>" class="form-control"/>
                     </div>
                     <div class="col-md-4 col-sm-4">
                     <?php if(@$st->image!=null){$imgurl=$st->image;}else{$imgurl='dummy.png';} ?>
@@ -23,7 +23,7 @@
                     <div class="row">
                     <div class="col-md-4 col-sm-4">
                     <label>Contact Number</label>
-                    <input type="text" name="cnum" id="cnum" value="<?=@$st->phone;?>" class="form-control" disabled/>
+                    <input type="text" name="cnum" id="cnum" value="<?=@$st->phone;?>" class="form-control"/>
                     </div>
                     
                     <div class="col-md-4 col-sm-4">

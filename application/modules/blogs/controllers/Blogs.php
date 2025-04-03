@@ -98,36 +98,79 @@ class Blogs extends CI_Controller
 
     public function add()
     {
+        // Assuming the data comes from a POST request or similar input
         $data_arr = array(
-            'title' => $this->input->post('title'),
-            'content' => $this->input->post('content'),
-            'image' => $this->input->post('image'),
-            'is_active' => 1,
-            'created_by' => $this->session->adminuserid,
-            'updated_by' => $this->session->adminuserid
-        );
-
-        echo json_encode(['success' => $this->model->saveBlog($data_arr), 'messages' => 'Blog has been saved']);
+            'title' => $_GET['models'][0]['title'], // Blog title
+            'content' => $_GET['models'][0]['content'], // Blog content
+            'image' => $_GET['models'][0]['image'], // Blog image
+            'is_active' => $_GET['models'][0]['is_active'], // Active status
+        //     'created_by' => $this->session->adminuserid, // Created by admin user
+        //     'updated_by' => $this->session->adminuserid, // Updated by admin user (could be the same as created by)
+         );
+    
+        // Call the model's saveBlog method to insert the data
+        if ($this->model->saveBlog($data_arr) > 0) {
+            $validator['success'] = true;
+            $validator['messages'] = "Blog has been saved"; // Success message
+        } else {
+            $validator['success'] = false;
+            $validator['messages'] = "Error while inserting the information into the database"; // Error message
+        }
+    
+        // Return the response as JSON
+        echo json_encode($validator);
     }
+    
+    
 
     public function update()
     {
-        $blogId = $this->input->post('blog_id');
+        // Retrieving the data passed in the $_GET request
         $data_arr = array(
-            'title' => $this->input->post('title'),
-            'content' => $this->input->post('content'),
-            'image' => $this->input->post('image'),
-            'updated_by' => $this->session->adminuserid
+            'title' => $_GET['models'][0]['title'], // Blog title
+            'content' => $_GET['models'][0]['content'], // Blog content
+            'image' => $_GET['models'][0]['image'], // Blog image
+            'is_active' => $_GET['models'][0]['is_active'], // Active status
+            'updated_by' => $this->session->adminuserid // Updated by admin user
         );
-
-        echo json_encode(['success' => $this->model->updateBlog($blogId, $data_arr), 'messages' => 'Blog has been updated']);
+    
+        // Use the model's updateBlog method to update the blog based on the provided blog_id
+        if ($this->model->updateBlog($_GET['models'][0]['blog_id'], $data_arr)) {
+            $validator['success'] = true;
+            $validator['messages'] = "Blog has been updated"; // Success message
+        } else {
+            $validator['success'] = false;
+            $validator['messages'] = "Error while updating the information into the database"; // Error message
+        }
+    
+        // Return the response as JSON
+        echo json_encode($validator);
     }
+    
 
     public function delete()
     {
-        $blogId = $this->input->post('blog_id');
-        echo json_encode(['success' => $this->model->deleteBlog($blogId), 'messages' => 'Blog has been deleted']);
+        // Prepare the data to update the blog as deleted (soft delete)
+        $data_arr = array(
+            'is_active' => 0, // Mark as inactive (soft delete)
+        );
+    
+        // Get the blog IDs from the request (either from POST or GET)
+        $ids = $this->input->post('id') ? $this->input->post('id') : $_GET['models'][0]['blog_id'];
+    
+        // Update the blog's status to inactive (soft delete)
+        if ($this->model->updateBlog($ids, $data_arr)) {
+            $validator['success'] = true;
+            $validator['messages'] = "Blog has been deleted"; // Success message
+        } else {
+            $validator['success'] = false;
+            $validator['messages'] = "Error while updating the information into the database"; // Error message
+        }
+    
+        // Return the response as JSON
+        echo json_encode($validator);
     }
+    
 
     public function removeImage()
     {

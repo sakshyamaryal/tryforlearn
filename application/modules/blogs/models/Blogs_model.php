@@ -38,7 +38,11 @@ class Blogs_model extends CI_Model
     public function updateBlog($blogId, $data)
     {
         $this->db->where('blog_id', $blogId);
-        return $this->db->update('blogs', $data);
+        if ($this->db->update('blogs', $data)) {
+			return true;
+		} else {
+			return false;
+		}
     }
 
     public function updateImage($blogId, $fileName)
