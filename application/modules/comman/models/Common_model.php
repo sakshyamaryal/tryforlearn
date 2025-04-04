@@ -139,6 +139,9 @@ class Common_model extends CI_Model
        
     }
     
-    
+        // Define the get_row method
+        public function get_row($table, $where) {
+            return $this->db->get_where($table, $where)->row();  // Returns a single row
+        }
 	
 }

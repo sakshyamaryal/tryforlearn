@@ -22,7 +22,7 @@ class Studentregister extends CI_Controller {
         
                 );
                 $view=array(
-                    'header'=>'themes/frontend/header_without_navbar',
+                    'header'=>'themes/frontend/header',
                     'sidebar'=>false,
                     'body'=>'register',
                     'footer'=>'themes/frontend/footer'

@@ -57,113 +57,111 @@ class Myprofile extends CI_Controller
         exit;
 
     }
-    function updatemyprofile()
-    {
-        $post=$_POST;
-        $this->load->library('form_validation');
-		$this->form_validation->set_rules('fname', ' Name', 'required');
-		$this->form_validation->set_rules('cnum', ' Contact Number', 'required');
-		$this->form_validation->set_rules('address', ' Address', 'required');
-       
-        if($post['email']!='')
-        {
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 
+    public function verify_email()
+{
+    $email = $this->input->get('email');
+    $token = $this->input->get('token');
 
-        }
-        if ($this->form_validation->run() == FALSE)
-		{
-			$res = ["message"=>validation_errors(),"success"=>false];
-
-			echo json_encode($res);
-			exit;
-        }
-        $filename='';
-		if(!empty($_FILES['file']['name']))
-		{
-			$config['upload_path']   = './upload/student/'; 
-		$config['allowed_types'] = 'gif|png|jpg|jpeg|PNG|JPG|JPEG'; 
-		$config['max_size']      = '0'; //4048000
-		$config['file_name'] = time();
-
-
-      	$this->load->library('upload', $config);
-		$this->upload->do_upload('file');
-		//var_dump($this->upload->data());exit;
-		$data=$this->upload->data();
-		$filename = $data['file_name'];
-
-		}
+    if ($this->session->userdata('verification_token') == $token &&
+        $this->session->userdata('new_email') == $email) {
         
-        $verification_file_path = '';
-        if (!empty($_FILES['user_verification_file']['name'])) {
-            $file_config['upload_path'] = './upload/student/';
-            $file_config['allowed_types'] = 'gif|png|jpg|jpeg|PNG|JPG|JPEG|pdf|doc|docx';
-            $file_config['max_size'] = 0; // No size limit
-            $file_config['file_name'] = time() . '_verification';
-        
-            $this->load->library('upload', $file_config);
-        
-            if ($this->upload->do_upload('user_verification_file')) {
-                $verification_data = $this->upload->data();
-                $verification_file_path = $verification_data['file_name'];
-            }
-        }
-        
-        $data=array(
-			
-			'fullname'=>@$post['fname'],
-			'email'=>@$post['email'],
-			'phone'=>@$post['cnum'],
-            'address'=>@$post['address'],
-            'preffered_language'=>@$post['language']
-			
-			
+        $user_id = $this->session->userdata('userid');
 
-        );
-        if ($this->input->post('gender') != '') {
-            $data['gender'] = $this->input->post('gender');
-        }
-        if ($this->input->post('is_differently_abled')  != '') {
-            $data['is_differently_abled'] = $this->input->post('is_differently_abled');
-        }
+        // Update email in database
+        $this->common_model->update('users', ['email' => $email], ['user_id' => $user_id]);
 
-        if($filename!='')
-        $data['image']=$filename;
-        $udata=array(
-            'parents_detail'=>@$post['parent_detail'],
-            'parents_number'=>@$post['parent_number'],
-            'guardian_detail'=>@$post['institution'],
-            'guardian_number'=>@$post['citizenship'],
-            'extra'=>@$post['extra_information'],
-        );
+        // Clear session verification data
+        $this->session->unset_userdata('verification_token');
+        $this->session->unset_userdata('new_email');
 
-        if ($verification_file_path != '') {
-            $udata['user_verification_file'] = $verification_file_path;
-        }
-      
-        $this->db->trans_begin();
-       $this->common_model->update('users',$data,array('user_id'=>$this->session->userdata('userid')));
-       $this->common_model->update('user_information',$udata,array('userid'=>$this->session->userdata('userid')));
-       if ($this->db->trans_status() === FALSE)
-           {
-                   $this->db->trans_rollback();
-                   $iu=0;
-           }
-           else
-           {
-                   $this->db->trans_commit();
-                   $iu=1;
-                   $this->session->set_userdata('language',@$post['language']);
-       }
-            if ($iu>0) {
-
-                $validator['success'] = true;
-                $validator['message'] = "Your Profile is Updated";
-            } else {
-                $validator['success'] = false;
-                $validator['message'] = "Error while inserting the information into the database";
-            }
-            echo json_encode($validator);
+        $this->session->set_flashdata('success', 'Your email has been updated successfully.');
+        redirect(base_url('myprofile'));
+    } else {
+        $this->session->set_flashdata('error', 'Invalid verification link.');
+        redirect(base_url('myprofile'));
     }
+}
+
+function updatemyprofile()
+{
+    $post = $_POST;
+    $this->load->library('form_validation');
+    $this->form_validation->set_rules('fname', 'Name', 'required');
+    $this->form_validation->set_rules('cnum', 'Contact Number', 'required');
+    $this->form_validation->set_rules('address', 'Address', 'required');
+
+    if (!empty($post['email'])) {
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+    }
+
+    if ($this->form_validation->run() == FALSE) {
+        $res = ["message" => validation_errors(), "success" => false];
+        echo json_encode($res);
+        exit;
+    }
+
+    // Check if email is being changed
+    $user_id = $this->session->userdata('userid');
+    $current_user = $this->common_model->get_row('users', array('user_id' => $user_id));
+
+    if (!empty($post['email']) && $post['email'] != $current_user->email) {
+        // Send verification email
+        $this->load->helper('email');
+        $this->load->library('email');
+        $this->email->set_mailtype("html");
+
+        $verification_token = md5(time() . $post['email']);
+        $subject = "Verify Your New Email Address";
+        $verification_link = base_url("myprofile/verify_email?token=" . $verification_token . "&email=" . $post['email']);
+        
+        $message = "Click this link to verify your new email address: <br><br/>
+                    <a href='" . $verification_link . "'>Verify Email</a>";
+
+        $sent = send_email($post['email'], $subject, $message);
+
+        if ($sent) {
+            // Store in session
+            $this->session->set_userdata('new_email', $post['email']);
+            $this->session->set_userdata('verification_token', $verification_token);
+
+            // Send JSON response with Gmail redirect
+            $res = [
+                "message" => "A verification email has been sent to your new email address. Please verify it before the update is applied.",
+                "success" => true,
+                "redirect" => "https://mail.google.com/"
+            ];
+        } else {
+            $res = ["message" => "Error sending verification email. Please try again.", "success" => false];
+        }
+
+        echo json_encode($res);
+        exit;
+    }
+
+    // Proceed with the profile update (if email is not changed)
+    $data = [
+        'fullname' => @$post['fname'],
+        'phone' => @$post['cnum'],
+        'address' => @$post['address'],
+        'preffered_language' => @$post['language']
+    ];
+
+    if ($this->input->post('gender') != '') {
+        $data['gender'] = $this->input->post('gender');
+    }
+    if ($this->input->post('is_differently_abled') != '') {
+        $data['is_differently_abled'] = $this->input->post('is_differently_abled');
+    }
+
+    // Update user profile
+    $this->common_model->update('users', $data, array('user_id' => $user_id));
+
+    $res = ["message" => "Your profile has been updated successfully.", "success" => true];
+    echo json_encode($res);
+}
+
+
+
+    
 }

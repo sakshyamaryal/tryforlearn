@@ -149,3 +149,36 @@
                     readURL(this);
                     });
                     </script>
+
+<script>
+$(document).ready(function() {
+    $("#btnupdate").click(function() {
+        var formData = new FormData($("#updateform")[0]);
+
+        $.ajax({
+            url: "<?= base_url('myprofile/updatemyprofile') ?>",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: function(response) {
+                if (response.success) {
+                    alert(response.message);  // Show alert
+
+                    if (response.redirect) {
+                        window.location.href = response.redirect;  // Redirect to Gmail
+                    } else {
+                        location.reload();  // Reload page if no redirect
+                    }
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function() {
+                alert("Something went wrong. Please try again.");
+            }
+        });
+    });
+});
+</script>

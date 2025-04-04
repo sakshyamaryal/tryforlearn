@@ -246,6 +246,10 @@
         }
     </style>
     <section class="ftco-gallery">
+        
+        <div class="heading-section ftco-animate mb-5">
+            <h2 class="mb-4 text-center"><span style="color: #1eaaf1;">Our</span> Memories</h2>
+        </div>
         <!-- <div class="container-wrap">
 
             <div class="row no-gutters mr-0">
