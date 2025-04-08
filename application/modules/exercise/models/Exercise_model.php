@@ -206,10 +206,10 @@ class Exercise_model extends CI_Model
     {
 
         
-       $post=$this->input->post();
+        $post=$_POST;
        $ques=implode(',',$post['qid']);
        $sql="select * from exercise where eid in (".$ques.")";
-       $res=$this->db->query($sql, array($post['qid']))->result();
+       $res=$this->db->query($sql)->result();
        $this->db->trans_begin();
 
        $main=[];

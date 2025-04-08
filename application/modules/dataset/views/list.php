@@ -1,3 +1,54 @@
+<link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">
+<link rel="stylesheet" href="<?= base_url(); ?>assets/admin/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="<?= base_url(); ?>assets/admin/css/theme-style2.css">
+
+
+<script type="text/javascript" src="<?= base_url(); ?>dataTables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="<?= base_url(); ?>dataTables/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="<?= base_url(); ?>dataTables/js/jquery.dataTables.columnFilter.js"></script>
+<script type="text/javascript"
+  src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
+  <style>
+  /* Existing styles */
+  .table th,
+  .table td {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+  }
+
+  #dataTable {
+    width: 100%;
+    /* table-layout: fixed; */
+  }
+
+  /* New styles to make question column wider */
+  #dataTable .exercise-question-list {
+    width: 50% !important; /* Increased from 50% */
+  }
+
+  /* Adjust other columns to redistribute width */
+  #dataTable th:not(.exercise-question-list) {
+    width: auto;
+  }
+
+  /* Ensure text wrapping and overflow handling */
+  #dataTable .exercise-question-list,
+  #dataTable td:nth-child(2) {
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+  #dataTable_previous, #dataTable_next{
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 6px 12px;
+    cursor: pointer;
+    margin-right: 2.5px;
+  }
+</style>
+
 <div id="content" class="col-lg-10 col-sm-10">
 
 	<div>
@@ -166,7 +217,7 @@
                <br>
               
                <div class="container" id="tbl">
-              
+                    <?php $this->load->view('dataset/dataset-table', ['datasets' => $datasets]); ?>
                </div>
                
 
@@ -282,56 +333,212 @@
             //             ]
             //     });
             // });
-            $( "#cogsform" ).submit(function( event ) {
+            // $( "#cogsform" ).submit(function( event ) {
      
+            //     event.preventDefault();
+            //     var class_id = $("#class").val();
+            //     var subject_id = $("#subject").val();
+            //     if (class_id === "-1" || subject_id === "-1") {
+            //         toastr.error("Please select both class and subject.");
+            //         return;
+            //     }
+
+            //     var dataurl = "<?= base_url(); ?>dataset/datasetdata";
+            //     // Recreate the table HTML before initializing DataTable
+            //     $.ajax({
+            //         url: '<?= base_url(); ?>dataset/datasetdata',
+            //         type: 'POST',
+            //         data: $( "#cogsform" ).serialize(),
+            //         beforeSend: function () {
+            //             $('#loader').show();
+            //         },
+            //         success: function (res) {
+            //             $('#loader').hide();
+            //             let response=jQuery.parseJSON(res);
+            //             if (response.type == 'success') {
+            //                     $('#tbl').html(response.html);
+            //                     $('#dataTable').DataTable({"ordering": false});
+                        
+                                
+            //             } else {
+            //                     $('#tbl').empty();
+            //                     toastr.error(response.message, {timeOut: 5000})
+                        
+            //             }
+            //         },
+            //         error: function () {
+            //             $('#loader').hide();
+            //             toastr.error("Something went wrong.");
+            //         }
+
+            //     });
+
+            // });
+            var dataTable = $('#dataTable').DataTable({
+                "processing": true,
+                "serverSide": true,  // Enable server-side processing if needed
+                "ajax": {
+                    "url": "<?= base_url(); ?>dataset/datasetdata", // Use your actual URL here
+                    "type": "POST",
+                    "data": function(d) {
+                        // You can send the current form data (class_id, subject_id) when the DataTable is loaded
+                        d.class_id = $('#class').val();
+                        d.subject_id = $('#subject').val();
+                    }
+                },
+                "pageLength": 10,  // Default number of rows per page
+                "lengthMenu": [10, 25, 50, 100],  // Dropdown options for the number of rows per page
+                "order": [[0, 'asc']],  // Order the table by first column by default
+                "language": {
+                    "emptyTable": "No datasets found"
+                },
+                "responsive": true
+            });
+
+            // $("#cogsform").submit(function(event) {
+            //     event.preventDefault();
+
+            //     var class_id = $("#class").val();
+            //     var subject_id = $("#subject").val();
+
+            //     // Check if both class and subject are selected
+            //     if (class_id === "-1" || subject_id === "-1") {
+            //         toastr.error("Please select both class and subject.");
+            //         return;
+            //     }
+
+            //     var dataurl = "<?= base_url(); ?>dataset/datasetdata"; // Your URL to fetch data
+
+            //     // Show loader before making the AJAX call
+            //     $.ajax({
+            //         url: dataurl,
+            //         type: 'POST',
+            //         data: $("#cogsform").serialize(),  // Serialize form data for the POST request
+            //         beforeSend: function() {
+            //             $('#loader').show();  // Show loader during the AJAX request
+            //         },
+            //         success: function(res) {
+            //             $('#loader').hide();  // Hide loader after the response
+            //             let response = jQuery.parseJSON(res);
+
+            //             // If the request was successful, update the table content
+            //             if (response.type == 'success') {
+            //                 $('#tbl').html(response.html);  // Replace the table body with new data
+
+            //                 // Reinitialize DataTable after updating the table
+            //                 var table = $('#dataTable').DataTable({
+            //                     "ordering": false,  // Disable sorting if necessary
+            //                     "pageLength": 10,   // Default rows per page
+            //                     "lengthMenu": [10, 25, 50, 100],  // Options for entries per page
+            //                     "order": [[0, 'asc']],  // Default ordering
+            //                     "language": {
+            //                         "emptyTable": "No datasets found"
+            //                     },
+            //                     "responsive": true,
+            //                     "searching": true  // Enable search functionality
+            //                 });
+
+            //                 // Handle dynamic search filtering
+            //                 $('#dataTable_filter input').on('keyup', function() {
+            //                     table.search(this.value).draw();
+            //                 });
+
+            //                 // Optionally, handle page-length change (number of rows per page)
+            //                 $('#dataTable_length select').on('change', function() {
+            //                     var pageLength = $(this).val();
+            //                     table.page.len(pageLength).draw();
+            //                 });
+            //             } else {
+            //                 // Handle errors if no datasets are found or another error occurs
+            //                 $('#tbl').empty();
+            //                 toastr.error(response.message, { timeOut: 5000 });
+            //             }
+            //         },
+            //         error: function() {
+            //             $('#loader').hide();  // Hide loader in case of error
+            //             toastr.error("Something went wrong.");  // Show error message
+            //         }
+            //     });
+            // });
+            $("#cogsform").submit(function(event) {
                 event.preventDefault();
+
                 var class_id = $("#class").val();
                 var subject_id = $("#subject").val();
+
+                // Check if both class and subject are selected
                 if (class_id === "-1" || subject_id === "-1") {
                     toastr.error("Please select both class and subject.");
                     return;
                 }
 
-                var dataurl = "<?= base_url(); ?>dataset/datasetdata";
-                    // Recreate the table HTML before initializing DataTable
-                $("#tbl").html(`
-                <table id="dataTable" class="table table-bordered table-striped" width="100%">
-                    <thead>
-                    <tr>
-                        <th>S.N.</th>
-                        <th>Name</th>
-                        <th>Title</th>
-                        <th>Order</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-                `);
+                var dataurl = "<?= base_url(); ?>dataset/datasetdata"; // Your URL to fetch data
+
+                // Show loader before making the AJAX call
                 $.ajax({
-                    url: '<?= base_url(); ?>dataset/datasetdata',
+                    url: dataurl,
                     type: 'POST',
-                    data: $( "#cogsform" ).serialize(),
-                    beforeSend: function () {
-                                    $('#loader').show();
+                    data: $("#cogsform").serialize(),  // Serialize form data for the POST request
+                    beforeSend: function() {
+                        $('#loader').show();  // Show loader during the AJAX request
+                    },
+                    success: function(res) {
+                        $('#loader').hide();  // Hide loader after the response
+                        let response = jQuery.parseJSON(res);
+
+                        // If the request was successful, update the table content
+                        if (response.type == 'success') {
+                            $('#tbl').html(response.html);  // Replace the table body with new data
+
+                            // Reinitialize DataTable after updating the table
+                            var table = $('#dataTable').DataTable({
+                                "ordering": false,  // Disable sorting if necessary
+                                "pageLength": 10,   // Default rows per page
+                                "lengthMenu": [10, 25, 50, 100],  // Options for entries per page
+                                "order": [[0, 'asc']],  // Default ordering
+                                "language": {
+                                    "emptyTable": "No datasets found"
                                 },
-                    success: function (res) {
-                        $('#loader').hide();
-                        let response=jQuery.parseJSON(res);
-                            if (response.type == 'success') {
-                                $('#tbl').empty();
-                                $('#tbl').html(response.html);
-                            
-                                
-                            } else {
-                                $('#tbl').empty();
-                                toastr.error(response.message, {timeOut: 5000})
-                            
-                            }
+                                "responsive": true,
+                                "searching": true  // Enable search functionality
+                            });
+
+                            // Handle dynamic search filtering
+                            $('#dataTable_filter input').on('keyup', function() {
+                                table.search(this.value).draw();
+                            });
+
+                            // Optionally, handle page-length change (number of rows per page)
+                            $('#dataTable_length select').on('change', function() {
+                                var pageLength = $(this).val();
+                                table.page.len(pageLength).draw();
+                            });
+
+                            // Update Serial Numbers (SN)
+                            updateSN();
+                        } else {
+                            // Handle errors if no datasets are found or another error occurs
+                            $('#tbl').empty();
+                            toastr.error(response.message, { timeOut: 5000 });
+                        }
+                    },
+                    error: function() {
+                        $('#loader').hide();  // Hide loader in case of error
+                        toastr.error("Something went wrong.");  // Show error message
                     }
-
                 });
-
             });
+
+            // Function to update SN values in the table after AJAX call
+            function updateSN() {
+                var sn = 1; // Start SN from 1
+                $('#dataTable tbody tr').each(function() {
+                    $(this).find('.sn-placeholder').text(sn); // Update SN in the placeholder
+                    sn++; // Increment SN for next row
+                });
+            }
+            updateSN(); // Initial call to set SN on page load
+
+
         });
     </script>

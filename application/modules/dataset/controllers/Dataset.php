@@ -23,6 +23,9 @@ class Dataset extends CI_Controller
 		$data = array(
 			'title' => 'List Dataset',
 		);
+		$this->load->model('dataset/Dataset_model');
+    $datasets = $this->Dataset_model->get_all_datasets();  // Fetch all datasets initially
+    $data['datasets'] = $datasets;
 		$view = array(
 			'header' => 'themes/admin/header',
 			'sidebar' => 'themes/admin/sidebar',
@@ -148,34 +151,88 @@ class Dataset extends CI_Controller
 // 		echo json_encode($res);
 // 		exit;
 // }
+	// public function datasetdata()
+	// {
+	// 	// Load input values
+	// 	// $class_id = $this->input->post('class_id');
+	// 	// $subject_id = $this->input->post('subject_id');
+
+	// 	$class_id = $this->input->post('class_id');
+	// 	$subject_id = $this->input->post('subject_id');
+	// 	// Load model if not already loaded
+	// 	$this->load->model('Dataset_model');
+
+	// 	// Get filtered datasets
+	// 	$datasets = $this->Dataset_model->get_filtered_datasets($class_id, $subject_id);
+	// 	$data = [];
+	// 	$sn = 1;
+
+  //   foreach ($datasets as $item) {
+	// 		$data[] = [
+	// 				'sn' => $sn++,
+	// 				'name' => $item->setname,
+	// 				'title' => $item->title,
+	// 				'order' => $item->order,
+	// 				'action' => '<button class="btn btn-sm btn-primary edit-action" data-id="'.$item->setid.'">Edit</button>'
+	// 		];
+	// }
+
+	// echo json_encode(['data' => $data]);
+	// }
+
 	public function datasetdata()
 	{
-		// Load input values
-		// $class_id = $this->input->post('class_id');
-		// $subject_id = $this->input->post('subject_id');
-
-		$class_id = $this->input->post('class');
-		$subject_id = $this->input->post('subject');
-		// Load model if not already loaded
-		$this->load->model('Dataset_model');
-
-		// Get filtered datasets
-		$datasets = $this->Dataset_model->get_filtered_datasets($class_id, $subject_id);
-		$response = [];
-		$sn = 1;
-
-    foreach ($datasets as $item) {
-			$response[] = [
-					'sn' => $sn++,
-					'name' => $item->setname,
-					'title' => $item->title,
-					'order' => $item->order,
-					'action' => '<button class="btn btn-sm btn-primary edit-action" data-id="'.$item->setid.'">Edit</button>'
-			];
+			$classid = $this->input->post('class');
+			$subjectid = $this->input->post('subject');
+	
+			$this->load->model('dataset/Dataset_model'); // load model in HMVC format
+	
+			$datasets = $this->Dataset_model->get_filtered_datasets($classid, $subjectid); // adjust method if needed
+	
+			if ($datasets) {
+					$html = $this->load->view('dataset-table', ['datasets' => $datasets], TRUE); // View path is relative inside the module
+					echo json_encode(['type' => 'success', 'html' => $html]);
+			} else {
+					echo json_encode(['type' => 'error', 'message' => 'No datasets found.']);
+			}
 	}
 
-	echo json_encode(['data' => $response]);
-		exit;
-	}
+	public function delete_individual_dataset() {
+		$this->load->model('dataset_model');
+		$setid = $this->input->post('setid');  // Get the dataset ID from the POST request
+
+		if (empty($setid)) {
+				echo json_encode(['type' => 'error', 'message' => 'Invalid dataset ID.']);
+				return;
+		}
+
+		$result = $this->dataset_model->delete_dataset_by_id($setid);  // Call the model function
+
+		if ($result) {
+				echo json_encode(['type' => 'success', 'message' => 'Dataset deleted successfully.']);
+		} else {
+				echo json_encode(['type' => 'error', 'message' => 'Failed to delete dataset.']);
+		}
+}
+public function delete_selected_datasets()
+{
+    $setids = $this->input->post('setids');
+    
+    if (!empty($setids)) {
+        $this->load->model('dataset_model'); // Load your dataset model
+        $result = $this->dataset_model->delete_selected_datasets($setids);
+        
+        if ($result) {
+            echo json_encode(['type' => 'success', 'message' => 'Datasets deleted successfully.']);
+        } else {
+            echo json_encode(['type' => 'error', 'message' => 'Error occurred while deleting datasets.']);
+        }
+    } else {
+        echo json_encode(['type' => 'error', 'message' => 'No datasets selected.']);
+    }
+}
+
+	
+
 
 }

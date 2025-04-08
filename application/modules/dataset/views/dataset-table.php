@@ -2,6 +2,11 @@
 <link rel="stylesheet" href="<?= base_url(); ?>assets/admin/css/dataTables.bootstrap.min.css">
 <link rel="stylesheet" href="<?= base_url(); ?>assets/admin/css/theme-style2.css">
 
+<!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.9/dist/sweetalert2.min.css">
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.9/dist/sweetalert2.min.js"></script>
 
 <script type="text/javascript" src="<?= base_url(); ?>dataTables/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<?= base_url(); ?>dataTables/js/dataTables.buttons.min.js"></script>
@@ -43,10 +48,49 @@
 
 <table class="table table-bordered table-hover table-striped pad-fixed-tbl mar-10-top dataTable no-footer"
   id="dataTable" data-filename="chapterlist" data-cols="[0,1]" style="width:100%">
+  <thead id="tbl_data_thead">
+    <tr>
+      <th style="text-align:center;"><input type="checkbox" id="selectAllCheckbox" /><span>S.N.</span></th>
+      <th style="text-align:center;">Name</th>
+      <th style="text-align:center;">Title</th>
+      <th style="text-align:center;">Course</th>
+      <th style="text-align:center;">Class</th>
+      <th style="text-align:center;">Subject</th>
+      <th style="text-align:center;">Order</th>
+      <th style="text-align:center;">Action</th>
+    </tr>
+
+  </thead>
+  <tbody>
+    <?php if (!empty($datasets)) { ?>
+        <?php foreach ($datasets as $row) { ?>
+            <tr>
+                <td><input type="checkbox" id="<?= $row->setid; ?>" data-setid="<?= $row->setid; ?>" /><span class="sn-placeholder"></span></td>
+                <td><?= $row->setname; ?></td>
+                <td><?= $row->title; ?></td>
+                <td><?= $row->level_name; ?></td> <!-- Display course name -->
+                <td><?= $row->class_name; ?></td> <!-- Display class name -->
+                <td><?= $row->subject_name; ?></td> <!-- Display subject name -->
+                <td><?= $row->order; ?></td>
+                <td>
+                    <button id="view<?= $row->setid; ?>"><i class="fa fa-eye" title="View" aria-hidden="true"></i></button>
+                    <button id="edit<?= $row->setid; ?>"><i class="fa fa-edit" title="Edit" aria-hidden="true"></i></button>
+                    <button id="delete<?= $row->setid; ?>" class="delete-btn" data-setid="<?= $row->setid; ?>">
+                        <i class="fa fa-trash" title="Delete" aria-hidden="true" style="color: red;"></i>
+                    </button>
+                </td>
+            </tr>
+        <?php } ?>
+    <?php } else { ?>
+        <tr>
+            <td colspan="5">No datasets found.</td>
+        </tr>
+    <?php } ?>
   </tbody>
+
 </table>
 
-<script>
+<!-- <script>
   function getdatasetdata(){
     var subject_id = $('#subject').val(); // Or from PHP if needed
     var class_id = $('#class').val(); // Or from PHP if needed
@@ -69,6 +113,7 @@
     $('#dataTable').DataTable({
       "order": [],
       "serverSide": true,
+      "processing": true,
 
       "destroy": true,
       "ajax": {
@@ -106,7 +151,7 @@
   }
   getdatasetdata();
 
-</script>
+</script> -->
 
 <!-- <script>
 getDatasetData();
@@ -252,3 +297,93 @@ function getDatasetData() {
   });
 
 </script> -->
+<script>
+  $(document).ready(function () {
+    // Select/Deselect all checkboxes
+    $('#selectAllCheckbox').on('change', function () {
+        $('input[type="checkbox"]').prop('checked', this.checked);
+    });
+
+    // Handle Delete Selected Button Click
+    $('#btndeleteselected').on('click', function () {
+        var selectedDatasets = [];
+        
+        // Get the selected dataset IDs
+        $('input[type="checkbox"]:checked').each(function () {
+            selectedDatasets.push($(this).data('setid'));
+        });
+        
+        if (selectedDatasets.length === 0) {
+            toastr.error('Please select at least one dataset to delete.');
+            return;
+        }
+
+        // Confirm the deletion
+        var confirmationMessage = "Are you sure you want to delete these " + selectedDatasets.length + " datasets?";
+        var isConfirmed = confirm(confirmationMessage);
+
+        if (isConfirmed) {
+            // Perform the deletion via AJAX
+            $.ajax({
+                url: '<?= base_url('dataset/delete_selected_datasets'); ?>', // Controller's function
+                type: 'POST',
+                data: { setids: selectedDatasets },
+                success: function (response) {
+                    var result = JSON.parse(response);
+                    if (result.type === 'success') {
+                        toastr.success(result.message);
+                        // Remove the deleted rows from the table
+                        $('input[type="checkbox"]:checked').each(function () {
+                            $(this).closest('tr').remove();
+                        });
+                    } else {
+                        toastr.error(result.message);
+                    }
+                },
+                error: function () {
+                    toastr.error('Error deleting datasets.');
+                }
+            });
+        }
+    });
+
+    // Individual Delete Button Click
+    $('.delete-btn').on('click', function () {
+        var datasetId = $(this).data('setid');
+
+        // Confirm the deletion
+        var confirmationMessage = "Are you sure you want to delete this dataset?";
+        var isConfirmed = confirm(confirmationMessage);
+
+        if (isConfirmed) {
+            // Perform the deletion via AJAX
+            $.ajax({
+                url: '<?= base_url('dataset/delete_individual_dataset'); ?>', // Controller's function
+                type: 'POST',
+                data: { setid: datasetId },
+                success: function (response) {
+                    var result = JSON.parse(response);
+                    if (result.type === 'success') {
+                        toastr.success(result.message);
+                        // Remove the deleted row from the table
+                        $('#delete' + datasetId).closest('tr').remove();
+                    } else {
+                        toastr.error(result.message);
+                    }
+                },
+                error: function () {
+                    toastr.error('Error deleting dataset.');
+                }
+            });
+        }
+    });
+});
+function updateSN() {
+    var sn = 1; // Start SN from 1
+    $('#dataTable tbody tr').each(function() {
+        $(this).find('.sn-placeholder').text(sn); // Update SN in the placeholder
+        sn++; // Increment SN for next row
+    });
+}
+
+</script>

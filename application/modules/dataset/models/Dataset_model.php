@@ -24,19 +24,48 @@ class Dataset_model extends CI_Model
     $this->db->where('is_active', 1); // optional: if you use this flag
     return $this->db->get()->result_array();
 }
+public function get_all_datasets()
+{
+	$this->db->select('datasetmain.*, class.name AS class_name, subject.subject_name, level.name AS level_name');
+	$this->db->from('datasetmain');
+	$this->db->join('class', 'datasetmain.class_id = class.classid', 'left');
+	$this->db->join('subject', 'datasetmain.subject_id = subject.subject_id', 'left');
+	$this->db->join('level', 'class.levelid = level.level_id', 'left'); // Join with level table using class.levelid
+
+	$query = $this->db->get();
+    return $query->result();
+}
+
 public function get_filtered_datasets($class_id, $subject_id)
 {
-    $this->db->select('*');
-    $this->db->from('datasetmain');
+	$this->db->select('datasetmain.*, class.name AS class_name, subject.subject_name, level.name AS level_name');
+	$this->db->from('datasetmain');
+	$this->db->join('class', 'datasetmain.class_id = class.classid', 'left');
+	$this->db->join('subject', 'datasetmain.subject_id = subject.subject_id', 'left');
+	$this->db->join('level', 'class.levelid = level.level_id', 'left');
     if ($class_id && $class_id != -1) {
-        $this->db->where('class_id', $class_id);
+        $this->db->where('datasetmain.class_id', $class_id);
     }
     if ($subject_id && $subject_id != -1) {
-        $this->db->where('subject_id', $subject_id);
+        $this->db->where('datasetmain.subject_id', $subject_id);
     }
-    $this->db->where('is_active', 1); // optional
-    return $this->db->get()->result();
+    $this->db->where('datasetmain.is_active', 1); // optional
+		$query = $this->db->get();
+    return $query->result();
 }
+public function delete_dataset_by_id($setid) {
+	// Ensure the dataset ID is valid
+	$this->db->where('setid', $setid);
+	return $this->db->delete('datasetmain');  // Delete the dataset from the 'datasetmain' table
+}
+public function delete_selected_datasets($setids)
+{
+    $this->db->where_in('setid', $setids);
+    $this->db->delete('datasetmain'); // Replace 'datasetmain' with your actual table name
+
+    return $this->db->affected_rows() > 0;
+}
+
 
 
 	public function get_group ()
