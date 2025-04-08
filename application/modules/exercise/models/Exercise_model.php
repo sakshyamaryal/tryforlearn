@@ -206,10 +206,10 @@ class Exercise_model extends CI_Model
     {
 
         
-       $post=$_POST;
+       $post=$this->input->post();
        $ques=implode(',',$post['qid']);
        $sql="select * from exercise where eid in (".$ques.")";
-       $res=$this->db->query($sql)->result();
+       $res=$this->db->query($sql, array($post['qid']))->result();
        $this->db->trans_begin();
 
        $main=[];
@@ -249,6 +249,7 @@ class Exercise_model extends CI_Model
        if ($this->db->trans_status() === FALSE)
 		{
 				$this->db->trans_rollback();
+                log_message('error', 'Database transaction failed: ' . $this->db->_error_message());
 				$iu=0;
 		}
 		else

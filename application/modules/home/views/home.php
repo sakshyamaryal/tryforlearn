@@ -148,7 +148,7 @@
         <div class="container">
             <div class="row justify-content-center mb-5 pb-2">
                 <div class="col-12 text-center heading-section ftco-animate">
-                    <h2 class="mb-4"><span style="color: #1eaaf1;">What Parents</span> Says About Us</h2>
+                    <h2 class="mb-4"><span style="color: #1eaaf1;">What Parents</span> Say About Us</h2>
               
           
             <div class="row ftco-animate justify-content-center">

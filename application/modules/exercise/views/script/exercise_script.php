@@ -563,7 +563,7 @@ function submitdatasetques()
 
      }  
      $.ajax({
-                     url: '<?= base_url(); ?>exercise/addindataset',
+                     url: '<?= base_url(); ?> /addindataset',
                      type: 'POST',
                      data: {dataset,qid},
                      beforeSend: function () {

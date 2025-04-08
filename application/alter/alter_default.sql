@@ -11,3 +11,5 @@ ALTER TABLE users ADD is_differently_abled CHARACTER(1) DEFAULT 'N';
 ALTER TABLE users ADD is_disability_approved CHARACTER(1) DEFAULT 'N';
 
 ALTER TABLE user_information ADD user_verification_file VARCHAR(255);
+
+ALTER TABLE datasetmain ADD subject_id INT(11) NOT NULL, ADD class_id INT(11) NOT NULL, ADD `order` INT(11) NOT NULL;

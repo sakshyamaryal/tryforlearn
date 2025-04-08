@@ -44,6 +44,9 @@
                  </label>
                 <select id="subject" name="subject" class="form-control" style="cursor:pointer;">
                 <option value='-1'>Please Select </option>
+                <?php foreach($subject as $list):?>
+                    <option value="<?=$list->classid;?>"><?=$list->name;?></option>
+                 <?php endforeach; ?>
                 </select>
                 </div>
                 <?php endif;?>
@@ -125,9 +128,9 @@
                </form>
                <br>
               
-               <div class="container" id="tbl">
+               <!-- <div class="container" id="tbl">
               
-               </div>
+               </div> -->
                
 
             </div>

@@ -7,7 +7,7 @@
 <thead>
 <tr>
 <!-- <th class="my-th" rowspan="3">S.N.</th> -->
-<th class="my-th" style="text-align:center;">S.N.</th>
+<th class="my-th" style="text-align:center;">S.J.</th>
 <th class="my-th" style="text-align:center;">Question</th>
 <th class="my-th" style="text-align:center;">Explanation</th>
 <th class="my-th" style="text-align:center;">IS Subj/Obj</th>

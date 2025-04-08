@@ -8,6 +8,36 @@ class Dataset_model extends CI_Model
 		return $this->db->insert_id();
 	}
 
+	public function get_classes_by_level($level_id)
+{
+    $this->db->select('classid, name'); // adjust based on your table column names
+    $this->db->from('class'); // replace 'class' with your actual table name
+    $this->db->where('levelid', $level_id);
+    $this->db->where('is_active', 1); // optional: if you use this flag
+    return $this->db->get()->result_array();
+}
+	public function get_subjects_by_class($class_id)
+{
+    $this->db->select('subject_id, subject_name'); // adjust based on your table column names
+    $this->db->from('subject'); // replace 'class' with your actual table name
+    $this->db->where('classid', $class_id);
+    $this->db->where('is_active', 1); // optional: if you use this flag
+    return $this->db->get()->result_array();
+}
+public function get_filtered_datasets($class_id, $subject_id)
+{
+    $this->db->select('*');
+    $this->db->from('datasetmain');
+    if ($class_id && $class_id != -1) {
+        $this->db->where('class_id', $class_id);
+    }
+    if ($subject_id && $subject_id != -1) {
+        $this->db->where('subject_id', $subject_id);
+    }
+    $this->db->where('is_active', 1); // optional
+    return $this->db->get()->result();
+}
+
 
 	public function get_group ()
 	{

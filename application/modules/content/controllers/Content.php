@@ -59,7 +59,7 @@ class Content extends CI_Controller
 			'footer' => 'themes/admin/footer'
 		);
 		template($view, $data);
-    }
+  }
     function gettopic()
 	{
 		$post=$_POST;
