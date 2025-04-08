@@ -31,6 +31,7 @@ public function get_all_datasets()
 	$this->db->join('class', 'datasetmain.class_id = class.classid', 'left');
 	$this->db->join('subject', 'datasetmain.subject_id = subject.subject_id', 'left');
 	$this->db->join('level', 'class.levelid = level.level_id', 'left'); // Join with level table using class.levelid
+	$this->db->order_by('datasetmain.order', 'ASC');
 
 	$query = $this->db->get();
     return $query->result();
@@ -50,6 +51,7 @@ public function get_filtered_datasets($class_id, $subject_id)
         $this->db->where('datasetmain.subject_id', $subject_id);
     }
     $this->db->where('datasetmain.is_active', 1); // optional
+		$this->db->order_by('datasetmain.order', 'ASC');
 		$query = $this->db->get();
     return $query->result();
 }
@@ -65,6 +67,11 @@ public function delete_selected_datasets($setids)
 
     return $this->db->affected_rows() > 0;
 }
+public function insert_dataset($data)
+{
+    return $this->db->insert('datasetmain', $data);
+}
+
 
 
 

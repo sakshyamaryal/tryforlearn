@@ -232,6 +232,49 @@ public function delete_selected_datasets()
     }
 }
 
+public function save_dataset()
+{
+    $this->load->model('dataset_model');
+
+    $levelid = $this->input->post('course');
+    $subject_id = $this->input->post('subject');
+
+    // ✅ Validate that subject belongs to the selected level (course)
+    $subject = $this->db->get_where('subject', [
+        'subject_id' => $subject_id,
+        'levelid' => $levelid
+    ])->row();
+
+    if (!$subject) {
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'The selected subject does not belong to the selected course.'
+        ]);
+        return;
+    }
+
+    // ✅ Prepare insert data
+    $data = array(
+        'class_id' => $this->input->post('class'),
+        'subject_id' => $subject_id,
+        'setname' => $this->input->post('setname'),
+        'title' => $this->input->post('title'),
+        'order' => $this->input->post('order'),
+        'is_active' => 1
+    );
+
+    // ✅ Insert
+    $inserted = $this->dataset_model->insert_dataset($data);
+
+    if ($inserted) {
+        echo json_encode(['status' => 'success']);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Failed to insert dataset']);
+    }
+}
+
+
+
 	
 
 

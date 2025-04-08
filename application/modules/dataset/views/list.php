@@ -238,6 +238,49 @@
 			Refresh</a>
 	</script> -->
 	<!-- <?php $this->load->view('script/dataset_script.php'); ?>  -->
+    <div class="modal fade" id="datasetmodal" srole="dialog" data-keyboard="false" data-backdrop="static" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document" style="min-height: 325px;">
+			
+			
+				<div class="modal-content" style="min-height: 325px;">
+					<div class="modal-header">
+						<h5 class="modal-title">Add Dataset</h5>
+						<button type="button" class="close modalhide" data-toggle="modal-close"><span>×</span>
+						</button>
+					</div>
+					<form  id="addform" method="post">
+					<div class="modal-body"  id="addbody">
+					
+                     
+					 <div class="row">
+
+                        <div class="col-md-12">
+                            <label>Dataset Name</label><br/>
+                            <input type="text" name="setname" id="setname" value="" class="form-control"/> 
+                        </div>
+                        <div class="col-md-12">
+                            <label>Dataset Title</label><br/>
+                            <input type="text" name="title" id="title" value="" class="form-control"/> 
+                        </div>
+                        <div class="col-md-2">
+                            <label>Order</label><br/>
+                            <input type="number" name="order" id="order" min="1" value="" class="form-control"/> 
+                        </div>
+					 </div>
+					 <hr>
+					 <div class="row">
+					  <div class="col-md-12" style="margin-top: 12px;">
+					  <button type="button" class="btn btn-success" id="btnsubmit" onclick="submitdataset()">Submit</button>
+					  </div>
+					 </div>
+                     
+					</div>
+				
+					
+				</div>
+			</form>
+		</div>
+    </div>
 
     <script>
         $(document).ready(function () {
@@ -541,4 +584,53 @@
 
 
         });
+        $('#btnshowform').click(function(e){
+            let courseid=$('#course').val();
+            let classid=$('#class').val();
+            let subject=$('#subject').val();
+            if(parseInt(classid)<'1' && parseInt(subject)<'1' && parseInt(courseid)<'1')
+            {
+                toastr.error('Please Select Course, Class and Subject', {timeOut: 5000});
+                return false;
+
+            }
+            $('#chaptername').val('');
+            $('#chapterid').val('0');
+            $('.modal-title').html('Add Dataset');
+
+            $('#datasetmodal').modal('show');
+
+        });
+        $('.modalhide').click(function(){
+            $('#datasetmodal').modal('hide');
+        });
+        function submitdataset() {
+            const data = {
+                course: $('#course').val(),
+                class: $('#class').val(),
+                subject: $('#subject').val(),
+                setname: $('#setname').val(),
+                title: $('#title').val(),
+                order: $('#order').val()
+            };
+
+            $.ajax({
+                url: "<?= base_url('dataset/save_dataset') ?>",
+                type: "POST",
+                data: data,
+                dataType: "json",
+                success: function(response) {
+                    if (response.status == 'success') {
+                        alert('Dataset saved successfully!');
+                        $('#datasetmodal').modal('hide');
+                        // optionally reload the list
+                    } else {
+                        alert(response.message || 'Something went wrong.');
+                    }
+                },
+                error: function() {
+                    alert('Error occurred while saving the dataset.');
+                }
+            });
+        }
     </script>
