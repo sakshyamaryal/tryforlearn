@@ -87,46 +87,46 @@
             <form id="cogsform">
             
                 <div class="row">
-                <input type="hidden" id="toshow" name="toshow" value="<?=@$showclass;?>" />
-                <input type="hidden" id="levelid" name="levelid" value="<?=@$levelid;?>" />
-                <input type="hidden" id="qtype" name="qtype" value="<?=@$qtype;?>" />
-              <?php if($showclass=='Y'):?>
-             
-                <div class="col-md-2">
-                <label>
-                  Courses<sup style="color:red;">*</sup>
+                    <input type="hidden" id="toshow" name="toshow" value="<?=@$showclass;?>" />
+                    <input type="hidden" id="levelid" name="levelid" value="<?=@$levelid;?>" />
+                    <input type="hidden" id="qtype" name="qtype" value="<?=@$qtype;?>" />
+                    <?php if($showclass=='Y'):?>
+                
+                    <div class="col-md-2">
+                    <label>
+                    Courses<sup style="color:red;">*</sup>
 
-                 </label>
-                <select id="course" name="course" class="form-control" style="cursor:pointer;" >
-                    <option value="1">School Courses</option>
-                    <option value="2">University Courses</option>
-                    <option value="3">Entrance Courses</option>
-                    <option value="4">PBL Courses</option>
-                    <option value="5">ICT Courses</option>
-                    <option value="6">Aayog Courses</option>
-                </select>
+                    </label>
+                    <select id="course" name="course" class="form-control" style="cursor:pointer;" >
+                        <option value="1">School Courses</option>
+                        <option value="2">University Courses</option>
+                        <option value="3">Entrance Courses</option>
+                        <option value="4">PBL Courses</option>
+                        <option value="5">ICT Courses</option>
+                        <option value="6">Aayog Courses</option>
+                    </select>
                 </div>
                 <div class="col-md-2">
-                <label>Class<sup style="color:red;">*</sup>
+                    <label>Class<sup style="color:red;">*</sup>
 
-                 </label>
-                <select id="course" name="course" class="form-control" style="cursor:pointer;" >
-                <option value='-1'>Please Select</option>
-                 <?php foreach($class as $list):?>
-                    <option value="<?=$list->classid;?>"><?=$list->name;?></option>
-                 <?php endforeach; ?>
-                </select>
+                    </label>
+                    <select id="course" name="course" class="form-control" style="cursor:pointer;" >
+                    <option value='-1'>Please Select</option>
+                    <?php foreach($class as $list):?>
+                        <option value="<?=$list->classid;?>"><?=$list->name;?></option>
+                    <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="col-md-2">
-                <label>Subject<sup style="color:red;">*</sup>
+                    <label>Subject<sup style="color:red;">*</sup>
 
-                 </label>
-                <select id="subject" name="subject" class="form-control" style="cursor:pointer;">
-                <option value='-1'>Please Select </option>
-                <?php foreach($subjects as $list):?>
-                    <option value="<?=$list->subject_id;?>"><?=$list->subject_name;?></option>
-                 <?php endforeach; ?>
-                </select>
+                    </label>
+                    <select id="subject" name="subject" class="form-control" style="cursor:pointer;">
+                    <option value='-1'>Please Select </option>
+                    <?php foreach($subjects as $list):?>
+                        <option value="<?=$list->subject_id;?>"><?=$list->subject_name;?></option>
+                    <?php endforeach; ?>
+                    </select>
                 </div>
                 <?php endif;?>
                 <?php if($qtype=='N')
@@ -239,46 +239,64 @@
 	</script> -->
 	<!-- <?php $this->load->view('script/dataset_script.php'); ?>  -->
     <div class="modal fade" id="datasetmodal" srole="dialog" data-keyboard="false" data-backdrop="static" aria-hidden="true">
-		<div class="modal-dialog modal-lg" role="document" style="min-height: 325px;">
+		<div class="modal-dialog modal-lg" role="document" style="height: 60vh; min-height: 550px; overflow-y:auto;">
 			
 			
-				<div class="modal-content" style="min-height: 325px;">
+				<div class="modal-content" style="min-height: 550px; overflow-y:auto;">
 					<div class="modal-header">
 						<h5 class="modal-title">Add Dataset</h5>
 						<button type="button" class="close modalhide" data-toggle="modal-close"><span>×</span>
 						</button>
 					</div>
-					<form  id="addform" method="post">
-					<div class="modal-body"  id="addbody">
-					
-                     
-					 <div class="row">
+                    <div class="modal-body"  id="addbody">
+					    <form id="addform" method="post">
+                        
+                        
+                            <div class="row">
 
-                        <div class="col-md-12">
-                            <label>Dataset Name</label><br/>
-                            <input type="text" name="setname" id="setname" value="" class="form-control"/> 
-                        </div>
-                        <div class="col-md-12">
-                            <label>Dataset Title</label><br/>
-                            <input type="text" name="title" id="title" value="" class="form-control"/> 
-                        </div>
-                        <div class="col-md-2">
-                            <label>Order</label><br/>
-                            <input type="number" name="order" id="order" min="1" value="" class="form-control"/> 
-                        </div>
-					 </div>
-					 <hr>
-					 <div class="row">
-					  <div class="col-md-12" style="margin-top: 12px;">
-					  <button type="button" class="btn btn-success" id="btnsubmit" onclick="submitdataset()">Submit</button>
-					  </div>
-					 </div>
-                     
-					</div>
+                                <div class="col-md-12">
+                                    <label>Dataset Name</label><br/>
+                                    <input type="text" name="setname" id="setname" value="" class="form-control"/> 
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Dataset Title</label><br/>
+                                    <input type="text" name="title" id="title" value="" class="form-control"/> 
+                                </div>
+                                <div class="col-md-2">
+                                    <label>Order</label><br/>
+                                    <input type="number" name="order" id="order" min="1" value="" class="form-control"/> 
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="col-md-4">
+            <label>Time Period (in minutes)</label><br/>
+            <input type="number" name="time_period" id="time_period" min="1" value="" class="form-control"/>
+        </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5>
+                                        Guidelines for Dataset Creation:
+                                    </h5>
+                                    <label>Guideline 1:</label><br/>
+                                    <input type="text" name="guideline[]" class="form-control mb-2" placeholder="Guideline 1" />
+                                    <label>Guideline 2:</label><br/>
+                                    <input type="text" name="guideline[]" class="form-control mb-2" placeholder="Guideline 2" />
+                                    <label>Guideline 3:</label><br/>
+                                    <input type="text" name="guideline[]" class="form-control mb-2" placeholder="Guideline 3" />
+
+                                </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-md-12" style="margin-top: 12px;">
+                                <button type="button" class="btn btn-success" id="btnsubmit" onclick="submitdataset()">Submit</button>
+                            </div>
+                            </div>
+                        </form>
+                        
+                    </div>
 				
 					
 				</div>
-			</form>
 		</div>
     </div>
 
@@ -605,13 +623,29 @@
             $('#datasetmodal').modal('hide');
         });
         function submitdataset() {
+            const guidelines = $("input[name='guideline[]']")
+                .map(function () {
+                    return $(this).val().trim();
+                })
+                .get();
+            const guidelineText = guidelines.join("\n");
+
+            const timePeriod = $('#time_period').val().trim(); // Get the time_period value
+
+            // Log for debugging
+            console.log("Guidelines: ", guidelineText);
+            console.log("Time Period: ", timePeriod);
+
+            // Prepare data to send in the AJAX request
             const data = {
                 course: $('#course').val(),
                 class: $('#class').val(),
                 subject: $('#subject').val(),
                 setname: $('#setname').val(),
                 title: $('#title').val(),
-                order: $('#order').val()
+                order: $('#order').val(),
+                time_period: timePeriod, // Add time_period to data
+                guideline: guidelineText, // Convert the guidelines array to JSON
             };
 
             $.ajax({
@@ -619,18 +653,20 @@
                 type: "POST",
                 data: data,
                 dataType: "json",
-                success: function(response) {
+                success: function (response) {
                     if (response.status == 'success') {
                         alert('Dataset saved successfully!');
                         $('#datasetmodal').modal('hide');
-                        // optionally reload the list
+                        // Optionally reload the list
                     } else {
                         alert(response.message || 'Something went wrong.');
                     }
                 },
-                error: function() {
+                error: function () {
                     alert('Error occurred while saving the dataset.');
                 }
             });
         }
+
+
     </script>

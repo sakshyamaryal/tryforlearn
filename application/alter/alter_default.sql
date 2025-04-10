@@ -13,3 +13,11 @@ ALTER TABLE users ADD is_disability_approved CHARACTER(1) DEFAULT 'N';
 ALTER TABLE user_information ADD user_verification_file VARCHAR(255);
 
 ALTER TABLE datasetmain ADD subject_id INT(11) NOT NULL, ADD class_id INT(11) NOT NULL, ADD `order` INT(11) NOT NULL;
+
+ALTER TABLE datasetmain ADD guideline JSON;
+
+ALTER TABLE datasetmain DROP COLUMN guideline;
+ALTER TABLE datasetmain ADD guideline TEXT;
+ALTER TABLE datasetmain 
+ADD COLUMN time_period INT(11) NOT NULL DEFAULT 0;
+

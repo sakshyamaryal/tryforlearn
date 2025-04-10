@@ -236,10 +236,12 @@ public function save_dataset()
 {
     $this->load->model('dataset_model');
 
+    // Get data from POST request
     $levelid = $this->input->post('course');
     $subject_id = $this->input->post('subject');
+    $time_period = $this->input->post('time_period'); // Get the time_period from form input
 
-    // ✅ Validate that subject belongs to the selected level (course)
+    // Validate that subject belongs to the selected level (course)
     $subject = $this->db->get_where('subject', [
         'subject_id' => $subject_id,
         'levelid' => $levelid
@@ -253,17 +255,19 @@ public function save_dataset()
         return;
     }
 
-    // ✅ Prepare insert data
+    // Prepare data for insertion
     $data = array(
         'class_id' => $this->input->post('class'),
         'subject_id' => $subject_id,
         'setname' => $this->input->post('setname'),
         'title' => $this->input->post('title'),
         'order' => $this->input->post('order'),
-        'is_active' => 1
+        'time_period' => $time_period, // Save the time period
+        'is_active' => 1,
+				'guideline' => $this->input->post('guideline')
     );
 
-    // ✅ Insert
+    // Insert dataset into the database
     $inserted = $this->dataset_model->insert_dataset($data);
 
     if ($inserted) {
@@ -273,9 +277,50 @@ public function save_dataset()
     }
 }
 
+public function get_dataset_details()
+{
+    $setid = $this->input->get('setid');  // Get the setid from the URL parameter
+    
+    // Fetch dataset details
+    $this->load->model('dataset_model');
+    $dataset = $this->dataset_model->get_dataset_by_id($setid);
+    
+    if ($dataset) {
+        // Return dataset details as JSON
+        echo json_encode([
+            'status' => 'success',
+            'data' => $dataset
+        ]);
+    } else {
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Dataset not found.'
+        ]);
+    }
+}
 
+// Update dataset details
+public function update_dataset() {
+	$data = $this->input->post(); // Get all POST data from the form
+	$this->load->model('Dataset_model');
 
-	
+	// Validate and sanitize the data
+	$setname = $this->input->post('edit-setname');
+	$title = $this->input->post('edit-title');
+	$order = $this->input->post('edit-order');
+	$time_period = $this->input->post('edit-time_period');
+	$guidelinesInput = $this->input->post('guideline');
+	$guidelines = is_array($guidelinesInput) ? implode("\n", $guidelinesInput) : $guidelinesInput;
 
+	// Perform the update operation in your database
+	$updated = $this->Dataset_model->update_dataset($data['setid'], $setname, $title, $order, $time_period, $guidelines);
+
+	// If update is successful
+	if ($updated) {
+			echo json_encode(['status' => 'success']);
+	} else {
+			echo json_encode(['status' => 'error']);
+	}
+}
 
 }

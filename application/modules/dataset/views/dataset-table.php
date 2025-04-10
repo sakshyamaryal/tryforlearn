@@ -7,6 +7,11 @@
 
 <!-- SweetAlert2 JS -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.9/dist/sweetalert2.min.js"></script>
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript" src="<?= base_url(); ?>dataTables/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<?= base_url(); ?>dataTables/js/dataTables.buttons.min.js"></script>
@@ -57,6 +62,8 @@
       <th style="text-align:center;">Class</th>
       <th style="text-align:center;">Subject</th>
       <th style="text-align:center;">Order</th>
+      <th style="text-align:center;">Time Period(m)</th>
+      <th style="text-align:center;">Guidelines</th>
       <th style="text-align:center;">Action</th>
     </tr>
 
@@ -72,10 +79,24 @@
                 <td><?= $row->class_name; ?></td> <!-- Display class name -->
                 <td><?= $row->subject_name; ?></td> <!-- Display subject name -->
                 <td><?= $row->order; ?></td>
+                <td><?= $row->time_period; ?> min</td>
                 <td>
-                    <button id="view<?= $row->setid; ?>"><i class="fa fa-eye" title="View" aria-hidden="true"></i></button>
-                    <button id="edit<?= $row->setid; ?>"><i class="fa fa-edit" title="Edit" aria-hidden="true"></i></button>
-                    <button id="delete<?= $row->setid; ?>" class="delete-btn" data-setid="<?= $row->setid; ?>">
+                  <ul style="padding-left: 18px; margin: 0;">
+                    <?php
+                      // Split the guideline string by newline (\n)
+                      $guidelines = explode("\n", $row->guideline);
+                      if (!empty($guidelines)) {
+                        foreach ($guidelines as $g) {
+                          echo '<li>' . htmlspecialchars(trim($g)) . '</li>';
+                        }
+                      }
+                    ?>
+                  </ul>
+                </td>
+                <td>
+                    <button id="view<?= $row->setid; ?>" style="padding:0; border:none; background-color:transparent;"><i class="fa fa-eye" title="View" aria-hidden="true"></i></button>
+                    <button id="edit<?= $row->setid; ?>" class="edit-btn" style="padding:0; border:none; background-color:transparent;"><i class="fa fa-edit" title="Edit" aria-hidden="true"></i></button>
+                    <button id="delete<?= $row->setid; ?>" style="padding:0; border:none; background-color:transparent;" class="delete-btn" data-setid="<?= $row->setid; ?>">
                         <i class="fa fa-trash" title="Delete" aria-hidden="true" style="color: red;"></i>
                     </button>
                 </td>
@@ -89,6 +110,139 @@
   </tbody>
 
 </table>
+<div class="modal fade" id="datasetmodal" role="dialog" data-keyboard="false" data-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document" style="height: 60vh; min-height: 550px; overflow-y:auto;">
+        <div class="modal-content" style="min-height: 550px; overflow-y:auto;">
+            <div class="modal-header">
+                <h5 class="modal-title">View Dataset</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="addbody">
+                <form id="viewform" method="post">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Dataset Name</label><br/>
+                            <p id="setname"></p> <!-- Display dataset name here -->
+                        </div>
+                        <div class="col-md-12">
+                            <label>Dataset Title</label><br/>
+                            <p id="title"></p> <!-- Display dataset title here -->
+                        </div>
+                        <div class="col-md-2">
+                            <label>Order</label><br/>
+                            <p id="order"></p> <!-- Display order here -->
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-md-4">
+                        <label>Time Period (in minutes)</label><br/>
+                        <p id="time_period"></p> <!-- Display time period here -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Guidelines for Dataset Creation:</h5>
+                            <ul id="guidelines-list">
+                                <!-- Guidelines will be displayed here as <li> items -->
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="modal fade" id="editdatasetmodal" role="dialog" data-keyboard="false" data-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document" style="height: 60vh; min-height: 550px; overflow-y:auto;">
+        <div class="modal-content" style="min-height: 550px; overflow-y:auto;">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Dataset</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="addbody">
+                <form id="editform" method="post">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Dataset Name</label><br/>
+                            <input type="text" name="edit-setname" id="editsetname" class="form-control"/> 
+                        </div>
+                        <div class="col-md-12">
+                            <label>Dataset Title</label><br/>
+                            <input type="text" name="edit-title" id="edittitle" class="form-control"/> 
+                        </div>
+                        <div class="col-md-2">
+                            <label>Order</label><br/>
+                            <input type="number" name="edit-order" id="editorder" min="1" class="form-control"/> 
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-md-4">
+                        <label>Time Period (in minutes)</label><br/>
+                        <input type="number" name="edit-time_period" id="edittime_period" min="1" class="form-control"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Guidelines for Dataset Creation:</h5>
+                            <ul name="edit-guidelines-list" id="edit-guidelines-list">
+                            </ul>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="modal fade" id="editdatasetmodal" role="dialog" data-keyboard="false" data-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document" style="height: 60vh; min-height: 550px; overflow-y:auto;">
+        <div class="modal-content" style="min-height: 550px; overflow-y:auto;">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Dataset</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="addbody">
+                <form id="editform" method="post">
+                    <input type="hidden" name="setid" id="editsetid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Dataset Name</label><br/>
+                            <input type="text" name="edit-setname" id="editsetname" class="form-control"/> 
+                        </div>
+                        <div class="col-md-12">
+                            <label>Dataset Title</label><br/>
+                            <input type="text" name="edit-title" id="edittitle" class="form-control"/> 
+                        </div>
+                        <div class="col-md-2">
+                            <label>Order</label><br/>
+                            <input type="number" name="edit-order" id="editorder" min="1" class="form-control"/> 
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-md-4">
+                        <label>Time Period (in minutes)</label><br/>
+                        <input type="number" name="edit-time_period" id="edittime_period" min="1" class="form-control"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Guidelines for Dataset Creation:</h5>
+                            <ul id="edit-guidelines-list">
+                                <!-- Input fields will be dynamically added here -->
+                            </ul>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- <script>
   function getdatasetdata(){
@@ -377,8 +531,132 @@ function getDatasetData() {
             });
         }
     });
+  });
+  $(document).ready(function () {
+    // View button click event
+    $('[id^="view"]').on('click', function () {
+        var setId = $(this).attr('id').replace('view', ''); // Extract dataset ID from button ID
+        console.log("function called")
+        
+        // Make AJAX request to fetch dataset details by ID
+        $.ajax({
+            url: "<?= base_url('dataset/get_dataset_details') ?>", // Update with your actual URL to get dataset details
+            type: "GET",
+            data: { setid: setId },  // Pass the setid to the controller
+            dataType: "json",
+            success: function (response) {
+                console.log(response)
+                if (response.status === 'success') {
+                    // Fill the modal fields with the dataset details
+                    var dataset = response.data;
+                    console.log(dataset)
+
+                    // Split the guidelines string into an array based on newline (\n)
+                    var guidelines = dataset.guideline ? dataset.guideline.split('\n') : [];
+                    console.log(guidelines)
+
+                    // Populate the modal fields
+                    $('#setname').text(dataset.setname);  // Display dataset name
+                    $('#title').text(dataset.title);      // Display dataset title
+                    $('#order').text(dataset.order);      // Display order
+                    $('#time_period').text(dataset.time_period);  // Display time period
+
+                    // Clear the previous guidelines and populate the new ones
+                    $('#guidelines-list').empty(); // Clear previous list items
+                    guidelines.forEach(function (guideline, index) {
+                        $('#guidelines-list').append('<li>' + guideline + '</li>'); // Add each guideline as a list item
+                    });
+
+                    // Show the modal
+                    $('#datasetmodal').modal('show');
+                } else {
+                    alert('Error fetching dataset details.');
+                }
+            },
+            error: function () {
+                alert('Error occurred while fetching dataset details.');
+            }
+        });
+    });
+  });
+
+  $(document).ready(function () {
+    // Handle edit button click
+    $('.edit-btn').on('click', function () {
+        var setId = $(this).attr('id').replace('edit', '');
+        if (!setId) {
+            console.error('Invalid set ID');
+            return;
+        }
+
+        console.log("Edit function called");
+
+        $.ajax({
+            url: "<?= base_url('dataset/get_dataset_details') ?>",
+            type: "GET",
+            data: { setid: setId },
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                if (response.status === 'success') {
+                    var dataset = response.data;
+
+                    var guidelines = dataset.guideline ? dataset.guideline.split('\n') : [];
+
+                    $('#editsetid').val(dataset.setid);
+                    $('#editsetname').val(dataset.setname);
+                    $('#edittitle').val(dataset.title);
+                    $('#editorder').val(dataset.order);
+                    $('#edittime_period').val(dataset.time_period);
+
+                    $('#edit-guidelines-list').empty();
+                    for (var i = 0; i < 3; i++) {
+                        var guideline = guidelines[i] || '';
+                        $('#edit-guidelines-list').append(
+                            '<li><input type="text" class="form-control mb-2" name="guideline[]" value="' + guideline + '"/></li>'
+                        );
+                    }
+
+                    $('#editdatasetmodal').modal('show');
+                } else {
+                    alert('Error fetching dataset details. Rojesh');
+                }
+            },
+            error: function () {
+                alert('Error occurred while fetching dataset details.');
+            }
+        });
+    });
+
+    // Submit update form
+    $('#editform').submit(function (e) {
+        e.preventDefault();
+
+        var formData = $(this).serialize();
+
+        $.ajax({
+            url: "<?= base_url('dataset/update_dataset') ?>",
+            type: "POST",
+            data: formData,
+            dataType: "json",
+            success: function (response) {
+                if (response.status === 'success') {
+                    alert('Dataset updated successfully');
+                    $('#editdatasetmodal').modal('hide');
+                    location.reload(); // Optional: reload the dataset list
+                } else {
+                    alert('Error updating dataset.');
+                }
+            },
+            error: function () {
+                alert('Error occurred while updating dataset.');
+            }
+        });
+    });
 });
-function updateSN() {
+
+
+  function updateSN() {
     var sn = 1; // Start SN from 1
     $('#dataTable tbody tr').each(function() {
         $(this).find('.sn-placeholder').text(sn); // Update SN in the placeholder

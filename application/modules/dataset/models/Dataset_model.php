@@ -71,9 +71,26 @@ public function insert_dataset($data)
 {
     return $this->db->insert('datasetmain', $data);
 }
+public function get_dataset_by_id($setid)
+{
+    // Get the dataset by setid from the database
+    $query = $this->db->get_where('datasetmain', ['setid' => $setid]);
+    return $query->row_array();  // Return the dataset as an array
+}
 
+// Update dataset
+public function update_dataset($setid, $setname, $title, $order, $time_period, $guidelines) {
+	$data = [
+			'setname' => $setname,
+			'title' => $title,
+			'order' => $order,
+			'time_period' => $time_period,
+			'guideline' => $guidelines
+	];
 
-
+	$this->db->where('setid', $setid);
+	return $this->db->update('datasetmain', $data); // Replace with your table name
+}
 
 	public function get_group ()
 	{
