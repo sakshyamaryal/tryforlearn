@@ -1,6 +1,6 @@
 <script>
 $('#btnshowform').click(function(e){
-     let classid=$('#class').val();
+     let classid=$('#class_rojesh').val();
      let subject=$('#subject').val();
      let chapter=$('#chapter').val();
      let topic=$('#topic').val();
@@ -103,8 +103,8 @@ $( "#cogsform" ).submit(function( event ) {
 
      });
 
-     $( "#class" ).change(function() {
-    let classid=$('#class').val();
+     $( "#class_rojesh" ).change(function() {
+    let classid=$('#class_rojesh').val();
                     $.ajax({
 						url: '<?= base_url(); ?>chapter/getsubject/',
 						type: 'POST',
@@ -131,7 +131,7 @@ $( "#cogsform" ).submit(function( event ) {
 
 });
 $( "#subject" ).change(function() {
-    let classid=$('#class').val();
+    let classid=$('#class_rojesh').val();
     let subjectid=$('#subject').val();
                     $.ajax({
 						url: '<?= base_url(); ?>topic/getsubjectchapter/',
@@ -459,7 +459,7 @@ function replicatequestion()
 }
 
 $( "#chapter" ).change(function() {
-    let classid=$('#class').val();
+    let classid=$('#class_rojesh').val();
     let subjectid=$('#subject').val();
     let chapterid=$('#chapter').val();
                     $.ajax({
@@ -525,25 +525,90 @@ $("input[name='replicateques[]']:checked").each(function ()
 })
 
 
-$(document).on('click','#btndataset',function(e)
-{
+// $(document).on('click','#btndataset',function(e)
+// {
   
-    var count=0;
-    $("input[name='replicateques[]']:checked").each(function ()
-        {
-            count ++;
-        });
-     if(count<1)
-     {
-        toastr.error('Select Atleast One Question', {timeOut: 5000});
-        return false;
+//     var count=0;
+//     $("input[name='replicateques[]']:checked").each(function ()
+//         {
+//             count ++;
+//         });
+//      if(count<1)
+//      {
+//         toastr.error('Select Atleast One Question', {timeOut: 5000});
+//         return false;
 
-     }  
+//      }  
 
-     $('#datasetmodal').modal('show');
+//      $('#datasetmodal').modal('show');
     
-})
+// })
 
+// Triggered when the 'Add in Datasets' button is clicked
+$('#btndataset').on('click', function() {
+    var class_id = $('#class_rojesh').val(); // Get the selected class_id
+
+    // Check if class_id is valid
+    if (class_id == '-1') {
+        alert('Please select a class');
+        return;
+    }
+
+    // Send an AJAX request to get the datasets based on the class_id
+    $.ajax({
+        url: '<?= base_url("exercise/get_filtered_datasets"); ?>', // Replace with your controller and method
+        type: 'GET',
+        data: { class_id: class_id },
+        success: function(response) {
+            console.log(response); // Log the response to verify its structure
+            
+            // Ensure the response is parsed into a proper JavaScript object (in case it's a string)
+            if (typeof response === 'string') {
+                try {
+                    response = JSON.parse(response); // Manually parse if it's a string
+                } catch (e) {
+                    console.error('Error parsing JSON response:', e);
+                    return;
+                }
+            }
+
+            // Clear the previous options in the select dropdown
+            $('#dataset').empty();
+            
+            // Check if the response is an array of datasets
+            if (Array.isArray(response) && response.length > 0) {
+                // Loop through the datasets and populate the dropdown
+                $.each(response, function(index, dataset) {
+                    console.log(dataset);  // Log each dataset to verify its properties
+                    
+                    // Handle escaped characters in the 'guideline' field, if necessary
+                    if (dataset.guideline && typeof dataset.guideline === 'string') {
+                        dataset.guideline = dataset.guideline.replace(/\\"/g, '"'); // Remove escape characters
+                    }
+                    
+                    // Create an option element for each dataset
+                    var option = $('<option>', {
+                        value: dataset.setid,  // Set the value as the setid
+                        text: dataset.setname + ' (' + dataset.title + ')'  // Text to display in the dropdown
+                    });
+                    
+                    // Append the option to the select dropdown
+                    $('#dataset').append(option);
+                });
+            } else {
+                // If no datasets are available, add a placeholder option
+                $('#dataset').append('<option value="">No datasets available</option>');
+            }
+            
+            // Show the modal
+            $('#datasetmodal').modal('show');
+        },
+
+        error: function() {
+            alert('Error fetching datasets');
+        }
+    });
+});
 
 function submitdatasetques()
 {

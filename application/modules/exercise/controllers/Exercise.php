@@ -65,9 +65,17 @@ class Exercise extends CI_Controller
 			$data['chapter']=$this->common_model->getRows('chapter',array('is_active'=>1,'levelid'=>$getlevel),'*','chaptername');
 
 		}
+		$class_id = $this->input->get('class_rojesh');
+		if ($class_id) {
+			// If a class_id is passed, filter datasets by the class_id
+			$data['dataset'] = $this->common_model->getRows('datasetmain', array('is_active' => 1, 'class_id' => $class_id), '*', 'setname');
+	} else {
+			// If no class_id is passed, provide all datasets or leave empty
+			$data['dataset'] = array(); 
+	}
 		$data['examtype']=$this->common_model->getRows('examtype',array(),'*','examtypename');
 		$data['levellist']=$this->common_model->getRows('level',array('is_active'=>1),'*','name');
-		$data['dataset']=$this->common_model->getRows('datasetmain',array('is_active'=>1),'*','setname');
+		// $data['dataset']=$this->common_model->getRows('datasetmain',array('is_active'=>1, 'class_id'=>$class_id),'*','setname');
 
 
 		$data['showclass']=$showclass;
@@ -83,6 +91,27 @@ class Exercise extends CI_Controller
 		);
 		template($view, $data);
 	}
+
+	public function get_filtered_datasets()
+	{
+			// Get the class_id from the request
+			$class_id = $this->input->get('class_id');
+			
+			// Fetch the datasets based on class_id from the datasetmain table
+			$dataset_rojesh = $this->common_model->getRows('datasetmain', array('is_active' => 1, 'class_id' => $class_id), '*', 'setname');
+	
+			// Check if the query returns any datasets
+			if (!empty($dataset_rojesh)) {
+					// Return the datasets as a JSON response
+					echo json_encode($dataset_rojesh);
+			} else {
+					// If no datasets found, return an empty array
+					echo json_encode([]);
+			}
+	}
+	
+	
+
 	public function addnew($classid,$subject,$chapter,$group,$examtype,$topic)
 	{
 		// $this->load->helper('ckeditor_helper');
