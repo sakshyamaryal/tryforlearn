@@ -202,63 +202,49 @@ class Exercise_model extends CI_Model
         return $res;
     }
 
-    function addindataaset()
-    {
-
-        
-        $post=$_POST;
-       $ques=implode(',',$post['qid']);
-       $sql="select * from exercise where eid in (".$ques.")";
-       $res=$this->db->query($sql)->result();
-       $this->db->trans_begin();
-
-       $main=[];
-       foreach($res as $val)
-       {
-
-        if(empty($main))
-        {
-
-            $main=array(
-                'classid'=>$val->classid,
-                'subjectid'=>$val->subjectid,
-                'setid'=>$post['dataset'],
-                'isactive'=>'1',
-                'createdat'=>date('Y-m-d H:i:s'),
-                'createdby'=>$this->session->userdata('adminuserid')
-            );
-
-            $this->db->insert('dataset',$main);
-            $dsid=$this->db->insert_id();
-
+    function addindataaset() {
+        $post = $_POST;
+        $ques = $post['qid']; // Array of question IDs
+    
+        $this->db->trans_begin();
+    
+        $insert = [];
+    
+        foreach ($ques as $eid) {
+            // Check if this question already exists in the dataset
+            $this->db->where([
+                'setid' => $post['dataset'],
+                'class_id' => $post['class_id'],
+                'subject_id' => $post['subject_id'],
+                'eid' => $eid
+            ]);
+            $exists = $this->db->get('dataset_question')->row();
+    
+            if (!$exists) {
+                // If not exists, prepare for insert
+                $insert[] = [
+                    'setid' => $post['dataset'],
+                    'class_id' => $post['class_id'],
+                    'subject_id' => $post['subject_id'],
+                    'eid' => $eid
+                ];
+            }
         }
-     
-         $insert[]=array(
-          
-            'setid'=>$post['dataset'],
-            'dsid'=>$dsid,
-            'eid'=>$val->eid,
-             'isactive'=>1,
-          
-
-         );
-          
-       }
-       $this->db->insert_batch('dataset_exercise',$insert);
-
-       if ($this->db->trans_status() === FALSE)
-		{
-				$this->db->trans_rollback();
-                log_message('error', 'Database transaction failed: ' . $this->db->_error_message());
-				$iu=0;
-		}
-		else
-		{
-				$this->db->trans_commit();
-				$iu=1;
+    
+        if (!empty($insert)) {
+            $this->db->insert_batch('dataset_question', $insert);
         }
-        return $iu;
-
+    
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            log_message('error', 'Database transaction failed: ' . $this->db->_error_message());
+            return 0;
+        } else {
+            $this->db->trans_commit();
+            return count($insert); // Return how many were actually inserted
+        }
     }
+    
+    
   
 }

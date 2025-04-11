@@ -77,6 +77,17 @@ public function get_dataset_by_id($setid)
     $query = $this->db->get_where('datasetmain', ['setid' => $setid]);
     return $query->row_array();  // Return the dataset as an array
 }
+public function get_questions_by_setid($setid)
+{
+    $this->db->select('dq.*, e.question, c.name as class_name, s.subject_name as subject_name');
+    $this->db->from('dataset_question dq');
+    $this->db->join('exercise e', 'e.eid = dq.eid', 'left');
+    $this->db->join('class c', 'c.classid = dq.class_id', 'left');
+    $this->db->join('subject s', 's.subject_id = dq.subject_id', 'left');
+    $this->db->where('dq.setid', $setid);
+    return $this->db->get()->result_array();
+}
+
 
 // Update dataset
 public function update_dataset($setid, $setname, $title, $order, $time_period, $guidelines) {
@@ -91,6 +102,12 @@ public function update_dataset($setid, $setname, $title, $order, $time_period, $
 	$this->db->where('setid', $setid);
 	return $this->db->update('datasetmain', $data); // Replace with your table name
 }
+public function delete_question_from_dataset($setid, $eid) {
+	$this->db->where('setid', $setid);
+	$this->db->where('eid', $eid);
+	return $this->db->delete('dataset_question');
+}
+
 
 	public function get_group ()
 	{

@@ -148,6 +148,25 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="row mt-4">
+                      <div class="col-md-12">
+                          <h5>Questions in this Dataset:</h5>
+                          <table class="table table-bordered">
+                              <thead>
+                                  <tr>
+                                      <th>SN</th>
+                                      <th>Question</th>
+                                      <th>Subject</th>
+                                      <th>Class</th>
+                                  </tr>
+                              </thead>
+                              <tbody id="dataset-question-table">
+                                  <!-- Rows will be populated by JS -->
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+
                 </form>
             </div>
         </div>
@@ -224,9 +243,11 @@
                         </div>
                     </div>
                     <hr>
+                    <div class="row">
                     <div class="col-md-4">
                         <label>Time Period (in minutes)</label><br/>
                         <input type="number" name="edit-time_period" id="edittime_period" min="1" class="form-control"/>
+                    </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -236,7 +257,26 @@
                             </ul>
                         </div>
                     </div>
+                    <hr>
+                    <h5>Questions in this Dataset:</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>SN</th>
+                                <th>Question</th>
+                                <th>Subject</th>
+                                <th>Class</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="edit-dataset-question-table">
+                            <!-- Questions will be populated dynamically -->
+                        </tbody>
+                    </table>
+
+                    <div class="row">
                     <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -567,6 +607,18 @@ function getDatasetData() {
                         $('#guidelines-list').append('<li>' + guideline + '</li>'); // Add each guideline as a list item
                     });
 
+                    $('#dataset-question-table').empty();
+                      response.questions.forEach((row, index) => {
+                          $('#dataset-question-table').append(`
+                              <tr>
+                                  <td>${index + 1}</td>
+                                  <td>${row.question}</td>
+                                  <td>${row.subject_name}</td>
+                                  <td>${row.class_name}</td>
+                              </tr>
+                          `);
+                      });
+
                     // Show the modal
                     $('#datasetmodal').modal('show');
                 } else {
@@ -617,6 +669,20 @@ function getDatasetData() {
                         );
                     }
 
+                    // Clear and populate the question table
+                    $('#edit-dataset-question-table').empty();
+                    response.questions.forEach((row, index) => {
+                        $('#edit-dataset-question-table').append(`
+                            <tr data-eid="${row.eid}">
+                                <td>${index + 1}</td>
+                                <td>${row.question}</td>
+                                <td>${row.subject_name}</td>
+                                <td>${row.class_name}</td>
+                                <td><button type="button" class="btn btn-danger btn-sm remove-question-btn" data-eid="${row.eid}" data-setid="${row.setid}">Remove</button></td>
+                            </tr>
+                        `);
+                    });
+
                     $('#editdatasetmodal').modal('show');
                 } else {
                     alert('Error fetching dataset details. Rojesh');
@@ -654,6 +720,33 @@ function getDatasetData() {
         });
     });
 });
+
+$(document).on('click', '.remove-question-btn', function (e) {
+  e.preventDefault();
+    const eid = $(this).data('eid');
+    const setid = $(this).data('setid');
+    const row = $(this).closest('tr');
+
+    if (confirm('Are you sure you want to remove this question from the dataset?')) {
+        $.ajax({
+            url: "<?= base_url('dataset/remove_question_from_dataset') ?>",
+            type: "POST",
+            data: { eid, setid },
+            dataType: "json",
+            success: function (res) {
+                if (res.status === 'success') {
+                    row.remove(); // Remove the row from the table
+                } else {
+                    alert('Failed to remove question.');
+                }
+            },
+            error: function () {
+                alert('An error occurred while removing the question.');
+            }
+        });
+    }
+});
+
 
 
   function updateSN() {

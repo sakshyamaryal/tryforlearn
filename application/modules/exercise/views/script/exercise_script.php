@@ -610,43 +610,50 @@ $('#btndataset').on('click', function() {
     });
 });
 
-function submitdatasetques()
-{
+function submitdatasetques() {
+    var dataset = $('#dataset').val();
+    var class_id = $('#class_rojesh').val();  // from class select
+    var subject_id = $('#subject').val();     // from subject select
 
-    var dataset=$('#dataset').val();
-    var qid=[];
-    var count=0;
-    $("input[name='replicateques[]']:checked").each(function ()
-        {
-            count ++;
-            qid.push($(this).val());
-        });
-     if(count<1)
-     {
-        toastr.error('Select Atleast One Question', {timeOut: 5000});
+    var qid = [];
+    var count = 0;
+    $("input[name='replicateques[]']:checked").each(function () {
+        count++;
+        qid.push($(this).val());
+    });
+
+    if (count < 1) {
+        toastr.error('Select At least One Question', { timeOut: 5000 });
         return false;
+    }
 
-     }  
-     $.ajax({
-                     url: '<?= base_url(); ?>exercise/addindataset',
-                     type: 'POST',
-                     data: {dataset,qid},
-                     beforeSend: function () {
-                         $('#loader').show();
-                                },
-                     success: function (res) {
-                        $('#loader').hide();
-                        let response=jQuery.parseJSON(res);
-							if (response.type == 'success') {
-                                toastr.success(response.message, {timeOut: 5000})
+    if (dataset == '' || class_id == '-1' || subject_id == '-1') {
+        toastr.error('Please select all fields.', { timeOut: 5000 });
+        return false;
+    }
 
-                               
-							} else {
-								toastr.error(response.message, {timeOut: 5000})
-                             
-							}
-                     }
-
-                 }); 
+    $.ajax({
+        url: '<?= base_url(); ?>exercise/addindataset',
+        type: 'POST',
+        data: {
+            dataset,
+            class_id,
+            subject_id,
+            qid
+        },
+        beforeSend: function () {
+            $('#loader').show();
+        },
+        success: function (res) {
+            $('#loader').hide();
+            let response = jQuery.parseJSON(res);
+            if (response.type == 'success') {
+                toastr.success(response.message, { timeOut: 5000 });
+            } else {
+                toastr.error(response.message, { timeOut: 5000 });
+            }
+        }
+    });
 }
+
 </script>

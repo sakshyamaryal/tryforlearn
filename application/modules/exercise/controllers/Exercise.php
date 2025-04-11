@@ -694,6 +694,8 @@ echo $re;
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('qid[]', 'Question', 'required');
 		$this->form_validation->set_rules('dataset', 'Data set', 'required');
+		$this->form_validation->set_rules('class_id', 'Class', 'required');$this->form_validation->set_rules('subject_id', 'Subject', 'required');
+
 		
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -707,10 +709,10 @@ echo $re;
 		if ($copyques>0) {
 
 			$validator['type'] = 'success';
-			$validator['message'] = "Successfully Generated.";
+			$validator['message'] = "$copyques new question(s) successfully added.";
 		} else {
 			$validator['type'] = false;
-			$validator['message'] = "Something went wrong.";
+			$validator['message'] = "No new questions were added (possible duplicates).";
         }
         echo json_encode($validator);
         exit;

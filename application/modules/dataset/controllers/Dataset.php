@@ -282,14 +282,16 @@ public function get_dataset_details()
     $setid = $this->input->get('setid');  // Get the setid from the URL parameter
     
     // Fetch dataset details
-    $this->load->model('dataset_model');
+    $this->load->model('Dataset_model', 'dataset_model');
     $dataset = $this->dataset_model->get_dataset_by_id($setid);
+    $questions = $this->dataset_model->get_questions_by_setid($setid);
     
     if ($dataset) {
         // Return dataset details as JSON
         echo json_encode([
             'status' => 'success',
-            'data' => $dataset
+            'data' => $dataset,
+						'questions' => $questions
         ]);
     } else {
         echo json_encode([
@@ -322,5 +324,20 @@ public function update_dataset() {
 			echo json_encode(['status' => 'error']);
 	}
 }
+
+public function remove_question_from_dataset() {
+	$eid = $this->input->post('eid');
+	$setid = $this->input->post('setid');
+
+	$this->load->model('Dataset_model');
+	$removed = $this->Dataset_model->delete_question_from_dataset($setid, $eid);
+
+	if ($removed) {
+			echo json_encode(['status' => 'success']);
+	} else {
+			echo json_encode(['status' => 'error']);
+	}
+}
+
 
 }

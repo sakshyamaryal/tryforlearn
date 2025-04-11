@@ -28,75 +28,75 @@
                 <?php if($showclass=='Y'):?>
                 
                     <div class="col-md-2">
-                    <label>Class<sup style="color:red;">*</sup>
+                        <label>Class<sup style="color:red;">*</sup>
 
-                    </label>
-                    <select id="class_rojesh" name="class" class="form-control" style="cursor:pointer;" >
-                    <option value='-1'>Please Select</option>
-                    <?php foreach($class as $list):?>
-                        <option value="<?=$list->classid;?>"><?=$list->name;?></option>
-                    <?php endforeach; ?>
-                    </select>
+                        </label>
+                        <select id="class_rojesh" name="class" class="form-control" style="cursor:pointer;" >
+                        <option value='-1'>Please Select</option>
+                        <?php foreach($class as $list):?>
+                            <option value="<?=$list->classid;?>"><?=$list->name;?></option>
+                        <?php endforeach; ?>
+                        </select>
                     </div>
                     <div class="col-md-2">
-                    <label>Subject<sup style="color:red;">*</sup>
+                        <label>Subject<sup style="color:red;">*</sup>
 
-                    </label>
-                    <select id="subject" name="subject" class="form-control" style="cursor:pointer;">
-                    <option value='-1'>Please Select </option>
-                    <?php foreach($subject as $list):?>
-                        <option value="<?=$list->classid;?>"><?=$list->name;?></option>
-                    <?php endforeach; ?>
-                    </select>
+                        </label>
+                        <select id="subject" name="subject" class="form-control" style="cursor:pointer;">
+                        <option value='-1'>Please Select </option>
+                        <?php foreach($subject as $list):?>
+                            <option value="<?=$list->classid;?>"><?=$list->name;?></option>
+                        <?php endforeach; ?>
+                        </select>
                     </div>
                     <?php endif;?>
                     <?php if($qtype=='N')
                     { ?>
                     <div class="col-md-2">
-                    <label>Exam Type<sup style="color:red;">*</sup>
+                        <label>Exam Type<sup style="color:red;">*</sup>
 
-                    </label>
-                    <select id="examtypeid" name="examtypeid" class="form-control" style="cursor:pointer;">
-                    <option value='-1'>Please Select </option>
-                    <?php foreach($examtype as $ex): ?>
-                        <option value="<?=$ex->examtypeid;?>"><?=$ex->examtypename;?></option>
-                        <?php endforeach; ?>
-                    </select>
+                        </label>
+                        <select id="examtypeid" name="examtypeid" class="form-control" style="cursor:pointer;">
+                        <option value='-1'>Please Select </option>
+                        <?php foreach($examtype as $ex): ?>
+                            <option value="<?=$ex->examtypeid;?>"><?=$ex->examtypename;?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
 
                 <?php } else { ?> 
                     <div class="col-md-2">
-                    <label>Chapter<sup style="color:red;">*</sup>
+                        <label>Chapter<sup style="color:red;">*</sup>
 
-                    </label>
-                    <select id="chapter" name="chapter" class="form-control" style="cursor:pointer;">
-                    <option value='-1'>Please Select </option>
-                    <?php foreach($chapter as $list):?>
-                        <option value="<?=$list->chapterid;?>"><?=$list->chaptername;?></option>
-                    <?php endforeach; ?>
-                    </select>
+                        </label>
+                        <select id="chapter" name="chapter" class="form-control" style="cursor:pointer;">
+                        <option value='-1'>Please Select </option>
+                        <?php foreach($chapter as $list):?>
+                            <option value="<?=$list->chapterid;?>"><?=$list->chaptername;?></option>
+                        <?php endforeach; ?>
+                        </select>
                     </div>
                     <div class="col-md-2">
-                    <label>Topic
+                        <label>Topic
 
-                    </label>
-                    <select id="topic" name="topic" class="form-control" style="cursor:pointer;">
-                    <option value='-1'>Please Select </option>
-                        <option value="-1">Please select</option>
-                    </select>
+                        </label>
+                        <select id="topic" name="topic" class="form-control" style="cursor:pointer;">
+                        <option value='-1'>Please Select </option>
+                            <option value="-1">Please select</option>
+                        </select>
                     </div>
                 <?php } ?>
                 
                     <div class="col-md-2">
-                    <label>Group<sup style="color:red;">*</sup>
+                        <label>Group<sup style="color:red;">*</sup>
 
-                    </label>
-                    <select id="group" name="group" class="form-control" style="cursor:pointer;">
-                    <option value='-1'>Please Select </option>
-                    <?php foreach($group as $list):?>
-                        <option value="<?=$list->groupid;?>"><?=$list->groupname;?></option>
-                    <?php endforeach; ?>
-                    </select>
+                        </label>
+                        <select id="group" name="group" class="form-control" style="cursor:pointer;">
+                        <option value='-1'>Please Select </option>
+                        <?php foreach($group as $list):?>
+                            <option value="<?=$list->groupid;?>"><?=$list->groupname;?></option>
+                        <?php endforeach; ?>
+                        </select>
                     </div>
 
                     <div class="col-md-2">
@@ -308,8 +308,7 @@
 					 </div>
                     
 					 </div>
-					
-					 <hr>
+
 					 <div class="row">
 					  <div class="col-md-2">
 					  <button type="button" class="btn btn-success" id="btnaddindataset" onclick="submitdatasetques()">Submit</button>

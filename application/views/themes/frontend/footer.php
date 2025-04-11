@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+</footer>
     
     <div class="modal" tabindex="-1" role="dialog" id="infomodal">
   <div class="modal-dialog" role="document">
