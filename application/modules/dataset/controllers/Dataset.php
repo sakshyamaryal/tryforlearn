@@ -239,7 +239,7 @@ public function save_dataset()
     // Get data from POST request
     $levelid = $this->input->post('course');
     $subject_id = $this->input->post('subject');
-    $time_period = $this->input->post('time_period'); // Get the time_period from form input
+    $time_period = $this->input->post('add_time_period'); // Get the time_period from form input
 
     // Validate that subject belongs to the selected level (course)
     $subject = $this->db->get_where('subject', [
@@ -259,9 +259,9 @@ public function save_dataset()
     $data = array(
         'class_id' => $this->input->post('class'),
         'subject_id' => $subject_id,
-        'setname' => $this->input->post('setname'),
-        'title' => $this->input->post('title'),
-        'order' => $this->input->post('order'),
+        'setname' => $this->input->post('add_setname'),
+        'title' => $this->input->post('add_title'),
+        'order' => $this->input->post('add_order'),
         'time_period' => $time_period, // Save the time period
         'is_active' => 1,
 				'guideline' => $this->input->post('guideline')

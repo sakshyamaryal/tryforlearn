@@ -94,7 +94,7 @@
                   </ul>
                 </td>
                 <td>
-                    <button id="view<?= $row->setid; ?>" style="padding:0; border:none; background-color:transparent;"><i class="fa fa-eye" title="View" aria-hidden="true"></i></button>
+                    <button id="view<?= $row->setid; ?>" class="view-dataset-detail-btn" style="padding:0; border:none; background-color:transparent;"><i class="fa fa-eye" title="View" aria-hidden="true"></i></button>
                     <button id="edit<?= $row->setid; ?>" class="edit-btn" style="padding:0; border:none; background-color:transparent;"><i class="fa fa-edit" title="Edit" aria-hidden="true"></i></button>
                     <button id="delete<?= $row->setid; ?>" style="padding:0; border:none; background-color:transparent;" class="delete-btn" data-setid="<?= $row->setid; ?>">
                         <i class="fa fa-trash" title="Delete" aria-hidden="true" style="color: red;"></i>
@@ -110,7 +110,7 @@
   </tbody>
 
 </table>
-<div class="modal fade" id="datasetmodal" role="dialog" data-keyboard="false" data-backdrop="static" aria-hidden="true">
+<div class="modal fade" id="viewdatasetmodal" role="dialog" data-keyboard="false" data-backdrop="static" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document" style="height: 60vh; min-height: 550px; overflow-y:auto;">
         <div class="modal-content" style="min-height: 550px; overflow-y:auto;">
             <div class="modal-header">
@@ -574,8 +574,12 @@ function getDatasetData() {
   });
   $(document).ready(function () {
     // View button click event
-    $('[id^="view"]').on('click', function () {
+    $('.view-dataset-detail-btn').on('click', function () {
         var setId = $(this).attr('id').replace('view', ''); // Extract dataset ID from button ID
+        if (!setId) {
+            console.error('Invalid set ID');
+            return;
+        }
         console.log("function called")
         
         // Make AJAX request to fetch dataset details by ID
@@ -620,7 +624,7 @@ function getDatasetData() {
                       });
 
                     // Show the modal
-                    $('#datasetmodal').modal('show');
+                    $('#viewdatasetmodal').modal('show');
                 } else {
                     alert('Error fetching dataset details.');
                 }
@@ -719,7 +723,7 @@ function getDatasetData() {
             }
         });
     });
-});
+  });
 
 $(document).on('click', '.remove-question-btn', function (e) {
   e.preventDefault();

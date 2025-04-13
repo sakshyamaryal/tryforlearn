@@ -256,22 +256,22 @@
 
                                 <div class="col-md-12">
                                     <label>Dataset Name</label><br/>
-                                    <input type="text" name="setname" id="setname" value="" class="form-control"/> 
+                                    <input type="text" name="add_setname" id="add_setname" value="" class="form-control"/> 
                                 </div>
                                 <div class="col-md-12">
                                     <label>Dataset Title</label><br/>
-                                    <input type="text" name="title" id="title" value="" class="form-control"/> 
+                                    <input type="text" name="add_title" id="add_title" value="" class="form-control"/> 
                                 </div>
                                 <div class="col-md-2">
                                     <label>Order</label><br/>
-                                    <input type="number" name="order" id="order" min="1" value="" class="form-control"/> 
+                                    <input type="number" name="add_order" id="add_order" min="1" value="" class="form-control"/> 
                                 </div>
                             </div>
                             <hr>
                             <div class="col-md-4">
-            <label>Time Period (in minutes)</label><br/>
-            <input type="number" name="time_period" id="time_period" min="1" value="" class="form-control"/>
-        </div>
+                                <label>Time Period (in minutes)</label><br/>
+                                <input type="number" name="add_time_period" id="add_time_period" min="1" value="" class="form-control"/>
+                            </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <h5>
@@ -619,10 +619,26 @@
             $('#datasetmodal').modal('show');
 
         });
+        
         $('.modalhide').click(function(){
             $('#datasetmodal').modal('hide');
         });
         function submitdataset() {
+            const setnameEl = document.getElementById('add_setname');
+            const titleEl = document.getElementById('add_title');
+            const orderEl = document.getElementById('add_order');
+            const timeEl = document.getElementById('add_time_period');
+
+            console.log("Setname element: ", setnameEl);
+            console.log("Title element: ", titleEl);
+            console.log("Order element: ", orderEl);
+            console.log("Time element: ", timeEl);
+
+            console.log("Setname value: ", setnameEl?.value);
+            console.log("Title value: ", titleEl?.value);
+            console.log("Order value: ", orderEl?.value);
+            console.log("Time value: ", timeEl?.value);
+
             const guidelines = $("input[name='guideline[]']")
                 .map(function () {
                     return $(this).val().trim();
@@ -630,7 +646,7 @@
                 .get();
             const guidelineText = guidelines.join("\n");
 
-            const timePeriod = $('#time_period').val().trim(); // Get the time_period value
+            const timePeriod = $('#add_time_period').val().trim(); // Get the time_period value
 
             // Log for debugging
             console.log("Guidelines: ", guidelineText);
@@ -641,10 +657,10 @@
                 course: $('#course').val(),
                 class: $('#class').val(),
                 subject: $('#subject').val(),
-                setname: $('#setname').val(),
-                title: $('#title').val(),
-                order: $('#order').val(),
-                time_period: timePeriod, // Add time_period to data
+                add_setname: $('#add_setname').val(),
+                add_title: $('#add_title').val(),
+                add_order: $('#add_order').val(),
+                add_time_period: timePeriod, // Add time_period to data
                 guideline: guidelineText, // Convert the guidelines array to JSON
             };
 
