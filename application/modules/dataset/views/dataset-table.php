@@ -140,15 +140,14 @@
                         <label>Time Period (in minutes)</label><br/>
                         <p id="time_period"></p> <!-- Display time period here -->
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-md-12">
                             <h5>Guidelines for Dataset Creation:</h5>
                             <ul id="guidelines-list">
-                                <!-- Guidelines will be displayed here as <li> items -->
                             </ul>
                         </div>
-                    </div>
-                    <div class="row mt-4">
+                    </div> -->
+                    <!-- <div class="row mt-4">
                       <div class="col-md-12">
                           <h5>Questions in this Dataset:</h5>
                           <table class="table table-bordered">
@@ -161,17 +160,51 @@
                                   </tr>
                               </thead>
                               <tbody id="dataset-question-table">
-                                  <!-- Rows will be populated by JS -->
                               </tbody>
                           </table>
                       </div>
-                  </div>
+                    </div> -->
+
+                    <div class="row mt-4">
+                        <div class="col-md-12 text-right">
+                            <button type="button" id="viewQuestionsBtn" class="btn btn-info">View Questions</button>
+                        </div>
+                    </div>
+
 
                 </form>
             </div>
         </div>
     </div>
 </div>
+<div class="modal fade" id="viewquestionsmodal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document" style="height: 60vh; min-height: 550px; overflow-y:auto;">
+        <div class="modal-content" style="min-height: 550px; overflow-y:auto;">
+            <div class="modal-header">
+                <h5 class="modal-title">Questions in Dataset</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>SN</th>
+                            <th>Question</th>
+                            <th>Subject</th>
+                            <th>Class</th>
+                        </tr>
+                    </thead>
+                    <tbody id="view-dataset-question-table">
+                        <!-- Questions will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- <div class="modal fade" id="editdatasetmodal" role="dialog" data-keyboard="false" data-backdrop="static" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document" style="height: 60vh; min-height: 550px; overflow-y:auto;">
@@ -258,7 +291,7 @@
                         </div>
                     </div>
                     <hr>
-                    <h5>Questions in this Dataset:</h5>
+                    <!-- <h5>Questions in this Dataset:</h5>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -269,10 +302,15 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody id="edit-dataset-question-table">
-                            <!-- Questions will be populated dynamically -->
+                        <tbody id="remove-dataset-question-table">
                         </tbody>
-                    </table>
+                    </table> -->
+                    <div class="row my-3">
+                      <div class="col-md-12 text-right">
+                          <button type="button" id="removeQuestionsBtn" class="btn btn-danger">Remove Questions</button>
+                      </div>
+                  </div>
+
 
                     <div class="row">
                     <button type="submit" class="btn btn-primary">Save Changes</button>
@@ -282,6 +320,35 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="removequestionsmodal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document" style="height: 60vh; min-height: 550px; overflow-y:auto;">
+        <div class="modal-content" style="min-height: 550px; overflow-y:auto;">
+            <div class="modal-header">
+                <h5 class="modal-title">Remove Questions from Dataset</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>SN</th>
+                            <th>Question</th>
+                            <th>Subject</th>
+                            <th>Class</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="remove-dataset-question-table">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 <!-- <script>
@@ -492,6 +559,7 @@ function getDatasetData() {
 
 </script> -->
 <script>
+  
   $(document).ready(function () {
     // Select/Deselect all checkboxes
     $('#selectAllCheckbox').on('change', function () {
@@ -572,58 +640,105 @@ function getDatasetData() {
         }
     });
   });
-  $(document).ready(function () {
-    // View button click event
-    $('.view-dataset-detail-btn').on('click', function () {
-        var setId = $(this).attr('id').replace('view', ''); // Extract dataset ID from button ID
+//   $(document).ready(function () {
+//     // View button click event
+//     $('.view-dataset-detail-btn').on('click', function () {
+//         var setId = $(this).attr('id').replace('view', ''); // Extract dataset ID from button ID
+//         if (!setId) {
+//             console.error('Invalid set ID');
+//             return;
+//         }
+//         console.log("function called")
+        
+//         // Make AJAX request to fetch dataset details by ID
+//         $.ajax({
+//             url: "<?= base_url('dataset/get_dataset_details') ?>", // Update with your actual URL to get dataset details
+//             type: "GET",
+//             data: { setid: setId },  // Pass the setid to the controller
+//             dataType: "json",
+//             success: function (response) {
+//                 console.log(response)
+//                 if (response.status === 'success') {
+//                     // Fill the modal fields with the dataset details
+//                     var dataset = response.data;
+//                     console.log(dataset)
+
+//                     // Split the guidelines string into an array based on newline (\n)
+//                     var guidelines = dataset.guideline ? dataset.guideline.split('\n') : [];
+//                     console.log(guidelines)
+
+//                     // Populate the modal fields
+//                     $('#setname').text(dataset.setname);  // Display dataset name
+//                     $('#title').text(dataset.title);      // Display dataset title
+//                     $('#order').text(dataset.order);      // Display order
+//                     $('#time_period').text(dataset.time_period);  // Display time period
+
+//                     // Clear the previous guidelines and populate the new ones
+//                     $('#guidelines-list').empty(); // Clear previous list items
+//                     guidelines.forEach(function (guideline, index) {
+//                         $('#guidelines-list').append('<li>' + guideline + '</li>'); // Add each guideline as a list item
+//                     });
+
+//                     $('#dataset-question-table').empty();
+//                       response.questions.forEach((row, index) => {
+//                           $('#dataset-question-table').append(`
+//                               <tr>
+//                                   <td>${index + 1}</td>
+//                                   <td>${row.question}</td>
+//                                   <td>${row.subject_name}</td>
+//                                   <td>${row.class_name}</td>
+//                               </tr>
+//                           `);
+//                       });
+
+//                     // Show the modal
+//                     $('#viewdatasetmodal').modal('show');
+//                 } else {
+//                     alert('Error fetching dataset details.');
+//                 }
+//             },
+//             error: function () {
+//                 alert('Error occurred while fetching dataset details.');
+//             }
+//         });
+//     });
+//   });
+
+$(document).ready(function() {
+    // Store questions globally when fetching dataset details
+    var viewQuestions = [];
+
+    // When opening viewdatasetmodal, store questions
+    $(document).on('click', '.view-dataset-detail-btn', function () {
+        var setId = $(this).attr('id').replace('view', '');
         if (!setId) {
             console.error('Invalid set ID');
             return;
         }
-        console.log("function called")
-        
-        // Make AJAX request to fetch dataset details by ID
+
         $.ajax({
-            url: "<?= base_url('dataset/get_dataset_details') ?>", // Update with your actual URL to get dataset details
+            url: "<?= base_url('dataset/get_dataset_details') ?>",
             type: "GET",
-            data: { setid: setId },  // Pass the setid to the controller
+            data: { setid: setId },
             dataType: "json",
             success: function (response) {
-                console.log(response)
                 if (response.status === 'success') {
-                    // Fill the modal fields with the dataset details
                     var dataset = response.data;
-                    console.log(dataset)
 
-                    // Split the guidelines string into an array based on newline (\n)
+                    $('#setname').text(dataset.setname);
+                    $('#title').text(dataset.title);
+                    $('#order').text(dataset.order);
+                    $('#time_period').text(dataset.time_period);
+
+                    $('#guidelines-list').empty();
                     var guidelines = dataset.guideline ? dataset.guideline.split('\n') : [];
-                    console.log(guidelines)
-
-                    // Populate the modal fields
-                    $('#setname').text(dataset.setname);  // Display dataset name
-                    $('#title').text(dataset.title);      // Display dataset title
-                    $('#order').text(dataset.order);      // Display order
-                    $('#time_period').text(dataset.time_period);  // Display time period
-
-                    // Clear the previous guidelines and populate the new ones
-                    $('#guidelines-list').empty(); // Clear previous list items
-                    guidelines.forEach(function (guideline, index) {
-                        $('#guidelines-list').append('<li>' + guideline + '</li>'); // Add each guideline as a list item
+                    guidelines.forEach(function (g) {
+                        $('#guidelines-list').append('<li>' + g + '</li>');
                     });
 
-                    $('#dataset-question-table').empty();
-                      response.questions.forEach((row, index) => {
-                          $('#dataset-question-table').append(`
-                              <tr>
-                                  <td>${index + 1}</td>
-                                  <td>${row.question}</td>
-                                  <td>${row.subject_name}</td>
-                                  <td>${row.class_name}</td>
-                              </tr>
-                          `);
-                      });
+                    // Store questions for later when clicking View Questions
+                    viewQuestions = response.questions || [];
 
-                    // Show the modal
                     $('#viewdatasetmodal').modal('show');
                 } else {
                     alert('Error fetching dataset details.');
@@ -634,96 +749,283 @@ function getDatasetData() {
             }
         });
     });
-  });
 
-  $(document).ready(function () {
-    // Handle edit button click
-    $('.edit-btn').on('click', function () {
-        var setId = $(this).attr('id').replace('edit', '');
-        if (!setId) {
-            console.error('Invalid set ID');
-            return;
+    // When View Questions button clicked
+    $('#viewQuestionsBtn').on('click', function() {
+        $('#view-dataset-question-table').empty();
+
+        if (viewQuestions.length > 0) {
+            viewQuestions.forEach(function(q, index) {
+                $('#view-dataset-question-table').append(`
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${q.question}</td>
+                        <td>${q.subject_name}</td>
+                        <td>${q.class_name}</td>
+                    </tr>
+                `);
+            });
+        } else {
+            $('#view-dataset-question-table').append('<tr><td colspan="4" class="text-center">No questions found.</td></tr>');
         }
 
-        console.log("Edit function called");
+        $('#viewquestionsmodal').modal('show');
+    });
+});
 
-        $.ajax({
-            url: "<?= base_url('dataset/get_dataset_details') ?>",
-            type: "GET",
-            data: { setid: setId },
-            dataType: "json",
-            success: function (response) {
-                console.log(response);
-                if (response.status === 'success') {
-                    var dataset = response.data;
+  //this
+//   $(document).ready(function () {
+//     // Handle edit button click
+//     $(document).on('click', '.edit-btn', function () {
+//         var setId = $(this).attr('id').replace('edit', '');
+//         if (!setId) {
+//             console.error('Invalid set ID');
+//             return;
+//         }
 
-                    var guidelines = dataset.guideline ? dataset.guideline.split('\n') : [];
+//         console.log("Edit function called");
 
-                    $('#editsetid').val(dataset.setid);
-                    $('#editsetname').val(dataset.setname);
-                    $('#edittitle').val(dataset.title);
-                    $('#editorder').val(dataset.order);
-                    $('#edittime_period').val(dataset.time_period);
+//         $.ajax({
+//             url: "<?= base_url('dataset/get_dataset_details') ?>",
+//             type: "GET",
+//             data: { setid: setId },
+//             dataType: "json",
+//             success: function (response) {
+//                 console.log(response);
+//                 if (response.status === 'success') {
+//                     var dataset = response.data;
 
-                    $('#edit-guidelines-list').empty();
-                    for (var i = 0; i < 3; i++) {
-                        var guideline = guidelines[i] || '';
-                        $('#edit-guidelines-list').append(
-                            '<li><input type="text" class="form-control mb-2" name="guideline[]" value="' + guideline + '"/></li>'
-                        );
+//                     var guidelines = dataset.guideline ? dataset.guideline.split('\n') : [];
+
+//                     $('#editsetid').val(dataset.setid);
+//                     $('#editsetname').val(dataset.setname);
+//                     $('#edittitle').val(dataset.title);
+//                     $('#editorder').val(dataset.order);
+//                     $('#edittime_period').val(dataset.time_period);
+
+//                     $('#edit-guidelines-list').empty();
+//                     for (var i = 0; i < 3; i++) {
+//                         var guideline = guidelines[i] || '';
+//                         $('#edit-guidelines-list').append(
+//                             '<li><input type="text" class="form-control mb-2" name="guideline[]" value="' + guideline + '"/></li>'
+//                         );
+//                     }
+
+//                     // Clear and populate the question table
+//                     $('#remove-dataset-question-table').empty();
+//                     if (response.questions && response.questions.length > 0) {
+//                         response.questions.forEach((row, index) => {
+//                             $('#remove-dataset-question-table').append(`
+//                                 <tr data-eid="${row.eid}">
+//                                     <td>${index + 1}</td>
+//                                     <td>${row.question}</td>
+//                                     <td>${row.subject_name}</td>
+//                                     <td>${row.class_name}</td>
+//                                     <td>
+//                                         <button type="button" class="btn btn-danger btn-sm remove-question-btn" data-eid="${row.eid}" data-setid="${row.setid}">
+//                                             Remove
+//                                         </button>
+//                                     </td>
+//                                 </tr>
+//                             `);
+//                         });
+//                     } else {
+//                         $('#remove-dataset-question-table').append('<tr><td colspan="5" class="text-center">No questions found.</td></tr>');
+//                     }
+
+//                     $('#editdatasetmodal').modal('show');
+//                 } else {
+//                     alert('Error fetching dataset details. Rojesh');
+//                 }
+//             },
+//             error: function () {
+//                 alert('Error occurred while fetching dataset details.');
+//             }
+//         });
+//     });
+
+//     // Submit update form
+//     $('#editform').submit(function (e) {
+//         e.preventDefault();
+
+//         var formData = $(this).serialize();
+
+//         $.ajax({
+//             url: "<?= base_url('dataset/update_dataset') ?>",
+//             type: "POST",
+//             data: formData,
+//             dataType: "json",
+//             success: function (response) {
+//                 if (response.status === 'success') {
+//                     alert('Dataset updated successfully');
+//                     $('#editdatasetmodal').modal('hide');
+//                     location.reload(); // Optional: reload the dataset list
+//                 } else {
+//                     alert('Error updating dataset.');
+//                 }
+//             },
+//             error: function () {
+//                 alert('Error occurred while updating dataset.');
+//             }
+//         });
+//     });
+//   });
+
+//   $(document).ready(function() {
+//     // Open remove questions modal and populate the table
+//     $('#removeQuestionsBtn').on('click', function() {
+//         // Clear previous questions in the remove questions modal
+//         $('#remove-dataset-question-table').empty();
+
+//         // Get the questions data from the edit dataset modal
+//         var questions = []; // Initialize an empty array
+
+//         // Iterate over the table rows in the edit modal to get questions
+//         $('#remove-dataset-question-table tr').each(function(index) {
+//             var question = $(this).find('td:eq(1)').text();
+//             var subject = $(this).find('td:eq(2)').text();
+//             var className = $(this).find('td:eq(3)').text();
+//             var eid = $(this).data('eid');
+//             var setid = $('#editsetid').val();
+
+//             // Push the row data into the questions array
+//             questions.push({
+//                 eid: eid,
+//                 question: question,
+//                 subject: subject,
+//                 className: className
+//             });
+//         });
+
+//         // Populate the remove questions modal with data
+//         questions.forEach(function(q, index) {
+//             $('#remove-dataset-question-table').append(
+//                 `<tr data-eid="${q.eid}">
+//                     <td>${index + 1}</td>
+//                     <td>${q.question}</td>
+//                     <td>${q.subject}</td>
+//                     <td>${q.className}</td>
+//                     <td>
+//                         <button type="button" class="btn btn-danger btn-sm remove-question-btn" data-eid="${q.eid}" data-setid="${setid}">Remove</button>
+//                     </td>
+//                 </tr>`
+//             );
+//         });
+
+//         // Show the modal
+//         $('#removequestionsmodal').modal('show');
+//     });
+//   });
+
+    $(document).ready(function () {
+        var loadedQuestions = []; // Store the loaded questions globally
+
+        // Handle edit button click
+        $(document).on('click', '.edit-btn', function () {
+            var setId = $(this).attr('id').replace('edit', '');
+            if (!setId) {
+                console.error('Invalid set ID');
+                return;
+            }
+
+            console.log("Edit function called");
+
+            $.ajax({
+                url: "<?= base_url('dataset/get_dataset_details') ?>",
+                type: "GET",
+                data: { setid: setId },
+                dataType: "json",
+                success: function (response) {
+                    console.log(response);
+                    if (response.status === 'success') {
+                        var dataset = response.data;
+
+                        var guidelines = dataset.guideline ? dataset.guideline.split('\n') : [];
+
+                        $('#editsetid').val(dataset.setid);
+                        $('#editsetname').val(dataset.setname);
+                        $('#edittitle').val(dataset.title);
+                        $('#editorder').val(dataset.order);
+                        $('#edittime_period').val(dataset.time_period);
+
+                        $('#edit-guidelines-list').empty();
+                        for (var i = 0; i < 3; i++) {
+                            var guideline = guidelines[i] || '';
+                            $('#edit-guidelines-list').append(
+                                '<li><input type="text" class="form-control mb-2" name="guideline[]" value="' + guideline + '"/></li>'
+                            );
+                        }
+
+                        // Store questions into the global array
+                        loadedQuestions = response.questions || [];
+
+                        $('#editdatasetmodal').modal('show');
+                    } else {
+                        alert('Error fetching dataset details.');
                     }
-
-                    // Clear and populate the question table
-                    $('#edit-dataset-question-table').empty();
-                    response.questions.forEach((row, index) => {
-                        $('#edit-dataset-question-table').append(`
-                            <tr data-eid="${row.eid}">
-                                <td>${index + 1}</td>
-                                <td>${row.question}</td>
-                                <td>${row.subject_name}</td>
-                                <td>${row.class_name}</td>
-                                <td><button type="button" class="btn btn-danger btn-sm remove-question-btn" data-eid="${row.eid}" data-setid="${row.setid}">Remove</button></td>
-                            </tr>
-                        `);
-                    });
-
-                    $('#editdatasetmodal').modal('show');
-                } else {
-                    alert('Error fetching dataset details. Rojesh');
+                },
+                error: function () {
+                    alert('Error occurred while fetching dataset details.');
                 }
-            },
-            error: function () {
-                alert('Error occurred while fetching dataset details.');
+            });
+        });
+
+        // Submit update form
+        $('#editform').submit(function (e) {
+            e.preventDefault();
+
+            var formData = $(this).serialize();
+
+            $.ajax({
+                url: "<?= base_url('dataset/update_dataset') ?>",
+                type: "POST",
+                data: formData,
+                dataType: "json",
+                success: function (response) {
+                    if (response.status === 'success') {
+                        alert('Dataset updated successfully');
+                        $('#editdatasetmodal').modal('hide');
+                        location.reload(); // Reload dataset list
+                    } else {
+                        alert('Error updating dataset.');
+                    }
+                },
+                error: function () {
+                    alert('Error occurred while updating dataset.');
+                }
+            });
+        });
+
+        // Handle Remove Questions Button
+        $('#removeQuestionsBtn').on('click', function() {
+            // Clear previous questions in the remove questions modal
+            $('#remove-dataset-question-table').empty();
+
+            var setid = $('#editsetid').val();
+
+            if (loadedQuestions.length > 0) {
+                loadedQuestions.forEach(function(row, index) {
+                    $('#remove-dataset-question-table').append(`
+                        <tr data-eid="${row.eid}">
+                            <td>${index + 1}</td>
+                            <td>${row.question}</td>
+                            <td>${row.subject_name}</td>
+                            <td>${row.class_name}</td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm remove-question-btn" data-eid="${row.eid}" data-setid="${setid}">
+                                    Remove
+                                </button>
+                            </td>
+                        </tr>
+                    `);
+                });
+            } else {
+                $('#remove-dataset-question-table').append('<tr><td colspan="5" class="text-center">No questions found.</td></tr>');
             }
+
+            $('#removequestionsmodal').modal('show');
         });
     });
-
-    // Submit update form
-    $('#editform').submit(function (e) {
-        e.preventDefault();
-
-        var formData = $(this).serialize();
-
-        $.ajax({
-            url: "<?= base_url('dataset/update_dataset') ?>",
-            type: "POST",
-            data: formData,
-            dataType: "json",
-            success: function (response) {
-                if (response.status === 'success') {
-                    alert('Dataset updated successfully');
-                    $('#editdatasetmodal').modal('hide');
-                    location.reload(); // Optional: reload the dataset list
-                } else {
-                    alert('Error updating dataset.');
-                }
-            },
-            error: function () {
-                alert('Error occurred while updating dataset.');
-            }
-        });
-    });
-  });
 
   $(document).on('click', '.remove-question-btn', function (e) {
     e.preventDefault();
@@ -751,14 +1053,59 @@ function getDatasetData() {
       }
   });
 
+  // $(document).ready(function() {
+  //   $('#removeQuestionsBtn').on('click', function() {
+  //       // First, clear previous questions
+  //       $('#remove-dataset-question-table').empty();
+  //       var ques = [];
+
+  //       // Get all current questions from edit modal table
+  //       $('#remove-dataset-question-table tr').each(function(index) {
+  //           var question = $(this).find('td:eq(1)').text();
+  //           var subject = $(this).find('td:eq(2)').text();
+  //           var className = $(this).find('td:eq(3)').text();
+  //           var eid = $(this).data('eid');
+  //           var setid = $('#editsetid').val();
+
+  //           questions.push({
+  //               eid: eid,
+  //               question: question,
+  //               subject: subject,
+  //               className: className
+  //           });
+
+  //           $('#remove-dataset-question-table').append(`
+  //               <tr data-eid="${eid}">
+  //                   <td>${index + 1}</td>
+  //                   <td>${question}</td>
+  //                   <td>${subject}</td>
+  //                   <td>${className}</td>
+  //                   <td>
+  //                       <button type="button" class="btn btn-danger btn-sm remove-question-btn" data-eid="${eid}" data-setid="${setid}">Remove</button>
+  //                   </td>
+  //               </tr>
+  //           `);
+  //       });
+
+  //       // Open the Remove Questions modal
+  //       $('#removequestionsmodal').modal('show');
+  //   });
+  // });
+
+
+
+
 
 
   function updateSN() {
-    var sn = 1; // Start SN from 1
-    $('#dataTable tbody tr').each(function() {
-        $(this).find('.sn-placeholder').text(sn); // Update SN in the placeholder
-        sn++; // Increment SN for next row
+    $('#remove-dataset-question-table tr').each(function (index) {
+        $(this).find('td:first').text(index + 1);
     });
-}
+  }
+
+  $(document).on('click', '.remove-question-btn', function () {
+        $(this).closest('tr').remove();
+        updateSN();
+    });
 
 </script>

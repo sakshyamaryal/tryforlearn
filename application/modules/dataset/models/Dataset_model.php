@@ -37,6 +37,46 @@ public function get_all_datasets()
     return $query->result();
 }
 
+public function copy_questions_from_set_to_set($source_setid, $target_setid)
+{
+    // Step 1: Get all questions linked to source dataset
+    $this->db->select('eid, class_id, subject_id');
+    $this->db->from('dataset_question');
+    $this->db->where('setid', $source_setid);
+    $questions = $this->db->get()->result();
+
+    if (!empty($questions)) {
+        // Step 2: Get all existing eids already in the target dataset
+        $this->db->select('eid');
+        $this->db->from('dataset_question');
+        $this->db->where('setid', $target_setid);
+        $existing_eids = $this->db->get()->result_array();
+
+        // Flatten existing eids into a simple array
+        $existing_eid_list = array_column($existing_eids, 'eid');
+
+        $insertData = [];
+
+        foreach ($questions as $q) {
+            if (!in_array($q->eid, $existing_eid_list)) {
+                // Only add if eid is not already in target
+                $insertData[] = [
+                    'setid' => $target_setid,
+                    'class_id' => $q->class_id,
+                    'subject_id' => $q->subject_id,
+                    'eid' => $q->eid
+                ];
+            }
+        }
+
+        // Step 3: Insert new questions only (no duplicates)
+        if (!empty($insertData)) {
+            $this->db->insert_batch('dataset_question', $insertData);
+        }
+    }
+}
+
+
 public function get_filtered_datasets($class_id, $subject_id)
 {
 	$this->db->select('datasetmain.*, class.name AS class_name, subject.subject_name, level.name AS level_name');
@@ -87,19 +127,24 @@ public function get_questions_by_setid($setid)
     $this->db->where('dq.setid', $setid);
     return $this->db->get()->result_array();
 }
-public function get_datasets($course_id = null, $class_id = null)
-{
-    $this->db->select('groupid, groupname');
-    $this->db->from('datasetmain');
-
-    if ($course_id != -1 && $class_id != -1) {
-        $this->db->where('courseid', $course_id);
-        $this->db->where('classid', $class_id);
-    }
-
-    $query = $this->db->get();
-    return $query->result();
+// Get all datasets (no filters)
+public function get_all_datasets_main() {
+	$this->db->select('setid as groupid, setname as groupname');
+	$this->db->from('datasetmain');
+	$this->db->order_by('setname', 'ASC');
+	return $this->db->get()->result();
 }
+
+// Get datasets by course and class
+public function get_datasets_by_course_class($class_id) {
+	$this->db->select('setid as groupid, setname as groupname');
+	$this->db->from('datasetmain');
+	// $this->db->where('course', $course_id);
+	$this->db->where('class_id', $class_id);
+	$this->db->order_by('setname', 'ASC');
+	return $this->db->get()->result();
+}
+
 
 
 

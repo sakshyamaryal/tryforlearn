@@ -166,7 +166,6 @@ foreach($exer as $list){
 <i class="fa fa-exclamation-circle"></i></a>
 </span> -->
 <span class="qnread<?=$list->eid;?>">
-<?php echo "rojesh";
 if($this->session->userdata('language')=='ENG')
 echo
 $list->question;

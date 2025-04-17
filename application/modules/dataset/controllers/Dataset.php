@@ -122,14 +122,46 @@ class Dataset extends CI_Controller
 			$subjects = $this->model->get_subjects_by_class($class_id); // See model below
 			echo json_encode($subjects);
 	}
-	public function get_datasets()
-{
-    $course_id = $this->input->get('course_id');
+	public function get_datasets_controller() {
+    // $course_id = $this->input->get('course_id');
     $class_id = $this->input->get('class_id');
 
-    $datasets = $this->model->get_datasets($course_id, $class_id); // See model below
+    // Load your model (if not autoloaded already)
+    $this->load->model('Dataset_model'); // Assuming your model is Dataset_model
+
+    if ( $class_id == -1) {
+        // User hasn't selected course and class yet
+        $datasets = $this->Dataset_model->get_all_datasets_main();
+    } else {
+        // User has selected course and class
+        $datasets = $this->Dataset_model->get_datasets_by_course_class( $class_id);
+    }
+
+    // Output datasets as JSON
     echo json_encode($datasets);
 }
+
+public function import_dataset_questions()
+{
+    $target_setid = $this->input->post('target_setid');
+    $selected_setids = $this->input->post('selected_setids'); // This is an array
+
+    if (empty($target_setid) || empty($selected_setids)) {
+        echo json_encode(['status' => 'error', 'message' => 'Invalid input']);
+        return;
+    }
+
+    $this->load->model('Dataset_model');
+
+    foreach ($selected_setids as $source_setid) {
+        $this->Dataset_model->copy_questions_from_set_to_set($source_setid, $target_setid);
+    }
+
+    echo json_encode(['status' => 'success']);
+}
+
+
+
 
 
 // 	public function datasetdata()

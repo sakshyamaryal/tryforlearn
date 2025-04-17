@@ -195,8 +195,8 @@
                 </div> -->
 
                 <div class="col-md-2">
-                <label>Import to Dataset
-
+                <label>
+                    Import to Dataset
                  </label>
                 <select id="migrategroup" name="migrategroup" class="form-control" style="cursor:pointer;">
                 <option value='-1'>Please Select </option>
@@ -207,16 +207,17 @@
                 </div>
                
                 
-                <div class="col-md-8" style="margin-top:20px;">
+                <div class="col-md-8" style="margin-block:20px;">
                 <button type="submit" id="btnsubmit" class="btn btn-primary">View</button>
                 <button type="button" id="btnshowform" class="btn btn-success">Add</button>
                 <button type="button" id="btndeleteselected" class="btn btn-warning">Delete Selected</button>
+                <button type="button" id="btnimportdataset" class="btn btn-primary" disabled>Import</button>
                 </div>
                </div>
             </form>
                <br>
               
-               <div class="container" id="tbl">
+               <div id="tbl">
                     <?php $this->load->view('dataset/dataset-table', ['datasets' => $datasets]); ?>
                </div>
                
@@ -301,7 +302,42 @@
     </div>
 
     <script>
+        function loadDatasets(initialLoad = false) {
+            var course_id = $('#course').val();
+            var class_id = $('#class').val();
+            var subject_id = $('#subject').val();
+
+            // If it's the first page load, ignore filters (load all)
+            if (initialLoad) {
+                course_id = -1;
+                class_id = -1;
+                subject_id = -1;
+            }
+
+            // Only send request if both course and class are selected OR it's initial load
+            if (class_id != -1  || initialLoad) {
+                $.ajax({
+                    url: '<?= base_url(); ?>dataset/get_datasets_controller',
+                    type: 'GET',
+                    data: { class_id: class_id },
+                    dataType: 'json',
+                    success: function (response) {
+                        $('#migrategroup').empty().append('<option value="-1">Please Select</option>');
+                        $.each(response, function (index, item) {
+                            $('#migrategroup').append(
+                                $('<option></option>').val(item.groupid).text(item.groupname)
+                            );
+                        });
+                    },
+                    error: function () {
+                        toastr.error('Error fetching datasets.');
+                    }
+                });
+            }
+        }
+
         $(document).ready(function () {
+            loadDatasets(true);
             $('#course').on('change', function () {
                 var level_id = $(this).val();
                 if (level_id != -1) {
@@ -346,9 +382,13 @@
                             toastr.error('Error fetching class data.');
                         }
                     });
+                    if (class_id != -1) {
+                        loadDatasets();
+                    }
                 } else {
                     $('#subject').empty().append('<option value="-1">Please Select</option>');
                 }
+                loadDatasets();
             });
             // $('#btnsubmit').on('click', function (e) {
             //     e.preventDefault();
@@ -683,6 +723,63 @@
                 }
             });
         }
+        $(document).ready(function() {
+        function checkImportButtonStatus() {
+            let selectedGroup = $('#migrategroup').val();
+            let checkedCheckboxes = $('input[type="checkbox"]:checked').length;
+
+            if (selectedGroup != '-1' && checkedCheckboxes > 0) {
+                $('#btnimportdataset').prop('disabled', false);
+            } else {
+                $('#btnimportdataset').prop('disabled', true);
+            }
+        }
+
+        // When the select dropdown changes
+        $('#migrategroup').change(function() {
+            checkImportButtonStatus();
+        });
+
+        // When any checkbox changes
+        $(document).on('change', 'input[type="checkbox"]', function() {
+            checkImportButtonStatus();
+        });
+    });
+
+    $('#btnimportdataset').click(function() {
+    let targetSetId = $('#migrategroup').val(); // Dataset where we want to import
+    let selectedSetIds = [];
+
+    // Collect all checked checkboxes
+    $('input[type="checkbox"]:checked').each(function() {
+        selectedSetIds.push($(this).data('setid'));
+    });
+
+    if (selectedSetIds.length === 0 || targetSetId == '-1') {
+        alert('Please select at least one dataset and a target dataset to import.');
+        return;
+    }
+
+    // Now send AJAX to server
+    $.ajax({
+        url: '<?= base_url("dataset/import_dataset_questions") ?>', // Adjust the URL if needed
+        type: 'POST',
+        data: {
+            target_setid: targetSetId,
+            selected_setids: selectedSetIds
+        },
+        success: function(response) {
+            alert('Questions imported successfully!');
+            // Optionally reload table or page
+            location.reload();
+        },
+        error: function() {
+            alert('Something went wrong. Please try again.');
+        }
+    });
+});
+
+
 
 
     </script>
