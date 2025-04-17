@@ -1,84 +1,92 @@
-<style>
-.privew{
-    margin-bottom: 20px;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-  
-}
-.questionsBox{
-    display: block;
-    border: solid 1px #e3e3e3;
-    /*padding: 10px 20px 0px;*/
-    box-shadow: inset 0 0 30px rgba(000,000,000,0.1), inset 0 0 4px rgba(255,255,255,1);
-    border-radius: 3px;
-    margin: 0 10px;
-}
-.questions span{
-    word-break: break-all;
-}
-.questions{ 
-	margin-bottom: 15px;
-    background: #007fbe;
-    color: #FFF;
-    font-size: 22px;
-    padding: 8px 20px;
-    font-weight: 300;
-    /*margin: 0 -30px 10px;*/
-    position: relative;
-    display:flex;
 
-}
-    /* .answerList{
-        margin-bottom: 15px;
-    list-style: none;
-    } */
-    .answerList{
-        margin-bottom: 15px;
-    list-style: none;
-    margin-right:20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 1rem;
-    }
-    .select{
-        border-top-width: 0;
-    padding: 3px 0;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-    }
-    .labels{
-        border-color: blue;
-    background: white;
-    display: block;
-    padding: 6px;
-    border-radius: 6px;
-    border: solid 1px #dde7e8;
-    font-weight: 400;
-    font-size: 13px;
-    cursor: pointer;
-    font-family: Arial, sans-serif;
-    }
-    .rdio{
-        margin: 4px 0 0;
-    margin-top: 1px\9;
-    line-height: normal;
+
+<style>
+    .privew{
+        margin-bottom: 20px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
     
     }
-    .selected {
-  background:lightseagreen;
-  color:#fff;
-}
+    .questionsBox{
+        display: block;
+        border: solid 1px #e3e3e3;
+        /*padding: 10px 20px 0px;*/
+        box-shadow: inset 0 0 30px rgba(000,000,000,0.1), inset 0 0 4px rgba(255,255,255,1);
+        border-radius: 3px;
+        margin: 0 10px;
+    }
+    .questions span{
+        word-break: break-all;
+    }
+    .questions{ 
+        margin-bottom: 15px;
+        background: #007fbe;
+        color: #FFF;
+        font-size: 22px;
+        padding: 8px 20px;
+        font-weight: 300;
+        /*margin: 0 -30px 10px;*/
+        position: relative;
+        display:flex;
+
+    }
+        /* .answerList{
+            margin-bottom: 15px;
+        list-style: none;
+        } */
+        .answerList{
+            margin-bottom: 15px;
+        list-style: none;
+        margin-right:20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 1rem;
+        }
+        .select{
+            border-top-width: 0;
+        padding: 3px 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        }
+        .labels{
+            border-color: blue;
+        background: white;
+        display: block;
+        padding: 6px;
+        border-radius: 6px;
+        border: solid 1px #dde7e8;
+        font-weight: 400;
+        font-size: 13px;
+        cursor: pointer;
+        font-family: Arial, sans-serif;
+        }
+        .rdio{
+            margin: 4px 0 0;
+        margin-top: 1px\9;
+        line-height: normal;
+        
+        }
+        .selected {
+    background:lightseagreen;
+    color:#fff;
+    }
+    img{
+        max-width: 100%;
+    }
    
 
 </style>
+
+
+
 <?php if(count($exer)<1)
 {
     echo '<p style="color:red">No any Quiz Questions.</p>';
@@ -88,6 +96,23 @@
  ?>
  
 <form method="post" id="answerform">
+<h2 class="text-center"><?= $setname ?></h2>
+
+<h4 class="text-center">
+    Guidelines:
+</h4>
+<?php if (!empty($guideline) && is_array($guideline)) { ?>
+    <ul>
+        <?php foreach ($guideline as $guide) { ?>
+            <li><?= $guide ?></li>
+        <?php } ?>
+    </ul>
+<?php } else { ?>
+    <p class="text-center">No guidelines required.</p>
+<?php } ?>
+
+
+
 <input type="hidden"  name="type" value="quiz"/>
 
 <input type="hidden"  name="classid" value="<?= $post['class']; ?>"/>
@@ -141,7 +166,7 @@ foreach($exer as $list){
 <i class="fa fa-exclamation-circle"></i></a>
 </span> -->
 <span class="qnread<?=$list->eid;?>">
-<?php
+<?php echo "rojesh";
 if($this->session->userdata('language')=='ENG')
 echo
 $list->question;
@@ -202,7 +227,8 @@ echo $row->optionname_nep; ?>
 <br/>
 <br/><br/>
 <script>
-var timeleft = <?= $timer; ?>;
+var timeleft = <?= isset($time_period) ? ($time_period * 60) : 0 ?>;
+
 
 // REMOVE FROM MINUTES TO SECOND::
 // timeleft=parseFloat(timeleft*60);

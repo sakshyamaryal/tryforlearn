@@ -8,7 +8,7 @@
 <script type="text/javascript" src="<?= base_url(); ?>dataTables/js/jquery.dataTables.columnFilter.js"></script>
 <script type="text/javascript"
   src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
-  <style>
+<style>
   /* Existing styles */
   .table th,
   .table td {
@@ -16,37 +16,37 @@
     word-wrap: break-word !important;
   }
 
-  #dataTable {
-    width: 100%;
-    /* table-layout: fixed; */
-  }
+    #dataTable {
+        width: 100%;
+        /* table-layout: fixed; */
+    }
 
-  /* New styles to make question column wider */
-  #dataTable .exercise-question-list {
-    width: 50% !important; /* Increased from 50% */
-  }
+    /* New styles to make question column wider */
+    #dataTable .exercise-question-list {
+        width: 50% !important; /* Increased from 50% */
+    }
 
-  /* Adjust other columns to redistribute width */
-  #dataTable th:not(.exercise-question-list) {
-    width: auto;
-  }
+    /* Adjust other columns to redistribute width */
+    #dataTable th:not(.exercise-question-list) {
+        width: auto;
+    }
 
-  /* Ensure text wrapping and overflow handling */
-  #dataTable .exercise-question-list,
-  #dataTable td:nth-child(2) {
-    white-space: normal;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-  }
-  #dataTable_previous, #dataTable_next{
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border: 1px solid #ddd;
-    padding: 6px 12px;
-    cursor: pointer;
-    margin-right: 2.5px;
-  }
+    /* Ensure text wrapping and overflow handling */
+    #dataTable .exercise-question-list,
+    #dataTable td:nth-child(2) {
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+    #dataTable_previous, #dataTable_next{
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        border: 1px solid #ddd;
+        padding: 6px 12px;
+        cursor: pointer;
+        margin-right: 2.5px;
+    }
 </style>
 
 <div id="content" class="col-lg-10 col-sm-10">
@@ -195,7 +195,7 @@
                 </div> -->
 
                 <div class="col-md-2">
-                <label>Migrate to Group (Only if needed to migrate)
+                <label>Import to Dataset
 
                  </label>
                 <select id="migrategroup" name="migrategroup" class="form-control" style="cursor:pointer;">

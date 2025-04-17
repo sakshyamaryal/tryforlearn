@@ -81,12 +81,26 @@ public function get_questions_by_setid($setid)
 {
     $this->db->select('dq.*, e.question, c.name as class_name, s.subject_name as subject_name');
     $this->db->from('dataset_question dq');
-    $this->db->join('exercise e', 'e.eid = dq.eid', 'left');
+    $this->db->join('exercise e', 'e.eid = dq.eid', 'left'); // eid= question id
     $this->db->join('class c', 'c.classid = dq.class_id', 'left');
     $this->db->join('subject s', 's.subject_id = dq.subject_id', 'left');
     $this->db->where('dq.setid', $setid);
     return $this->db->get()->result_array();
 }
+public function get_datasets($course_id = null, $class_id = null)
+{
+    $this->db->select('groupid, groupname');
+    $this->db->from('datasetmain');
+
+    if ($course_id != -1 && $class_id != -1) {
+        $this->db->where('courseid', $course_id);
+        $this->db->where('classid', $class_id);
+    }
+
+    $query = $this->db->get();
+    return $query->result();
+}
+
 
 
 // Update dataset

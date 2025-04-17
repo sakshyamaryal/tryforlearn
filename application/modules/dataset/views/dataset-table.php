@@ -725,31 +725,31 @@ function getDatasetData() {
     });
   });
 
-$(document).on('click', '.remove-question-btn', function (e) {
-  e.preventDefault();
-    const eid = $(this).data('eid');
-    const setid = $(this).data('setid');
-    const row = $(this).closest('tr');
+  $(document).on('click', '.remove-question-btn', function (e) {
+    e.preventDefault();
+      const eid = $(this).data('eid');
+      const setid = $(this).data('setid');
+      const row = $(this).closest('tr');
 
-    if (confirm('Are you sure you want to remove this question from the dataset?')) {
-        $.ajax({
-            url: "<?= base_url('dataset/remove_question_from_dataset') ?>",
-            type: "POST",
-            data: { eid, setid },
-            dataType: "json",
-            success: function (res) {
-                if (res.status === 'success') {
-                    row.remove(); // Remove the row from the table
-                } else {
-                    alert('Failed to remove question.');
-                }
-            },
-            error: function () {
-                alert('An error occurred while removing the question.');
-            }
-        });
-    }
-});
+      if (confirm('Are you sure you want to remove this question from the dataset?')) {
+          $.ajax({
+              url: "<?= base_url('dataset/remove_question_from_dataset') ?>",
+              type: "POST",
+              data: { eid, setid },
+              dataType: "json",
+              success: function (res) {
+                  if (res.status === 'success') {
+                      row.remove(); // Remove the row from the table
+                  } else {
+                      alert('Failed to remove question.');
+                  }
+              },
+              error: function () {
+                  alert('An error occurred while removing the question.');
+              }
+          });
+      }
+  });
 
 
 

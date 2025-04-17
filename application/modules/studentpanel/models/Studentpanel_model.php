@@ -321,64 +321,147 @@ class Studentpanel_model extends CI_Model {
     return $iu;
   }
 
+  public function get_data_by_setid($setid)
+{
+    return $this->db->select('time_period, guideline, setname')
+        ->where('setid', $setid)
+        ->get('datasetmain')
+        ->row();
+}
+
+function getquiz($post)
+{
+    $where = '';
+
+    // If setid is passed, fetch related eids from dataset_question
+    if (isset($post['setid']) && $post['setid'] > 0) {
+        $this->db->select('eid');
+        $this->db->from('dataset_question');
+        $this->db->where('setid', $post['setid']);
+        $eids_data = $this->db->get()->result();
+
+        $eids = array_column($eids_data, 'eid');
+        if (empty($eids)) {
+            return []; // No questions in this dataset
+        }
+
+        // Join them into comma-separated list
+        $post['eids'] = implode(',', $eids);
+    }
+
+    // Filters based on topicid/chapterid if provided
+    if (isset($post['topicid']) && $post['topicid'] > 0) {
+        $where .= " AND topicid='" . $post['topicid'] . "'";
+    }
+
+    if (isset($post['chapter']) && $post['chapter'] > 0) {
+        $where .= " AND chapterid='" . $post['chapter'] . "'";
+    }
+
+    if (isset($post['eids'])) {
+        $where .= " AND eid IN (" . $post['eids'] . ")";
+    }
+
+    $order = " ORDER BY RAND()";
+
+    // $sql = "SELECT * FROM exercise 
+    //         WHERE classid=? AND subjectid=? 
+    //         AND is_subj_obj='N' AND is_active=1 AND is_common='Y' 
+    //         $where $order 
+    //         LIMIT " . $post['no'];
+
+    $sql = "SELECT * FROM exercise 
+        WHERE classid=? AND subjectid=? 
+        AND is_subj_obj='N' AND is_active=1 
+        $where $order 
+        LIMIT " . $post['no'];
+
+
+    $res = $this->db->query($sql, [
+        ((int) @$post['class'] > 0) ? $post['class'] : 0,
+        ((int) @$post['subject'] > 0) ? $post['subject'] : 0
+    ])->result();
+
+    $ques = [];
+
+    foreach ($res as $li => $row) {
+        $ans_sql = "SELECT optionid, optionname, optionname_nep 
+                    FROM exercise_option 
+                    WHERE eid=? AND is_active=1 
+                    ORDER BY RAND()";
+        $ans_res = $this->db->query($ans_sql, [$row->eid])->result();
+
+        $res[$li]->ans = $ans_res;
+        $ques[$row->eid] = $row;
+    }
+
+    return array_values($ques);
+}
+
+
+  // function getquiz($post)
+  // {
+  //     $where = '';
   
-  function getquiz($post)
-  {
+  //     if (isset($post['topicid']) && $post['topicid'] > 0) {
+  //         $where .= " AND topicid='" . $post['topicid'] . "'";
+  //     }
+  
+  //     if (isset($post['chapter']) && $post['chapter'] > 0) {
+  //         $where .= " AND chapterid='" . $post['chapter'] . "'";
+  //     }
+  
+  //     if (isset($post['eids'])) {
+  //         $where .= " AND eid IN (" . $post['eids'] . ")";
+  //     }
+  
+  //     $order = " ORDER BY RAND()";
+  //     $classId = ((int) @$post['class'] > 0) ? $post['class'] : 0;
+  //     $subjectId = ((int) @$post['subject'] > 0) ? $post['subject'] : 0;
+  //     $limit = ((int) @$post['no'] > 0) ? $post['no'] : 10;
+  
+  //     $sql = "SELECT * FROM exercise 
+  //             WHERE classid = ? 
+  //               AND subjectid = ? 
+  //               AND is_subj_obj = 'N' 
+  //               AND is_active = 1 
+  //               AND is_common = 'Y' 
+  //               $where 
+  //               $order 
+  //               LIMIT " . (int)$limit;
+  
 
-    $where='';
-    if(isset($post['topicid']) && $post['topicid'] > 0)
-    {
-      $where .=" and topicid='".$post['topicid']."'";
-    }
-    if(isset($post['chapter']) && $post['chapter'] > 0)
-    {
-      $where .=" and chapterid='".$post['chapter']."'";
-    }
-    if(isset($post['eids']))
-    {
-      $where .=" and eid in (".$post['eids'].")";
-    }
-    // $group="SELECT distinct e.groupid,g.groupname,g.perqnmark,g.fullmark from exercise e join questiongroup g on e.groupid=g.groupid where classid=? and subjectid=?  and is_subj_obj='N' and e.is_active=1 and is_common='Y' $where order by groupname";
-    // $res_group=$this->db->query($group,array(((int)@$post['class']>0)?$post['class']:0,((int)@$post['subject']>0)?$post['subject']:0))->result();
-     $ques=[];
-    // foreach($res_group as $key => $val)
-    // {
-    //   if((int)$val->groupid <='4')
-    //   {
-    //     $order=" order by rand()";
-
-    //   }
-    //   else 
-    //   {
-    //     $order='';
-    //   } 
-    $order=" order by rand()";
-      
-      // $sql="select * from exercise where classid=? and subjectid=? and groupid=? and is_subj_obj='N' and is_active=1 and is_common='Y' $where ".$order." limit ".$post['no'];
-      // $res=$this->db->query($sql,array(((int)@$post['class']>0)?$post['class']:0,((int)@$post['subject']>0)?$post['subject']:0,$val->groupid))->result();
-      $sql="select * from exercise where classid=? and subjectid=? and is_subj_obj='N' and is_active=1 and is_common='Y' $where ".$order." limit ".$post['no'];
-      $res=$this->db->query($sql,array(((int)@$post['class']>0)?$post['class']:0,((int)@$post['subject']>0)?$post['subject']:0))->result();
-     
-      // var_dump($this->db->last_query());
-      foreach($res as $li =>$row)
-       {
-         $ans="select optionid,optionname,optionname_nep from exercise_option where eid=? and is_active=1 order by rand()";
-         $ans_res=$this->db->query($ans,array($row->eid))->result();
-         $res[$li]->ans=$ans_res;
-         $res[$li]->groupname=$val->groupname;
-         $ques[$row->eid]=$row;
-
-       }
-    //   $res_group[$key]->ques=$res;
-    // }
-    // if(isset($_POST['isapi']))
-    // return array_values($ques);
-    // else
-    // return $res_group;
-        return array_values($ques);
-
-
-  }
+  
+  //     $res = $this->db->query($sql, array($classId, $subjectId))->result();
+  
+  //     $ques = [];
+  
+  //     foreach ($res as $li => $row) {
+  //         $ansSql = "SELECT optionid, optionname, optionname_nep 
+  //                    FROM exercise_option 
+  //                    WHERE eid = ? AND is_active = 1 
+  //                    ORDER BY RAND()";
+  
+  //         $ansRes = $this->db->query($ansSql, array($row->eid))->result();
+  //         $row->ans = $ansRes;
+  //         $ques[$row->eid] = $row;
+  //     }
+  
+  //     // 👇 Fetch time_period from dataset_main if setid is provided
+  //     $time_period = 0;
+  //     if (isset($post['setid']) && $post['setid'] > 0) {
+  //         $query = $this->db->query("SELECT time_period FROM dataset_main WHERE setid = ?", array($post['setid']));
+  //         if ($query->num_rows() > 0) {
+  //             $time_period = $query->row()->time_period;
+  //         }
+  //     }
+  
+  //     return array(
+  //         'questions' => array_values($ques),
+  //         'time_period' => $time_period
+  //     );
+  // }
+  
 
   function submitquizanswer($post)
   {
@@ -606,8 +689,10 @@ class Studentpanel_model extends CI_Model {
   {
     // $_POST['classid']=27;
     // $_POST['subjectid']=22;
-    $sql="select setname,dm.setid from datasetmain dm join dataset ds on dm.setid=ds.setid 
-          where classid=? and subjectid=? and dm.is_active='1' order by dm.setname";
+    $sql = "SELECT setname, setid 
+            FROM datasetmain 
+            WHERE class_id = ? AND subject_id = ? AND is_active = '1' 
+            ORDER BY `order`";
       $res=$this->db->query($sql,array($_POST['classid'],$_POST['subjectid']));
       //echo $this->db->last_query();exit;
       if($res->num_rows() > 0)
@@ -622,21 +707,29 @@ class Studentpanel_model extends CI_Model {
 
   function getdatasetinfo()
   {
-    $qry="SELECT classid,subjectid,GROUP_CONCAT(eid) as eids
-     from dataset ds 
-     join dataset_exercise de on ds.setid=de.setid
-     where ds.setid=? and de.isactive='1'
-    ";
-    $res=$this->db->query($sql,array($_POST['setid']));
-    if($res->num_rows() > 0)
-    {
-      return $res->row();
-    }
-    else
-    {
-      return false;
-    }
+      $qry = "SELECT 
+                  ds.classid,
+                  ds.subjectid,
+                  e.eid,
+                  e.question,
+                  c.name as class_name,
+                  s.subject_name
+              FROM dataset ds
+              JOIN dataset_exercise de ON ds.setid = de.setid
+              LEFT JOIN exercise e ON e.eid = de.eid
+              LEFT JOIN class c ON c.classid = ds.classid
+              LEFT JOIN subject s ON s.subject_id = ds.subjectid
+              WHERE ds.setid = ? AND de.isactive = '1'";
+      
+      $res = $this->db->query($qry, array($_POST['setid']));
+  
+      if ($res->num_rows() > 0) {
+          return $res->result(); // return all rows (multiple questions)
+      } else {
+          return false;
+      }
   }
+  
 
   public function getCourseRelatedAllFiles($post,$file_type)
   {

@@ -281,35 +281,46 @@ class Studentpanel extends CI_Controller {
         exit; 
 
     }
+
     function getexercise()
-    {
-        $post=$_POST;
-        $data['post']=$post;
-        if($post['type']=='exercise')
-        {
-            
-            $data['exer']=$this->model->getexercise($post);
-            $html=$this->load->view('exam',$data,true);
+{
+    $post = $_POST;
+    $data['post'] = $post;
 
+    if ($post['type'] == 'exercise') {
+        $data['exer'] = $this->model->getexercise($post);
+        $html = $this->load->view('exam', $data, true);
+    } else {
+        if ($post['type'] == 'dataset') {
+            $post['setid'] = $post['no'];
+
+            $info = $this->model->getdatasetinfo();
+            $post['eids'] = $info->eids;
+
+            // ✅ Updated: Fetch time_period, guideline, and setname from model
+            $dataSetInfo = $this->model->get_data_by_setid($post['setid']);
+            $data['time_period'] = !empty($dataSetInfo->time_period) ? $dataSetInfo->time_period : 0;
+            // Split by comma
+            $data['guideline'] = !empty($dataSetInfo->guideline)
+                ? array_map('trim', preg_split('/[\r\n,]+/', $dataSetInfo->guideline))
+                : [];
+            $data['setname']     = !empty($dataSetInfo->setname) ? $dataSetInfo->setname : '';
         }
-        else
-        {
-            if($_POST['type']=='dataset')
-            {
-                $_POST['setid']=$_POST['no'];
 
-               $info= $this->model->getdatasetinfo();
-               $post['eids']=$info->eids;
-
-            }
-            $data['exer']=$this->model->getquiz($post);
-            $html=$this->load->view('quiz',$data,true);
-        }
-        echo json_encode(array('status'=>true,'message'=>'Success','data'=>$data['exer'],'html'=>$html));
-        exit; 
-
-
+        $data['exer'] = $this->model->getquiz($post);
+        $html = $this->load->view('quiz', $data, true);
     }
+
+    echo json_encode(array(
+        'status' => true,
+        'message' => 'Success',
+        'data' => $data['exer'],
+        'html' => $html
+    ));
+    exit;
+}
+
+    
 
     function submitanswer()
     {

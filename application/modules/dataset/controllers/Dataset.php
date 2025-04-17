@@ -122,6 +122,15 @@ class Dataset extends CI_Controller
 			$subjects = $this->model->get_subjects_by_class($class_id); // See model below
 			echo json_encode($subjects);
 	}
+	public function get_datasets()
+{
+    $course_id = $this->input->get('course_id');
+    $class_id = $this->input->get('class_id');
+
+    $datasets = $this->model->get_datasets($course_id, $class_id); // See model below
+    echo json_encode($datasets);
+}
+
 
 // 	public function datasetdata()
 // {
