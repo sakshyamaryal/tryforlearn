@@ -47,6 +47,8 @@
         cursor: pointer;
         margin-right: 2.5px;
     }
+    .dataTables_filter{margin-top: 28px;}
+    .dataTables_length{margin-top: 32px;}
 </style>
 
 <div id="content" class="col-lg-10 col-sm-10">

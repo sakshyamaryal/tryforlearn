@@ -130,13 +130,13 @@
                             <label>Dataset Title</label><br/>
                             <p id="title"></p> <!-- Display dataset title here -->
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-6">
                             <label>Order</label><br/>
                             <p id="order"></p> <!-- Display order here -->
                         </div>
                     </div>
                     <hr>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label>Time Period (in minutes)</label><br/>
                         <p id="time_period"></p> <!-- Display time period here -->
                     </div>
@@ -164,11 +164,9 @@
                           </table>
                       </div>
                     </div> -->
-
+    <br>
                     <div class="row mt-4">
-                        <div class="col-md-12 text-right">
-                            <button type="button" id="viewQuestionsBtn" class="btn btn-info">View Questions</button>
-                        </div>
+                            <button type="button" id="viewQuestionsBtn" class="btn btn-info" style="margin-left: 16px;">View Questions</button>
                     </div>
 
 
@@ -178,8 +176,8 @@
     </div>
 </div>
 <div class="modal fade" id="viewquestionsmodal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document" style="height: 60vh; min-height: 550px; overflow-y:auto;">
-        <div class="modal-content" style="min-height: 550px; overflow-y:auto;">
+    <div class="modal-dialog modal-lg" role="document" style="height: 80vh; min-height: 550px; overflow-y:auto; width:90%">
+        <div class="modal-content" style="min-height: 550px; overflow-y:auto;height: 80vh;">
             <div class="modal-header">
                 <h5 class="modal-title">Questions in Dataset</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -290,30 +288,13 @@
                             </ul>
                         </div>
                     </div>
-                    <hr>
-                    <!-- <h5>Questions in this Dataset:</h5>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>SN</th>
-                                <th>Question</th>
-                                <th>Subject</th>
-                                <th>Class</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="remove-dataset-question-table">
-                        </tbody>
-                    </table> -->
                     <div class="row my-3">
-                      <div class="col-md-12 text-right">
-                          <button type="button" id="removeQuestionsBtn" class="btn btn-danger">Remove Questions</button>
-                      </div>
+                          <button type="button" id="removeQuestionsBtn" class="btn btn-danger" style="margin-top: 26px;margin-bottom:12px;margin-left: 16px;">Remove Questions</button>
                   </div>
 
 
                     <div class="row">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="submit" class="btn btn-primary" style="margin-left: 16px;">Save Changes</button>
                     </div>
                 </form>
             </div>
@@ -322,8 +303,8 @@
 </div>
 
 <div class="modal fade" id="removequestionsmodal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document" style="height: 60vh; min-height: 550px; overflow-y:auto;">
-        <div class="modal-content" style="min-height: 550px; overflow-y:auto;">
+    <div class="modal-dialog modal-lg" role="document" style="height: 80vh; width:90%; min-height: 550px; overflow-y:auto;">
+        <div class="modal-content" style="min-height: 550px; overflow-y:auto; height:80vh;">
             <div class="modal-header">
                 <h5 class="modal-title">Remove Questions from Dataset</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

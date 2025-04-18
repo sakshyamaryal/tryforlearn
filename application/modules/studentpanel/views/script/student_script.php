@@ -496,7 +496,7 @@ function previewselected(val,type,count)
         
 
 }
-function beginexercise(no,type)
+function beginexercise(no,type, dataset = [])
 {
     let url=base_url+"studentpanel/getexercise";
     let data={no,type,
@@ -507,6 +507,10 @@ function beginexercise(no,type)
 
     if (type=='quiz') {
         data.topicid = localStorage.getItem('currenttopic');
+    }
+
+    if (type=='dataset') {
+        data.setid = no;
     }
 
     $.when(requestmethod(data, url)).then(function(res){
@@ -647,28 +651,90 @@ $(document).on('click','#getdatasetmodal',function(e){
             $('#setmodal .modal-body').empty();
             $('#setmodal .modal-body').html(res.html);
             $('#setmodal').modal('show');
-
-           
-          
         }
 
     })
 })
 
-$(document).on('click','.selectdatasets',function(e){
-    e.preventDefault();
-    $('#setmodal').modal('hide');
+// $(document).on('click','.selectdatasets',function(e){
+//     e.preventDefault();
+//     $('#setmodal').modal('hide');
 
-        var type='dataset';
-            var opt=$(this).attr('data-id');
+//         var type='dataset';
+//             var opt=$(this).attr('data-id');
             
-            prepareForRefresh();
+//             prepareForRefresh();
 
 
-            beginexercise(opt,type);
+//             beginexercise(opt,type);
 
 
-})
+// })
+
+$(document).on('click', '.selectdatasets', function (e) {
+    e.preventDefault();
+    var datasetId = $(this).data('id');
+    console.log('Dataset ID:', datasetId); // Debugging the dataset ID
+
+    // $('#setmodal').modal('hide'); // Hide dataset list modal
+
+    // Get dataset details (call backend to get more info)
+    $.ajax({
+        url: base_url + "studentpanel/getdatasetdetails", // You'll create this function
+        type: "GET", // Change to POST
+        data: { setid: datasetId }, 
+        dataType: 'json',
+        success: function (res) {
+            console.log('Response:', res);
+            if (res.status === true) {
+                var dataset = res.data;
+                console.log('Dataset:', dataset);
+                localStorage.setItem('currentdatasetid', dataset.setid); // Store the selected dataset ID
+
+                // Fill the modal
+                $('#dataset_setname').text(dataset.setname);
+                $('#dataset_guidelines').empty();
+                if (dataset.guideline) {
+                    var guidelines = dataset.guideline.split('\n');
+                    guidelines.forEach(function (g) {
+                        if(g.trim()) { // Skip empty guidelines
+                            $('#dataset_guidelines').append('<li>' + g.trim() + '</li>');
+                        }
+                    });
+                }
+                $('#dataset_totalquestions').text(dataset.total_questions);
+                $('#dataset_timeperiod').text(dataset.time_period + ' minutes');
+
+                // Show dataset info modal
+                console.log('Displaying modal...');
+                $('#datasetinfomodal').modal('show');
+                console.log('Displayed modal');
+            } else {
+                alert('Failed to fetch dataset details.' + res.message);
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error('AJAX Error:', textStatus, errorThrown); // Debugging AJAX errors
+            alert('An error occurred while fetching dataset details.');
+        }
+    });
+});
+
+
+$(document).on('click', '#startquizbtn', function (e) {
+    var datasetid = localStorage.getItem('currentdatasetid');
+
+    $('#datasetinfomodal').modal('hide'); // Close info modal
+    $('#setmodal').modal('hide'); // Close info modal
+
+    var type = 'dataset';
+    var opt = datasetid;
+
+    prepareForRefresh();
+    beginexercise(opt, type); // Now start the quiz!
+});
+
+
 
 function requestmethod(postdata, url) {
 	

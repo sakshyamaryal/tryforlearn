@@ -329,74 +329,164 @@ class Studentpanel_model extends CI_Model {
         ->row();
 }
 
+public function getDatasetDetailById($datasetid)
+{
+    $this->db->select('setname, title, time_period, guideline, setid');
+    $this->db->from('datasetmain');
+    $this->db->where('setid', $datasetid);
+    $query = $this->db->get();
+
+    // Debugging the query
+    if (!$query) {
+        log_message('error', 'Database error: ' . $this->db->last_query());
+    }
+
+    if ($query->num_rows() > 0) {
+        $data = $query->row_array();
+        // Decode guideline (if stored as JSON)
+        // $data['guideline'] = json_decode($data['guideline'], true);
+
+        // Now use the retrieved setid to count questions
+        $this->db->where('setid', $datasetid);
+        $data['total_questions'] = $this->db->count_all_results('dataset_question');
+
+        return $data;
+    } else {
+        return false;
+    }
+}
+
 function getquiz($post)
 {
-    $where = '';
-
-    // If setid is passed, fetch related eids from dataset_question
-    if (isset($post['setid']) && $post['setid'] > 0) {
-        $this->db->select('eid');
-        $this->db->from('dataset_question');
-        $this->db->where('setid', $post['setid']);
-        $eids_data = $this->db->get()->result();
-
-        $eids = array_column($eids_data, 'eid');
-        if (empty($eids)) {
-            return []; // No questions in this dataset
-        }
-
-        // Join them into comma-separated list
-        $post['eids'] = implode(',', $eids);
-    }
-
-    // Filters based on topicid/chapterid if provided
-    if (isset($post['topicid']) && $post['topicid'] > 0) {
-        $where .= " AND topicid='" . $post['topicid'] . "'";
-    }
-
-    if (isset($post['chapter']) && $post['chapter'] > 0) {
-        $where .= " AND chapterid='" . $post['chapter'] . "'";
-    }
-
-    if (isset($post['eids'])) {
-        $where .= " AND eid IN (" . $post['eids'] . ")";
-    }
-
-    $order = " ORDER BY RAND()";
-
-    // $sql = "SELECT * FROM exercise 
-    //         WHERE classid=? AND subjectid=? 
-    //         AND is_subj_obj='N' AND is_active=1 AND is_common='Y' 
-    //         $where $order 
-    //         LIMIT " . $post['no'];
-
-    $sql = "SELECT * FROM exercise 
-        WHERE classid=? AND subjectid=? 
-        AND is_subj_obj='N' AND is_active=1 
-        $where $order 
-        LIMIT " . $post['no'];
-
-
-    $res = $this->db->query($sql, [
-        ((int) @$post['class'] > 0) ? $post['class'] : 0,
-        ((int) @$post['subject'] > 0) ? $post['subject'] : 0
-    ])->result();
-
-    $ques = [];
-
-    foreach ($res as $li => $row) {
-        $ans_sql = "SELECT optionid, optionname, optionname_nep 
-                    FROM exercise_option 
-                    WHERE eid=? AND is_active=1 
-                    ORDER BY RAND()";
-        $ans_res = $this->db->query($ans_sql, [$row->eid])->result();
-
-        $res[$li]->ans = $ans_res;
-        $ques[$row->eid] = $row;
-    }
-
-    return array_values($ques);
+  $where='';
+  if(isset($post['topicid']) && $post['topicid'] > 0)
+  {
+    $where .=" and topicid='".$post['topicid']."'";
+  }
+  if(isset($post['chapter']) && $post['chapter'] > 0)
+  {
+    $where .=" and chapterid='".$post['chapter']."'";
+  }
+  if (isset($post['eids']) && is_array($post['eids'])) {
+    $where .= " and eid in (" . implode(",", $post['eids']) . ")";
 }
+  // $group="SELECT distinct e.groupid,g.groupname,g.perqnmark,g.fullmark from exercise e join questiongroup g on e.groupid=g.groupid where classid=? and subjectid=?  and is_subj_obj='N' and e.is_active=1 and is_common='Y' $where order by groupname";
+  // $res_group=$this->db->query($group,array(((int)@$post['class']>0)?$post['class']:0,((int)@$post['subject']>0)?$post['subject']:0))->result();
+   $ques=[];
+  // foreach($res_group as $key => $val)
+  // {
+  //   if((int)$val->groupid <='4')
+  //   {
+  //     $order=" order by rand()";
+
+  //   }
+  //   else 
+  //   {
+  //     $order='';
+  //   } 
+  $order=" order by rand()";
+    
+    // $sql="select * from exercise where classid=? and subjectid=? and groupid=? and is_subj_obj='N' and is_active=1 and is_common='Y' $where ".$order." limit ".$post['no'];
+    // $res=$this->db->query($sql,array(((int)@$post['class']>0)?$post['class']:0,((int)@$post['subject']>0)?$post['subject']:0,$val->groupid))->result();
+    if ($post['dataset'] =='Y') {
+      $sql="select * from exercise where classid=? and subjectid=? and is_subj_obj='N' and is_active=1 $where ".$order;
+
+    }
+    else{
+      $sql="select * from exercise where classid=? and subjectid=? and is_subj_obj='N' and is_active=1 and is_common='Y' $where ".$order." limit ".$post['no'];
+    }
+    
+    $res=$this->db->query($sql,array(((int)@$post['class']>0)?$post['class']:0,((int)@$post['subject']>0)?$post['subject']:0))->result();
+    // echo $this->db->last_query();exit;
+    foreach($res as $li =>$row)
+     {
+       $ans="select optionid,optionname,optionname_nep from exercise_option where eid=? and is_active=1 order by rand()";
+       $ans_res=$this->db->query($ans,array($row->eid))->result();
+       $res[$li]->ans=$ans_res;
+       $res[$li]->groupname=$val->groupname;
+       $ques[$row->eid]=$row;
+
+     }
+  //   $res_group[$key]->ques=$res;
+  // }
+  // if(isset($_POST['isapi']))
+  // return array_values($ques);
+  // else
+  // return $res_group;
+      return array_values($ques);
+
+
+}
+
+// function getquiz($post)
+// {
+//     // Set default 'no' value if missing
+//     if (!isset($post['no']) || (int)$post['no'] <= 0) {
+//         $post['no'] = 10; // Default to 10 questions
+//     }
+
+//     // Initialize the $ques array to store the questions
+//     $ques = [];
+//   var_dump($post);
+//   exit;
+//     // Check if setid is provided in the post data
+//     if (isset($post['setid']) && (int)$post['setid'] > 0) {
+//         // Step 1: Retrieve the list of eids associated with the setid from dataset_question table
+//         $eids = $this->db->select('eid')
+//                          ->from('dataset_question')
+//                          ->where('setid', $post['setid'])
+//                          ->get()
+//                          ->result_array();
+        
+//         // Log the eids to check if they're being fetched correctly
+//         log_message('debug', 'EIDs from dataset_question: ' . print_r($eids, true));
+
+//         // If no eids found for the setid, return empty
+//         if (empty($eids)) {
+//             log_message('debug', 'No EIDs found for setid: ' . $post['setid']);
+//             return [];
+//         }
+
+//         // Step 2: Extract the eid values from the result
+//         $eids = array_column($eids, 'eid');
+
+//         // Step 3: Fetch questions from the exercise table based on the eids
+//         $this->db->select('*');
+//         $this->db->from('exercise');
+//         $this->db->where_in('eid', $eids);  // Ensure only questions with the selected eids are fetched
+//         $this->db->where('is_active', 1);  // Ensure only active questions are selected
+//         $this->db->limit($post['no']);  // Limit the number of questions returned based on the 'no' parameter
+//         $res = $this->db->get()->result();
+
+//         // Log the result of the exercise query
+//         log_message('debug', 'Questions fetched from exercise: ' . print_r($res, true));
+
+//         // Step 4: Retrieve answer options for each question
+//         foreach ($res as $row) {
+//             // Fetch answer options for the current question (row)
+//             $ans_res = $this->db->select('optionid, optionname, optionname_nep')
+//                                 ->from('exercise_option')
+//                                 ->where('eid', $row->eid)
+//                                 ->where('is_active', 1)
+//                                 ->order_by('RAND()')  // Randomize the order of options
+//                                 ->get()
+//                                 ->result();
+
+//             // Add answer options to the question row
+//             $row->ans = $ans_res;
+
+//             // Add the question to the $ques array using the eid as the key
+//             $ques[$row->eid] = $row;
+//         }
+
+//         // Return the questions with answer options
+//         return array_values($ques);  // Reset array keys and return the result
+//     }
+
+//     // If no setid is provided, return an empty array or handle as needed
+//     return [];
+// }
+
 
 
   // function getquiz($post)
@@ -705,29 +795,29 @@ function getquiz($post)
       }
   }
 
-  function getdatasetinfo()
+  function getdatasetinfo($setid)
   {
       $qry = "SELECT 
-                  ds.classid,
-                  ds.subjectid,
-                  e.eid,
-                  e.question,
-                  c.name as class_name,
-                  s.subject_name
-              FROM dataset ds
-              JOIN dataset_exercise de ON ds.setid = de.setid
-              LEFT JOIN exercise e ON e.eid = de.eid
-              LEFT JOIN class c ON c.classid = ds.classid
-              LEFT JOIN subject s ON s.subject_id = ds.subjectid
-              WHERE ds.setid = ? AND de.isactive = '1'";
-      
-      $res = $this->db->query($qry, array($_POST['setid']));
-  
-      if ($res->num_rows() > 0) {
-          return $res->result(); // return all rows (multiple questions)
-      } else {
-          return false;
-      }
+                dm.setid,
+                dm.setname,
+                dm.guideline,
+                dm.time_period,
+                dm.class_id,
+                dm.subject_id,
+                e.eid,
+                e.question
+            FROM datasetmain dm
+            LEFT JOIN dataset_question dq ON dq.setid = dm.setid
+            LEFT JOIN exercise e ON e.eid = dq.eid
+            WHERE dm.setid = ?";
+    
+    $res = $this->db->query($qry, array($setid));
+
+    if ($res->num_rows() > 0) {
+        return $res->result(); // multiple rows (because multiple questions)
+    } else {
+        return false;
+    }
   }
   
 

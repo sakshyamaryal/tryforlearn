@@ -3,7 +3,7 @@
 class Studentpanel extends CI_Controller {
     function __construct() {
         parent::__construct();
-        $this->load->model('studentpanel_model','model');
+        $this->load->model('Studentpanel_model','model');
         $this->load->model('comman/common_model','common_model');
 
         if($this->session->userid == "")
@@ -282,44 +282,113 @@ class Studentpanel extends CI_Controller {
 
     }
 
-    function getexercise()
-{
-    $post = $_POST;
-    $data['post'] = $post;
-
-    if ($post['type'] == 'exercise') {
-        $data['exer'] = $this->model->getexercise($post);
-        $html = $this->load->view('exam', $data, true);
-    } else {
-        if ($post['type'] == 'dataset') {
-            $post['setid'] = $post['no'];
-
-            $info = $this->model->getdatasetinfo();
-            $post['eids'] = $info->eids;
-
-            // ✅ Updated: Fetch time_period, guideline, and setname from model
-            $dataSetInfo = $this->model->get_data_by_setid($post['setid']);
-            $data['time_period'] = !empty($dataSetInfo->time_period) ? $dataSetInfo->time_period : 0;
-            // Split by comma
-            $data['guideline'] = !empty($dataSetInfo->guideline)
-                ? array_map('trim', preg_split('/[\r\n,]+/', $dataSetInfo->guideline))
-                : [];
-            $data['setname']     = !empty($dataSetInfo->setname) ? $dataSetInfo->setname : '';
+    public function getdatasetdetails()
+    {
+        $datasetid = $this->input->get('setid'); // Ensure the 'setid' is being sent via GET
+        if (!$datasetid) {
+            echo json_encode([
+                'status' => false,
+                'message' => 'Invalid dataset ID.'
+            ]);
+            return;
         }
-
-        $data['exer'] = $this->model->getquiz($post);
-        $html = $this->load->view('quiz', $data, true);
+    
+        $this->load->model('studentpanel_model');
+        $datasetinfo = $this->studentpanel_model->getDatasetDetailById($datasetid);
+        
+        if ($datasetinfo) {
+            echo json_encode([
+                'status' => true,
+                'data' => $datasetinfo
+            ]);
+        } else {
+            echo json_encode([
+                'status' => false,
+                'message' => 'Dataset not found.'
+            ]);
+        }
     }
 
-    echo json_encode(array(
-        'status' => true,
-        'message' => 'Success',
-        'data' => $data['exer'],
-        'html' => $html
-    ));
-    exit;
-}
+//     function getexercise()
+// {
+//     $post = $_POST;
+//     $data['post'] = $post;
 
+//     if ($post['type'] == 'exercise') {
+//         $data['exer'] = $this->model->getexercise($post);
+//         $html = $this->load->view('exam', $data, true);
+//     } else {
+//         if ($post['type'] == 'dataset') {
+//             $post['setid'] = $post['no'];
+
+//             $info = $this->model->getdatasetinfo($post['setid']);
+//             $post['eids'] = $info->eids;
+
+//             // ✅ Updated: Fetch time_period, guideline, and setname from model
+//             $dataSetInfo = $this->model->get_data_by_setid($post['setid']);
+//             print_r($dataSetInfo->time_period);  // Check the time_period
+//             print_r($dataSetInfo->setname);      // Check the setname
+//             print_r($dataSetInfo->guideline);  
+//             $data['time_period'] = !empty($dataSetInfo->time_period) ? $dataSetInfo->time_period : 0;
+//             // Split by comma
+//             $data['guideline'] = !empty($dataSetInfo->guideline)
+//                 ? array_map('trim', preg_split('/[\r\n,]+/', $dataSetInfo->guideline))
+//                 : [];
+//             $data['setname']     = !empty($dataSetInfo->setname) ? $dataSetInfo->setname : '';
+//         }
+
+//         $data['exer'] = $this->model->getquiz($post);
+//         $html = $this->load->view('quiz', $data, true);
+//     }
+    
+
+//     echo json_encode(array(
+//         'status' => true,
+//         'message' => 'Success',
+//         'data' => $data['exer'],
+//         'html' => $html,
+//         'time_period' => $data['time_period'],
+//         'setname' => $data['setname'],
+//         'guideline' => $data['guideline']
+//     ));
+//     exit;
+// }
+
+
+function getexercise()
+{
+    $post=$_POST;
+    $data['post']=$post;
+    if($post['type']=='exercise')
+    {
+        
+        $data['exer']=$this->model->getexercise($post);
+        $html=$this->load->view('exam',$data,true);
+
+    }
+    else
+    {
+        if($_POST['type']=='dataset')
+        {
+           $setid = $_POST['setid'];
+
+           $info= $this->model->getdatasetinfo($setid);
+           foreach ($info as $eid) {
+                $eids[] = $eid->eid;
+           }
+           $post['eids']=$eids;
+        //    $post['no'] = 9999;
+        $post['dataset'] = 'Y';
+
+        }
+        $data['exer']=$this->model->getquiz($post);
+        $html=$this->load->view('quiz',$data,true);
+    }
+    echo json_encode(array('status'=>true,'message'=>'Success','data'=>$data['exer'],'html'=>$html));
+    exit; 
+
+
+}
     
 
     function submitanswer()
@@ -495,7 +564,7 @@ class Studentpanel extends CI_Controller {
             }
 
             $scoretbl .= '</table>';
-                echo json_encode(array('status'=>true,'message'=>$msg,'reportable'=>$scoretbl,'ispractise'=>(@$post['isself']=='1')?'Y':'N'));
+                echo json_encode(array('status'=>true,'message'=>$msg,'reportable'=>$scoretbl,'ispractise'=>'Y'));
                 exit; 
             }
             else
@@ -560,7 +629,8 @@ class Studentpanel extends CI_Controller {
         echo json_encode(array('status'=>false,'message'=>'No data','data'=>$data));
 
 
-    }
+    }   
+
 
     function formatTime($seconds) {
         $hours = floor($seconds / 3600);

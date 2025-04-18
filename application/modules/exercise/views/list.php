@@ -1,4 +1,7 @@
-
+<style>
+    .dataTables_filter{margin-top: 28px;}
+    .dataTables_length{margin-top: 32px;}
+</style>
 <div id="content" class="col-lg-10 col-sm-10">
 
 <div>
@@ -112,7 +115,7 @@
                     </div>
                 
                     
-                    <div class="col-md-8" style="margin-top:20px;">
+                    <div class="col-md-8" style="margin-block:20px;">
                     <button type="submit" id="btnsubmit" class="btn btn-primary">View</button>
                     <button type="button" id="btnshowform" class="btn btn-success">Add</button>
                     <button type="button" id="btnreplicate" class="btn btn-success">Replicate to Next Course</button>
@@ -128,7 +131,7 @@
                </form>
                <br>
               
-               <div class="container" id="tbl">
+               <div id="tbl" style="margin-top:20px;">
               
                </div>
                
@@ -287,10 +290,10 @@
 
 
     <div class="modal fade" id="datasetmodal" srole="dialog" data-keyboard="false" data-backdrop="static" aria-hidden="true">
-		<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-dialog modal-lg" style="min-height: 60vh;" role="document">
 			
 			
-				<div class="modal-content">
+				<div class="modal-content" style="min-height: 60vh;">
 					<div class="modal-header">
 						<h5 class="modal-title">Copy Question</h5>
 						<button type="button" class="close modalhide" data-toggle="modal-close"><span>×</span>
@@ -310,8 +313,8 @@
 					 </div>
 
 					 <div class="row">
-					  <div class="col-md-2">
-					  <button type="button" class="btn btn-success" id="btnaddindataset" onclick="submitdatasetques()">Submit</button>
+					  <div class="col-md-12">
+					  <button type="button" class="btn btn-success" style="margin-top:16px" id="btnaddindataset" onclick="submitdatasetques()">Submit</button>
 					  </div>
 					 </div>
                      
