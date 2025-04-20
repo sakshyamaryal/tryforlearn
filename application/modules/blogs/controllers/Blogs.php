@@ -102,7 +102,7 @@ class Blogs extends CI_Controller
         $data_arr = array(
             'title' => $_GET['models'][0]['title'], // Blog title
             'content' => $_GET['models'][0]['content'], // Blog content
-            'image' => $_GET['models'][0]['image'], // Blog image
+            'image' => $_GET['models'][0]['propertyLogo'], // Blog image
             'is_active' => $_GET['models'][0]['is_active'], // Active status
         //     'created_by' => $this->session->adminuserid, // Created by admin user
         //     'updated_by' => $this->session->adminuserid, // Updated by admin user (could be the same as created by)
@@ -129,7 +129,7 @@ class Blogs extends CI_Controller
         $data_arr = array(
             'title' => $_GET['models'][0]['title'], // Blog title
             'content' => $_GET['models'][0]['content'], // Blog content
-            'image' => $_GET['models'][0]['image'], // Blog image
+            'image' => $_GET['models'][0]['propertyLogo'], // Blog image
             'is_active' => $_GET['models'][0]['is_active'], // Active status
             'updated_by' => $this->session->adminuserid // Updated by admin user
         );

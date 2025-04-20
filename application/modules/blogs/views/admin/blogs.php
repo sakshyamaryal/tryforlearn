@@ -26,7 +26,7 @@
 
     <!-- Edit Blog Modal -->
     <div id="editBlogModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editBlogModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog" role="document" style="width: 80%;">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="editBlogModalLabel">Edit Blog</h5>
@@ -37,23 +37,8 @@
                 <div class="modal-body">
                     <form id="editBlogForm">
                         <div class="form-group">
-                            <label for="blogTitle">Title</label>
-                            <input type="text" class="form-control" id="blogTitle" required>
-                        </div>
-                        <div class="form-group">
                             <label for="blogContent">Content</label>
-                            <textarea class="form-control" id="blogContent" rows="4" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="blogImage">Image</label>
-                            <input type="file" class="form-control" id="blogImage">
-                        </div>
-                        <div class="form-group">
-                            <label for="isActive">Status</label>
-                            <select class="form-control" id="isActive">
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
-                            </select>
+                            <textarea class="form-control" id="blogContent" rows="20" required></textarea>
                         </div>
                         <input type="hidden" id="blogId">
                     </form>

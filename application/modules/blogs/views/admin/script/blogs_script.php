@@ -126,6 +126,7 @@ $(document).ready(function () {
 				{
 					field: "content",
 					title: "Content",
+                    editor: contentModalEditor,
 					width: "200px"
 				},
 				{
@@ -252,6 +253,7 @@ $(document).ready(function () {
 
     // Handle Edit button click
     // $(document).on("click", "#edit", function () {
+    //     console.log("edit clicked")
     //     var grid = $("#grid").data("kendoGrid");
     //     var selectedRows = grid.select();
     //     if (selectedRows.length === 0) {
@@ -324,6 +326,32 @@ $(document).ready(function () {
             grid.clearSelection();
         }
     });
+
+    function contentModalEditor(container, options) {
+    var input = $('<input type="text" class="k-input k-textbox" readonly />')
+        .attr("name", options.field)
+        .val(options.model[options.field])
+        .appendTo(container)
+        .on("click", function () {
+            openContentModal(options);
+        });
+}
+
+function openContentModal(options) {
+    $('#editBlogModalLabel').text('Edit Content');
+    $('#blogContent').val(options.model.content);
+    $('#blogId').val(options.model.blog_id);
+
+    $('#editBlogModal').modal('show');
+
+    // On Save inside modal
+    $('#saveBlogBtn').off('click').on('click', function () {
+        options.model.set("content", $('#blogContent').val()); // Set the new content back to the grid
+        $('#editBlogModal').modal('hide');
+    });
+}
+
+
 
     // Update individual row selection when a row checkbox is clicked
     $(document).on("change", ".rowCheckbox", function () {

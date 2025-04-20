@@ -681,7 +681,7 @@ $(document).on('click','#getdatasetmodal',function(e){
 
 $(document).on('click', '.selectdatasets', function (e) {
     e.preventDefault();
-    var datasetId = $(this).data('id');dataset ID
+    var datasetId = $(this).data('id');
 
     // $('#setmodal').modal('hide'); // Hide dataset list modal
 
