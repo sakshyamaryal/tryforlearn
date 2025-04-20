@@ -84,6 +84,7 @@
         background: lightseagreen;
         color: #fff;
     }
+
     img {
         max-width: 100%;
     }
@@ -104,6 +105,9 @@
         <input type="hidden" id="totaltimer" name="totaltimer" />
         <input type="hidden" id="qntimer" name="qntimer" />
         <strong id="timer" style="color:red;"></strong>
+        <input type="hidden" name="maxtimer" id="maxtimer" value="">
+<input type="hidden" name="remaintimer" id="remaintimer" value="">
+
 
         <?php
         echo '<div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 2px;">';
@@ -211,64 +215,54 @@
     <br />
     <br /><br />
     <script>
-        var timeleft = <?= $timer; ?>;
+var datasetTimePeriod = localStorage.getItem('quiz_time_period');
+var timeleft;
+var maxtime;
 
-        // REMOVE FROM MINUTES TO SECOND::
-        // timeleft=parseFloat(timeleft*60);
+if (datasetTimePeriod && datasetTimePeriod != 'null') {
+    maxtime = parseFloat(datasetTimePeriod)*60;
+} else {
+    maxtime = <?= $timer; ?>;
+}
 
-        // NOW FROM DB IN SECOND TIMER IS RECEIVED
-        timeleft = parseFloat(timeleft);
+timeleft = maxtime; // set initial time left to maxtime
 
-        $('#qntimer').val(timeleft);
+var downloadTimer; // move this outside
 
+function startTimer() {
+    clearInterval(downloadTimer); // always clear previous timer
+    if (timeleft > 0) {
+        downloadTimer = setInterval(function() {
+            var formattedTime = formatTime(timeleft);
+            document.getElementById("timer").innerHTML = formattedTime + " remaining";
+            $('#totaltimer').val(timeleft);
 
-        // if(timeleft>0)
-        // {
-        //     var downloadTimer = setInterval(function(){
-        //   document.getElementById("timer").innerHTML = timeleft + " seconds remaining";
-        // $('#totaltimer').val(timeleft);
-        //   timeleft -= 1;
-        //   if(timeleft <= 0){
-        //     clearInterval(downloadTimer);
-        //     document.getElementById("timer").innerHTML = "Finished";
-        //     $('#totaltimer').val(0);
+            timeleft -= 1;
 
-        //     submit_answer('q');
-        //   }
-        // }, 1000);
-        // }
+            if (timeleft <= 0) {
+                clearInterval(downloadTimer);
+                document.getElementById("timer").innerHTML = "Finished";
+                $('#totaltimer').val(0);
+                submit_answer('q');
+            }
+        }, 1000);
+    }
+}
 
-        if (timeleft > 0) {
+startTimer(); // call it here
 
-            var downloadTimer = setInterval(function() {
-                var formattedTime = formatTime(timeleft);
+function formatTime(seconds) {
+    var hours = Math.floor(seconds / 3600);
+    var minutes = Math.floor((seconds % 3600) / 60);
+    var remainingSeconds = seconds % 60;
 
-                document.getElementById("timer").innerHTML = formattedTime + " remaining";
-                $('#totaltimer').val(timeleft);
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    remainingSeconds = remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds;
 
+    return hours + ':' + minutes + ':' + remainingSeconds;
+}
 
-                timeleft -= 1;
-
-                if (timeleft <= 0) {
-                    clearInterval(downloadTimer);
-                    document.getElementById("timer").innerHTML = "Finished";
-                    $('#totaltimer').val(0);
-                    submit_answer('q');
-                }
-            }, 1000);
-        }
-
-        function formatTime(seconds) {
-            var hours = Math.floor(seconds / 3600);
-            var minutes = Math.floor((seconds % 3600) / 60);
-            var remainingSeconds = seconds % 60;
-
-            hours = hours < 10 ? '0' + hours : hours;
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            remainingSeconds = remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds;
-
-            return hours + ':' + minutes + ':' + remainingSeconds;
-        }
 
         function get_visibility(val, ansid, qid) {
             let at = $('#q_answer' + val + ansid + qid).attr("data-at");

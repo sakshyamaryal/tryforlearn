@@ -847,6 +847,19 @@ function getquiz($post)
           return array();
       }
   }
-  
+  public function get_time_period_by_setid($setid)
+{
+    $this->db->select('time_period');
+    $this->db->from('datasetmain');
+    $this->db->where('setid', $setid);
+    $query = $this->db->get();
+
+    if ($query->num_rows() > 0) {
+        return $query->row()->time_period; // return only the time_period value
+    }
+
+    return null;
+}
+
     
 }

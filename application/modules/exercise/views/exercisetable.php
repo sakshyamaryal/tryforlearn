@@ -46,7 +46,7 @@
   <thead id="tbl_data_thead">
     <tr>
     <tr>
-      <th style="text-align:center;"><input type="checkbox" id="selectAllCheckbox" /><span>S.N. Rojeh</span></th>
+      <th style="text-align:center;"><input type="checkbox" id="selectAllCheckbox" /><span>S.N.</span></th>
       <th style="text-align:center;" class="exercise-question-list">Question</th>
       <th style="text-align:center;">Explanation</th>
       <th style="text-align:center;">IS Subj/Obj</th>

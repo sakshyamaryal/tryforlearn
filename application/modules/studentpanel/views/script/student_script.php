@@ -557,8 +557,16 @@ function beginexercise(no,type, dataset = [])
 }
 function submit_answer(type)
 {
+    localStorage.removeItem('quiz_time_period');
+    $('#remaintimer').val(timeleft);
+    $('#maxtimer').val(maxtime); // <-- add this
     var url=base_url+"studentpanel/submitanswer";
     var data=$( "#answerform" ).serialize();
+
+
+
+
+
     $.when(requestmethod(data, url)).then(function(res){
         clearInterval(downloadTimer);
         localStorage.setItem('currentexercise','N');
@@ -673,8 +681,7 @@ $(document).on('click','#getdatasetmodal',function(e){
 
 $(document).on('click', '.selectdatasets', function (e) {
     e.preventDefault();
-    var datasetId = $(this).data('id');
-    console.log('Dataset ID:', datasetId); // Debugging the dataset ID
+    var datasetId = $(this).data('id');dataset ID
 
     // $('#setmodal').modal('hide'); // Hide dataset list modal
 
@@ -685,7 +692,6 @@ $(document).on('click', '.selectdatasets', function (e) {
         data: { setid: datasetId }, 
         dataType: 'json',
         success: function (res) {
-            console.log('Response:', res);
             if (res.status === true) {
                 var dataset = res.data;
                 console.log('Dataset:', dataset);
@@ -706,9 +712,7 @@ $(document).on('click', '.selectdatasets', function (e) {
                 $('#dataset_timeperiod').text(dataset.time_period + ' minutes');
 
                 // Show dataset info modal
-                console.log('Displaying modal...');
                 $('#datasetinfomodal').modal('show');
-                console.log('Displayed modal');
             } else {
                 alert('Failed to fetch dataset details.' + res.message);
             }
@@ -731,8 +735,40 @@ $(document).on('click', '#startquizbtn', function (e) {
     var opt = datasetid;
 
     prepareForRefresh();
-    beginexercise(opt, type); // Now start the quiz!
+
+    if (datasetid) {
+        // If datasetid exists, fetch time_period first
+        fetchTimePeriodAndStart(opt, type);
+        beginexercise(opt, type);
+    } else {
+        // No datasetid, work normally
+        beginexercise(opt, type);
+    }
 });
+
+function fetchTimePeriodAndStart(opt, type) {
+    $.ajax({
+        url: 'studentpanel/get_time_period', // <-- change to your actual controller URL
+        type: 'GET',
+        data: { setid: opt },
+        dataType: 'json',
+        success: function(response) {
+            if (response.time_period) {
+                // Pass this time_period into localStorage or wherever your quiz.php reads from
+                localStorage.setItem('quiz_time_period', response.time_period);
+            }
+
+            // Now call beginexercise after setting time_period
+            beginexercise(opt, type);
+        },
+        error: function() {
+            console.log('Failed to fetch time_period');
+            // Still allow starting the quiz if time_period fetch fails
+            beginexercise(opt, type);
+        }
+    });
+}
+
 
 
 
