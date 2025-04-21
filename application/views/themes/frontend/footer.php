@@ -7,9 +7,13 @@
                         <h2 class="ftco-heading-2" style="margin-top:0;">Have a Questions?</h2>
                         <div class="block-23">
                             <ul>
-                                <li><span class="fa fa-map-marker"></span><span class="text"><?=$basic->address; ?></span></li>
-                                <li><a href="#"><span class="fa fa-phone"></span><span class="text"><?=$basic->phone; ?></span></a></li>
-                                <li><a href="#"><span class="fa fa-envelope"></span><span class="text"><?=$basic->email; ?></span></a></li>
+                                <li>
+                                    <a href="https://www.google.com/maps/search/<?= urlencode($basic->address); ?>" target="_blank">
+                                        <span class="fa fa-map-marker"></span><span class="text"><?= $basic->address; ?></span>
+                                    </a>
+                                </li>
+                                <li><a href="tel:<?=$basic->phone; ?>"><span class="fa fa-phone"></span><span class="text"><?=$basic->phone; ?></span></a></li>
+                                <li><a href="mailto:<?=$basic->email; ?>"><span class="fa fa-envelope"></span><span class="text"><?=$basic->email; ?></span></a></li>
                             </ul>
                         </div>
                     </div>
