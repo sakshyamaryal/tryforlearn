@@ -1,4 +1,8 @@
-
+<?php
+$CI =& get_instance();
+$CI->load->model('socialmedia/SocialMedia_model');
+$social_media_list = $CI->SocialMedia_model->get_all_active();
+?>
 <footer class="ftco-footer ftco-bg-dark ftco-section">
         <div class="container">
             <div class="row">
@@ -33,12 +37,15 @@
                     <div class="ftco-footer-widget">
                         <h2 class="ftco-heading-2 mb-0" style="margin-top:0;">Connect With Us</h2>
                         <ul class="ftco-footer-social list-unstyled float-lft mt-3">
-                            <li class="ftco-animate"><a href="https://www.twitter.com/try_for_learn/" target="_blank"><span class="icon-twitter"></span></a></li>
-                            <li class="ftco-animate"><a href="https://www.facebook.com/tryforlearn" target="_blank"><span class="icon-facebook"></span></a></li>
-                            
-                            <li class="ftco-animate"><a href="https://www.youtube.com/tryforlearn/" target="_blank"><span class="icon-youtube"></span></a></li>
-                            <li class="ftco-animate"><a href="https://www.instagram.com/tryforlearn"  target="_blank"><span class="icon-instagram"></span></a></li>
-                            <li class="ftco-animate"><a href="https://wa.me/message/LUV5CPRNHHBZA1" target="_blank"> <span class="icon-whatsapp"></span></a></li>
+                            <?php if (!empty($social_media_list)) : ?>
+                                <?php foreach ($social_media_list as $icon) : ?>
+                                    <li class="ftco-animate">
+                                        <a href="<?= htmlspecialchars($icon->link) ?>" target="_blank">
+                                            <span class="<?= htmlspecialchars($icon->icon) ?>"></span>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </div>

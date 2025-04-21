@@ -21,3 +21,5 @@ ALTER TABLE datasetmain ADD guideline TEXT;
 ALTER TABLE datasetmain 
 ADD COLUMN time_period INT(11) NOT NULL DEFAULT 0;
 
+ALTER TABLE socialmedia ADD is_active TINYINT(1) NOT NULL DEFAULT 1;
+ALTER TABLE social_media ADD `order` INT NOT NULL DEFAULT 0;

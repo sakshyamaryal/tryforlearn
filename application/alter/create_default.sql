@@ -7,3 +7,11 @@ CREATE TABLE dataset_question (
     subject_id INT NOT NULL,
     eid INT NOT NULL
 );
+
+CREATE TABLE social_media (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    link VARCHAR(500) NOT NULL,
+    icon VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
