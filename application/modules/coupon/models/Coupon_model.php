@@ -166,6 +166,7 @@ class Coupon_model extends CI_Model
 						'isactive' => '1',
 						'for_gender' => $this->input->post('forGender'),
 						'for_disabled' => $this->input->post('forDisabled'),
+						'no_of_times_used' => $this->input->post('no_of_times_used'),
 					);
 					$this->db->insert('vouchercode', $data);
 				}
@@ -176,8 +177,7 @@ class Coupon_model extends CI_Model
 			} else {
 				$this->db->trans_commit();
 				return true;
-			}  
-
+			}
 		} else {
 			$data = array(
 				'levelid' => $this->input->post('levelid'),
@@ -192,6 +192,7 @@ class Coupon_model extends CI_Model
 				'isactive' => '1',
 				'for_gender' => $this->input->post('forGender'),
 				'for_disabled' => $this->input->post('forDisabled'),
+				'no_of_times_used' => $this->input->post('no_of_times_used'),
 			);
 			$this->db->where('vouchercodeid', $id);
 			$update = $this->db->update('vouchercode', $data);
@@ -201,26 +202,22 @@ class Coupon_model extends CI_Model
 			} else {
 				return false;
 			}
-
 		}
-
-
 	}
 
 	public
-		function delete_coupon(
-	) {
+	function delete_coupon()
+	{
 
 		$data = array(
 			'isactive' => '0'
 		);
-		
+
 		$this->db->where_in('vouchercodeid', $this->input->post('id'));
 		if ($this->db->update('vouchercode', $data)) {
 			return true;
 		} else {
 			return false;
 		}
-
 	}
 }

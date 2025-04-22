@@ -23,3 +23,7 @@ ADD COLUMN time_period INT(11) NOT NULL DEFAULT 0;
 
 ALTER TABLE socialmedia ADD is_active TINYINT(1) NOT NULL DEFAULT 1;
 ALTER TABLE social_media ADD `order` INT NOT NULL DEFAULT 0;
+
+ALTER TABLE vouchercode
+ADD COLUMN no_of_times_used INT DEFAULT 0,
+ADD COLUMN used_username JSON;

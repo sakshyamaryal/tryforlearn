@@ -56,6 +56,8 @@
 					validtill: { type: "string" },
 
 					isactive: { type: "string" },
+					no_of_times_used: { type: "number" },   // <--- added
+					used_username: { type: "string" },       // <--- added
 
 				},
 				total: function (data) {
@@ -139,6 +141,25 @@
 					title: "Amount",
 					width: "100px"
 				},
+				{
+					field: "no_of_times_used",
+					title: "Times Used",
+					width: "100px"
+				},
+				{
+					field: "used_username",
+					title: "Used By (Username List)",
+					width: "200px",
+					template: function(dataItem) {
+						if (dataItem.used_username) {
+							var usernames = JSON.parse(dataItem.used_username);
+							return usernames.join(", ");
+						} else {
+							return "-";
+						}
+					}
+				}
+
 
 
 
@@ -348,6 +369,7 @@
 
 
 			$('#discountamount').val(dataItem.discountamount);
+			$('#no_of_times_used').val(dataItem.no_of_times_used);
 			$('#vouchercode').val(dataItem.vouchercode);
 			$('#package').val(dataItem.packagetype);
 			$('#limit').val(dataItem.maxlimit);

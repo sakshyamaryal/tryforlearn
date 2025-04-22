@@ -104,6 +104,34 @@ class Subscription_course extends CI_Controller {
   
       }
 
+
+      function updatetransaction()
+      {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('txncode', 'Transaction', 'required');
+        if ($this->form_validation->run() == FALSE)
+        {
+          $res = ["message"=>validation_errors(),"type"=>false];
+    
+          echo json_encode($res);
+          exit;
+          
+        }
+        $iu=$this->common_model->update('transactions',array('token'=>$_POST['token']),array('productcode'=>$_POST['txn']));
+        if ($iu>0) {
+
+          $validator['type'] = 'success';
+          $validator['message'] = "Success.";
+        } else {
+          $validator['type'] = false;
+          $validator['message'] = "Something went wrong.";
+            }
+            echo json_encode($validator);
+
+
+      }
+
       function purchasecourse()
       {
         $isdemo='N';
@@ -273,34 +301,69 @@ class Subscription_course extends CI_Controller {
               $this->confirmsubscribtion();
             }
             exit;
+        // if ($iu > 0) {
+        //   // Prepare $_POST data for confirmsubscribtion
+        //   $_POST['txnid'] = $iu;
+        //   $_POST['amt'] = $payamt;
+        //   $_POST['levelid'] = $_POST['class'];
+        //   $_POST['package'] = $_POST['package'];
+        
+        //   // Directly call confirmsubscribtion (no waiting for Khalti)
+        //   $this->confirmsubscribtion();
+        
+        // } else {
+        //   echo json_encode([
+        //     'type' => false,
+        //     'message' => "Something went wrong."
+        //   ]);
+        //   exit;
+        // }
+        
       }
-      function updatetransaction()
-      {
-        $this->load->library('form_validation');
-
-        $this->form_validation->set_rules('txncode', 'Transaction', 'required');
-        if ($this->form_validation->run() == FALSE)
-        {
-          $res = ["message"=>validation_errors(),"type"=>false];
+  function updatetoken()
+  {
     
-          echo json_encode($res);
-          exit;
-          
+    $iu=$this->common_model->update('transactions',array('token'=>$_POST['token'],'paidamount'=>$_POST['newamt']),array('tid'=>$_POST['txnid']));
+    if ($iu>0) {
+
+			$validator['type'] = 'success';
+			$validator['message'] = "Success.";
+		} else {
+			$validator['type'] = false;
+			$validator['message'] = "Something went wrong.";
         }
-        $iu=$this->common_model->update('transactions',array('token'=>$_POST['token']),array('productcode'=>$_POST['txn']));
-        if ($iu>0) {
+        echo json_encode($validator);
 
-          $validator['type'] = 'success';
-          $validator['message'] = "Success.";
-        } else {
-          $validator['type'] = false;
-          $validator['message'] = "Something went wrong.";
-            }
-            echo json_encode($validator);
+  }
+  function khaltiverify()
+	{
+		
+		$args = http_build_query(array(
+			'token' => $_POST['token'],
+			'amount'  => $_POST['amt']
+		));
+		
+		$url = "https://khalti.com/api/v2/payment/verify/";
+		
+		# Make the call using API.
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS,$args);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		
+		$headers = ['Authorization: Key live_secret_key_4ea0ebad6c8d48518f6a7d1c62e6a061'];
+		
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+		
+		// Response
+		$response = curl_exec($ch);
+		$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		curl_close($ch);
+		echo $response;
 
-
-      }
-      function confirmsubscribtion()
+	}
+        function confirmsubscribtion()
 	{
 
         $isdemo='N';
@@ -460,6 +523,33 @@ class Subscription_course extends CI_Controller {
   
       }
 
+      if (!empty($_POST['vouchercode'])) {
+        // Step 1: Get the current value of used_username
+        $this->db->select('used_username');
+        $this->db->where('vouchercode', $_POST['vouchercode']);
+        $voucher = $this->db->get('vouchercode')->row();
+    
+        // Step 2: Check if used_username is not empty, then decode the JSON array
+        if (!empty($voucher->used_username)) {
+            $used_usernames = json_decode($voucher->used_username, true);
+        } else {
+            $used_usernames = [];
+        }
+    
+        // Step 3: Append the current session username
+        $used_usernames[] = $this->session->userdata('username');
+    
+        // Step 4: Convert the array back to JSON
+        $updated_used_usernames = json_encode($used_usernames);
+    
+        // Step 5: Update the database with the new used_username array
+        $this->db->set('no_of_times_used', 'no_of_times_used+1', FALSE);
+        $this->db->set('used_username', $updated_used_usernames);
+        $this->db->where('vouchercode', $_POST['vouchercode']);
+        $this->db->update('vouchercode');
+    }
+    
+
 		} else {
 			$validator['type'] = false;
 			$validator['message'] = "Something went wrong.";
@@ -472,49 +562,6 @@ class Subscription_course extends CI_Controller {
         }
         
   }
-  function updatetoken()
-  {
-    
-    $iu=$this->common_model->update('transactions',array('token'=>$_POST['token'],'paidamount'=>$_POST['newamt']),array('tid'=>$_POST['txnid']));
-    if ($iu>0) {
-
-			$validator['type'] = 'success';
-			$validator['message'] = "Success.";
-		} else {
-			$validator['type'] = false;
-			$validator['message'] = "Something went wrong.";
-        }
-        echo json_encode($validator);
-
-  }
-  function khaltiverify()
-	{
-		
-		$args = http_build_query(array(
-			'token' => $_POST['token'],
-			'amount'  => $_POST['amt']
-		));
-		
-		$url = "https://khalti.com/api/v2/payment/verify/";
-		
-		# Make the call using API.
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_POST, 1);
-		curl_setopt($ch, CURLOPT_POSTFIELDS,$args);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		
-		$headers = ['Authorization: Key live_secret_key_4ea0ebad6c8d48518f6a7d1c62e6a061'];
-		
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		
-		// Response
-		$response = curl_exec($ch);
-		$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-		curl_close($ch);
-		echo $response;
-
-	}
 
     function submit_course_enroll($st_id)
     {
