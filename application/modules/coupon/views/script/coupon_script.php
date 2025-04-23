@@ -150,14 +150,15 @@
 					field: "used_username",
 					title: "Used By (Username List)",
 					width: "200px",
-					template: function(dataItem) {
-						if (dataItem.used_username) {
-							var usernames = JSON.parse(dataItem.used_username);
-							return usernames.join(", ");
-						} else {
-							return "-";
-						}
-					}
+					// template: function(dataItem) {
+					// 	if (dataItem.used_username) {
+					// 		var usernames = JSON.parse(dataItem.used_username);
+					// 		return usernames.join(", ");
+					// 	} else {
+					// 		return "-";
+					// 	}
+					// }
+					template: "<button class='btn btn-info btn-sm view-users-btn' data-userlist='#= used_username #'>View Users</button>",
 				}
 
 
@@ -561,5 +562,28 @@
 		const allChecked = $(".rowCheckbox:checked").length === $(".rowCheckbox").length;
 		$("#selectAllRows").prop("checked", allChecked);
 	});
+
+	$(document).on('click', '.view-users-btn', function() {
+    var usersJson = $(this).attr('data-userlist');
+
+    try {
+        var userArray = JSON.parse(usersJson);
+        
+        var userListHtml = '';
+        if(userArray.length > 0) {
+            userArray.forEach(function(user) {
+                userListHtml += '<li class="list-group-item">' + user + '</li>';
+            });
+        } else {
+            userListHtml = '<li class="list-group-item">No users found.</li>';
+        }
+
+        $('#userList').html(userListHtml);
+        $('#viewUsersModal').modal('show');
+    } catch (e) {
+        console.error("Invalid JSON format for user list", e);
+        alert('Failed to load users.');
+    }
+});
 
 </script>

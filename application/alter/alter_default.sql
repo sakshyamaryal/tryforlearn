@@ -27,3 +27,6 @@ ALTER TABLE social_media ADD `order` INT NOT NULL DEFAULT 0;
 ALTER TABLE vouchercode
 ADD COLUMN no_of_times_used INT DEFAULT 0,
 ADD COLUMN used_username JSON;
+
+ALTER TABLE `vouchercode` 
+MODIFY COLUMN `no_of_times_used` INT(11) NOT NULL DEFAULT 0;

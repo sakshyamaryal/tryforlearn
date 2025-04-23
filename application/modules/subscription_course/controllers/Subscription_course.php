@@ -543,7 +543,7 @@ class Subscription_course extends CI_Controller {
         $updated_used_usernames = json_encode($used_usernames);
     
         // Step 5: Update the database with the new used_username array
-        $this->db->set('no_of_times_used', 'no_of_times_used+1', FALSE);
+        $this->db->set('no_of_times_used', 'IF(no_of_times_used IS NULL, 0, no_of_times_used) + 1', FALSE);
         $this->db->set('used_username', $updated_used_usernames);
         $this->db->where('vouchercode', $_POST['vouchercode']);
         $this->db->update('vouchercode');
