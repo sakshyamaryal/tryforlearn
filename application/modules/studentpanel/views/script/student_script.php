@@ -798,15 +798,21 @@ function getCourseRelatedAllFiles(contentids,type){
         {
             $('.tabfiletitle').empty();
             $('.tabfiletitle').html('Files related to '+localStorage.getItem('currenttopicname'));
+            $('.tabimagetitle').empty();
+            $('.tabimagetitle').html('Images related to '+localStorage.getItem('currenttopicname'));
             if(res.status==true)
             {
             $('.tabfiledetail').empty();
-            $('.tabfiledetail').html(res.html);
+            $('.tabfiledetail').html(res.html_file);
+            $('.tabimagedetail').empty();
+            $('.tabimagedetail').html(res.html_image);
             }
             else
             {
                 $('.tabfiledetail').empty();
             $('.tabfiledetail').html(res.message);
+            $('.tabimagedetail').empty();
+            $('.tabimagedetail').html(res.message);
 
             }
         }

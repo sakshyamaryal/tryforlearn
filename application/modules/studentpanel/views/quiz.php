@@ -20,7 +20,7 @@
     }
 
     .questions span {
-        word-break: break-all;
+        word-break: break-word;
     }
 
     .questions {
@@ -81,8 +81,8 @@
     }
 
     .selected {
-        background: lightseagreen;
-        color: #fff;
+        border: 1px solid lightseagreen;
+        color: #000;
     }
 
     img {
@@ -104,18 +104,20 @@
 
         <input type="hidden" id="totaltimer" name="totaltimer" />
         <input type="hidden" id="qntimer" name="qntimer" />
-        <strong id="timer" style="color:red;"></strong>
-        <input type="hidden" name="maxtimer" id="maxtimer" value="">
-<input type="hidden" name="remaintimer" id="remaintimer" value="">
+        <div class="position-sticky" style="top: 72px; width: 100%; background-color: #fff; z-index: 999">
+            <strong id="timer" style="color:red; margin-top: 4px;"></strong>
+            <input type="hidden" name="maxtimer" id="maxtimer" value="">
+    <input type="hidden" name="remaintimer" id="remaintimer" value="">
 
 
-        <?php
-        echo '<div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 2px;">';
-        for ($i = 0; $i < count($exer); $i++) {
-            echo '<div class="btn btn-danger btn-quiz-answered-' . ($i + 1) . '" onclick="javascript:void(0);">' . ($i + 1) . '</div>';
-        }
-        echo '</div>';
-        ?>
+            <?php
+            echo '<div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 2px;">';
+            for ($i = 0; $i < count($exer); $i++) {
+                echo '<div class="btn btn-danger btn-quiz-answered-' . ($i + 1) . '" onclick="javascript:void(0);">' . ($i + 1) . '</div>';
+            }
+            echo '</div>';
+            ?>
+        </div>
 
 
         <?php //foreach($exer as $key =>$val){
@@ -277,7 +279,7 @@ function formatTime(seconds) {
             $('#q_answerlabel' + val + ansid + qid).addClass('selected');
             $('#tick' + val + ansid + qid).attr('style', 'visibility: true;  margin-left: 2rem;');
 
-            $('.btn-quiz-answered-' + val).attr('style', 'visibility: visible; background-color: lightseagreen;');
+            $('.btn-quiz-answered-' + val).attr('style', 'visibility: visible; background-color: lightseagreen; border-color: lightseagreen; color: #fff;');
 
         }
     </script>

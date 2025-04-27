@@ -556,31 +556,54 @@ class Studentpanel extends CI_Controller
     public function getCourseRelatedFiles()
     {
         $post = $this->input->post();
-
+    
         if ($post['type'] == 'f') {
-            $data['type'] = 'file';
-        } else if ($post['type'] == 'v') {
-            $data['type'] = 'video';
-        } else if ($post['type'] == 'i') {
-            $data['type'] = 'image';
+            // Get both 'file' and 'image' types
+            $file_list = $this->model->getCourseRelatedAllFiles($post, 'file');
+            $image_list = $this->model->getCourseRelatedAllFiles($post, 'image');
+    
+            if (empty($file_list) && empty($image_list)) {
+                echo json_encode(array('status' => false, 'message' => '<p style="color:red;">No files or images found.</p>'));
+                exit;
+            }
+    
+            $html_file = $this->load->view('content', ['list' => $file_list], true);
+            $html_image = $this->load->view('content', ['list' => $image_list], true);
+    
+            echo json_encode(array(
+                'status' => true,
+                'message' => 'Success',
+                'html_file' => $html_file,
+                'html_image' => $html_image
+            ));
+            exit;
+    
+        } elseif ($post['type'] == 'v' || $post['type'] == 'i') {
+            $type = ($post['type'] == 'v') ? 'video' : 'image';
+    
+            $data['type'] = $type;
+            $data['list'] = $this->model->getCourseRelatedAllFiles($post, $type);
+    
+            if (empty($data['list'])) {
+                echo json_encode(array('status' => false, 'message' => '<p style="color:red;">No reference ' . $type . 's found.</p>'));
+                exit;
+            }
+    
+            $html = $this->load->view('content', $data, true);
+    
+            echo json_encode(array(
+                'status' => true,
+                'message' => 'Success',
+                'html' => $html
+            ));
+            exit;
+    
         } else {
             echo json_encode(array('status' => false, 'message' => '<p style="color:red;">File type mismatched.</p>'));
             exit;
         }
-
-        $data['list'] = $this->model->getCourseRelatedAllFiles($post, $data['type']);
-
-        if (empty($data['list'])) {
-            echo json_encode(array('status' => false, 'message' => '<p style="color:red;">No any reference files.</p>'));
-            exit;
-        }
-
-        $html = $this->load->view('content', $data, true);
-
-        echo json_encode(array('status' => true, 'message' => 'Success', 'html' => $html));
-        exit;
     }
-
+    
     public function get_time_period()
     {
         $setid = $this->input->get('setid');

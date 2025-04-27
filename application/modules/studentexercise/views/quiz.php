@@ -18,7 +18,7 @@
     margin: 0 10px;
 }
 .questions span{
-    word-break: break-all;
+    word-break: break-word;
 }
 .questions{ margin-bottom: 15px;
     background: #007fbe;

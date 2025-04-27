@@ -1,7 +1,15 @@
 <?php
 $CI =& get_instance();
-$CI->load->model('socialmedia/SocialMedia_model');
-$social_media_list = $CI->SocialMedia_model->get_all_active();
+// $CI->load->model('socialmedia/SocialMedia_model');
+// $social_media_list = $CI->SocialMedia_model->get_all_active();
+
+if(!class_exists('SocialMedia_model')){
+    require_once APPPATH.'modules/socialmedia/models/SocialMedia_model.php';
+}
+$SocialMedia_model = new SocialMedia_model();
+$social_media_list = $SocialMedia_model->get_all_active();
+// $CI->load->model('socialmedia/SocialMedia_model');
+// $CI->load->model('../../../modules/socialmedia/models/SocialMedia_model');
 ?>
 <footer class="ftco-footer ftco-bg-dark ftco-section">
         <div class="container">

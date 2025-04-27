@@ -11,7 +11,7 @@
                 <div class="container">
                     <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
                         <div class="col-md-8 text-center ftco-animate">
-                            <h1 class="mb-4 text-center text-white"><?= $banr['title']; ?></h1> <h3 class="text-center text-white"><?= $banr['description']; ?> sdgksbdkjfhbweg</h3>
+                            <h1 class="mb-4 text-center text-white"><?= $banr['title']; ?></h1> <h3 class="text-center text-white"><?= $banr['description']; ?></h3>
                         </div>
                     </div>
                 </div>
