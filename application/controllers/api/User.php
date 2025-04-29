@@ -17,7 +17,8 @@ class User extends CI_Controller
         $this->load->model('home/home_model', 'hmodel');
         $this->load->model('rank/rank_model', 'rmodel');
         $this->load->model('myexam/myexam_model', 'emodel');
-
+        $this->load->model('socialmedia/socialmedia_model', 'socialmodel');
+        $this->load->model('notice/notice_model', 'noticemodel2');
 
 
         APIKEY();
@@ -1034,13 +1035,13 @@ class User extends CI_Controller
     function purchasecourse()
     {
         try {
-
             $this->load->helper('cms_helper');
 
             $this->form_validation->set_rules('class', 'Course type', 'required');
             $this->form_validation->set_rules('classid', 'Class', 'required');
             $this->form_validation->set_rules('subjectid', 'Subject', 'required');
             // $this->form_validation->set_rules('package', 'Package', 'required');
+            
             if ($this->form_validation->run() == FALSE) {
                 throw new Exception(validation_errors(), 1);
             }
@@ -1055,6 +1056,7 @@ class User extends CI_Controller
 
                 $payamt = '0';
             } else {
+               
                 $data = $this->common_model->getRows('subject', array('is_active' => 1, 'subject_id' => $_POST['subjectid']), '*,1monthsprice as onemonth,3monthsprice as threemonth,6monthsprice as sixmonth,1yearprice as oneyear', 'subject_id');
                 $newdata = $data[0];
                 if ($_POST['package'] == '1month') {
@@ -1115,7 +1117,8 @@ class User extends CI_Controller
                     'status' => $promoStatus,
                     'oldPrice' => $payamt,
                     'newPrice' => $payamt - $discountamt + $serviceamt,
-                    'discountAmt' => $discountamt
+                    'discountAmt' => $discountamt,
+                    'serviceAmt' => $serviceamt,
                 ));
                 exit();
             }
@@ -1130,7 +1133,7 @@ class User extends CI_Controller
                 'productcode' => $txn,
                 'payamount' => $payamt,
                 'status' => 'P',
-                'studentid' => $this->input->get_request_header('Userid', True),
+                'studentid' => 1,
                 'requestfrom' => 'Khalti',
                 'ipaddr' => get_client_ip(),
                 'discountamount' => $discountamt,
@@ -1583,6 +1586,44 @@ class User extends CI_Controller
                 'type' => 'success',
                 'message' => 'Success',
                 'response' => array_values($data)
+            );
+        } catch (Exception $e) {
+            $response = array('type' => 'error', 'message' => $e->getMessage());
+        }
+        echo getJsonData($response);
+    }
+
+    
+
+    function sitesettings(){
+        try {
+            $socialmedia = $this->socialmodel->get_social_media();
+    
+            $data = array();
+            $data_num = array();
+            if (!empty($socialmedia)) {
+                foreach ($socialmedia as $key => $item) {
+                    if(is_numeric($item->link)){
+                        $data_num[] = array(
+                            'title' => $item->name,
+                            'icon' => $item->icon,
+                            'value' => $item->link
+                        );
+                    } else{
+                        $data[] = array(
+                            'title' => $item->name,
+                            'icon' => $item->icon,
+                            'value' => $item->link
+                        );
+                    }
+                }
+            }
+    
+            $response = array(
+                'type' => 'success',
+                'message' => 'Success',
+                'contact_details' => array_values($data_num),
+                'follow_details' => array_values($data)
             );
         } catch (Exception $e) {
             $response = array('type' => 'error', 'message' => $e->getMessage());
