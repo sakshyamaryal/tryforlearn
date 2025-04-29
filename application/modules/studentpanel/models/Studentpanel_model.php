@@ -289,23 +289,23 @@ class Studentpanel_model extends CI_Model {
      
 
     
-    $data[]=array(
-      'examsetid'=>$esetid,
-      'student_id'=>$userid,
-      'classid'=>((int)@$post['classid']>0)?$post['classid']:0,
-      'subjectid'=>((int)@$post['subjectid']>0)?$post['subjectid']:0,
-      'chapterid'=>((int)@$post['chapterid']>0)?$post['chapterid']:0,
-      'levelid'=>$post['levelid'],
-      'question_id'=>$post['qid'][$key],
-      'submitted_answer'=>$post['answer'][$key],
-      'exam_date'=>(@$post['isself']=='1')?date('Y-m-d'):@$post['qndate'],
-      'submitted_time'=>$donetime,
-      'isself'=>$post['isself'],
-      'totaltimer'=>$post['qntimer'],
-      'is_subj_obj'=>'S',
-      'language'=>$lang
-    );
-  }
+      $data[]=array(
+        'examsetid'=>$esetid,
+        'student_id'=>$userid,
+        'classid'=>((int)@$post['classid']>0)?$post['classid']:0,
+        'subjectid'=>((int)@$post['subjectid']>0)?$post['subjectid']:0,
+        'chapterid'=>((int)@$post['chapterid']>0)?$post['chapterid']:0,
+        'levelid'=>$post['levelid'],
+        'question_id'=>$post['qid'][$key],
+        'submitted_answer'=>$post['answer'][$key],
+        'exam_date'=>(@$post['isself']=='1')?date('Y-m-d'):@$post['qndate'],
+        'submitted_time'=>$donetime,
+        'isself'=>$post['isself'],
+        'totaltimer'=>$post['qntimer'],
+        'is_subj_obj'=>'S',
+        'language'=>$lang
+      );
+    }
    
     $this->db->insert_batch('studentexam',$data);
     if ($this->db->trans_status() === FALSE)
@@ -319,7 +319,7 @@ class Studentpanel_model extends CI_Model {
 				$iu=1;
     }
     return $iu;
-  }
+}
 
   public function get_data_by_setid($setid)
 {
@@ -823,6 +823,8 @@ function getquiz($post)
 
   public function getCourseRelatedAllFiles($post,$file_type)
   {
+    log_message('error', 'Content IDs: ' . print_r($post['contentids'], true));
+
       $contentids = $post['contentids']; 
   
       if (!is_array($contentids)) {

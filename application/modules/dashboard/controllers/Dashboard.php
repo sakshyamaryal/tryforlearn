@@ -16,6 +16,8 @@ class Dashboard extends CI_Controller {
 
         $data=array(
             'title'=>'Dashboard',
+            'unique_subjects' => $this->model->getRows('student_enroll', array('current_status'=>1, 'is_active'=>1), 'COUNT(DISTINCT subjectid) as total'),
+
             'total_users'=>$this->model->getRows('users',array(),'count(user_id) as total'),
             'active_users'=>$this->model->getRows('users',array('is_active'=>1),'count(user_id) as total'),
             'inactive_users'=>$this->model->getRows('users',array('is_active'=>0),'count(user_id) as total'),

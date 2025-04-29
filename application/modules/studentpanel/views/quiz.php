@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
 <style>
     .privew {
         margin-bottom: 20px;
@@ -88,6 +92,10 @@
     img {
         max-width: 100%;
     }
+    #toast-container > div {
+    font-size: 18px; /* You can change 18px to 20px or whatever you like */
+    opacity: 1;
+}
 </style>
 <?php if (count($exer) < 1) {
     echo '<p style="color:red">No any Quiz Questions.</p>';
@@ -104,7 +112,7 @@
 
         <input type="hidden" id="totaltimer" name="totaltimer" />
         <input type="hidden" id="qntimer" name="qntimer" />
-        <div class="position-sticky" style="top: 72px; width: 100%; background-color: #fff; z-index: 999">
+        <div class="position-sticky" style="top: 72px; width: 100%; background-color: #fff; z-index: 999; padding-top:12px;">
             <strong id="timer" style="color:red; margin-top: 4px;"></strong>
             <input type="hidden" name="maxtimer" id="maxtimer" value="">
     <input type="hidden" name="remaintimer" id="remaintimer" value="">
@@ -239,6 +247,17 @@ function startTimer() {
             document.getElementById("timer").innerHTML = formattedTime + " remaining";
             $('#totaltimer').val(timeleft);
 
+            // 🚀 Show toaster exactly at 2 minutes remaining
+            if (timeleft === 120) {
+                toastr.options = {
+                    "closeButton": true,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "timeOut": "5000"
+                };
+                toastr.warning('Only 2 minutes left. Please complete your quiz!');
+            }
+
             timeleft -= 1;
 
             if (timeleft <= 0) {
@@ -250,6 +269,7 @@ function startTimer() {
         }, 1000);
     }
 }
+
 
 startTimer(); // call it here
 

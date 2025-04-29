@@ -448,7 +448,8 @@ function previewselected(val,type,count)
     {
         $('.waittime').hide();
 
-        src=cf.data('file');
+        src = cf.data('file') + "?autoplay=1&rel=0&modestbranding=1&showinfo=0&fs=0&disablekb=1&iv_load_policy=3&controls=1";
+
         
         // $('#mypreviewbody').html('<iframe width="750" height="450" src="'+src+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
         $('#mypreviewbody').html(`

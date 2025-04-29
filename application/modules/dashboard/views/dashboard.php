@@ -85,6 +85,14 @@
     <div><?= $total_programs->total; ?></div>
     </a>
     </div>
+    
+    <div class="col-md-3 col-sm-3 col-xs-6">
+    <a data-toggle="tooltip" title="<?= $unique_subjects->total; ?> Approved Users" class="well top-block" href="#">
+    <i class="fa fa-book green"></i>
+    <div>Active Subscribed Courses</div>
+    <div><?= $unique_subjects->total; ?></div>
+    </a>
+    </div>
     <div class="col-md-3 col-sm-3 col-xs-6">
     <a data-toggle="tooltip" title="<?= $total_category->total; ?> Total Category" class="well top-block" href="#">
     <i class="fa fa-clone green"></i>

@@ -22,10 +22,9 @@ class Studentlogin extends CI_Controller {
         
                 );
                 $view=array(
-                    'header'=>'themes/frontend/header',
+                    'header'=>'themes/frontend/header_without_second_nav',
                     'sidebar'=>false,
                     'body'=>'login',
-                    'footer'=>'themes/frontend/footer'
         
                 );
                

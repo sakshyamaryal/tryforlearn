@@ -172,35 +172,43 @@ class Studentpanel extends CI_Controller
             $type = 'f';
             $dtype = 'free';
         }
+
         $list = $this->model->getcontent($type);
 
+        $ids = array(); // Create a separate array to store content IDs
         foreach ($list as $k => $v) {
-            $data[] = "$v->contentid";
+            $ids[] = $v->contentid;
         }
-        $listid = implode(',', $data);
+        $listid = implode(',', $ids);
+
+        $data = array(); // Fresh $data array
         $data['content_list'] = $list;
         $data['post'] = $_POST;
         $data['mode'] = $dtype;
-        $content = $this->common_model->getRows('content', array('contentid' => $list[0]->contentid), '*', 'contentid');
-        //   if($content[0]->detail=='')
-        //   $content[0]->detail=  $content[0]->detail_nep;
 
-        //   if($content[0]->detail_nep=='')
-        //   $content[0]->detail_nep=  $content[0]->detail;
+        $content = $this->common_model->getRows('content', array('contentid' => $list[0]->contentid), '*', 'contentid');
 
         if ($this->session->userdata('language') == 'NEP') {
-            $content[0]->title =  $content[0]->title_nep;
-            $content[0]->detail =  $content[0]->detail_nep;
+            $content[0]->title = $content[0]->title_nep;
+            $content[0]->detail = $content[0]->detail_nep;
         }
-
 
         $data['content'] = $content[0];
         $data['listid'] = $listid;
 
         $html = $this->load->view('contentwrapper', $data, true);
-        echo json_encode(array('status' => true, 'message' => 'Success', 'list' => $data['listid'], 'contentid' => $list[0]->contentid, 'data' => $list, 'html' => $html));
+
+        echo json_encode(array(
+            'status' => true,
+            'message' => 'Success',
+            'list' => $listid,
+            'contentid' => $list[0]->contentid,
+            'data' => $list,
+            'html' => $html
+        ));
         exit;
     }
+
     function changecontent()
     {
         $post = $_POST;
@@ -556,20 +564,20 @@ class Studentpanel extends CI_Controller
     public function getCourseRelatedFiles()
     {
         $post = $this->input->post();
-    
+
         if ($post['type'] == 'f') {
             // Get both 'file' and 'image' types
             $file_list = $this->model->getCourseRelatedAllFiles($post, 'file');
             $image_list = $this->model->getCourseRelatedAllFiles($post, 'image');
-    
+
             if (empty($file_list) && empty($image_list)) {
                 echo json_encode(array('status' => false, 'message' => '<p style="color:red;">No files or images found.</p>'));
                 exit;
             }
-    
-            $html_file = $this->load->view('content', ['list' => $file_list], true);
-            $html_image = $this->load->view('content', ['list' => $image_list], true);
-    
+
+            $html_file = $this->load->view('content', ['list' => $file_list, 'type' => 'file'], true);
+            $html_image = $this->load->view('content', ['list' => $image_list, 'type' => 'image'], true);
+
             echo json_encode(array(
                 'status' => true,
                 'message' => 'Success',
@@ -577,33 +585,31 @@ class Studentpanel extends CI_Controller
                 'html_image' => $html_image
             ));
             exit;
-    
         } elseif ($post['type'] == 'v' || $post['type'] == 'i') {
             $type = ($post['type'] == 'v') ? 'video' : 'image';
-    
+
             $data['type'] = $type;
             $data['list'] = $this->model->getCourseRelatedAllFiles($post, $type);
-    
+
             if (empty($data['list'])) {
                 echo json_encode(array('status' => false, 'message' => '<p style="color:red;">No reference ' . $type . 's found.</p>'));
                 exit;
             }
-    
-            $html = $this->load->view('content', $data, true);
-    
+
+            $html = $this->load->view('content', ['list' => $data['list'], 'type' => $type], true);
+
             echo json_encode(array(
                 'status' => true,
                 'message' => 'Success',
                 'html' => $html
             ));
             exit;
-    
         } else {
             echo json_encode(array('status' => false, 'message' => '<p style="color:red;">File type mismatched.</p>'));
             exit;
         }
     }
-    
+
     public function get_time_period()
     {
         $setid = $this->input->get('setid');

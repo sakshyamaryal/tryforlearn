@@ -48,6 +48,8 @@ class Studentlogin_model extends CI_Model {
                     'is_login'=>'1',
                     'login_datetime'=>date('Y-m-d H:i:s',strtotime('+2 hour +20 minutes',strtotime(date('Y-m-d H:i:s'))))
                 );
+                $language = !empty($result['preffered_language']) ? $result['preffered_language'] : 'ENG';
+
                 $this->db->where('username',$username);
                 $this->db->update('users',$data);
                 $this->session->set_userdata('userid',$result['user_id']);
@@ -57,7 +59,7 @@ class Studentlogin_model extends CI_Model {
                 $this->session->set_userdata('name',$result['fullname']);
                 $this->session->set_userdata('username',$result['username']);
                 $this->session->set_userdata('email',$result['email']);
-                $this->session->set_userdata('language',$result['preffered_language']);
+                $this->session->set_userdata('language',$language);
                 $this->session->set_userdata('refferalcode',$result['refferalcode']);
                 return 2;
             }
