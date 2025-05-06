@@ -28,7 +28,7 @@ if($type=='file'){
 ?>
 <a href="javascript:void(0)" data-key="<?=$key;?>" data-val="<?= $lcourse->fileid; ?>" data-title="<?= $lcourse->title; ?>"  data-file="<?= $lcourse->file; ?>" data-type="<?=$type;?>"
  data-ext="<?= $lcourse->ext; ?>" id="cf_1_<?= $key; ?>" 
-  onclick="previewselected(<?= $key; ?>,1,<?=$total;?>)">Preview </a>  |  <a href="<?=base_url();?>upload/content/<?= $lcourse->file; ?>">Download</a>
+  onclick="previewselected(<?= $key; ?>,1,<?=$total;?>)">Preview</a>  |  <a href="<?=base_url();?>upload/content/<?= $lcourse->file; ?>">Download</a>
 
 
 

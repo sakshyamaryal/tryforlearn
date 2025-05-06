@@ -202,6 +202,11 @@
 
         <?php } 
         endforeach; ?>
+
+<?php if($this->session->userdata('user_type') == 1): ?>
+    <li class="nav-item"><a href="<?= base_url(); ?>admindashboard" class="nav-link">Admin Dashboard</a></li>
+<?php endif; ?>
+
     
         
 

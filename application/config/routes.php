@@ -65,3 +65,4 @@ $route['translate_uri_dashes'] = true;
 $route['admin/blogs'] = 'blogs/admin'; // Admin panel for blogs
 $route['blogs/(:num)'] = 'blogs/detail/$1';
 $route['blogs'] = 'blogs/index'; // List of blogs
+$route['generate-pdf'] = 'pdf/generate_pdf';

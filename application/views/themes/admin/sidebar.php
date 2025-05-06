@@ -29,7 +29,7 @@
 <div class="navbar navbar-default" role="navigation">
     <div class="navbar-inner">
   
-    <a class="navbar-brand" href="index.html">    <span><?= $header_title; ?></span></a>
+    <a class="navbar-brand" href="<?= base_url(); ?>">    <span><?= $header_title; ?></span></a>
   
     
     <div class="btn-group pull-right">

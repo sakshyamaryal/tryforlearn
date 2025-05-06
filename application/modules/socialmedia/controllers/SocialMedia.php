@@ -1,13 +1,14 @@
 
 <?php
+(defined('BASEPATH')) OR exit('No direct script access allowed');
 
-class SocialMedia extends CI_Controller
+class Socialmedia extends CI_Controller
 {
     function __construct()
     {
         parent::__construct();
-        $this->load->model('SocialMedia_model');
-        $this->model = $this->SocialMedia_model;
+        $this->load->model('socialmedia_model');
+        $this->model = $this->socialmedia_model;
         $this->load->model('comman/common_model');
         $this->common = $this->common_model;
 
@@ -98,8 +99,8 @@ class SocialMedia extends CI_Controller
 
     public function get_active_social_media()
 {
-    $this->load->model('SocialMedia_model');
-    $social_icons = $this->SocialMedia_model->get_all_active();
+    $this->load->model('socialmedia_model');
+    $social_icons = $this->socialmedia_model->get_all_active();
 
     return $social_icons;
 }

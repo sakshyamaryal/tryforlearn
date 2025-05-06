@@ -19,7 +19,9 @@ class User extends CI_Controller
         $this->load->model('myexam/myexam_model', 'emodel');
         $this->load->model('socialmedia/socialmedia_model', 'socialmodel');
         $this->load->model('notice/notice_model', 'noticemodel2');
-
+        // ini_set('display_errors', 1);
+        // ini_set('display_startup_errors', 1);
+        // error_reporting(E_ALL);
 
         APIKEY();
     }
@@ -1037,7 +1039,7 @@ class User extends CI_Controller
         try {
             $this->load->helper('cms_helper');
 
-            $this->form_validation->set_rules('class', 'Course type', 'required');
+            $this->form_validation->set_rules('levelid', 'Course type', 'required');
             $this->form_validation->set_rules('classid', 'Class', 'required');
             $this->form_validation->set_rules('subjectid', 'Subject', 'required');
             // $this->form_validation->set_rules('package', 'Package', 'required');
@@ -1099,10 +1101,7 @@ class User extends CI_Controller
                     }
                 } else {
 
-                    echo json_encode(array(
-                        'message' => $vouchercode
-                    ));
-                    exit();
+                    throw new Exception($vouchercode, 1);
                 }
             }
             if (isset($_POST['applyPromo']) && $_POST['applyPromo'] == 'Y') {
@@ -1111,15 +1110,9 @@ class User extends CI_Controller
                 if ($discountamt > 0) {
                     $promoStatus = true;
                 }
+                // header('Content-Type: application/json'); 
 
-                echo json_encode(array(
-                    'type' => 'applyPromo',
-                    'status' => $promoStatus,
-                    'oldPrice' => $payamt,
-                    'newPrice' => $payamt - $discountamt + $serviceamt,
-                    'discountAmt' => $discountamt,
-                    'serviceAmt' => $serviceamt,
-                ));
+                echo json_encode(array('type' => 'success','status' => $promoStatus,'oldPrice' => $payamt,'newPrice' => $payamt - $discountamt + $serviceamt,'discountAmt' => $discountamt,'serviceAmt' => $serviceamt));
                 exit();
             }
             //voucher code condtn end
@@ -1147,7 +1140,7 @@ class User extends CI_Controller
 
             $iu = $this->common_model->insert('transactions', $insert);
             if ($iu > 0) {
-                $response = array('type' => 'success', 'message' => 'Subscription Successfull', 'response' => array('txnid' => $iu, 'txncode' => $txn, 'levelid' => $_POST['class'], 'classid' => $_POST['classid'], 'subjectid' => $_POST['subjectid'], 'amt' => $payamt, 'package' => $_POST['package']));
+                $response = array('type' => 'success', 'message' => 'Subscription Successfull', 'response' => array('txnid' => $iu, 'txncode' => $txn, 'levelid' => $_POST['levelid'], 'classid' => $_POST['classid'], 'subjectid' => $_POST['subjectid'], 'amt' => $payamt, 'package' => $_POST['package']));
 
                 if (isset($_POST['isdemo']) && $_POST['isdemo'] == 'Y') {
                     $_POST['txnid'] = $txn;
@@ -1568,48 +1561,39 @@ class User extends CI_Controller
 
 
     //get followus detail
-    function followus()
-    {
-        try {
+    // function followus()
+    // {
+    //     try {
 
 
-            $data[0] = array('title' => 'TryforLearn Fb Page', 'type' => 'fb', 'link' => 'https://www.facebook.com/tryforlearn', 'icon' => 'https://w7.pngwing.com/pngs/1008/900/png-transparent-facebook-fb-logo-social-social-media-social-media-logos-icon.png');
-            $data[1] = array('title' => 'TryforLearn youtube Channel', 'type' => 'youtube', 'link' => 'https://www.youtube.com/@TryForLearn', 'icon' => 'https://www.freepnglogos.com/uploads/youtube-logo-hd-8.png');
-            $data[1] = array('title' => 'TryforLearn Instagram Profile', 'type' => 'instagram', 'link' => 'https://www.instagram.com/tryforlearn', 'icon' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png');
-            $data[1] = array('title' => 'TryforLearn Tiktok Channel', 'type' => 'tiktok', 'link' => 'https://www.tiktok.com/@tryforlearn', 'icon' => 'https://static.vecteezy.com/system/resources/previews/006/057/996/original/tiktok-logo-on-transparent-background-free-vector.jpg');
-            // $data[2]=array('title'=>'TryforLearn Twitter Page','type'=>'twitter','link'=>'https://twitter.com','icon'=>'https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-logo-vector-png-clipart-1.png');
-            //  $data[3]=array('title'=>'TryforLearn Google Connect','type'=>'google','link'=>'https://google.com','icon'=>'https://companieslogo.com/img/orig/GOOG-0ed88f7c.png?t=1633218227');
-            $data[4] = array('title' => 'TryforLearn', 'type' => 'web', 'link' => 'https://tryforlearn.com', 'icon' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRijmSh3S2clrLy8RkDTJW3H9XjAGOIUu0Yl2CLbHQ&s');
-            $data[5] = array('title' => 'TryforLearn Hotline', 'type' => 'contact', 'link' => '9840332321,9808008088', 'icon' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAdHGLrA7zibU-usPNoCJDWqA0AOOtr9NfzkijS6sQ3DJ00LzrhaA9JRnksYGBt5yOADM&usqp=CAU');
+    //         $data[0] = array('title' => 'TryforLearn Fb Page', 'type' => 'fb', 'link' => 'https://www.facebook.com/tryforlearn', 'icon' => 'https://w7.pngwing.com/pngs/1008/900/png-transparent-facebook-fb-logo-social-social-media-social-media-logos-icon.png');
+    //         $data[1] = array('title' => 'TryforLearn youtube Channel', 'type' => 'youtube', 'link' => 'https://www.youtube.com/@TryForLearn', 'icon' => 'https://www.freepnglogos.com/uploads/youtube-logo-hd-8.png');
+    //         $data[1] = array('title' => 'TryforLearn Instagram Profile', 'type' => 'instagram', 'link' => 'https://www.instagram.com/tryforlearn', 'icon' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png');
+    //         $data[1] = array('title' => 'TryforLearn Tiktok Channel', 'type' => 'tiktok', 'link' => 'https://www.tiktok.com/@tryforlearn', 'icon' => 'https://static.vecteezy.com/system/resources/previews/006/057/996/original/tiktok-logo-on-transparent-background-free-vector.jpg');
+    //         // $data[2]=array('title'=>'TryforLearn Twitter Page','type'=>'twitter','link'=>'https://twitter.com','icon'=>'https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-logo-vector-png-clipart-1.png');
+    //         //  $data[3]=array('title'=>'TryforLearn Google Connect','type'=>'google','link'=>'https://google.com','icon'=>'https://companieslogo.com/img/orig/GOOG-0ed88f7c.png?t=1633218227');
+    //         $data[4] = array('title' => 'TryforLearn', 'type' => 'web', 'link' => 'https://tryforlearn.com', 'icon' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRijmSh3S2clrLy8RkDTJW3H9XjAGOIUu0Yl2CLbHQ&s');
+    //         $data[5] = array('title' => 'TryforLearn Hotline', 'type' => 'contact', 'link' => '9840332321,9808008088', 'icon' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAdHGLrA7zibU-usPNoCJDWqA0AOOtr9NfzkijS6sQ3DJ00LzrhaA9JRnksYGBt5yOADM&usqp=CAU');
 
-            $response = array(
-                'type' => 'success',
-                'message' => 'Success',
-                'response' => array_values($data)
-            );
-        } catch (Exception $e) {
-            $response = array('type' => 'error', 'message' => $e->getMessage());
-        }
-        echo getJsonData($response);
-    }
+    //         $response = array(
+    //             'type' => 'success',
+    //             'message' => 'Success',
+    //             'response' => array_values($data)
+    //         );
+    //     } catch (Exception $e) {
+    //         $response = array('type' => 'error', 'message' => $e->getMessage());
+    //     }
+    //     echo getJsonData($response);
+    // }
 
-    
-
-    function sitesettings(){
+    function followus(){
         try {
             $socialmedia = $this->socialmodel->get_social_media();
     
             $data = array();
-            $data_num = array();
             if (!empty($socialmedia)) {
                 foreach ($socialmedia as $key => $item) {
-                    if(is_numeric($item->link)){
-                        $data_num[] = array(
-                            'title' => $item->name,
-                            'icon' => $item->icon,
-                            'value' => $item->link
-                        );
-                    } else{
+                    if(!is_numeric($item->link)){
                         $data[] = array(
                             'title' => $item->name,
                             'icon' => $item->icon,
@@ -1622,8 +1606,38 @@ class User extends CI_Controller
             $response = array(
                 'type' => 'success',
                 'message' => 'Success',
-                'contact_details' => array_values($data_num),
                 'follow_details' => array_values($data)
+            );
+        } catch (Exception $e) {
+            $response = array('type' => 'error', 'message' => $e->getMessage());
+        }
+        echo getJsonData($response);
+
+    }
+    
+
+    function sitesettings(){
+       
+        try {
+            $socialmedia = $this->socialmodel->get_social_media();
+    
+            $data_num = array();
+            if (!empty($socialmedia)) {
+                foreach ($socialmedia as $key => $item) {
+                    if(is_numeric($item->link)){
+                        $data_num[] = array(
+                            'title' => $item->name,
+                            'icon' => $item->icon,
+                            'value' => $item->link
+                        );
+                    }
+                }
+            }
+    
+            $response = array(
+                'type' => 'success',
+                'message' => 'Success',
+                'contact_details' => array_values($data_num),
             );
         } catch (Exception $e) {
             $response = array('type' => 'error', 'message' => $e->getMessage());

@@ -400,7 +400,8 @@ function getcontentfile(id,type)
             else
             {
                 $('.tabimagedetail').empty();
-                 $('.tabimagedetail').html(res.message);
+                 $('.tabimagedetail').html('No any images related to this topic.');
+                // $('.tabimagedetail').html(res.message);
 
             }
         }
@@ -434,16 +435,36 @@ function previewselected(val,type,count)
         }
     $('#myModalLabel').html(title);
     $('#mypreviewbody').empty();
-    if(type=='1')
-    {
-        $('#mypreviewbody').html('<iframe id="mydocxiframe" style="width:100%;height:400px;" src="https://docs.google.com/viewer?url='+src+'&embedded=true" frameborder="0"></iframe>');
-		$('#mydocxiframe').on('load', () => {
-			$('.waittime').hide();
-        });
-        // $('.prevnextbtn').html(html);
-		// $('.prevnextbtn').show();
-        // $('#preview-modal').modal('show');
+    // if(type=='1')
+    // {
+    //     $('#mypreviewbody').html('<iframe id="mydocxiframe" style="width:100%;height:400px;" src="https://docs.google.com/viewer?url='+src+'&embedded=true" frameborder="0"></iframe>');
+	// 	$('#mydocxiframe').on('load', () => {
+	// 		$('.waittime').hide();
+    //     });
+    //     // $('.prevnextbtn').html(html);
+	// 	// $('.prevnextbtn').show();
+    //     // $('#preview-modal').modal('show');
+    // if(type == '1') {
+    //     const file = cf.data('file');  // e.g., content_1642856327
+    //     const ext = cf.data('ext');    // e.g., pdf
+    //     const key = val;
+    //     const valAttr = cf.data('val');
+    //     const id = cf.data('id');
 
+    //     // Open the file preview in a new tab using Google Docs
+    //     const previewUrl = `<?=base_url('studentpanel/generate-pdf')?>?key=${key}&val=${valAttr}&file=${file}&ext=${ext}&id=${id}`;
+    //     window.open(previewUrl, '_blank');
+    //     return;
+    if (type == '1') {
+        const file = cf.data('file'); // e.g., "content_1642856327.pdf" or "content_1642856327"
+        const ext = cf.data('ext');   // e.g., "pdf"
+        
+        // Check if the file name already has an extension
+        const hasExt = file.includes(`.${ext}`);
+        
+        const fileUrl = `<?=base_url()?>upload/content/${hasExt ? file : file + '.' + ext}`;
+        window.open(fileUrl, '_blank');
+        return;
     }else if(type=='2')
     {
         $('.waittime').hide();
@@ -564,7 +585,9 @@ function submit_answer(type)
     var url=base_url+"studentpanel/submitanswer";
     var data=$( "#answerform" ).serialize();
 
-
+    if (!data.includes("language=") || data.match(/language=(&|$)/)) {
+        data += (data ? '&' : '') + 'language=ENG';
+    }
 
 
 

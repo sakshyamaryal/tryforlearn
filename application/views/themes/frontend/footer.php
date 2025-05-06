@@ -1,13 +1,15 @@
 <?php
+(defined('BASEPATH')) OR exit('No direct script access allowed');
+
 $CI =& get_instance();
 // $CI->load->model('socialmedia/SocialMedia_model');
 // $social_media_list = $CI->SocialMedia_model->get_all_active();
 
-if(!class_exists('SocialMedia_model')){
-    require_once APPPATH.'modules/socialmedia/models/SocialMedia_model.php';
+if(!class_exists('socialmedia_model')){
+    require_once APPPATH.'modules/socialmedia/models/socialmedia_model.php';
 }
-$SocialMedia_model = new SocialMedia_model();
-$social_media_list = $SocialMedia_model->get_all_active();
+$socialmedia_model = new socialmedia_model();
+$social_media_list = $socialmedia_model->get_all_active();
 // $CI->load->model('socialmedia/SocialMedia_model');
 // $CI->load->model('../../../modules/socialmedia/models/SocialMedia_model');
 ?>

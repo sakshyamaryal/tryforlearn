@@ -1,6 +1,6 @@
-<?php
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class SocialMedia_model extends CI_Model
+class Socialmedia_model extends CI_Model
 {
     public function saveSocialMedia($data_arr)
     {

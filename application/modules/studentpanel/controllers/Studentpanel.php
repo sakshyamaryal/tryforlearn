@@ -627,4 +627,18 @@ class Studentpanel extends CI_Controller
             echo json_encode(['status' => false, 'message' => 'Time period not found']);
         }
     }
+
+    public function generate_pdf() {
+        $file = $this->input->get('file');  // e.g., 'content_1642856327'
+        $ext = $this->input->get('ext');    // e.g., 'pdf'
+    
+        // Build the public file URL
+        $fileUrl = base_url('upload/content/' . $file . '.' . $ext);
+    
+        // Redirect to Google Docs viewer
+        redirect('https://docs.google.com/viewer?url=' . urlencode($fileUrl) . '&embedded=true', 'location', 301);
+    }
+    
+    
+    
 }

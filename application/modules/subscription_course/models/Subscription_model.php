@@ -32,7 +32,6 @@ class Subscription_model extends CI_Model
     // first check if this user has used this voucher before or not
     // get vouchercode detail with validating validity date
     // check if quota of limit qty exceeded or not
-
     $maxlimit = 0;
     $sql = "select * from transactions where studentid=? and vouchercode=? and status='S'";
     $res = $this->db->query($sql, array($this->input->get_request_header('Userid', True), $_POST['vouchercode']));
@@ -88,7 +87,6 @@ class Subscription_model extends CI_Model
 
           // matched
           $maxlimit = $res->row()->maxlimit;
-
         }
 
       }
