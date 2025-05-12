@@ -492,33 +492,70 @@ class User extends CI_Controller
     }
 
     //get content files,image,video
+    // function getcontentfile()
+    // {
+    //     try {
+    //         if (!$_POST['contentid']) {
+
+    //             throw new Exception("Contentid Required.", 1);
+    //         }
+    //         if (!$_POST['type']) {
+
+    //             throw new Exception("Type Cannot be empty.", 1);
+    //         }
+
+    //         $content = $this->common_model->getRows('contentfile', array('contentid' => $_POST['contentid'], 'is_active' => 1, 'filetype' => $_POST['type']), "contentid,title,fileid,filetype,ext,orderby,case when filetype='video' then file else concat('" . base_url() . "upload/content/',file)end as file", 'orderby');
+    //         if (count($content) < 1) {
+
+    //             throw new Exception($_POST['type'] . "  not found", 1);
+    //         }
+    //         $response = array(
+    //             'type' => 'success',
+    //             'message' => 'Success',
+    //             'response' => $content
+    //         );
+    //     } catch (Exception $e) {
+    //         $response = array('type' => 'error', 'message' => $e->getMessage());
+    //     }
+    //     echo getJsonData($response);
+    // }
     function getcontentfile()
-    {
-        try {
-            if (!$_POST['contentid']) {
-
-                throw new Exception("Contentid Required.", 1);
-            }
-            if (!$_POST['type']) {
-
-                throw new Exception("Type Cannot be empty.", 1);
-            }
-
-            $content = $this->common_model->getRows('contentfile', array('contentid' => $_POST['contentid'], 'is_active' => 1, 'filetype' => $_POST['type']), "contentid,title,fileid,filetype,ext,orderby,case when filetype='video' then file else concat('" . base_url() . "upload/content/',file)end as file", 'orderby');
-            if (count($content) < 1) {
-
-                throw new Exception($_POST['type'] . "  not found", 1);
-            }
-            $response = array(
-                'type' => 'success',
-                'message' => 'Success',
-                'response' => $content
-            );
-        } catch (Exception $e) {
-            $response = array('type' => 'error', 'message' => $e->getMessage());
+{
+    try {
+        if (!$_POST['contentid']) {
+            throw new Exception("Contentid Required.", 1);
         }
-        echo getJsonData($response);
+        if (!$_POST['type']) {
+            throw new Exception("Type Cannot be empty.", 1);
+        }
+
+        // Append YouTube parameters to video URLs
+        $videoParams = '?modestbranding=1&rel=0&fs=0&controls=0';
+        $content = $this->common_model->getRows(
+            'contentfile', 
+            array('contentid' => $_POST['contentid'], 'is_active' => 1, 'filetype' => $_POST['type']), 
+            "contentid,title,fileid,filetype,ext,orderby,
+            CASE 
+                WHEN filetype='video' THEN CONCAT(file, '$videoParams')
+                ELSE CONCAT('" . base_url() . "upload/content/', file)
+            END as file", 
+            'orderby'
+        );
+
+        if (count($content) < 1) {
+            throw new Exception($_POST['type'] . " not found", 1);
+        }
+
+        $response = array(
+            'type' => 'success',
+            'message' => 'Success',
+            'response' => $content
+        );
+    } catch (Exception $e) {
+        $response = array('type' => 'error', 'message' => $e->getMessage());
     }
+    echo getJsonData($response);
+}
 
     //qe ::quiz/exercise question get  
     function qeexam()
