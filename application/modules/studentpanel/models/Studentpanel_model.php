@@ -511,178 +511,151 @@ class Studentpanel_model extends CI_Model
   // }
 
 
-  function submitquizanswer($post)
-  {
-    $sn = 0;
-    if (isset($_POST['isapi'])) {
-      $userid = $this->input->get_request_header('Userid', True);
-      $lang = isset($_POST['language']) && !empty($_POST['language']) ? $_POST['language'] : 'ENG';
+function submitquizanswer($post)
+{
+  $sn = 0;
+  if (isset($_POST['isapi'])) {
+    $userid = $this->input->get_request_header('Userid', True);
+    $lang = isset($_POST['language']) && !empty($_POST['language']) ? $_POST['language'] : 'ENG';
+  } else {
+    $userid = $this->session->userdata('userid');
+    $lang = $this->session->userdata('language');
+    if (empty($lang)) {
+      $lang = 'ENG';
+    }
+  }
+
+  // Get penalty from subject or default to 100% (1.0)
+  $penalty = null;
+  if ($post['subjectid'] > 0) {
+    $sql = "SELECT penalty FROM subject WHERE subject_id = ?";
+    $res = $this->db->query($sql, array($post['subjectid']))->row();
+    if (!empty($res) && (float)$res->penalty > 0) {
+      $penalty = (float)$res->penalty;
+    }
+  }
+
+  $mark = $qnmark = 0;
+  $peransmark = 0;
+  $totalwrongans = 0;
+  $qnarray = array();
+  $ansarray = array();
+  $esetid = get_Last_Id('setid', 'studentexamset');
+  $donetime = (float)$post['qntimer'] - (float)$post['totaltimer'];
+
+  $total = count($post['qid']);
+  $totalattemptedques = 0;
+  $totalcorrect = $totalwrong = 0;
+
+  foreach ($post['qid'] as $key => $val) {
+    array_push($qnarray, $val);
+    $ansarray[$val] = @$post['answer' . $val][0];
+    $sn++;
+
+    $sql = "SELECT correctoptionid, correctoptionid_nep, perqnmark FROM exercise e 
+            JOIN questiongroup g ON e.groupid = g.groupid WHERE eid = ?";
+    $res = $this->db->query($sql, array($val))->row();
+
+    $qnmark += (float)$res->perqnmark;
+
+    $correctid = ($lang == 'ENG') ? $res->correctoptionid : $res->correctoptionid_nep;
+
+    if ($correctid == @$post['answer' . $val][0]) {
+      $mark += (float)$res->perqnmark;
+      $peransmark = $res->perqnmark;
+      $totalcorrect++;
+    } else if (@$post['answer' . $val][0] == null) {
+      $peransmark = 0;
+      $mark += 0;
     } else {
-      $userid = $this->session->userdata('userid');
-      $lang = $this->session->userdata('language');
-      if (empty($lang)) {
-        $lang = 'ENG';
-      }
+      $penaltyToUse = ($penalty !== null) ? $penalty/100 : 1.0; // Apply full penalty if not set
+      $peransmark = 0 - ($penaltyToUse * $res->perqnmark);
+      $totalwrongans += abs($peransmark);
+      $totalwrong++;
     }
 
-
-    // get wrong percentage as per subject 
-    $penalty = '0.2';
-    if ($post['subjectid'] > 0) {
-      $sql = "select penalty from subject where subject_id=?";
-      $res = $this->db->query($sql, array($post['subjectid']))->row();
-
-      if ((int)$res->penalty > 0) {
-        $penalty = $res->penalty;
-      }
+    if (!empty($post['answer' . $val][0])) {
+      $totalattemptedques++;
     }
 
-    // total right ans marks sum, qn marks
-    $mark = $qnmark = 0;
-
-    $peransmark = 0;
-
-    // total wrong ans marks sum
-    $totalwrongans = 0;
-    $qnarray = array();
-    $ansarray = array();
-    $esetid = get_Last_Id('setid', 'studentexamset');
-    $donetime = (float)$post['qntimer'] - (float)$post['totaltimer'];
-
-    // total no.of ques
-    $total = count($post['qid']);
-    // total attempted ques
-    $totalattemptedques = 0;
-    // totalattemptedrightans, totalattmepted wrong ans
-    $totalcorrect = $totalwrong = 0;
-    foreach ($post['qid'] as $key => $val) {
-      array_push($qnarray, $val);
-      $ansarray[$val] = @$post['answer' . $val][0];
-      $sn++;
-      $sql = "SELECT correctoptionid,correctoptionid_nep,perqnmark FROM exercise e join questiongroup g on e.groupid=g.groupid where eid=?";
-      $res = $this->db->query($sql, array($val))->row();
-      $qnmark += (float)$res->perqnmark;
-
-
-      if ($lang == 'ENG') {
-        $correctid = $res->correctoptionid;
-      } else {
-        $correctid = $res->correctoptionid_nep;
-      }
-
-      if ($correctid == @$post['answer' . $val][0]) {
-        $mark = (float)($mark + $res->perqnmark);
-        $peransmark = $res->perqnmark;
-        $totalcorrect = $totalcorrect + 1;
-      } else if (@$post['answer' . $val][0] == null) {
-        // if($post['levelid']=='1' || $post['levelid']=='2')
-        // {
-        //   $peransmark =(double)0-(0.2*$res->perqnmark);
-        //   $totalwrongans=(double)$totalwrongans+(0.2*$res->perqnmark);
-        // }
-        // else 
-        // {
-        //   $peransmark=0;
-        // }
-        $peransmark = 0;
-        $mark = $mark + 0;
-      } else {
-
-        //  $peransmark=0;
-        if ($post['levelid'] == '1' || $post['levelid'] == '2') {
-          $peransmark = (float)0 - ($penalty * $res->perqnmark);
-          $totalwrongans = (float)$totalwrongans + ($penalty * $res->perqnmark);
-        } else {
-          $peransmark = 0;
-        }
-        $totalwrong = $totalwrong + 1;
-      }
-
-      if ($post['answer' . $val][0]) {
-        $totalattemptedques = $totalattemptedques + 1;
-      }
-
-      $data[] = array(
-        'examsetid' => $esetid,
-        'student_id' => $userid,
-
-        'classid' => ((int)@$post['classid'] > 0) ? $post['classid'] : 0,
-        'subjectid' => ((int)@$post['subjectid'] > 0) ? $post['subjectid'] : 0,
-        'chapterid' => ((int)@$post['chapterid'] > 0) ? $post['chapterid'] : 0,
-        'levelid' => $post['levelid'],
-        'question_id' => $val,
-        'submitted_answer' => (@$post['answer' . $val][0] != '') ? $post['answer' . $val][0] : 0,
-        'obtained_marks' => $peransmark,
-        'exam_date' => (@$post['isself'] == '1') ? date('Y-m-d') : @$post['qndate'],
-        'submitted_time' => $donetime,
-        'isself' => $post['isself'],
-        'totaltimer' => $post['qntimer'],
-        'language' => $lang,
-        'is_subj_obj' => 'O'
-      );
-    }
-
-    //var_dump($data);exit;
-    // total rightmarks, total wrong marks;
-    $right = $mark;
-    $wrong = $totalwrongans;
-
-
-    if (($mark - $totalwrongans) < 0) {
-      $mark = 0;
-    } else {
-      $mark = $mark - $totalwrongans;
-    }
-    $eset = array(
-      'setid' => $esetid,
-      'studentid' => $userid,
+    $data[] = array(
+      'examsetid' => $esetid,
+      'student_id' => $userid,
       'classid' => ((int)@$post['classid'] > 0) ? $post['classid'] : 0,
       'subjectid' => ((int)@$post['subjectid'] > 0) ? $post['subjectid'] : 0,
       'chapterid' => ((int)@$post['chapterid'] > 0) ? $post['chapterid'] : 0,
       'levelid' => $post['levelid'],
-      'examtypeid' => ((int)@$post['examtypeid'] > 0) ? $post['examtypeid'] : 0,
-      'totalqn' => count($post['qid']),
-      'totalmark' => $qnmark,
-      'obtainedmark' => $mark,
-      'examdate' => (@$post['isself'] == '1') ? date('Y-m-d') : @$post['qndate'],
-      'is_subj_obj' => 'O',
-      'isself' => (@$post['isself'] == '1') ? 'Y' : 'N',
-      'totaltimer' => $post['qntimer'],
+      'question_id' => $val,
+      'submitted_answer' => (!empty($post['answer' . $val][0])) ? $post['answer' . $val][0] : 0,
+      'obtained_marks' => $peransmark,
+      'exam_date' => (@$post['isself'] == '1') ? date('Y-m-d') : @$post['qndate'],
       'submitted_time' => $donetime,
+      'isself' => $post['isself'],
+      'totaltimer' => $post['qntimer'],
       'language' => $lang,
-      'createddate' => date('Y-m-d H:i:s')
+      'is_subj_obj' => 'O'
     );
-    $this->db->trans_begin();
-    $this->db->insert('studentexamset', $eset);
-
-    $percent = ($mark / $qnmark) * 100;
-    $this->db->insert_batch('studentexam', $data);
-    if ($this->db->trans_status() === FALSE) {
-      $this->db->trans_rollback();
-      $iu = 0;
-    } else {
-      $this->db->trans_commit();
-      $iu = array(
-        'qn' => $qnarray,
-        'ans' => $ansarray,
-        'totalmarks' => $qnmark,
-        'marks' => number_format($mark, 2),
-        'percent' => number_format($percent, 2),
-        //this is for popup instant result show
-        'unattemptedques' => $total - $totalattemptedques,
-        'attemptedques' => $totalattemptedques,
-        'totalques' => $total,
-        'totalright' => $totalcorrect,
-        'totalwrong' => $totalwrong,
-        'correct' => $right,
-        'penalty_percentage' => $penalty,
-        'wrong' => number_format($wrong, 2),
-        'total' => number_format($right - $wrong, 2),
-        'time' => $donetime
-      );
-    }
-    return $iu;
   }
+
+  $right = $mark;
+  $wrong = $totalwrongans;
+
+  if (($mark - $totalwrongans) < 0) {
+    $mark = 0;
+  } else {
+    $mark = $mark - $totalwrongans;
+  }
+
+  $eset = array(
+    'setid' => $esetid,
+    'studentid' => $userid,
+    'classid' => ((int)@$post['classid'] > 0) ? $post['classid'] : 0,
+    'subjectid' => ((int)@$post['subjectid'] > 0) ? $post['subjectid'] : 0,
+    'chapterid' => ((int)@$post['chapterid'] > 0) ? $post['chapterid'] : 0,
+    'levelid' => $post['levelid'],
+    'examtypeid' => ((int)@$post['examtypeid'] > 0) ? $post['examtypeid'] : 0,
+    'totalqn' => count($post['qid']),
+    'totalmark' => $qnmark,
+    'obtainedmark' => $mark,
+    'examdate' => (@$post['isself'] == '1') ? date('Y-m-d') : @$post['qndate'],
+    'is_subj_obj' => 'O',
+    'isself' => (@$post['isself'] == '1') ? 'Y' : 'N',
+    'totaltimer' => $post['qntimer'],
+    'submitted_time' => $donetime,
+    'language' => $lang,
+    'createddate' => date('Y-m-d H:i:s')
+  );
+
+  $this->db->trans_begin();
+  $this->db->insert('studentexamset', $eset);
+  $percent = ($qnmark > 0) ? ($mark / $qnmark) * 100 : 0;
+  $this->db->insert_batch('studentexam', $data);
+
+  if ($this->db->trans_status() === FALSE) {
+    $this->db->trans_rollback();
+    $iu = 0;
+  } else {
+    $this->db->trans_commit();
+    $iu = array(
+      'qn' => $qnarray,
+      'ans' => $ansarray,
+      'totalmarks' => $qnmark,
+      'marks' => number_format($mark, 2),
+      'percent' => number_format($percent, 2),
+      'unattemptedques' => $total - $totalattemptedques,
+      'attemptedques' => $totalattemptedques,
+      'totalques' => $total,
+      'totalright' => $totalcorrect,
+      'totalwrong' => $totalwrong,
+      'correct' => $right,
+      'penalty_percentage' => ($penalty !== null) ? $penalty : 1.0,
+      'wrong' => number_format($wrong, 2),
+      'total' => number_format($right - $wrong, 2),
+      'time' => $donetime
+    );
+  }
+  return $iu;
+}
 
   function getattemptquiz($post)
   {

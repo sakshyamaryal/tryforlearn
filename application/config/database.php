@@ -75,10 +75,14 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-    'username' => 'root',
-	'password' => '',
-	'database' => 'tryforlearn',
+	// 'hostname' => 'localhost',
+  //   'username' => 'root',
+	// 'password' => '',
+	// 'database' => 'tryforlearn',
+	'hostname' => '192.250.227.33',
+	"database" => "aquidenc_tryforlearn",
+"username" => "aquidenc_tryforlearn",
+"pasword"=>"S2018cherry@tryforlearn",
 	
 	// 'username' => 'tryforlearn',
 	// 'password' => 'S2018cherry@@!!tryforlearn',

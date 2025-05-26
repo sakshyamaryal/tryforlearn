@@ -620,7 +620,7 @@ class User extends CI_Controller
 
             $this->email->set_mailtype("html");
             $subject = "OTP Verification";
-            $message = " Your One time Registration Code for TRYFORLEARN is . " . $SixDigitRandomNumber . " <br><br/> <br><br/>. If you haven't performed this process. Please Ignore the mail.";
+            $message = " Your One time Registration Code for TRYFORLEARN is " . $SixDigitRandomNumber . ". <br><br/> <br><br/>. If you haven't performed this process. Please Ignore the mail.";
             $sent = send_email($this->input->post('email'), $subject, $message);
         } catch (Exception $e) {
             $response = array('type' => 'error', 'message' => $e->getMessage());
@@ -822,6 +822,13 @@ class User extends CI_Controller
                 'phone' => $basicdata->phone,
                 'address' => $basicdata->address,
                 'preffered_language' => $basicdata->preffered_language,
+                'refferalcode' => $basicdata->refferalcode ?? '',
+                'is_emailverified' => $basicdata->is_emailverified ?? '0',
+                'is_login' => $basicdata->is_login ?? '0',
+                'deviceid' => $basicdata->deviceid ?? '',
+                'istemp' => $basicdata->istemp ?? 'N',
+                'istrialsubscribed' => $basicdata->istrialsubscribed ?? 'N',
+                'isnewdevice' => $basicdata->isnewdevice ?? 'N',
                 'parents_detail' => $extradata->parents_detail,
                 'parents_number' => $extradata->parents_number,
                 'institution' => $extradata->guardian_detail,
@@ -1076,7 +1083,7 @@ class User extends CI_Controller
         try {
             $this->load->helper('cms_helper');
 
-            $this->form_validation->set_rules('levelid', 'Course type', 'required');
+            $this->form_validation->set_rules('class', 'Course type', 'required');
             $this->form_validation->set_rules('classid', 'Class', 'required');
             $this->form_validation->set_rules('subjectid', 'Subject', 'required');
             // $this->form_validation->set_rules('package', 'Package', 'required');
@@ -1177,7 +1184,7 @@ class User extends CI_Controller
 
             $iu = $this->common_model->insert('transactions', $insert);
             if ($iu > 0) {
-                $response = array('type' => 'success', 'message' => 'Subscription Successfull', 'response' => array('txnid' => $iu, 'txncode' => $txn, 'levelid' => $_POST['levelid'], 'classid' => $_POST['classid'], 'subjectid' => $_POST['subjectid'], 'amt' => $payamt, 'package' => $_POST['package']));
+                $response = array('type' => 'success', 'message' => 'Subscription Successfull', 'response' => array('txnid' => $iu, 'txncode' => $txn, 'levelid' => $_POST['class'], 'classid' => $_POST['classid'], 'subjectid' => $_POST['subjectid'], 'amt' => $payamt+$serviceamt, 'package' => $_POST['package'], 'serviceamt' => $serviceamt, 'discountamt' => $discountamt));
 
                 if (isset($_POST['isdemo']) && $_POST['isdemo'] == 'Y') {
                     $_POST['txnid'] = $txn;
@@ -1555,7 +1562,7 @@ class User extends CI_Controller
 
             $this->email->set_mailtype("html");
             $subject = "OTP Verification";
-            $message = " Your One time Registration Code for TRYFORLEARN is . " . $chk . " <br><br/> <br><br/>. If you haven't performed this process. Please Ignore the mail.";
+            $message = " Your One time Registration Code for TRYFORLEARN is  " . $chk . ". <br><br/> <br><br/>. If you haven't performed this process. Please Ignore the mail.";
             $sent = send_email($this->input->post('email'), $subject, $message);
         } catch (Exception $e) {
             $response = array('type' => 'error', 'message' => $e->getMessage());

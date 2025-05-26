@@ -160,14 +160,23 @@
 <a  href="javascript:void(0)" style="color:yellow" onclick="explanation(<?= $list->eid; ?>)" >
 <i class="fa fa-exclamation-circle"></i></a>
 </span> -->
-                                <span class="qnread<?= $list->eid; ?>">
+                                <!-- <span class="qnread<?= $list->eid; ?>">
                                     <?php
                                     if ($this->session->userdata('language') == 'ENG')
                                         echo
                                         $list->question;
                                     else
                                         echo $list->question_nep; ?>
+                                </span> -->
+                                <span class="qnread<?= $list->eid; ?>">
+                                    <?php
+                                    $question = $this->session->userdata('language') == 'ENG' ? $list->question : $list->question_nep;
+
+                                    // Replace non-breaking spaces with normal spaces
+                                    echo str_replace('&nbsp;', ' ', $question);
+                                    ?>
                                 </span>
+
 
                             </div>
                             <div class="answerlist">

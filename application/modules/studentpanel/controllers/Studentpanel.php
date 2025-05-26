@@ -209,25 +209,51 @@ class Studentpanel extends CI_Controller
         exit;
     }
 
+    // function changecontent()
+    // {
+    //     $post = $_POST;
+    //     $content = $this->common_model->getRows('content', array('contentid' => $post['id']), 'title,detail,title_nep,detail_nep', 'contentid');
+    //     // if($content[0]->detail=='')
+    //     // $content[0]->detail=  $content[0]->detail_nep;
+
+    //     // if($content[0]->detail_nep=='')
+    //     // $content[0]->detail_nep=  $content[0]->detail;
+    //     // var_dump($content);exit;
+
+    //     if ($this->session->userdata('language') == 'NEP') {
+    //         $content[0]->title =  $content[0]->title_nep;
+    //         $content[0]->detail =  $content[0]->detail_nep;
+    //     }
+
+    //     echo json_encode(array('status' => true, 'message' => 'Success', 'content' => $content[0]));
+    //     exit;
+    // }
+
     function changecontent()
-    {
-        $post = $_POST;
-        $content = $this->common_model->getRows('content', array('contentid' => $post['id']), 'title,detail,title_nep,detail_nep', 'contentid');
-        // if($content[0]->detail=='')
-        // $content[0]->detail=  $content[0]->detail_nep;
+{
+    $post = $_POST;
+    $content = $this->common_model->getRows('content', array('contentid' => $post['id']), 'title,detail,title_nep,detail_nep', 'contentid');
 
-        // if($content[0]->detail_nep=='')
-        // $content[0]->detail_nep=  $content[0]->detail;
-        // var_dump($content);exit;
-
-        if ($this->session->userdata('language') == 'NEP') {
-            $content[0]->title =  $content[0]->title_nep;
-            $content[0]->detail =  $content[0]->detail_nep;
-        }
-
-        echo json_encode(array('status' => true, 'message' => 'Success', 'content' => $content[0]));
-        exit;
+    if ($this->session->userdata('language') == 'NEP') {
+        $content[0]->title = $content[0]->title_nep;
+        $content[0]->detail = $content[0]->detail_nep;
     }
+
+    // Fix: remove &nbsp; and Unicode non-breaking space (\xC2\xA0)
+    $content[0]->detail = str_replace(
+        ["&nbsp;", "\xC2\xA0", "\u00A0", html_entity_decode("&nbsp;")],
+        ' ',
+        html_entity_decode($content[0]->detail)
+    );
+
+    echo json_encode([
+        'status' => true,
+        'message' => 'Success',
+        'content' => $content[0]
+    ]);
+    exit;
+}
+
     function getcontentfile()
     {
         $post = $_POST;

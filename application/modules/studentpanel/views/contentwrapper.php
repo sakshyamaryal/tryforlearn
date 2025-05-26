@@ -102,9 +102,16 @@
 
 
          <h3 class="tabcontenttitle"><?= @$content->title; ?></h3>
+<style>
+  math{display: ruby !important;}
+</style>
+
+<div class="tabcontentdetail" style="word-wrap: break-word; font-family:'Times New Roman', Times, serif">
+    <?= html_entity_decode(@$content->detail); ?>
+</div>
 
 
-         <span class="tabcontentdetail" style="word-wrap: break-word;"><?= @$content->detail; ?></span><br />
+
          <button type="button" class="btn btn-primary" id="prev_button">Previous</button>
          <button type="button" class="btn btn-primary" id="next_button">Next</button>
          <span id="page_number" class="pull-right">Page 1 of 1</span>
