@@ -246,7 +246,7 @@ function APIKEY()
     }
 
 
-    if($header['Apikey']=='b2c122d0794640bd949b9d6b6bb4bb99')
+    if(trim($header['Apikey'])=='b2c122d0794640bd949b9d6b6bb4bb99')
     {
         
         return true;
