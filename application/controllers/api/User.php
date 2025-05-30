@@ -73,8 +73,13 @@ class User extends CI_Controller
             }
 
             if ($valid['isnewdevice'] != 'Y') {
-                $this->common_model->update('users', array('is_login' => '1', 'device' => 'app', 'deviceid' => @$_POST['deviceid']), array('user_id' => $valid['user_id']));
+                $updated_device_login =  $this->common_model->update('users', array('is_login' => '1', 'device' => 'app', 'deviceid' => @$_POST['deviceid']), array('user_id' => $valid['user_id']));
+                if ($updated_device_login) {
+                    $valid['is_login'] = '1';
+                }
             }
+
+
 
             $response = array(
                 'type' => 'success',

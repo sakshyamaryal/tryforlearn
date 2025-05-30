@@ -234,27 +234,75 @@ else {
 
 
 }
+// function APIKEY()
+// {
+//     $ci =& get_instance();
+//     $header=$ci->input->request_headers();
+//     $path= current_url();
+//     $explode=explode('user/',$path);
+//     if(isset($explode[1]) && $explode[1]=='deactivateaccount')
+//     {
+//         return true;
+//     }
+
+//     if (!isset($header['Apikey'])) {
+//         echo json_encode(['type' => 'error', 'message' => 'Missing Api Key']);
+//         exit;
+//     }
+
+
+
+//     if(trim($header['Apikey'])=='tgnkFeJokxxDwDqC17dXtT8Im4j0EgeM0OV5XyJxSITHWnoTWuub7mRkWMhXqUwG')
+//     {
+        
+//         return true;
+//     }
+//     else
+//     {
+//         header('Content-Type: application/json');
+//         echo json_encode(array('type'=>'error','message'=>'Invalid Api Key.'));
+//         exit;
+//     }
+// }
+
 function APIKEY()
 {
     $ci =& get_instance();
-    $header=$ci->input->request_headers();
-    $path= current_url();
-    $explode=explode('user/',$path);
-    if(isset($explode[1]) && $explode[1]=='deactivateaccount')
-    {
+    $header = $ci->input->request_headers();
+    $path = current_url();
+    $explode = explode('user/', $path);
+    
+    // Allow deactivateaccount endpoint without API key
+    if (isset($explode[1]) && $explode[1] == 'deactivateaccount') {
         return true;
     }
 
-
-    if(trim($header['Apikey'])=='tgnkFeJokxxDwDqC17dXtT8Im4j0EgeM0OV5XyJxSITHWnoTWuub7mRkWMhXqUwG')
-    {
-        
-        return true;
-    }
-    else
-    {
+    // Check if API key exists in headers
+    if (!isset($header['Apikey']) || empty(trim($header['Apikey']))) {
         header('Content-Type: application/json');
-        echo json_encode(array('type'=>'error','message'=>'Invalid Api Key.'));
+        http_response_code(401);
+        echo json_encode([
+            'type' => 'error', 
+            'message' => 'Missing API Key',
+            'code' => 'MISSING_API_KEY'
+        ]);
+        exit;
+    }
+    var_dump($header);
+    // Define expected API key (consider moving to config)
+    $expected_api_key = 'tgnkFeJokxxDwDqC17dXtT8Im4j0EgeM0OV5XyJxSITHWnoTWuub7mRkWMhXqUwG';
+    
+    // Validate API key
+    if (trim($header['Apikey']) == $expected_api_key) {
+        return true;
+    } else {
+        header('Content-Type: application/json');
+        http_response_code(401);
+        echo json_encode([
+            'type' => 'error',
+            'message' => 'Invalid API Key',
+            'code' => 'INVALID_API_KEY'
+        ]);
         exit;
     }
 }
