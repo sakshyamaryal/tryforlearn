@@ -87,6 +87,7 @@ class User extends CI_Controller
                 'response' => $valid
             );
         } catch (Exception $e) {
+            // var_dump("User Api error message var dump",$e->getMessage());
             $response = array('type' => 'error', 'message' => $e->getMessage());
         }
         echo getJsonData($response);
@@ -1414,7 +1415,7 @@ class User extends CI_Controller
             $_POST['isapi'] = 'Y';
 
             $data = $this->spmodel->logout();
-            if (count($data) > 0) {
+            if ($data) {
                 $response = array('type' => 'success', 'message' => 'List Successfull', 'response' => $data);
             } else
                 throw new Exception("You donot have any exams right now!", 1);
