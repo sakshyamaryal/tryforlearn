@@ -203,49 +203,93 @@ class Studentpanel_model extends CI_Model {
          return array();
 
     }
-    function getexercise($post)
-  {
-    // $group="SELECT distinct e.groupid,g.groupname,g.perqnmark,g.fullmark from exercise e join questiongroup g on e.groupid=g.groupid where classid=? and subjectid=? and chapterid=? and is_subj_obj='Y' and e.is_active=1 and is_common='Y' order by groupname";
-    // $res_group=$this->db->query($group,array(((int)@$post['class']>0)?$post['class']:0,((int)@$post['subject']>0)?$post['subject']:0,$post['chapter']))->result();
-     $ques=[];
+  //   function getexercise($post)
+  // {
+  //   // $group="SELECT distinct e.groupid,g.groupname,g.perqnmark,g.fullmark from exercise e join questiongroup g on e.groupid=g.groupid where classid=? and subjectid=? and chapterid=? and is_subj_obj='Y' and e.is_active=1 and is_common='Y' order by groupname";
+  //   // $res_group=$this->db->query($group,array(((int)@$post['class']>0)?$post['class']:0,((int)@$post['subject']>0)?$post['subject']:0,$post['chapter']))->result();
+  //    $ques=[];
 
-    // foreach($res_group as $key => $val)
-    // {
-    //   if((int)$val->groupid <='4')
-    //   {
-    //     $order=" order by rand()";
+  //   // foreach($res_group as $key => $val)
+  //   // {
+  //   //   if((int)$val->groupid <='4')
+  //   //   {
+  //   //     $order=" order by rand()";
 
-    //   }
-    //   else 
-    //   {
-    //     $order='';
-    //   }
-    $order=" order by rand()";
-      // $sql="select * from exercise where classid=? and subjectid=? and chapterid=? and groupid=? and is_subj_obj='Y' and is_active=1 and is_common='Y' ".$order." limit ".$post['no'];
-      // $res=$this->db->query($sql,array(((int)@$post['class']>0)?$post['class']:0,((int)@$post['subject']>0)?$post['subject']:0,$post['chapter'],$val->groupid))->result();
-      $sql="select * from exercise where classid=? and subjectid=? and chapterid=? and is_subj_obj='Y' and is_active=1 and is_common='Y' ".$order." limit ".$post['no'];
-      $res=$this->db->query($sql,array(((int)@$post['class']>0)?$post['class']:0,((int)@$post['subject']>0)?$post['subject']:0,$post['chapter']))->result();
+  //   //   }
+  //   //   else 
+  //   //   {
+  //   //     $order='';
+  //   //   }
+  //   $order=" order by rand()";
+  //     // $sql="select * from exercise where classid=? and subjectid=? and chapterid=? and groupid=? and is_subj_obj='Y' and is_active=1 and is_common='Y' ".$order." limit ".$post['no'];
+  //     // $res=$this->db->query($sql,array(((int)@$post['class']>0)?$post['class']:0,((int)@$post['subject']>0)?$post['subject']:0,$post['chapter'],$val->groupid))->result();
+  //     $sql="select * from exercise where classid=? and subjectid=? and chapterid=? and is_subj_obj='Y' and is_active=1 and is_common='Y' ".$order." limit ".$post['no'];
+  //     $res=$this->db->query($sql,array(((int)@$post['class']>0)?$post['class']:0,((int)@$post['subject']>0)?$post['subject']:0,$post['chapter']))->result();
       
-      if (empty($res)) {
-        return array();
-      }
+  //     if (empty($res)) {
+  //       return array();
+  //     }
 
-      $res_group[$key]->ques=$res;
-      if(isset($_POST['isapi']))
-      {
-         foreach($res as $row)
-         {
-           $ques[$row->eid]=$row;
-         }
-      }
-    //}
-    // if(isset($_POST['isapi']))
-    // return array_values($ques);
-    // else
-    // return $res_group;
-    return array_values($ques);
+  //     $res_group[$key]->ques=$res;
+  //     if(isset($_POST['isapi']))
+  //     {
+  //        foreach($res as $row)
+  //        {
+  //          $ques[$row->eid]=$row;
+  //        }
+  //     }
+  //   //}
+  //   // if(isset($_POST['isapi']))
+  //   // return array_values($ques);
+  //   // else
+  //   // return $res_group;
+  //   return array_values($ques);
 
-  }
+  // }
+
+  public function getexercise($post)
+{
+    $ques = [];
+    $order = " ORDER BY RAND()";
+
+    $classid = ((int)@$post['class'] > 0) ? $post['class'] : 0;
+    $subjectid = ((int)@$post['subject'] > 0) ? $post['subject'] : 0;
+    $chapterid = isset($post['chapter']) && $post['chapter'] !== '' ? $post['chapter'] : null;
+    $limit = isset($post['no']) && (int)$post['no'] > 0 ? (int)$post['no'] : 10;
+
+    // Build base SQL and parameters
+    $sql = "SELECT * FROM exercise WHERE classid = ? AND subjectid = ? AND is_subj_obj = 'Y' AND is_active = 1 AND is_common = 'Y'";
+    $params = [$classid, $subjectid];
+
+    // Add chapterid filter only if it's provided
+    if ($chapterid !== null) {
+        $sql .= " AND chapterid = ?";
+        $params[] = $chapterid;
+    }
+
+    // Append order and limit
+    $sql .= $order . " LIMIT " . $limit;
+
+    $res = $this->db->query($sql, $params)->result();
+
+    //  log_message('error', 'getexercise SQL: ' . $this->db->last_query());
+    // var_dump($this->db->last_query());
+    if (empty($res)) {
+        return [];
+    }
+
+    // If API request, format output as eid => row
+    if (isset($_POST['isapi'])) {
+        foreach ($res as $row) {
+            $ques[$row->eid] = $row;
+        }
+        return array_values($ques);
+    }
+
+    // Default return
+    return $res;
+}
+
   function submitexerciseanswer($post)
   {
     $donetime=(float)$post['qntimer']-(float)$post['totaltimer'];
@@ -369,7 +413,7 @@ function getquiz($post)
   }
   if (isset($post['eids']) && is_array($post['eids'])) {
     $where .= " and eid in (" . implode(",", $post['eids']) . ")";
-}
+  }
   // $group="SELECT distinct e.groupid,g.groupname,g.perqnmark,g.fullmark from exercise e join questiongroup g on e.groupid=g.groupid where classid=? and subjectid=?  and is_subj_obj='N' and e.is_active=1 and is_common='Y' $where order by groupname";
   // $res_group=$this->db->query($group,array(((int)@$post['class']>0)?$post['class']:0,((int)@$post['subject']>0)?$post['subject']:0))->result();
    $ques=[];
@@ -775,25 +819,48 @@ function getquiz($post)
    return $qry;
   }
 
-  function getdatasets()
-  {
-    // $_POST['classid']=27;
-    // $_POST['subjectid']=22;
+  // function getdatasets()
+  // {
+  //   // $_POST['classid']=27;
+  //   // $_POST['subjectid']=22;
+  //   $sql = "SELECT setname, setid 
+  //           FROM datasetmain 
+  //           WHERE class_id = ? AND subject_id = ? AND is_active = '1' 
+  //           ORDER BY `order`";
+  //     $res=$this->db->query($sql,array($_POST['classid'],$_POST['subjectid']));
+  //     //echo $this->db->last_query();exit;
+  //     if($res->num_rows() > 0)
+  //     {
+  //       return $res->result();
+  //     }
+  //     else
+  //     {
+  //       return array();
+  //     }
+  // }
+function getdatasets($classid = null, $subjectid = null)
+{
+    // Fallback to $_POST if parameters are not passed
+    $classid = $classid ?? $_POST['classid'] ?? null;
+    $subjectid = $subjectid ?? $_POST['subjectid'] ?? null;
+
+    if (!$classid || !$subjectid) {
+        return array(); // Or throw Exception if preferred
+    }
+
     $sql = "SELECT setname, setid 
             FROM datasetmain 
             WHERE class_id = ? AND subject_id = ? AND is_active = '1' 
             ORDER BY `order`";
-      $res=$this->db->query($sql,array($_POST['classid'],$_POST['subjectid']));
-      //echo $this->db->last_query();exit;
-      if($res->num_rows() > 0)
-      {
+    $res = $this->db->query($sql, array($classid, $subjectid));
+    // log_message('error', "Executed query: " . $this->db->last_query()); // Logs the real query
+
+    if ($res->num_rows() > 0) {
         return $res->result();
-      }
-      else
-      {
+    } else {
         return array();
-      }
-  }
+    }
+}
 
   function getdatasetinfo($setid)
   {

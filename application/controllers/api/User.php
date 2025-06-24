@@ -17,8 +17,7 @@ class User extends CI_Controller
         $this->load->model('home/home_model', 'hmodel');
         $this->load->model('rank/rank_model', 'rmodel');
         $this->load->model('myexam/myexam_model', 'emodel');
-        $this->load->model('socialmedia/socialmedia_model', 'socialmodel');
-        $this->load->model('notice/notice_model', 'noticemodel2');
+
 
 
         APIKEY();
@@ -40,7 +39,6 @@ class User extends CI_Controller
             $valid = $this->spmodel->verify($_POST['username'], md5($_POST['password']));
 
             if ($valid == '1') {
-
                 throw new Exception("You are already loggedin from Next Device.", 1);
             } else if ($valid == '0') {
 
@@ -73,13 +71,8 @@ class User extends CI_Controller
             }
 
             if ($valid['isnewdevice'] != 'Y') {
-                $updated_device_login =  $this->common_model->update('users', array('is_login' => '1', 'device' => 'app', 'deviceid' => @$_POST['deviceid']), array('user_id' => $valid['user_id']));
-                if ($updated_device_login) {
-                    $valid['is_login'] = '1';
-                }
+                $this->common_model->update('users', array('is_login' => '1', 'device' => 'app', 'deviceid' => @$_POST['deviceid']), array('user_id' => $valid['user_id']));
             }
-
-
 
             $response = array(
                 'type' => 'success',
@@ -87,7 +80,6 @@ class User extends CI_Controller
                 'response' => $valid
             );
         } catch (Exception $e) {
-            // var_dump("User Api error message var dump",$e->getMessage());
             $response = array('type' => 'error', 'message' => $e->getMessage());
         }
         echo getJsonData($response);
@@ -496,23 +488,83 @@ class User extends CI_Controller
     }
 
     //get content files,image,video
+    //   function getcontentfile_copy_june19_thursday()
+    //   {
+    //       try {
+    //         if(!$_POST['contentid'])
+    //         {
+
+    //             throw new Exception("Contentid Required.", 1);
+
+    //         }
+    //         if(!$_POST['type'])
+    //         {
+
+    //             throw new Exception("Type Cannot be empty.", 1);
+
+    //         }
+
+    //     $content=$this->common_model->getRows('contentfile',array('contentid'=>$_POST['contentid'],'is_active'=>1,'filetype'=>$_POST['type']),"contentid,title,fileid,filetype,ext,orderby,case when filetype='video' then file else concat('".base_url()."upload/content/',file)end as file",'orderby');
+    //     if(count($content)<1)
+    //     {
+
+    //         throw new Exception($_POST['type']."  not found", 1);
+
+    //     }
+    //       $response = array('type'=>'success','message'=>'Success','response'=>$content
+    //           );
+
+
+    //   }
+    //   catch(Exception $e) {
+    //       $response = array('type'=>'error', 'message'=>$e->getMessage());
+
+
+    //   }
+    //   echo getJsonData($response);
+
+    //   }
+
+
     function getcontentfile()
     {
         try {
             if (!$_POST['contentid']) {
-
                 throw new Exception("Contentid Required.", 1);
             }
             if (!$_POST['type']) {
-
                 throw new Exception("Type Cannot be empty.", 1);
             }
 
-            $content = $this->common_model->getRows('contentfile', array('contentid' => $_POST['contentid'], 'is_active' => 1, 'filetype' => $_POST['type']), "contentid,title,fileid,filetype,ext,orderby,case when filetype='video' then file else concat('" . base_url() . "upload/content/',file)end as file", 'orderby');
-            if (count($content) < 1) {
+            // YouTube embed parameters
+            $videoParams = '?modestbranding=1&rel=0&fs=0&controls=0&autoplay=1&loop=1';
 
-                throw new Exception($_POST['type'] . "  not found", 1);
+            $content = $this->common_model->getRows(
+                'contentfile',
+                array(
+                    'contentid' => $_POST['contentid'],
+                    'is_active' => 1,
+                    'filetype' => $_POST['type']
+                ),
+                "contentid, title, fileid, filetype, ext, orderby,
+                CASE
+                    WHEN filetype = 'video' THEN 
+                        CASE 
+                            WHEN file LIKE '%youtube.com%' THEN 
+                                CONCAT(REPLACE(file, 'youtube.com', 'youtube-nocookie.com'), '$videoParams')
+                            ELSE 
+                                CONCAT(file, '$videoParams')
+                        END
+                    ELSE 
+                        CONCAT('" . base_url() . "upload/content/', file)
+                END AS file",
+                'orderby'
+            );
+
+            if (count($content) < 1) {
+                throw new Exception($_POST['type'] . " not found", 1);
             }
+
             $response = array(
                 'type' => 'success',
                 'message' => 'Success',
@@ -521,8 +573,10 @@ class User extends CI_Controller
         } catch (Exception $e) {
             $response = array('type' => 'error', 'message' => $e->getMessage());
         }
+
         echo getJsonData($response);
     }
+
 
     //qe ::quiz/exercise question get  
     function qeexam()
@@ -1041,13 +1095,13 @@ class User extends CI_Controller
     function purchasecourse()
     {
         try {
+
             $this->load->helper('cms_helper');
 
-            $this->form_validation->set_rules('class', 'Course type', 'required');
+            $this->form_validation->set_rules('levelid', 'Course type', 'required');
             $this->form_validation->set_rules('classid', 'Class', 'required');
             $this->form_validation->set_rules('subjectid', 'Subject', 'required');
             // $this->form_validation->set_rules('package', 'Package', 'required');
-            
             if ($this->form_validation->run() == FALSE) {
                 throw new Exception(validation_errors(), 1);
             }
@@ -1062,7 +1116,6 @@ class User extends CI_Controller
 
                 $payamt = '0';
             } else {
-               
                 $data = $this->common_model->getRows('subject', array('is_active' => 1, 'subject_id' => $_POST['subjectid']), '*,1monthsprice as onemonth,3monthsprice as threemonth,6monthsprice as sixmonth,1yearprice as oneyear', 'subject_id');
                 $newdata = $data[0];
                 if ($_POST['package'] == '1month') {
@@ -1079,7 +1132,6 @@ class User extends CI_Controller
 
 
             $discountamt = 0;
-            $serviceamt = 125;
             // voucher code condtn
             if (isset($_POST['vouchercode']) && $_POST['vouchercode'] != '') {
                 //$vouchercode=$this->common_model->getRows('vouchercode',array('vouchercode'=>$_POST['vouchercode'],'levelid'=>$_POST['levelid'],'classid'=>$_POST['classid'],'subjectid'=>$_POST['subjectid']),'*','vouchercode');
@@ -1105,28 +1157,8 @@ class User extends CI_Controller
                     }
                 } else {
 
-                    echo json_encode(array(
-                        'message' => $vouchercode
-                    ));
-                    exit();
+                    throw new Exception($vouchercode, 1);
                 }
-            }
-            if (isset($_POST['applyPromo']) && $_POST['applyPromo'] == 'Y') {
-                $promoStatus = false;
-
-                if ($discountamt > 0) {
-                    $promoStatus = true;
-                }
-
-                echo json_encode(array(
-                    'type' => 'applyPromo',
-                    'status' => $promoStatus,
-                    'oldPrice' => $payamt,
-                    'newPrice' => $payamt - $discountamt + $serviceamt,
-                    'discountAmt' => $discountamt,
-                    'serviceAmt' => $serviceamt,
-                ));
-                exit();
             }
             //voucher code condtn end
             $txn = 'TFLPC' . time();
@@ -1139,7 +1171,7 @@ class User extends CI_Controller
                 'productcode' => $txn,
                 'payamount' => $payamt,
                 'status' => 'P',
-                'studentid' => 1,
+                'studentid' => $this->input->get_request_header('Userid', True),
                 'requestfrom' => 'Khalti',
                 'ipaddr' => get_client_ip(),
                 'discountamount' => $discountamt,
@@ -1153,7 +1185,7 @@ class User extends CI_Controller
 
             $iu = $this->common_model->insert('transactions', $insert);
             if ($iu > 0) {
-                $response = array('type' => 'success', 'message' => 'Subscription Successfull', 'response' => array('txnid' => $iu, 'txncode' => $txn, 'levelid' => $_POST['class'], 'classid' => $_POST['classid'], 'subjectid' => $_POST['subjectid'], 'amt' => $payamt, 'package' => $_POST['package']));
+                $response = array('type' => 'success', 'message' => 'Subscription Successfull', 'response' => array('txnid' => $iu, 'txncode' => $txn, 'levelid' => $_POST['levelid'], 'classid' => $_POST['classid'], 'subjectid' => $_POST['subjectid'], 'amt' => $payamt, 'package' => $_POST['package']));
 
                 if (isset($_POST['isdemo']) && $_POST['isdemo'] == 'Y') {
                     $_POST['txnid'] = $txn;
@@ -1415,7 +1447,7 @@ class User extends CI_Controller
             $_POST['isapi'] = 'Y';
 
             $data = $this->spmodel->logout();
-            if ($data) {
+            if (count($data) > 0) {
                 $response = array('type' => 'success', 'message' => 'List Successfull', 'response' => $data);
             } else
                 throw new Exception("You donot have any exams right now!", 1);
@@ -1514,7 +1546,7 @@ class User extends CI_Controller
                 throw new Exception("Email is required", 1);
             }
 
-            $chk = $this->spmodel->submit_otp($_POST['email']);
+            $chk = $this->spmodel->submit_otp($_POST['email'], 1);
 
             if ($chk === false) {
                 //no data
@@ -1592,44 +1624,6 @@ class User extends CI_Controller
                 'type' => 'success',
                 'message' => 'Success',
                 'response' => array_values($data)
-            );
-        } catch (Exception $e) {
-            $response = array('type' => 'error', 'message' => $e->getMessage());
-        }
-        echo getJsonData($response);
-    }
-
-    
-
-    function sitesettings(){
-        try {
-            $socialmedia = $this->socialmodel->get_social_media();
-    
-            $data = array();
-            $data_num = array();
-            if (!empty($socialmedia)) {
-                foreach ($socialmedia as $key => $item) {
-                    if(is_numeric($item->link)){
-                        $data_num[] = array(
-                            'title' => $item->name,
-                            'icon' => $item->icon,
-                            'value' => $item->link
-                        );
-                    } else{
-                        $data[] = array(
-                            'title' => $item->name,
-                            'icon' => $item->icon,
-                            'value' => $item->link
-                        );
-                    }
-                }
-            }
-    
-            $response = array(
-                'type' => 'success',
-                'message' => 'Success',
-                'contact_details' => array_values($data_num),
-                'follow_details' => array_values($data)
             );
         } catch (Exception $e) {
             $response = array('type' => 'error', 'message' => $e->getMessage());
